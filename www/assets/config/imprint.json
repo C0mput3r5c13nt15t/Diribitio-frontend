@@ -1,18 +1,18 @@
 {
     "contacts": [
     {
-        "name": "Your School",
-        "adress": "12345 HereYourAdress 2",
-        "link": "https://www.yourSchool.com",
-        "email": "yourSchool@example.com",
-        "phone": "08777777777"
+        "name": "This is only a demo, please dont use it!",
+        "adress": "Only a student project test deployment for testing purposes only!",
+        "link": "-",
+        "email": "-",
+        "phone": "-"
     },
     {
         "name": "Your Schools Admin",
         "adress": "",
         "link": "",
-        "email": "AdminsEmail@example.com",
-        "phone": "08777777755"
+        "email": "-",
+        "phone": "-"
     }
     ]
 }
