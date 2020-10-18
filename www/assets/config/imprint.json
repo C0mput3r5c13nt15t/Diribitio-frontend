@@ -1,0 +1,18 @@
+{
+    "contacts": [
+    {
+        "name": "Your School",
+        "adress": "12345 HereYourAdress 2",
+        "link": "https://www.yourSchool.com",
+        "email": "yourSchool@example.com",
+        "phone": "08777777777"
+    },
+    {
+        "name": "Your Schools Admin",
+        "adress": "",
+        "link": "",
+        "email": "AdminsEmail@example.com",
+        "phone": "08777777755"
+    }
+    ]
+}

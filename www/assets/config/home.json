@@ -1,0 +1,16 @@
+{
+    "welcome": {
+        "title": "Schüleraustausch",
+        "text": "Willkommen!"
+    },
+    "articles": [
+        {
+            "title": "Coronabier",
+            "text": "Hallo, dieses Jahr ein paar Überraschungen!"
+        },
+        {
+            "title": "Coronabier2",
+            "text": "Hallo, dieses Jahr noch ein paar mehr Überraschungen!"
+        }
+    ]
+}

@@ -1,0 +1,44 @@
+{
+    "errors": [
+        {
+            "error": "admin-wrong_time",
+            "descr": "Ein Projekt kann nur in der Kontrollphase zugelassen bzw. gelöscht werden."
+        },
+        {
+            "error": "leader-loading_project",
+            "descr": "Es gab einen Fehler beim Laden ihres Projektes. Versuchen sie sich neu einzuloggen und melden sie diesen Fehler bitte dem Systemadministrator."
+        },
+        {
+            "error": "leader-wrong_time",
+            "descr": "Ein Projekt kann nur in der Registrierungsphase bearbeitet werden."
+        },
+        {
+            "error": "student-loading_project",
+            "descr": "Es gab einen Fehler beim Laden deines Projektes. Versuche dich neu einzuloggen und melde diesen Fehler bitte dem Systemadministrator."
+        },
+        {
+            "error": "student-wrong_time",
+            "descr": "Ein Projekt kann nur in der Registrierungsphase bearbeitet werden."
+        },
+        {
+            "error": "student-project_not_allowed",
+            "descr": "Es gab ein Problem mit deinem Projekt. Aktuell scheint es nict mehr zugelassen zu sein. Bitte erkundige dich bei dem Systemadministrator."
+        },
+        {
+            "error": "student-no_project_edit_by_assistants",
+            "descr": "Nur der ursprüngliche Ersteller des Projektes kann Änderungen daran vornehmen."
+        },
+        {
+            "error": "student-no_assistants_edit_by_assistants",
+            "descr": "Die Verwaltung der Assistenten ist dem ursprünglichen Projektleiter vorbehalten."
+        },
+        {
+            "error": "student-already_exchange",
+            "descr": "Du hast schon getauscht!"
+        },
+        {
+            "error": "mail_status_not_found",
+            "descr": "Der Statuscode ist..."
+        }
+    ]
+}
