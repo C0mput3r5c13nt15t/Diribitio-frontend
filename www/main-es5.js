@@ -1342,7 +1342,7 @@
 
     /***/
     function srcAssetsConfigBackendConfigJson(module) {
-      module.exports = JSON.parse("{\"url\":\"http://fama-4/api/\"}");
+      module.exports = JSON.parse("{\"url\":\"http://192.248.186.231:8000/api/\"}");
       /***/
     },
 
