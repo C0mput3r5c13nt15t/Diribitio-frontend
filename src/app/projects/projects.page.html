@@ -34,7 +34,7 @@
         <div *ngFor="let project of projects">
           <ion-item color="background" *ngIf="!!+project.authorized" [routerLink]="['./', project.id]">
             <ion-avatar [hidden]="project.image == '' || project.image == null" slot="start">
-              <ion-img *ngIf="project.image != '' && project.image != null" [src]='"http://192.248.186.231/storage/images/" + project.image'></ion-img>
+              <ion-img *ngIf="project.image != '' && project.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + project.image'></ion-img>
             </ion-avatar>
             <ion-label color="text">
               <h2>{{ project.title }}</h2>

@@ -14,7 +14,7 @@
     </ion-card-content>
   </ion-card>
   <ion-card color="background" *ngIf="!!+chosenProject.authorized === true" class="content">
-    <ion-img *ngIf="chosenProject.image != '' && chosenProject.image != null" [src]='"http://192.248.186.231/storage/images/" + chosenProject.image'></ion-img>
+    <ion-img *ngIf="chosenProject.image != '' && chosenProject.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + chosenProject.image'></ion-img>
     <ion-card-header>
       <ion-title>
         <h1>{{ chosenProject.title }}</h1>

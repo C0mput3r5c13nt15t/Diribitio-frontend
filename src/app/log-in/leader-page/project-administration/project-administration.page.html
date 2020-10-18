@@ -17,7 +17,7 @@
     </ion-card-content>
   </ion-card>
   <ion-card color="background" *ngIf="!!+loadedLeader.project_id != null" class="content">
-    <ion-img *ngIf="leadedProject.image != '' && leadedProject.image != null" [src]='"http://192.248.186.231/storage/images/" + leadedProject.image'></ion-img>
+    <ion-img *ngIf="leadedProject.image != '' && leadedProject.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + leadedProject.image'></ion-img>
     <ion-card-header>
       <ion-title>
         <ion-title>{{ leadedProject.title }}</ion-title>
