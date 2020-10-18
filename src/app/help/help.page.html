@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Home"></ion-back-button>
+    </ion-button>
+    <ion-title>Hilfe</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card *ngFor="let instruction of instructions"olor="background"class="content">
+    <ion-card-header>
+      <ion-card-title>{{ instruction.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="instruction.title1 || instruction.text1">
+      <ion-card-subtitle *ngIf="instruction.title1">{{ instruction.title1 }}</ion-card-subtitle>
+      <ion-label *ngIf="instruction.text1" color="text">
+        {{ instruction.text1 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="instruction.title2 || instruction.text2">
+      <ion-card-subtitle *ngIf="instruction.title2">{{ instruction.title2 }}</ion-card-subtitle>
+      <ion-label *ngIf="instruction.text2" color="text">
+        {{ instruction.text2 }}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

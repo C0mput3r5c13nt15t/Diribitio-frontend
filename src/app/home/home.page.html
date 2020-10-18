@@ -1,0 +1,109 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>Startseite</ion-title>
+    <ion-button color="buttons" slot="end" [routerLink]="['../../Help']"><ion-icon name="help-circle"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" class="content">
+    <img class="logo_light" src="../../assets/logo/Logo_light.svg">
+    <img class="logo_dark" src="../../assets/logo/Logo_dark.svg">
+    <ion-card-header>
+      <ion-title>{{ welcome.title }}</ion-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="welcome.text">
+      <ion-label color="text">
+        {{ welcome.text }}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-title>Zeitplan</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item color="items" lines="none">
+          ab <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Beginn" [(ngModel)]="schedule.begin" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control">
+          <ion-icon slot="start" name="create"></ion-icon>
+          <ion-label>Registrierung und Erstellung der {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.begin || currentDate > schedule.control">
+          <ion-icon color="text" slot="start" name="create"></ion-icon>
+          <ion-label color="text">Registrierung und Erstellung der {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Anmeldung" [(ngModel)]="schedule.control" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.control && currentDate <= schedule.registration">
+          <ion-icon slot="start" name="shield-checkmark"></ion-icon>
+          <ion-label>Kontrolle und Freigabe der {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.control || currentDate > schedule.registration">
+          <ion-icon color="text" slot="start" name="shield-checkmark"></ion-icon>
+          <ion-label color="text">Kontrolle und Freigabe der {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Anmeldung" [(ngModel)]="schedule.registration" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students">
+          <ion-icon slot="start" name="log-in"></ion-icon>
+          <ion-label>Anmeldung für die {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.registration || currentDate > schedule.sort_students">
+          <ion-icon color="text" slot="start" name="log-in"></ion-icon>
+          <ion-label color="text">Anmeldung für die {{ projectsNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Sortierung" [(ngModel)]="schedule.sort_students" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.sort_students && currentDate <= schedule.exchange">
+          <ion-icon slot="start" name="funnel"></ion-icon>
+          <ion-label>Sortierung durch den Algorithmus</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.sort_students || currentDate > schedule.exchange">
+          <ion-icon color="text" slot="start" name="funnel"></ion-icon>
+          <ion-label color="text">Sortierung durch den Algorithmus</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Tausch" [(ngModel)]="schedule.exchange" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.exchange && currentDate <= schedule.projects">
+          <ion-icon slot="start" name="swap-horizontal"></ion-icon>
+          <ion-label>Tauschphase</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.exchange || currentDate > schedule.projects">
+          <ion-icon color="text" slot="start" name="swap-horizontal"></ion-icon>
+          <ion-label color="text">Tauschphase</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis <ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Projekte" [(ngModel)]="schedule.projects" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+        <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.projects && currentDate <= schedule.end">
+          <ion-icon slot="start" name="flag"></ion-icon>
+          <ion-label>{{ eventNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.projects || currentDate > schedule.end">
+          <ion-icon color="text" slot="start" name="flag"></ion-icon>
+          <ion-label color="text">{{ eventNoun }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          bis<ion-datetime placeholder="Bitte ein Datum wählen" readonly name="Ende" [(ngModel)]="schedule.end" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngFor="let article of articles" color="background" class="content">
+    <ion-card-header>
+      <ion-title>{{ article.title }}</ion-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="article.text">
+      <ion-label color="text">
+        {{ article.text }}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>{{ projectsNoun }}</ion-title>
+    <ion-button color="buttons" slot="end" [routerLink]="['../../Help']"><ion-icon name="help-circle"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-title>
+        {{ projectsNoun }}
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="currentDate <= schedule.registration">
+      <ion-card color="background">
+        <ion-card-header>
+          <ion-title color="danger">
+            Zu früh
+          </ion-title>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-text color="text">Die {{ projectsNoun }} werden hier erst nach dem {{ schedule.registration }} ausgestellt.</ion-text>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+    <ion-card-content *ngIf="currentDate > schedule.registration">
+      <ion-list *ngIf="projects">
+        <div *ngFor="let project of projects">
+          <ion-item color="background" *ngIf="!!+project.authorized" [routerLink]="['./', project.id]">
+            <ion-avatar [hidden]="project.image == '' || project.image == null" slot="start">
+              <ion-img *ngIf="project.image != '' && project.image != null" [src]='"http://fama-4/storage/images/" + project.image'></ion-img>
+            </ion-avatar>
+            <ion-label color="text">
+              <h2>{{ project.title }}</h2>
+              <ion-text color="text" *ngIf="!!+project.authorized === true">{{ project.descr }}</ion-text>
+              <ion-text *ngIf="!!+project.authorized === false" color="danger"> (Nicht zugelassen!)</ion-text>
+            </ion-label>
+          </ion-item>
+        </div>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Benutzer/{{ participantUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Tausch anfragen</ion-title>
+    <ion-button color="buttons" [disabled]="loadedUser.exchange_id == 0" slot="end" (click)="delete()"  color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" *ngIf="loadedUser.exchange_id == 0" class="content">
+    <ion-card-header color="background">
+      <ion-title>Tauschanfragen senden</ion-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <form #form="ngForm" name="ExchangeForm" (ngSubmit)="submit()">
+        <ion-list>
+          <ion-item-divider color="background">
+            <ion-title>Du</ion-title>
+          </ion-item-divider>
+          <ion-item color="items" lines="none">
+            <ion-input color="text" readonly [(ngModel)]="loadedUser.first_name" name="ExchangeFirstFirstName"></ion-input>
+          </ion-item>
+          <ion-item color="items" lines="none">
+            <ion-input color="text" readonly [(ngModel)]="loadedUser.last_name" name="ExchangeFirstLastName"></ion-input>
+          </ion-item>
+          <ion-item color="items" lines="none">
+            <ion-input color="text" readonly name="ExchangeFirstGradeAndClass">{{ loadedUser.grade }}{{ loadedUser.letter }}</ion-input>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-title *ngIf="exchangePartner.id === 0">Dein Freund </ion-title>
+            <ion-title *ngIf="exchangePartner.id != 0">
+                {{ exchangePartner.first_name }} {{ exchangePartner.last_name }} {{ exchangePartner.grade }}{{ exchangePartner.letter }}
+            </ion-title>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-input color="text" type="text" required placeholder="Vorname" [(ngModel)]="exchangePartner.first_name" name="ExchangeSecondFirstName"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-input color="text" type="text" required placeholder="Nachname" [(ngModel)]="exchangePartner.last_name" name="ExchangeSecondLastName"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-label color="text">Klassenstufe</ion-label>
+            <ion-select [selectedText]="exchangePartner.grade" required name="ParticipantGrade" cancelText="Abbrechen" [(ngModel)]="exchangePartner.grade">
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+              <ion-select-option value="11">11</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item color="items">
+            <ion-radio-group required name="ParticipantClass" [(ngModel)]="exchangePartner.letter">
+              <ion-item color="items" lines="none">
+                <ion-label color="text">A </ion-label>
+                <ion-radio  color="text" slot="start" value="a"></ion-radio>
+              </ion-item>
+              <ion-item color="items" lines="none">
+                <ion-label color="text">B </ion-label>
+                <ion-radio  color="text" slot="start" value="b"></ion-radio>
+              </ion-item>
+              <ion-item color="items" lines="none">
+                <ion-label color="text">C </ion-label>
+                <ion-radio  color="text" slot="start" value="c"></ion-radio>
+              </ion-item>
+              <ion-item color="items" lines="none">
+                <ion-label color="text">D </ion-label>
+                <ion-radio  color="text" slot="start" value="d"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+          <ion-button color="buttons" [disabled]="form.invalid" expand="block" type="submit" class="ion-no-margin">Tauschanfrage senden</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" *ngIf="loadedUser.exchange_id != 0" class="content">
+    <ion-card-content>
+      <ion-text color="danger">{{ studentAlreadyExchangeError }}</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

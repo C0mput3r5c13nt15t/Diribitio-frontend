@@ -1,0 +1,139 @@
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ParticipantsService } from 'src/app/participants.service';
+import { ProjectsService } from 'src/app/projects.service';
+import { Projekt } from 'src/assets/models/Projekt.model';
+import { Schüler } from 'src/assets/models/Schüler.model';
+import { ConfigService } from 'src/app/config.service';
+import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { ScheduleService } from 'src/app/schedule.service';
+import { formatDate } from '@angular/common';
+
+@Component({
+  selector: 'app-project-administration',
+  templateUrl: './project-administration.page.html',
+  styleUrls: ['./project-administration.page.scss'],
+})
+export class ProjectAdministrationPage implements OnInit {
+  participantUrl: string;
+
+  loadedUser: Schüler = {
+    id: 0,
+    user_name: '',
+    email: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    grade: 0,
+    letter: '',
+    exchange_id: 0,
+    exchange_requests: [],
+    first_friend: 0,
+    second_friend: 0,
+    third_friend: 0,
+    first_wish: 0,
+    second_wish: 0,
+    third_wish: 0,
+    project_id: 0,
+    role: 2
+  };
+
+  leadedProject: Projekt = {
+    id: 0,
+    authorized: 0,
+    editable: 0,
+    title: '',
+    image: '',
+    descr: '',
+    leader_name: '',
+    leader_type: '',
+    leader_id: 0,
+    cost: 0,
+    first_day_begin: {
+      hours: 0,
+      minutes: 0,
+    },
+    first_day_end: {
+      hours: 0,
+      minutes: 0,
+    },
+    second_day_begin: {
+      hours: 0,
+      minutes: 0,
+    },
+    second_day_end: {
+      hours: 0,
+      minutes: 0,
+    },
+    min_grade: 0,
+    max_grade: 0,
+    min_participants: 0,
+    max_participants: 0,
+    messages: [],
+    participants: [],
+    assistant_student_leaders: []
+  };
+
+  schedule: Zeitplan = {
+    id: 1,
+    begin: null,
+    control: null,
+    registration: null,
+    sort_students: null,
+    exchange: null,
+    projects: null,
+    end: null
+  };
+  currentDate: any;
+
+  studentNoProjectEditByAssistants: string;
+  studentLoadingProject: string;
+  studentWrongTime: string;
+
+  projectNoun: string;
+
+  constructor(private activatedRoute: ActivatedRoute,
+              private router: Router,
+              private projectsService: ProjectsService,
+              private scheduleService: ScheduleService,
+              private participantsService: ParticipantsService,
+              private config: ConfigService) { }
+
+  ngOnInit() {
+    this.projectNoun = this.config.app_config.project_noun;
+
+    this.studentNoProjectEditByAssistants = this.config.get_error('student-no_project_edit_by_assistants');
+    this.studentLoadingProject = this.config.get_error('student-loading_project');
+    this.studentWrongTime = this.config.get_error('student-wrong_time');
+
+    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+
+    this.activatedRoute.paramMap.subscribe(paramMap => {
+      if (!paramMap.has('ParticipantName')) {
+        this.router.navigate(['']);
+        return;
+      }
+      this.participantUrl = paramMap.get('ParticipantName');
+    });
+
+    this.scheduleService.getSchedule().subscribe(data => {
+      this.schedule = data.data;
+    });
+
+    this.getProject();
+    this.getStudent();
+  }
+
+  getProject() {
+    this.projectsService.getSelfLeadedProject('students').subscribe(data => {
+      this.leadedProject = data.data;
+    });
+  }
+
+  getStudent() {
+    this.participantsService.getSelfParticipant().subscribe(data => {
+      this.loadedUser = data.data;
+    });
+  }
+
+}

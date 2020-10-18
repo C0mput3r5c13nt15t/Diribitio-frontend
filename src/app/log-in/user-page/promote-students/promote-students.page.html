@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Benutzer/{{ participantUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Assistenten verwalten</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" *ngIf="loadedUser.role === 2" class="content">
+    <ion-card-header>
+      <ion-title>
+        <h1>Assistenten verwalten</h1>
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card color="background" *ngIf="loadedUser.project_id != 0 && leadedProject.leader_id == loadedUser.id">
+      <form #form="ngForm" name="ParticipantForm" (ngSubmit)="promoteStudent()">
+        <ion-item color="items">
+          <ion-input required color="text" type="text" placeholder="Vorname" [(ngModel)]="declaredAssistant.first_name" name="ExchangeSecondFirstName"></ion-input>
+        </ion-item>
+        <ion-item color="items">
+          <ion-input required color="text" type="text" placeholder="Nachname" [(ngModel)]="declaredAssistant.last_name" name="ExchangeSecondLastName"></ion-input>
+        </ion-item>
+        <ion-item color="items">
+          <ion-label color="text">Klassenstufe</ion-label>
+          <ion-select required [selectedText]="declaredAssistant.grade" name="ParticipantGrade" [(ngModel)]="declaredAssistant.grade">
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="6">6</ion-select-option>
+            <ion-select-option value="7">7</ion-select-option>
+            <ion-select-option value="8">8</ion-select-option>
+            <ion-select-option value="9">9</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="11">11</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="items">
+          <ion-radio-group required color="buttons" name="ParticipantClass" [(ngModel)]="declaredAssistant.letter">
+            <ion-item color="items" lines="none">
+              <ion-label color="text">A </ion-label>
+              <ion-radio color="text" slot="start" value="a"></ion-radio>
+            </ion-item>
+            <ion-item color="items" lines="none">
+              <ion-label color="text">B </ion-label>
+              <ion-radio color="text" slot="start" value="b"></ion-radio>
+            </ion-item>
+            <ion-item color="items" lines="none">
+              <ion-label color="text">C </ion-label>
+              <ion-radio color="text" slot="start" value="c"></ion-radio>
+            </ion-item>
+            <ion-item color="items" lines="none">
+              <ion-label color="text">D </ion-label>
+              <ion-radio color="text" slot="start" value="d"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-item>
+        <div class="ion-padding">
+          <ion-button color="buttons" [disabled]="form.invalid || leadedProject.leader_id != loadedUser.id" expand="block" type="submit" class="ion-no-margin">Als Assistent auszeichnen</ion-button>
+        </div>
+      </form>
+    </ion-card>
+    <ion-card color="background" *ngIf="leadedProject.leader_id != loadedUser.id" class="content">
+      <ion-card-content>
+        <ion-text color="danger">{{ studentNoAssistantsEditByAssistants }}</ion-text>
+      </ion-card-content>
+    </ion-card>
+    <ion-card-content *ngIf="loadedUser.project_id != 0 && leadedProject.leader_id == loadedUser.id">
+      <ion-item-group>
+        <ion-item-divider *ngIf="leadedProject.assistant_student_leaders.length" color="background">
+          <ion-label color="text">Assistenten</ion-label>
+        </ion-item-divider>
+        <div *ngIf="leadedProject.assistant_student_leaders.length">
+          <ion-item color="items" lines="none" *ngFor="let assistant of leadedProject.assistant_student_leaders">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text"><ion-icon name="star-half"></ion-icon> {{ assistant.first_name }} {{ assistant.last_name }} {{ assistant.grade }}{{ assistant.letter }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+            <ion-buttons *ngIf="leadedProject.leader_id == loadedUser.id" (click)="suspendStudent(assistant.id)"><ion-icon color="danger" name="arrow-down"></ion-icon></ion-buttons>
+          </ion-item>
+        </div>
+      </ion-item-group>
+    </ion-card-content>
+    <ion-card-content *ngIf="leadedProject.leader_id != loadedUser.id">
+      <div class="ion-padding">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="quitAssistent()">Assistent 'kündigen'</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+

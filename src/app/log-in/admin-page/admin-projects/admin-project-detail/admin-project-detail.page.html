@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}/Projekte"></ion-back-button>
+    </ion-button>
+    <ion-title>{{ projectNoun }}</ion-title>
+    <ion-button color="danger" slot="end" (click)="deleteProject()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" [src]='"http://fama-4/storage/images/" + loadedProject.image'></ion-img>
+    <ion-card-header>
+      <ion-title>
+        <h1>{{ loadedProject.title }}</h1>
+      </ion-title>
+      <ion-card-subtitle>
+        <ion-label color="text">Erstellt am {{ loadedProject.created_at | date: 'dd.MM.yyyy' }} | Zuletzt aktualisiert am {{ loadedProject.updated_at | date: 'dd.MM.yyyy' }}</ion-label>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item-group>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.descr }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Leiter</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.leader_name }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Kosten</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.cost }}€</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Zeitraum</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">1.Tag:  {{ loadedProject.first_day_begin }} bis {{ loadedProject.first_day_end }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">2.Tag:  {{ loadedProject.second_day_begin }} bis {{ loadedProject.second_day_end }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Klassenstufe</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.min_grade }}. bis {{ loadedProject.max_grade }}.Klasse</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Teinehmeranzahl</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">von {{ loadedProject.min_participants }} bis {{ loadedProject.max_participants }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background" *ngIf="loadedProject.messages.length">
+          <ion-label color="text">Nachrichten</ion-label>
+        </ion-item-divider>
+        <div *ngIf="loadedProject.messages.length">
+          <ion-item color="items" lines="none" *ngFor="let message of loadedProject.messages">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text">{{ message.message }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <ion-item-divider color="background" *ngIf="loadedProject.leader">
+          <ion-label color="text">Projektleiter</ion-label>
+        </ion-item-divider>
+        <div *ngIf="loadedProject.leader && loadedProject.leader_type === 'App\\Student'">
+          <ion-item color="items" lines="none">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text"><ion-icon name="star"></ion-icon> {{ loadedProject.leader.first_name }} {{ loadedProject.leader.last_name }} {{ loadedProject.leader.grade }}{{ loadedProject.leader.letter }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <div *ngIf="loadedProject.leader && loadedProject.leader_type === 'App\\Leader'">
+          <ion-item color="items" lines="none">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text"><ion-icon name="star"></ion-icon> {{ loadedProject.leader.user_name }} {{ loadedProject.leader.email }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <ion-item-divider color="background" *ngIf="loadedProject.assistant_student_leaders.length">
+          <ion-label color="text">Assistenten</ion-label>
+        </ion-item-divider>
+        <div *ngIf="loadedProject.assistant_student_leaders.length">
+          <ion-item color="items" lines="none" *ngFor="let assistant of loadedProject.assistant_student_leaders">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text"><ion-icon name="star-half"></ion-icon> {{ assistant.first_name }} {{ assistant.last_name }} {{ assistant.grade }}{{ assistant.letter }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <ion-item-divider color="background">
+          <ion-label color="text">Teilnehmer</ion-label>
+        </ion-item-divider>
+        <div *ngIf="loadedProject.participants.length">
+          <ion-item color="items" lines="none" *ngFor="let participant of loadedProject.participants">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="text">{{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <div *ngIf="!loadedProject.participants.length">
+          <ion-item color="items" lines="none">
+            <ion-card color="background">
+              <ion-card-content>
+                <ion-text color="danger">keine Teilnehmer</ion-text>
+              </ion-card-content>
+            </ion-card>
+          </ion-item>
+        </div>
+        <ion-item-divider color="background">
+          <ion-label color="text">Administration</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">Zugelassen</ion-label><ion-toggle [disabled]="currentDate <= this.schedule.control || currentDate > this.schedule.registration || !!+loadedProject.editable == true"  color="buttons" [(ngModel)]="!!+loadedProject.authorized" (ionChange)="authorizedChanged()">Aktiviert</ion-toggle>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">Bearbeitbar</ion-label><ion-toggle [disabled]="currentDate <= this.schedule.control || currentDate > this.schedule.registration"  color="buttons" [(ngModel)]="!!+loadedProject.editable" (ionChange)="editableChanged()">Aktiviert</ion-toggle>
+        </ion-item>
+        <div class="ion-padding">
+          <ion-button [disabled]="currentDate <= this.schedule.control || currentDate > this.schedule.registration" expand="block" class="ion-no-margin" color="danger" slot="end" (click)="deleteProject()">{{ projectNoun }} löschen</ion-button>
+          <ion-label *ngIf="currentDate <= this.schedule.control || currentDate > this.schedule.registration" color="text">
+            {{ adminWrongTime }}
+          </ion-label>
+        </div>
+      </ion-item-group>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

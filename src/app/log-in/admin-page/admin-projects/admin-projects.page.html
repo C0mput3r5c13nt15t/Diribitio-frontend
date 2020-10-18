@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>{{ projectsNoun }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-card-title>
+        {{ projectsNoun }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <ion-item color="background" *ngFor="let project of projects" [routerLink]="['./', project.id]">
+          <ion-avatar [hidden]="project.image == null || project.image == ''" slot="start">
+            <ion-img *ngIf="project.image != '' && project.image != null" [src]='"http://fama-4/storage/images/" + project.image'></ion-img>
+          </ion-avatar>
+          <ion-label color="text">
+            <h2>{{ project.title }}</h2>
+            <p *ngIf="!!+project.authorized === true">{{ project.descr }}</p>
+            <ion-text *ngIf="!!+project.authorized === false" color="danger"> (Nicht zugelassen!)</ion-text>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Benutzer/{{ participantUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Tauschanfrage bestätigen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" *ngIf="loadedUser.exchange_id == 0" class="content">
+    <ion-card-header color="background">
+      <ion-title>Tauschanfragen annehmen</ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label color="text">
+        {{ content }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <ion-item color="items" *ngFor="let exchange of loadedUser.exchange_requests">
+          <ion-button color="buttons" slot="start" (click)="confirm(exchange.id)"><ion-icon name="checkmark"></ion-icon></ion-button>
+          {{ exchange.sender.first_name }} {{ exchange.sender.last_name }} {{ exchange.sender.grade }}{{ exchange.sender.letter }} aus {{ exchange.sender.project_title }}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" *ngIf="loadedUser.exchange_id != 0" class="content">
+    <ion-card-content>
+      <label color="danger">{{ studentAlreadyExchangeError }}</label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

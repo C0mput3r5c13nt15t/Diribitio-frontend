@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Benutzer/{{ leaderUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Nachrichten</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-list class="content" *ngIf="leadedProject.messages.length">
+    <ion-item color="items" lines="none" *ngFor="let message of leadedProject.messages">
+      <ion-card color="background">
+        <ion-card-content>
+          <ion-text color="text">{{ message.message }}</ion-text>
+        </ion-card-content>
+      </ion-card>
+      <ion-buttons (click)="delete(message)"><ion-icon color="danger" name="close"></ion-icon></ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-card color="background"name="MessageBox" class="content">
+    <form id="Formular" #form="ngForm" name="MessageForm" (ngSubmit)="send(form)">
+      <ion-item color="items">
+        <ion-input color="text" required name="MessageText" [(ngModel)]="newMessage.message" type="text"></ion-input>
+      </ion-item>
+      <div class="ion-padding">
+        <ion-button color="buttons" [disabled]="form.invalid" type="submit" expand="block" class="ion-no-margin"><ion-label><ion-icon name="send"></ion-icon>Nachricht senden</ion-label></ion-button>
+      </div>
+    </form>
+  </ion-card>
+</ion-content>
+  

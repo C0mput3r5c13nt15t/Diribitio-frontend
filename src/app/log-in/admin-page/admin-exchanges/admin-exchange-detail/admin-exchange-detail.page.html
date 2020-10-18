@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar color="menu">
+      <ion-button color="buttons" slot="start">
+        <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}/Tauschanfragen"></ion-back-button>
+      </ion-button>
+    <ion-title>Tauschanfrage</ion-title>
+    <ion-button color="buttons" color="danger" slot="end" (click)="deleteExchange()">
+      <ion-icon name="trash"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header *ngIf="loadedExchange.sender && loadedExchange.receiver">
+      <ion-card-title>Tauschanfrage von {{ loadedExchange.sender.first_name }} {{ loadedExchange.sender.last_name }} und {{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form>
+        <ion-item-group *ngIf="loadedExchange.sender && loadedExchange.receiver">
+          <ion-item-divider color="background">
+            <ion-label color="text">{{ loadedExchange.sender.first_name }} {{ loadedExchange.sender.last_name }} (Ersteller/in der Anfrage)</ion-label>
+          </ion-item-divider>
+          <ion-item color="items" lines="none">
+            Klasse: {{ loadedExchange.sender.grade }}{{ loadedExchange.sender.letter }}
+          </ion-item>
+          <ion-item color="items" lines="none">
+            {{ projectNoun }}: {{ firstProjectName }} ({{ firstMinGrade }}.Klasse bis {{ firstMaxGrade }}.Klasse)
+          </ion-item>
+          <ion-item color="items" lines="none">
+            <ion-label *ngIf="loadedExchange.receiver.grade > firstMaxGrade || loadedExchange.receiver.grade < firstMinGrade" color="danger">{{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }} erfüllt NICHT die Projektbedingungen!</ion-label>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">{{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }} (Empfänger/in)</ion-label>
+          </ion-item-divider>
+          <ion-item color="items" lines="none">
+            Klasse: {{ loadedExchange.receiver.grade }}{{ loadedExchange.receiver.letter }}
+          </ion-item>
+          <ion-item color="items" lines="none">
+            {{ projectNoun }}: {{ secondProjectName }} ({{ secondMinGrade }}.Klasse bis {{ secondMaxGrade }}.Klasse)
+          </ion-item>
+          <ion-item color="items" lines="none">
+            <ion-label *ngIf="loadedExchange.sender.grade > secondMaxGrade || loadedExchange.sender.grade < secondMinGrade" color="danger">{{ loadedExchange.sender.first_name }} {{ loadedExchange.sender.last_name }} erfüllt NICHT die Projektbedingungen!</ion-label>
+          </ion-item>
+        </ion-item-group>
+        <div class="ion-padding">
+          <ion-button color="buttons" (click)="carryOutExchange()" expand="block" type="submit" class="ion-no-margin">Tausch bestätigen</ion-button>
+        </div>
+        <div class="ion-padding">
+          <ion-button color="buttons" expand="block" class="ion-no-margin"  color="buttons" color="danger" slot="end" (click)="deleteExchange()">Tauschanfrage löschen</ion-button>
+        </div>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

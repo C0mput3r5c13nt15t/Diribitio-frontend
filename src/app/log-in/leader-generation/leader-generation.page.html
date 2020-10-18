@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Anmeldung"></ion-back-button>
+    </ion-button>
+    <ion-title>Als {{ projectNoun }}leiter registrieren</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <form #signUpLeaderForm="ngForm" name="LeaderForm" (ngSubmit)="SignUpAsLeader(signUpLeaderForm)" class="content">
+    <ion-card color="background">
+      <ion-card-header color="background">
+        <ion-title>{{ projectNoun }}leiter-Account erstellen</ion-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="text" color="background">
+        <ion-label color="text">
+          {{ text }}
+        </ion-label>
+      </ion-card-content>
+      <ion-card-content color="background">
+        <ion-list>
+          <ion-item color="items">
+            <ion-input name="user_name" [(ngModel)]="signUpData.user_name" required minlength="5" maxlength="50" type="text" placeholder="Benutzername" color="text"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-input name="email" [(ngModel)]="signUpData.email" required maxlength="50" type="email" placeholder="E-Mail" color="text"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-input name="password" [(ngModel)]="signUpData.password" required minlength="8" type="password" placeholder="Passwort" color="text"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-input name="password_confirmation" [(ngModel)]="signUpData.password_confirmation" required minlength="8" type="password" placeholder="Passwort bestätigen" color="text"></ion-input>
+          </ion-item>
+        </ion-list>
+        <div class="ion-padding">
+          <ion-button name="submit" type="submit" [disabled]="signUpLeaderForm.invalid"  class="ion-no-margin" expand="block"color="buttons">Registrieren</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </form>
+</ion-content>

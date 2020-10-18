@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>Anmeldung</ion-title>
+    <ion-button color="buttons" slot="end" [routerLink]="['../../Help']"><ion-icon name="help-circle"></ion-icon></ion-button>
+  </ion-toolbar>
+  <div data-ng-controller="myCtrl" data-ng-init="log_in_from_storage()"></div>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-title>
+        Einloggen
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-segment color="buttons" [(ngModel)]="formType">
+        <ion-segment-button value="student">
+          <ion-label>Schüler</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="leader">
+          <ion-label>{{ projectNoun }}leiter</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="admin">
+          <ion-label>Admin</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+
+      <form #studentLoginForm="ngForm" name="LogInForm" (ngSubmit)="LogInStudent(studentLoginForm)" [hidden]="formType != 'student'" class="content">
+        <ion-card color="background">
+          <ion-card-header>
+            <ion-card-title>Schüler</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item color="items">
+                <ion-input name="email" [(ngModel)]="Student.email" required type="email" (keypress)="nextInput($event.keyCode, nextStudentField)" placeholder="Benutzername" color="text"></ion-input>
+              </ion-item>
+              <ion-item color="items">
+                <ion-input #nextStudentField name="password" [(ngModel)]="Student.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'students', studentLoginForm)" placeholder="Passwort" color="text"></ion-input>
+              </ion-item>
+            </ion-list>
+            <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
+            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.registration" [routerLink]="['./Schüler Registration']" color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
+            <div class="ion-padding">
+              <ion-button name="login" type="submit" [disabled]="studentLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </form>
+
+      <form #leaderLoginForm="ngForm" name="LogInForm" (ngSubmit)="LogInLeader(leaderLoginForm)" [hidden]="formType != 'leader'" class="content">
+        <ion-card color="background">
+          <ion-card-header>
+            <ion-card-title>{{ projectNoun }}leiter</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item color="items">
+                <ion-input name="email" [(ngModel)]="Leader.email" required type="email" (keypress)="nextInput($event.keyCode, nextLeaderField)" placeholder="E-mail" color="text"></ion-input>
+              </ion-item>
+              <ion-item color="items">
+                <ion-input #nextLeaderField name="password" [(ngModel)]="Leader.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'leaders', leaderLoginForm)" placeholder="Passwort" color="text"></ion-input>
+              </ion-item>
+            </ion-list>
+            <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
+            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.registration" [routerLink]="['./Projektleiter Registration']" color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
+            <div class="ion-padding">
+              <ion-button name="login" type="submit" [disabled]="leaderLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </form>
+
+      <form id="Formular" #adminLoginForm="ngForm" (ngSubmit)="LogInAdmin(adminLoginForm)" [hidden]="formType != 'admin'" class="content">
+        <ion-card color="background">
+          <ion-card-header>
+            <ion-card-title>Admin</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+              <ion-list>
+                <ion-item color="items">
+                  <ion-input name="email" [(ngModel)]="Admin.email" required type="email" (keypress)="nextInput($event.keyCode, nextAdminField)" placeholder="E-mail" color="text"></ion-input>
+                </ion-item>
+                <ion-item color="items">
+                  <ion-input #nextAdminField name="password" [(ngModel)]="Admin.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'admins', adminLoginForm)" placeholder="Passwort" color="text"></ion-input>
+                </ion-item>
+              </ion-list>
+              <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
+              <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.sort_students" [routerLink]="['./Admin Registration']" color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
+              <div class="ion-padding">
+                <ion-button name="login" type="submit" [disabled]="adminLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
+              </div>
+          </ion-card-content>
+        </ion-card>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

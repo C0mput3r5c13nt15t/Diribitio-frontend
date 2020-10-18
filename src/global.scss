@@ -1,0 +1,682 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+@import "./theme/dark.scss";
+@import "./theme/light.scss";
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.content {
+    width: 94%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.desktop-wrapper {
+    ion-header {
+        display: none !important;
+    }
+}
+
+.trans {
+    background-color: transparent;
+}
+
+.dark-yellow {
+    $color-background: var(--ion-color-dark);
+    $color-buttons: var(--ion-color-warning);
+    $color-text: #ffffff;
+
+    .col{
+        border: think solid #ffffff;
+    }
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_dark {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.dark-pink {
+    $color-background: var(--ion-color-dark);
+    $color-buttons: var(--ion-color-pink);
+    $color-text: #ffffff;
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_dark {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.dark-blue {
+    $color-background: var(--ion-color-dark);
+    $color-buttons: var(--ion-color-primary);
+    $color-text: #ffffff;
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_dark {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.dark-green {
+    $color-background: var(--ion-color-dark);
+    $color-buttons: var(--ion-color-success);
+    $color-text: #ffffff;
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_dark {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.light-yellow {
+    $color-background: var(--ion-color-light);
+    $color-buttons: var(--ion-color-warning);
+    $color-text: rgba(0, 0, 0, 0.75);
+
+    ion-back-button {
+        color: white !important;
+    }
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_light {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.light-pink {
+    $color-background: var(--ion-color-light);
+    $color-buttons: var(--ion-color-pink);
+    $color-text: rgba(0, 0, 0, 0.75);
+
+    ion-back-button {
+        color: white !important;
+    }
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_light {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.light-blue {
+    $color-background: var(--ion-color-light);
+    $color-buttons: var(--ion-color-primary);
+    $color-text: rgba(0, 0, 0, 0.75);
+
+    ion-back-button {
+        color: white !important;
+    }
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_light {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}
+
+.light-green {
+    $color-background: var(--ion-color-light);
+    $color-buttons: var(--ion-color-success);
+    $color-text: rgba(0, 0, 0, 0.75);
+
+    ion-back-button {
+        color: white !important;
+    }
+
+    .ion-padding {
+        background-color: $color-background;
+    }
+
+    .logo_light {
+        display: none;
+    }
+
+    ion-list {
+        background-color: $color-background !important;
+    }
+
+    [aria-checked="true"].sc-ion-alert-md .alert-radio-icon.sc-ion-alert-md {
+        border-color: $color-buttons !important;
+    }
+
+    .alert-radio-label {
+        color: $color-text !important;
+    }
+
+    .alert-radio-inner {
+        background-color: $color-buttons !important;
+    }
+
+    a {
+        color: $color-text !important;
+    }
+
+    .loading-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .loading-message {
+        color: $color-text !important;
+    }
+
+    .spinner-crescent {
+        color: $color-buttons !important;
+    }
+
+    .alert-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .alert-title {
+        color: $color-buttons !important;
+    }
+
+    .alert-message {
+        color: $color-text !important;
+    }
+
+    .alert-button-inner {
+        color: $color-buttons !important;
+    }
+
+    .picker-wrapper {
+        background-color: $color-background !important;
+        color: $color-text !important;
+    }
+
+    .picker-button {
+        color: $color-buttons !important;
+    }
+
+    .picker-opt-selected {
+        color: $color-buttons !important;
+    }
+}

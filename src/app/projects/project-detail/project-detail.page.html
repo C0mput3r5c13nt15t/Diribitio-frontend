@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Projekte"></ion-back-button>
+    </ion-button>
+    <ion-title>{{ projectNoun }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"color="background" *ngIf="!!+loadedProject.authorized === true" class="content">
+    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" [src]='"http://fama-4/storage/images/" + loadedProject.image'></ion-img>
+    <ion-card-header>
+      <ion-title>
+        <h1>{{ loadedProject.title }}</h1>
+      </ion-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item-group color="background">
+        <ion-item color="items" lines="none">
+          <ion-text color="text">{{ loadedProject.descr }}
+          </ion-text>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Leiter</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.leader_name }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Kosten</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.cost }}€</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Zeitraum</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">1.Tag: {{ loadedProject.first_day_begin }} bis {{ loadedProject.first_day_end }}</ion-label>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">2.Tag: {{ loadedProject.second_day_begin }} bis {{ loadedProject.second_day_end }}</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Klassenstufe</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">{{ loadedProject.min_grade }}. bis {{ loadedProject.max_grade }}.Klasse</ion-label>
+        </ion-item>
+        <ion-item-divider color="background">
+          <ion-label color="text">Teinehmeranzahl</ion-label>
+        </ion-item-divider>
+        <ion-item color="items" lines="none">
+          <ion-label color="text">von {{ loadedProject.min_participants }} bis {{ loadedProject.max_participants }}</ion-label>
+        </ion-item>
+      </ion-item-group>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" class="content" *ngIf="!!+loadedProject.authorized == false">
+    <ion-card-content>
+      <ion-text color="danger">Leider ist dieses Projekt noch nicht zugelassen worden!</ion-text>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

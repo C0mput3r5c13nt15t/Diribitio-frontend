@@ -1,0 +1,7 @@
+{
+  "name": "diribit.io",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

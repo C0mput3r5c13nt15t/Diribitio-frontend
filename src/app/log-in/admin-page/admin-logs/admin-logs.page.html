@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Appverwaltung</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        E-Mails für Admin-Accounts verwalten
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="SignUpEmails.length">
+      <ion-item color="items" lines="none" *ngFor="let SignUpEmail of SignUpEmails">
+        <ion-card color="background">
+          <ion-card-content>
+            <ion-text color="text">{{ SignUpEmail.email }}</ion-text>
+          </ion-card-content>
+        </ion-card>
+        <ion-buttons (click)="deleteSignUpEmail(SignUpEmail.id)"><ion-icon color="danger" name="close"></ion-icon></ion-buttons>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content>
+      <form #signUpEmail="ngForm" name="SignUpEmailForm" (ngSubmit)="postSignUpEmail()" class="content">
+        <ion-card color="background"color="background">
+          <ion-card-content>
+            <ion-list>
+              <ion-item color="items">
+                <ion-input color="text" [(ngModel)]="SignUpEmail.email" name="Email" placeholder="E-mail" required type="email"></ion-input>
+              </ion-item>
+              <ion-item color="items">
+                <ion-input color="text" [(ngModel)]="SignUpEmail.email_confirmation" name="Email" placeholder="E-mail-Bestätigung" required type="email"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="ion-padding">
+              <ion-button color="buttons" [disabled]="signUpEmail.invalid || currentDate <= schedule.begin && currentDate > schedule.sort_students" expand="block" type="submit" class="ion-no-margin">Freigeben</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

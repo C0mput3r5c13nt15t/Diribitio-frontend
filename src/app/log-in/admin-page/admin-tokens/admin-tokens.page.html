@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Tokens</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-item color="items" lines="none">
+          <ion-card-title><ion-label color="buttons">SignUp-Tokens</ion-label></ion-card-title>
+          <ion-button (click)="print()" slot="end" color="buttons"><ion-icon name="print"></ion-icon></ion-button>
+        </ion-item>  
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content  *ngIf="signUpTokens.length">
+      <ion-label color="text" lines="none" *ngFor="let signUpToken of signUpTokens">
+        {{ signUpToken }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <form #form="ngForm" name="LogInTokenForm" (ngSubmit)="generateTokens()">
+        <ion-card color="background"color="background">
+          <ion-card-content>
+            <ion-list>
+              <ion-item color="items">
+                <ion-input color="text" class="width160" required name="Count" [(ngModel)]="count" required type="number"></ion-input>
+              </ion-item>
+            </ion-list>
+            <div class="ion-padding">
+              <ion-button color="buttons" [disabled]="form.invalid" expand="block" type="submit">Tokens erstellen</ion-button>
+            </div>
+            <div class="ion-padding">
+              <ion-button color="danger" (click)="deleteTokens()" expand="block">Tokens löschen</ion-button>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </form>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

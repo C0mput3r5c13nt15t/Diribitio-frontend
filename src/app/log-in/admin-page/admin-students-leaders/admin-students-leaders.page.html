@@ -1,0 +1,213 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-button color="buttons" slot="start">
+      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+    </ion-button>
+    <ion-title>Schüler und {{ projectNoun }}leiter verwalten</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        Schüler
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text1">
+      <ion-label color="text">
+        {{ text1 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-item color="items" lines="none">
+        <ion-button slot="start" color="buttons" (click)="refresh()"><ion-icon color="text" name="refresh"></ion-icon></ion-button>
+        <ion-button slot="start" color="buttons" (click)="search()"><ion-icon color="text" name="search"></ion-icon></ion-button>
+        <ion-input color="text" (keypress)="eventHandler($event.keyCode)" placeholder="Vorname Nachname Klasse" type="text" [(ngModel)]="searchValue" name="Serch"></ion-input>
+      </ion-item>
+    </ion-card-content>
+    <ion-card-content color="background">
+      <ion-grid *ngIf="searchStudents">
+        <ion-row>
+          <ion-col><h2>Schüler</h2></ion-col>
+          <ion-col><h2>Wünsche</h2></ion-col>
+          <ion-col><h2>Freunde</h2></ion-col>
+          <ion-col><h2>Link zum {{ projectNoun }}</h2></ion-col>
+        </ion-row>
+        <ion-row color="background" *ngFor="let participant of searchStudents" id="participant.ID">
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}
+            </ion-label>
+            <ion-label color="text" *ngIf="participant.role == 2">(Leiter)</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.first_wish_title }}<br>
+              {{ participant.second_wish_title }}<br>
+              {{ participant.third_wish_title }}
+            </ion-label>
+          </ion-col>
+          <ion-col color="text">
+            <ion-label color="text">
+              {{ participant.first_friend_name }}<br>
+              {{ participant.second_friend_name }}<br>
+              {{ participant.third_friend_name }}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" [routerLink]="['../../Projekte/', participant.project_id]">{{ participant.project_title }}</a>
+            <a *ngIf="participant.project_id == 0">kein {{ projectNoun }}</a>
+            <a *ngIf="participant.project_title == 'fehlerhaftes Projekt'">{{ projectNoun }} ist fehlerhaft</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngIf="!searchStudents">
+        <ion-row>
+          <ion-col><h2>Schüler</h2></ion-col>
+          <ion-col><h2>Wünsche</h2></ion-col>
+          <ion-col><h2>Freunde</h2></ion-col>
+          <ion-col><h2>Link zum {{ projectNoun }}</h2></ion-col>
+        </ion-row>
+        <ion-row color="background" *ngFor="let participant of loadedStudents" id="participant.ID">
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}
+            </ion-label>
+            <ion-label color="text" *ngIf="participant.role == 2"> ({{ projectNoun }}leiter)</ion-label>
+          </ion-col>
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.first_wish_title }}<br>
+              {{ participant.second_wish_title }}<br>
+              {{ participant.third_wish_title }}
+            </ion-label>
+          </ion-col>
+          <ion-col color="text">
+            <ion-label color="text">
+              {{ participant.first_friend_name }}<br>
+              {{ participant.second_friend_name }}<br>
+              {{ participant.third_friend_name }}
+            </ion-label>
+          </ion-col>
+          <ion-col>
+            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" [routerLink]="['../../Projekte/', participant.project_id]">{{ participant.project_title }}</a>
+            <a *ngIf="participant.project_id == 0">kein {{ projectNoun }}</a>
+            <a *ngIf="participant.project_title == 'fehlerhaftes Projekt'">{{ projectNoun }} ist fehlerhaft</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div *ngIf="page < lastPage && !searchStudents" class="ion-padding">
+        <ion-button color="buttons" (click)="getMoreStudents()" expand="block" class="ion-no-margin">Weiter Schüler laden</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        {{ projectNoun }}leiter
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text2">
+      <ion-label color="text">
+        {{ text2 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col><h2>{{ projectNoun }}leiter</h2></ion-col>
+          <ion-col><h2>Link zum {{ projectNoun }}</h2></ion-col>
+        </ion-row>
+        <ion-row color="items" lines="none" *ngFor="let leader of loadedLeaders">
+          <ion-col>
+            <ion-label color="text">{{ leader.user_name }}</ion-label>
+          </ion-col>
+          <ion-col>
+            <a color="buttons" *ngIf="leader.project_id != 0" [routerLink]="['../../Projekte/', leader.project_id]">{{ leader.project_title }}</a>
+            <!-- <a color="buttons" color="danger" *ngIf="leader.project_id != 0" [routerLink]="['../../Projekte/', leader.project_id]">{{ leader.project_title }}</a> -->
+            <ion-icon color="danger" name="trash" *ngIf="leader.project_id == 0" (click)="deleteLeader(leader.id)"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        Schüler sortieren
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text3">
+      <ion-label color="text">
+        {{ text3 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <!-- [disabled]="!(currentDate > schedule.sort_students && currentDate <= schedule.exchange)" -->
+      <div class="ion-padding" *ngIf="!sorted">
+        <ion-button color="buttons" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Sortiervorschlag erstellen</ion-button>
+      </div>
+      <div class="ion-padding" *ngIf="sorted">
+        <ion-button color="buttons" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Neuen Sortiervorschlag erstellen</ion-button>
+      </div>
+      <div class="ion-padding">
+        <ion-button color="buttons" (click)="requestSortingProposal()" expand="block" class="ion-no-margin" >aktuellen Sortiervorschlag ansehen</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background"class="content" *ngIf="sortedProjects.length">
+    <ion-card-header>
+      <ion-card-title>
+        Vorschlag für Einsortierung der Schüler
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content *ngIf="text4">
+      <ion-label color="text">
+        {{ text4 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-card color="background" *ngFor="let project of sortedProjects">
+        <ion-card-header>
+          <ion-card-title>
+            <ion-label *ngIf="project.participants.length < project.min_participants" color="danger">{{ project.title }} (Zu wenige Teilnehmer)</ion-label>
+            <ion-label *ngIf="project.participants.length > project.max_participants" color="danger">{{ project.title }} (Zu viele Teilnehmer)</ion-label>
+            <ion-label *ngIf="project.participants.length >= project.min_participants && project.participants.length <= project.max_participants">{{ project.title }}</ion-label>
+          </ion-card-title>
+          <ion-card-subtitle>
+            <ion-label color="text">{{ project.min_grade }}. bis {{ project.max_grade }}.Klasse | {{ project.min_participants }} bis {{ project.max_participants }} Teilnehmer | {{ project.leader_name }}</ion-label>
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <div *ngIf="project.leader && project.leader_type === 'App\\Student'">
+            <ion-item color="items">
+              <ion-text color="text"><ion-icon name="star"></ion-icon> {{ project.leader.first_name }} {{ project.leader.last_name }} {{ project.leader.grade }}{{ project.leader.letter }}</ion-text>
+            </ion-item>
+          </div>
+          <div *ngIf="project.assistant_student_leaders.length">
+            <ion-item color="items" *ngFor="let assistant of project.assistant_student_leaders">
+              <ion-text color="text"><ion-icon name="star-half"></ion-icon> {{ assistant.first_name }} {{ assistant.last_name }} {{ assistant.grade }}{{ assistant.letter }}</ion-text>
+            </ion-item>
+          </div>
+          <div *ngIf="project.participants.length">
+            <ion-item color="items" *ngFor="let participant of project.participants">
+              <ion-text color="text">{{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}</ion-text>
+              <ion-select slot="end" name="ParticipantProject" okText="Auswählen" cancelText="Abbrechen" type="number" (ionChange)="moveParticipant($event)"> 
+                <ion-select-option *ngFor="let newProject of sortedProjects" [value]="[participant, project.id, newProject.id]">{{ newProject.title }} ({{ newProject.min_grade }}. - {{ newProject.max_grade }}.Klasse)</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-card-content>
+    <div class="ion-padding">
+      <ion-button color="buttons" (click)="editSortingProposal()" expand="block" class="ion-no-margin" >Vorschlag ändern</ion-button>
+    </div>
+    <div class="ion-padding">
+      <ion-button color="buttons" [disabled]="!sorted" (click)="applySortingProposal()" expand="block" class="ion-no-margin" >Vorschlag anwenden</ion-button>
+    </div>
+  </ion-card>
+</ion-content>

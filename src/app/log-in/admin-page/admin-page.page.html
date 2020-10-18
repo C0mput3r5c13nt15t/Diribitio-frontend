@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>Admin</ion-title>
+    <ion-button color="buttons" slot="end" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-item color="items" lines="none">
+        <ion-card-title><ion-label color="buttons">Wilkommen {{ loadedAdmin.user_name }}</ion-label></ion-card-title>
+        <ion-button (click)="refresh()" slot="end" color="buttons"><ion-icon name="refresh"></ion-icon></ion-button>
+      </ion-item>  
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="loadedAdmin.email_verified_at == null && !buttonPressed">
+      <ion-label color="text">
+        Sie heaben ihre E-Mail noch nicht verifiziert. Bitte holen sie dies nach bevor sie fortfahren.
+      </ion-label>
+      <div class="ion-padding">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="sendVerificationEmail()">E-Mail senden</ion-button>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Projekte']">
+          <ion-icon color="text" slot="start" name="apps"></ion-icon>{{ projectsNoun }} verwalten
+        </ion-item>
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Schüler und Projektleiter verwalten']">
+          <ion-icon color="text" slot="start" name="people"></ion-icon>Schüler und {{ projectNoun }}leiter verwalten
+        </ion-item>
+        <ion-item *ngIf="currentDate > schedule.exchange && currentDate <= schedule.projects" [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Tauschanfragen']">
+          <ion-icon color="text" slot="start" name="people"></ion-icon>Tauschanfragen verwalten
+        </ion-item>
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Zeitplan verwalten']">
+          <ion-icon color="text" slot="start" name="calendar"></ion-icon>Zeitplan verwalten
+        </ion-item>
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./App verwalten']">
+          <ion-icon color="text" slot="start" name="construct"></ion-icon>App verwalten
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="logout()">Abmelden</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

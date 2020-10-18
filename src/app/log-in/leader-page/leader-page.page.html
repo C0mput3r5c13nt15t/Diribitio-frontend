@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>Projektleiter</ion-title>
+    <ion-button color="buttons" slot="end" (click)="logout()">
+      <ion-icon name="log-out"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-item color="items" lines="none">
+        <ion-card-title><ion-label color="buttons">Wilkommen {{ loadedLeader.user_name }}</ion-label></ion-card-title>
+        <ion-button (click)="refresh()" slot="end" color="buttons"><ion-icon name="refresh"></ion-icon></ion-button>
+      </ion-item>   
+    </ion-card-header>
+    <ion-card-content *ngIf="text">
+      <ion-label color="text">
+        {{ text }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content *ngIf="loadedLeader.email_verified_at == null && !buttonPressed">
+      <ion-label color="text">
+        Sie heaben ihre E-Mail noch nicht verifiziert. Bitte holen sie dies nach bevor sie fortfahren.
+      </ion-label>
+      <div class="ion-padding">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="sendVerificationEmail()">E-Mail senden</ion-button>
+      </div>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-list>
+        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedLeader.project_id == 0" [routerLink]="['./Projekt erstellen']">
+          <ion-icon color="text" slot="start" name="create"></ion-icon>{{ projectNoun }} erstellen
+        </ion-item>
+        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="loadedLeader.project_id != 0" [routerLink]="['./Projekt verwalten']">
+          <ion-icon color="text" slot="start" name="construct"></ion-icon>{{ projectNoun }} verwalten
+        </ion-item>
+        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="loadedLeader.project_id != 0" [routerLink]="['./Nachricht senden']">
+          <ion-icon color="text" slot="start" name="send"></ion-icon>Nachricht senden
+        </ion-item>
+      </ion-list>
+      <div class="ion-padding">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="logout()">Abmelden</ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

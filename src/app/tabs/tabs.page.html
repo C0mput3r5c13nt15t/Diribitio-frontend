@@ -1,0 +1,129 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+  />
+</head>
+<ion-tabs *ngIf="!isDesktop">
+
+  <ion-tab-bar color="menu" slot="bottom">
+
+    <ion-tab-button routerLink="/Projekttage/Einstellungen" routerDirection="root">
+      <ion-icon name="settings"></ion-icon>
+      <ion-label>Einstellungen</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/Projekttage/Impressum und Datenschutzerklärung" routerDirection="root">
+      <ion-icon name="document"></ion-icon>
+      <ion-label>Impressum</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/Projekttage/Home" routerDirection="root">
+      <ion-icon name="Home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button routerLink="/Projekttage/Projekte" routerDirection="root">
+      <ion-icon name="apps"></ion-icon>
+      <ion-label>{{ projectsNoun }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="!auth.isLoggedIn" routerLink="/Projekttage/Anmeldung" routerDirection="root">
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label>Anmeldung</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button *ngIf="auth.isLoggedIn" routerLink="/Projekttage/Anmeldung" routerDirection="root">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Account</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
+</ion-tabs>
+
+<div *ngIf="isDesktop" class="desktop">
+  <ion-header id="navbar">
+    <ion-toolbar color="menu">
+      <ion-row class="ion-align-items-center">
+        <ion-col size="2">
+          <img class="logo ion-text-left" routerLink="/Projekttage/Home" src="../../assets/logo/Logo_light.svg">
+        </ion-col>
+        <ion-col>
+          <div class="navbar" class="ion-text-right">
+            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Home" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              Home
+            </ion-button>
+            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Projekte" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              {{ projectsNoun }}
+            </ion-button>
+            <ion-button color="buttons" *ngIf="!auth.isLoggedIn" fill="clear" routerLink="/Projekttage/Anmeldung" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              Anmeldung
+            </ion-button>
+            <ion-button color="buttons" *ngIf="auth.isLoggedIn" fill="clear" routerLink="/Projekttage/Anmeldung" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              Account
+            </ion-button>
+            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Help" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              Hilfe
+            </ion-button>
+            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Einstellungen" routerDirection="root" routerLinkActive="active-link"
+              class="link">
+              <ion-icon name="settings"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-router-outlet class="desktop-wrapper"></ion-router-outlet>
+
+  <ion-item [id]="error.id" class="animate__animated animate__fadeInDown" *ngFor="let error of errors" (click)="fadeOutError(error.id)" button="true" color="danger">
+    <ion-label class="ion-text-center" color="light">
+      {{ error.desrc }}
+    </ion-label>
+  </ion-item>
+
+  <ion-item [id]="alert.id" class="animate__animated animate__fadeInDown" *ngFor="let alert of alerts" (click)="fadeOutAlert(alert.id)" button="true" color="success">
+    <ion-label class="ion-text-center" color="light">
+      {{ alert.desrc }}
+    </ion-label>
+  </ion-item>
+
+  <!-- <ion-card color="danger" *ngFor="let error of errors">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-fab horizontal="end" slot="fixed">
+          <ion-fab-button>
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+        {{ error.header }} <ion-badge (click)="delete_error(error.id)" color="primary">x</ion-badge>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ error.desrc }}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="success" *ngFor="let alert of alerts">
+    <ion-label (click)="delete_alert(alert.id)" class="ion-no-margin" slot="end" color="text">x</ion-label>
+    <ion-card-header>
+      <ion-card-title>
+        {{ alert.header }}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ alert.desrc }}
+    </ion-card-content>
+  </ion-card> -->
+
+  <ion-footer color="menu" class="footer">
+    <span>© Paul Maier | <a [routerLink]="['/Projekttage/Impressum und Datenschutzerklärung']">Impressum und Datenschutz</a><br></span>
+  </ion-footer>
+</div>

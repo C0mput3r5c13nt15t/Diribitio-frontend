@@ -1,0 +1,115 @@
+<ion-header>
+    <ion-toolbar color="menu">
+      <ion-button color="buttons" slot="start">
+        <ion-back-button icon="arrow-back" defaultHref="Projekttage/Projektleiter/{{ leaderUrl }}"></ion-back-button>
+      </ion-button>
+      <ion-title>{{ projectNoun }} erstellen</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content color="background">
+    <ion-card color="background"class="content">
+      <ion-card-header>
+        <ion-title>
+          <ion-title>{{ projectNoun }} erstellen</ion-title>
+        </ion-title>
+      </ion-card-header>
+      <ion-card-content *ngIf="text">
+        <ion-label color="text">
+          {{ text }}
+        </ion-label>
+      </ion-card-content>
+      <ion-card-content>
+        <form #form="ngForm" name="ProjectForm" (ngSubmit)="create()">
+          <ion-item-divider color="background">
+            <ion-label color="text">{{ projectNoun }}leiter</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-input color="text" required name="ProjectLeader" [(ngModel)]="newProject.leader_name" type="text"></ion-input>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">{{ projectNoun }}name</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-input color="text" required name="ProjectName" [(ngModel)]="newProject.title" required type="text"></ion-input>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">{{ projectNoun }}beschreibung</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-textarea required type="text" name="ProjectDescr" [(ngModel)]="newProject.descr" rows="7"></ion-textarea>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">Titelbild</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-input color="text" name="ProjectImage" (change)="changeFile($event)" accept=".png, .jpg" type="file"></ion-input>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">Kosten</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-input color="text" required name="ProjectCost" [(ngModel)]="newProject.cost" required type="number"></ion-input>€
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">1.Tag</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-label color="text">von</ion-label><ion-input display-format="hh:mm" color="text" required name="ProjectFirstTimeBeginn" [(ngModel)]="newProject.first_day_begin" type="time"></ion-input>
+          </ion-item> 
+          <ion-item color="items">
+            <ion-label color="text">bis</ion-label><ion-input display-format="hh:mm" color="text" required name="ProjectFirstTimeEnd" [(ngModel)]="newProject.first_day_end" type="time"></ion-input>
+          </ion-item> 
+          <ion-item-divider color="background">
+            <ion-label color="text">2.Tag</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-label color="text">von</ion-label><ion-input display-format="hh:mm" color="text" required name="ProjectSecondTimeBeginn" [(ngModel)]="newProject.second_day_begin" type="time"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-label color="text">bis</ion-label><ion-input display-format="hh:mm" color="text" required name="ProjectSecondTimeEnd" [(ngModel)]="newProject.second_day_end" type="time"></ion-input>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">Klassenstufe</ion-label>
+          </ion-item-divider>
+          <ion-item color="items" lines="none">
+            <ion-label color="text">von</ion-label>
+            <ion-select required [selectedText]="newProject.min_grade" name="ProjectMinClass" [(ngModel)]="newProject.min_grade">
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+              <ion-select-option value="11">11</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item color="items" lines="none">
+            <ion-label color="text">bis</ion-label>
+            <ion-select required [selectedText]="newProject.max_grade" name="ProjectMaxClass" [(ngModel)]="newProject.max_grade">
+              <ion-select-option value="5">5</ion-select-option>
+              <ion-select-option value="6">6</ion-select-option>
+              <ion-select-option value="7">7</ion-select-option>
+              <ion-select-option value="8">8</ion-select-option>
+              <ion-select-option value="9">9</ion-select-option>
+              <ion-select-option value="10">10</ion-select-option>
+              <ion-select-option value="11">11</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item-divider color="background">
+            <ion-label color="text">Teinehmeranzahl</ion-label>
+          </ion-item-divider>
+          <ion-item color="items">
+            <ion-label color="text">von</ion-label><ion-input color="text" required name="ProjectMinParticipants" [(ngModel)]="newProject.min_participants" required type="number"></ion-input>
+          </ion-item>
+          <ion-item color="items">
+            <ion-label color="text">bis</ion-label><ion-input color="text" required name="ProjectMaxParticipants" [(ngModel)]="newProject.max_participants" required type="number"></ion-input>
+          </ion-item>
+          <div class="ion-padding">
+            <ion-button color="buttons"  [disabled]="form.invalid" expand="block" type="submit" class="ion-no-margin">{{ projectNoun }} erstellen</ion-button>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  

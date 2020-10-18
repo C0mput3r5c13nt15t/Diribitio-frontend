@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="menu">
+    <ion-title>Impressum und Datenschutzerklärung</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card *ngIf="contacts.length" color="background" class="content">
+    <ion-card-header>
+      <ion-card-title>
+        Impressum
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngFor="let contact of contacts">
+        <ion-card-subtitle>{{ contact.name }}</ion-card-subtitle>
+        <ion-label *ngIf="contact.adress" color="text">
+          Adresse: {{ contact.adress }}<br>
+        </ion-label>
+        <ion-label *ngIf="contact.link" color="text">
+          offizielle Webseite: <a [href]="contact.link">{{ contact.link }}</a><br>
+        </ion-label>
+        <ion-label *ngIf="contact.email" color="text">
+          E-Mail: {{ contact.email }}<br>
+        </ion-label>
+        <ion-label *ngIf="contact.phone" color="text">
+          Telefonnummer: {{ contact.phone }}<br>
+        </ion-label>
+        <br>
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-card-title>
+        Datenschutz
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label color="text">
+        {{ dataProtection }}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+  <ion-card color="background" class="content">
+    <ion-card-header>
+      <ion-card-title>
+        AGBs
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label color="text">
+        {{ conditions }}
+      </ion-label>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

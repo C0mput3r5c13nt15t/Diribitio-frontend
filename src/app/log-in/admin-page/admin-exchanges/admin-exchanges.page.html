@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="menu">
+      <ion-button color="buttons" slot="start">
+        <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+      </ion-button>
+    <ion-title>Tauschanfragen</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="background">
+  <ion-card color="background"class="content">
+    <ion-card-header>
+      <ion-card-title>
+        Tauschanfragen
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-label color="text">
+        {{ text1 }}<ion-icon name="close" color="danger"></ion-icon>{{ text2 }}<ion-icon name="checkmark" color="warning"></ion-icon>{{ text3 }}<ion-icon name="checkmark-done" color="success"></ion-icon>{{ text4 }}
+      </ion-label>
+    </ion-card-content>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card color="background" *ngFor="let exchange of loadedExchanges" [disabled]="!!!+exchange.confirmed || !!+exchange.accomplished" [routerLink]="['./', exchange.id]">
+                <ion-item color="items" lines="none">
+                  <ion-icon *ngIf="!!!+exchange.confirmed" slot="start" name="close" color="danger"></ion-icon>
+                  <ion-icon *ngIf="!!+exchange.confirmed &&  !!!+exchange.accomplished" slot="start" name="checkmark" color="warning"></ion-icon>
+                  <ion-icon *ngIf="!!+exchange.accomplished" slot="start" name="checkmark-done" color="success"></ion-icon>
+                  <ion-label color="text">
+                    <h2>Tauschanfrage von {{ exchange.sender.first_name }} {{ exchange.sender.last_name }}  und {{ exchange.receiver.first_name }} {{ exchange.receiver.last_name }}</h2>
+                  </ion-label>
+                </ion-item>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
