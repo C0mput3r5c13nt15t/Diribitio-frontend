@@ -19,18 +19,18 @@ export class LogInPage implements OnInit {
   formType = 'student';
 
   Student = {
-    email: 'kirsten.koepp@example.net',
-    password: 'Passwort',
+    email: '',
+    password: '',
   };
 
   Leader = {
-    email: 'freda60@example.net',
-    password: 'Passwort',
+    email: '',
+    password: '',
   };
 
   Admin = {
-    email: 'pauljustus27@gmail.com',
-    password: 'Passwort',
+    email: '',
+    password: '',
   };
 
   tries = 0;
