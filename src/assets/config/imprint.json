@@ -1,18 +1,11 @@
 {
     "contacts": [
-    {
-        "name": "This is only a demo, please dont use it!",
-        "adress": "Only a student project test deployment for testing purposes only!",
-        "link": "-",
-        "email": "-",
-        "phone": "-"
-    },
-    {
-        "name": "Your Schools Admin",
-        "adress": "",
-        "link": "",
-        "email": "-",
-        "phone": "-"
-    }
+        {
+            "name": "Paul Maier",
+            "email": "pauljustus279@gmail.com"
+        },
+        {
+            "name": "This Page represents a student project test deployment and should not be used by anybody other than the creator."
+        }
     ]
 }
