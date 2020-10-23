@@ -6,8 +6,8 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 export class SettingsService {
   @Output() update = new EventEmitter();
 
-  background = 'dark';
-  color = 'yellow';
+  background = 'light';
+  color = 'blue';
 
   constructor() { }
 

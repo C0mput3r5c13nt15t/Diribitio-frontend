@@ -905,8 +905,8 @@ __webpack_require__.r(__webpack_exports__);
 let SettingsService = class SettingsService {
     constructor() {
         this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-        this.background = 'dark';
-        this.color = 'yellow';
+        this.background = 'light';
+        this.color = 'blue';
     }
     get theme() {
         if (localStorage.getItem('theme')) {

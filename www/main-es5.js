@@ -1277,8 +1277,8 @@
           _classCallCheck(this, SettingsService);
 
           this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
-          this.background = 'dark';
-          this.color = 'yellow';
+          this.background = 'light';
+          this.color = 'blue';
         }
 
         _createClass(SettingsService, [{
