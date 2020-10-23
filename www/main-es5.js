@@ -905,6 +905,12 @@
       var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! @angular/common/http */
       "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/http.js");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      /*! @angular/common */
+      "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -917,6 +923,9 @@
         providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
           provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
           useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
+        }, {
+          provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["LocationStrategy"],
+          useClass: _angular_common__WEBPACK_IMPORTED_MODULE_10__["HashLocationStrategy"]
         }],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
       })], AppModule);
