@@ -1,16 +1,16 @@
 {
     "welcome": {
-        "title": "Schüleraustausch",
-        "text": "Willkommen!"
+        "title": "Willkommen bei diribit.io",
+        "text": "Sie befinden sich aktuell auf der Startseite von diribit.io. Diribit.io ist ein Schülerprojekt und aktuell noch in einer Testphase. Wir raten ihnen dringed von der Benutzung dieser Webseite ab und übernehmen keinerlei Haftung für Schäden, Kosten oder ähnliches, die durch die Nutzung dieser Seite anfallen. Die Benutzung ist somit auf eigene Gefahr!"
     },
     "articles": [
         {
-            "title": "Coronabier",
-            "text": "Hallo, dieses Jahr ein paar Überraschungen!"
+            "title": "Artikel 1",
+            "text": "Das hier ist ein Artikel, der aktuelle, bzw. interesssante Informationen bezüglich der Projekttage enthalten sollte."
         },
         {
-            "title": "Coronabier2",
-            "text": "Hallo, dieses Jahr noch ein paar mehr Überraschungen!"
+            "title": "Artikel 2",
+            "text": "Das hier ist ein weiterer Artikel, der aktuelle, bzw. interesssante Informationen bezüglich der Projekttage enthalten sollte."
         }
     ]
 }
