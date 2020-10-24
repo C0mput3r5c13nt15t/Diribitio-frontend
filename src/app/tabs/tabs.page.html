@@ -8,32 +8,32 @@
 
   <ion-tab-bar color="menu" slot="bottom">
 
-    <ion-tab-button routerLink="/Projekttage/Einstellungen" routerDirection="root">
+    <ion-tab-button routerLink="/{{ eventName }}/Einstellungen" routerDirection="root">
       <ion-icon name="settings"></ion-icon>
       <ion-label>Einstellungen</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/Projekttage/Impressum und Datenschutzerklärung" routerDirection="root">
+    <ion-tab-button routerLink="/{{ eventName }}/Impressum und Datenschutzerklärung" routerDirection="root">
       <ion-icon name="document"></ion-icon>
       <ion-label>Impressum</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/Projekttage/Home" routerDirection="root">
+    <ion-tab-button routerLink="/{{ eventName }}/Home" routerDirection="root">
       <ion-icon name="Home"></ion-icon>
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/Projekttage/Projekte" routerDirection="root">
+    <ion-tab-button routerLink="/{{ eventName }}/{{ projectsNoun }}" routerDirection="root">
       <ion-icon name="apps"></ion-icon>
       <ion-label>{{ projectsNoun }}</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf="!auth.isLoggedIn" routerLink="/Projekttage/Anmeldung" routerDirection="root">
+    <ion-tab-button *ngIf="!auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">
       <ion-icon name="log-in"></ion-icon>
       <ion-label>Anmeldung</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button *ngIf="auth.isLoggedIn" routerLink="/Projekttage/Anmeldung" routerDirection="root">
+    <ion-tab-button *ngIf="auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">
       <ion-icon name="person"></ion-icon>
       <ion-label>Account</ion-label>
     </ion-tab-button>
@@ -47,31 +47,31 @@
     <ion-toolbar color="menu">
       <ion-row class="ion-align-items-center">
         <ion-col size="2">
-          <img class="logo ion-text-left" routerLink="/Projekttage/Home" src="../../assets/logo/Logo_light.svg">
+          <img class="logo ion-text-left" routerLink="/{{ eventName }}/Home" src="../../assets/logo/Logo_light.svg">
         </ion-col>
         <ion-col>
           <div class="navbar" class="ion-text-right">
-            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Home" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Home" routerDirection="root" routerLinkActive="active-link"
               class="link">
               Home
             </ion-button>
-            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Projekte" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/{{ projectsNoun }}" routerDirection="root" routerLinkActive="active-link"
               class="link">
               {{ projectsNoun }}
             </ion-button>
-            <ion-button color="buttons" *ngIf="!auth.isLoggedIn" fill="clear" routerLink="/Projekttage/Anmeldung" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" *ngIf="!auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"
               class="link">
               Anmeldung
             </ion-button>
-            <ion-button color="buttons" *ngIf="auth.isLoggedIn" fill="clear" routerLink="/Projekttage/Anmeldung" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" *ngIf="auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"
               class="link">
               Account
             </ion-button>
-            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Help" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Help" routerDirection="root" routerLinkActive="active-link"
               class="link">
               Hilfe
             </ion-button>
-            <ion-button color="buttons" fill="clear" routerLink="/Projekttage/Einstellungen" routerDirection="root" routerLinkActive="active-link"
+            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Einstellungen" routerDirection="root" routerLinkActive="active-link"
               class="link">
               <ion-icon name="settings"></ion-icon>
             </ion-button>
@@ -124,6 +124,6 @@
   </ion-card> -->
 
   <ion-footer color="menu" class="footer">
-    <span>© Paul Maier | <a [routerLink]="['/Projekttage/Impressum und Datenschutzerklärung']">Impressum und Datenschutz</a><br></span>
+    <span>© Paul Maier | <a routerLink="/{{ eventName }}/Impressum und Datenschutzerklärung">Impressum und Datenschutz</a><br></span>
   </ion-footer>
 </div>

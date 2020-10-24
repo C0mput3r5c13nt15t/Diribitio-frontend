@@ -30,10 +30,10 @@
     </ion-card-content>
     <ion-card-content>
       <ion-list>
-        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedLeader.project_id == 0" [routerLink]="['./Projekt erstellen']">
+        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedLeader.project_id == 0" routerLink='./{{ projectNoun }} erstellen'>
           <ion-icon color="text" slot="start" name="create"></ion-icon>{{ projectNoun }} erstellen
         </ion-item>
-        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="loadedLeader.project_id != 0" [routerLink]="['./Projekt verwalten']">
+        <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="loadedLeader.project_id != 0" routerLink='./{{ projectNoun }} verwalten'>
           <ion-icon color="text" slot="start" name="construct"></ion-icon>{{ projectNoun }} verwalten
         </ion-item>
         <ion-item [disabled]="loadedLeader.email_verified_at == null" color="items" *ngIf="loadedLeader.project_id != 0" [routerLink]="['./Nachricht senden']">

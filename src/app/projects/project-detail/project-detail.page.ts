@@ -45,7 +45,8 @@ export class ProjectDetailPage implements OnInit {
     participants: [],
   };
 
-  projectNoun = 'Projekt';
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -53,7 +54,6 @@ export class ProjectDetailPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ProjectID')) {
         this.router.navigate(['']);

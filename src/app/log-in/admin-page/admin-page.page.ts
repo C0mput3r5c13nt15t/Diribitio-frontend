@@ -38,8 +38,8 @@ export class AdminPagePage implements OnInit {
 
   buttonPressed = true;
 
-  projectsNoun: string;
-  projectNoun: string;
+  projectsNoun = this.config.app_config.projects_noun;
+  projectNoun = this.config.app_config.project_noun;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,

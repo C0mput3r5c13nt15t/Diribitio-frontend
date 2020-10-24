@@ -20,6 +20,8 @@ export class ProjectsService {
               private router: Router) { }
 
   backendUrl = this.config.backend_config.url;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   getAllProjects() {
     const headers = new HttpHeaders({
@@ -142,9 +144,9 @@ export class ProjectsService {
       this.alert.alert(data.message);
 
       if (baseUrl === 'students') {
-        this.router.navigate(['Projekttage/Benutzer/' + backUrl]);
+        this.router.navigate([this.eventName + '/Schüler/' + backUrl]);
       } else {
-        this.router.navigate(['Projekttage/Projektleiter/' + backUrl]);
+        this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + backUrl]);
       }
 
       this.update.emit();
@@ -163,9 +165,9 @@ export class ProjectsService {
       this.alert.alert(data.message);
 
       if (baseUrl === 'students') {
-        this.router.navigate(['Projekttage/Benutzer/' + backUrl]);
+        this.router.navigate([this.eventName + '/Schüler/' + backUrl]);
       } else {
-        this.router.navigate(['Projekttage/Projektleiter/' + backUrl]);
+        this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + backUrl]);
       }
 
       this.update.emit();

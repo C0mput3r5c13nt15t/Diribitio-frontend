@@ -5,6 +5,7 @@ import { MessagesService } from 'src/app/messages.service';
 import { Schüler } from 'src/assets/models/Schüler.model';
 import { Projekt } from 'src/assets/models/Projekt.model';
 import { AlertService } from 'src/app/alert.service';
+import { ConfigService } from 'src/app/config.service';
 
 @Component({
   selector: 'app-messages',
@@ -74,11 +75,14 @@ export class MessagesPage implements OnInit {
     message: ''
   };
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private alert: AlertService,
               private projectsService: ProjectsService,
-              private messagesService: MessagesService) {}
+              private messagesService: MessagesService,
+              private config: ConfigService) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {

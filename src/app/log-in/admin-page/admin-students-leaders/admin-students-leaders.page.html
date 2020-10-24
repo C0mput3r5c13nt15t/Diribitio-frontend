@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}"></ion-back-button>
     </ion-button>
     <ion-title>Schüler und {{ projectNoun }}leiter verwalten</ion-title>
   </ion-toolbar>
@@ -56,7 +56,7 @@
             </ion-label>
           </ion-col>
           <ion-col>
-            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" [routerLink]="['../../Projekte/', participant.project_id]">{{ participant.project_title }}</a>
+            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" routerLink='../../{{ projectsNoun }}/{{participant.project_id}}'>{{ participant.project_title }}</a>
             <a *ngIf="participant.project_id == 0">kein {{ projectNoun }}</a>
             <a *ngIf="participant.project_title == 'fehlerhaftes Projekt'">{{ projectNoun }} ist fehlerhaft</a>
           </ion-col>
@@ -91,7 +91,7 @@
             </ion-label>
           </ion-col>
           <ion-col>
-            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" [routerLink]="['../../Projekte/', participant.project_id]">{{ participant.project_title }}</a>
+            <a *ngIf="participant.project_id != 0 && participant.project_title != 'fehlerhaftes Projekt'" routerLink='../../{{ projectsNoun }}/{{participant.project_id}}'>{{ participant.project_title }}</a>
             <a *ngIf="participant.project_id == 0">kein {{ projectNoun }}</a>
             <a *ngIf="participant.project_title == 'fehlerhaftes Projekt'">{{ projectNoun }} ist fehlerhaft</a>
           </ion-col>
@@ -125,8 +125,7 @@
             <ion-label color="text">{{ leader.user_name }}</ion-label>
           </ion-col>
           <ion-col>
-            <a color="buttons" *ngIf="leader.project_id != 0" [routerLink]="['../../Projekte/', leader.project_id]">{{ leader.project_title }}</a>
-            <!-- <a color="buttons" color="danger" *ngIf="leader.project_id != 0" [routerLink]="['../../Projekte/', leader.project_id]">{{ leader.project_title }}</a> -->
+            <a color="buttons" *ngIf="leader.project_id != 0" routerLink='../../{{ projectsNoun }}/{{ leader.project_id }}'>{{ leader.project_title }}</a>
             <ion-icon color="danger" name="trash" *ngIf="leader.project_id == 0" (click)="deleteLeader(leader.id)"></ion-icon>
           </ion-col>
         </ion-row>

@@ -21,8 +21,9 @@ export class AdminGenerationPage implements OnInit {
 
   explanation = '';
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private alertCtrl: AlertController,
-              private router: Router,
               private adminsService: AdminsService,
               private config: ConfigService) { }
 
@@ -32,8 +33,7 @@ export class AdminGenerationPage implements OnInit {
 
   signUpAsAdmin(form) {
     if (this.signUpData.password === this.signUpData.password_confirmation) {
-      this.adminsService.signUpAdmin(this.signUpData);
-      form.reset();
+      this.adminsService.signUpAdmin(this.signUpData, form);
     } else {
       this.alertCtrl.create({
         header: 'Fehler',

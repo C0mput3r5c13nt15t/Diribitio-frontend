@@ -60,7 +60,8 @@ export class ProjectGenerationPage implements OnInit {
 
   text: string;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -69,8 +70,6 @@ export class ProjectGenerationPage implements OnInit {
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('leader-project-generation');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -93,7 +92,7 @@ export class ProjectGenerationPage implements OnInit {
   create() {
     this.projectsService.createProject('leaders', this.newProject, this.image).subscribe(data => {
       this.alert.alert(data.message);
-      this.router.navigate(['Projekttage/Projektleiter/' + this.leaderUrl]);
+      this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + this.leaderUrl]);
       this.projectsService.update.emit();
     }, error => {
       this.alert.error('Erstellung des Projektes fehlgeschlagen!', error.error);

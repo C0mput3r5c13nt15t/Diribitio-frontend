@@ -39,6 +39,8 @@ export class AdminLogsPage implements OnInit {
 
   text: string;
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private activatedRoute: ActivatedRoute,
               private scheduleService: ScheduleService,
               private adminsService: AdminsService,

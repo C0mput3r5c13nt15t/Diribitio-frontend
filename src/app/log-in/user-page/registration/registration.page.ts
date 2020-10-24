@@ -49,10 +49,11 @@ export class RegistrationPage implements OnInit {
 
   text: string;
 
-  definiteArticle: string;
-  indefiniteArticle: string;
-  projectsNoun: string;
-  projectNoun: string;
+  definiteArticle = this.config.definite_article;
+  indefiniteArticle = this.config.indefinite_article.toLowerCase();
+  projectsNoun = this.config.app_config.projects_noun;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private projectsService: ProjectsService,
               private participantsService: ParticipantsService,
@@ -62,11 +63,6 @@ export class RegistrationPage implements OnInit {
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.definiteArticle = this.config.definite_article;
-    this.indefiniteArticle = this.config.indefinite_article.toLowerCase();
-    this.projectsNoun = this.config.app_config.projects_noun;
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('user-registration');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -229,25 +225,25 @@ export class RegistrationPage implements OnInit {
           this.loadedUser.second_friend = this.friendsList[1].id;
           this.loadedUser.third_friend = this.friendsList[2].id;
           this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
         } else if (this.friendsList.length === 2) {
           this.loadedUser.first_friend = this.friendsList[0].id;
           this.loadedUser.second_friend = this.friendsList[1].id;
           this.loadedUser.third_friend = 0;
           this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
         } else if (this.friendsList.length === 1) {
           this.loadedUser.first_friend = this.friendsList[0].id;
           this.loadedUser.second_friend = 0;
           this.loadedUser.third_friend = 0;
           this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
         } else {
           this.loadedUser.first_friend = 0;
           this.loadedUser.second_friend = 0;
           this.loadedUser.third_friend = 0;
           this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
         }
       } else {
         this.alertCtrl.create({

@@ -5,7 +5,6 @@ import { AlertService } from './alert.service';
 import { ConfigService } from './config.service';
 import { Response } from 'src/assets/models/Response.model';
 import { Router } from '@angular/router';
-import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +19,7 @@ export class ParticipantsService {
               private router: Router) {}
 
   backendUrl = this.config.backend_config.url;
+  eventName = this.config.app_config.event_name;
 
   signUpParticipant(signUpData, form) {
     const headers = new HttpHeaders({
@@ -32,7 +32,7 @@ export class ParticipantsService {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.auth.setLoggedIn(true);
-        this.router.navigate(['Projekttage/Anmeldung']);
+        this.router.navigate([this.eventName + '/Anmeldung']);
       }
       this.alert.alert('Dein Account wurde erfolgreich erstellt!');
       this.sendAuthentificationEmail();
@@ -82,7 +82,7 @@ export class ParticipantsService {
     return this.http.post<Response>(this.backendUrl + 'students/logout', null, options).subscribe(data => {
       this.alert.alert(data.message);
       this.auth.setLoggedIn(false);
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Logout fehlgeschlagen!', error.error);
     });

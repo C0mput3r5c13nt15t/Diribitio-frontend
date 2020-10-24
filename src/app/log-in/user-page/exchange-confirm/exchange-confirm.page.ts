@@ -43,6 +43,8 @@ export class ExchangeConfirmPage implements OnInit {
 
   studentAlreadyExchangeError: string;
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private router: Router,
               private activatedRoute: ActivatedRoute,
               private exchangesService: ExchangesService,
@@ -92,7 +94,7 @@ export class ExchangeConfirmPage implements OnInit {
         handler: async () => {
           this.exchangesService.confirmExchange(exchangeID).subscribe(data => {
             this.alert.alert(data.message);
-            this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+            this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
             this.exchangesService.update.emit();
           }, error => {
             this.alert.error('Bestätigung des Tausches fehlgeschlagen!', error.error);

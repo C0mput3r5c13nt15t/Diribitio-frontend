@@ -38,7 +38,8 @@ export class ResetPasswordPage implements OnInit {
 
   text: string;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -47,8 +48,6 @@ export class ResetPasswordPage implements OnInit {
               private alert: AlertService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('reset-password');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
@@ -57,7 +56,7 @@ export class ResetPasswordPage implements OnInit {
         this.resetPasswordLeader.token = this.activatedRoute.snapshot.paramMap.get('ResetToken');
         this.resetPasswordStudent.token = this.activatedRoute.snapshot.paramMap.get('ResetToken');
       } else {
-        this.router.navigate(['Projekttage/Anmeldung']);
+        this.router.navigate([this.eventName + '/Anmeldung']);
       }
     });
   }
@@ -84,7 +83,7 @@ export class ResetPasswordPage implements OnInit {
     this.auth.resetPassword(this.resetPasswordStudent).subscribe(data => {
       this.alert.alert(data.message);
       form.reset();
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
     });
@@ -94,7 +93,7 @@ export class ResetPasswordPage implements OnInit {
     this.auth.resetPassword(this.resetPasswordLeader).subscribe(data => {
       this.alert.alert(data.message);
       form.reset();
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
     });
@@ -104,7 +103,7 @@ export class ResetPasswordPage implements OnInit {
     this.auth.resetPassword(this.resetPasswordAdmin).subscribe(data => {
       this.alert.alert(data.message);
       form.reset();
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
     });

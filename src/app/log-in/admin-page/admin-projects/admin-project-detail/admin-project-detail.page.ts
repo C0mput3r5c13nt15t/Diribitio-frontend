@@ -92,7 +92,10 @@ export class AdminProjectDetailPage implements OnInit {
 
   adminWrongTime: string;
 
-  projectNoun: string;
+  imageUrl = this.config.backend_config.imageUrl;
+  projectNoun = this.config.app_config.project_noun;
+  projectsNoun = this.config.app_config.projects_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -102,8 +105,6 @@ export class AdminProjectDetailPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.adminWrongTime = this.config.get_error('admin-wrong_time');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
@@ -151,7 +152,7 @@ export class AdminProjectDetailPage implements OnInit {
         text: 'Löschen',
         handler: () => {
           this.projectsService.deleteProject(this.loadedProject.id);
-          this.router.navigate(['Projekttage/Admin/' + this.adminUrl + '/Projekte']);
+          this.router.navigate([this.eventName + '/Admin/' + this.adminUrl + '/' + this.projectsNoun]);
         }
       }]
     }).then(alertEl => {

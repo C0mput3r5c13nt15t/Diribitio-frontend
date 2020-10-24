@@ -73,7 +73,9 @@ export class ProjectAdministrationPage implements OnInit {
   leaderLoadingProject: string;
   leaderWrongTime: string;
 
-  projectNoun: string;
+  imageUrl = this.config.backend_config.imageUrl;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -82,8 +84,6 @@ export class ProjectAdministrationPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.leaderLoadingProject = this.config.get_error('leader-loading_project');
     this.leaderWrongTime = this.config.get_error('leader-wrong_time');
 

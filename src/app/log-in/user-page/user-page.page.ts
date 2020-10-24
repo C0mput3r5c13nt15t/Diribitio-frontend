@@ -56,8 +56,9 @@ export class UserPagePage implements OnInit {
 
   buttonPressed = true;
 
-  projectNoun: string;
-  studentsCanCreateProjects = false;
+  projectNoun = this.config.app_config.project_noun;
+
+  studentsCanCreateProjects = this.config.app_config.students_can_create_projects;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -69,9 +70,6 @@ export class UserPagePage implements OnInit {
               private alert: AlertService) {}
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-    this.studentsCanCreateProjects = this.config.app_config.students_can_create_projects;
-
     this.text = this.config.get_content('user-page');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');

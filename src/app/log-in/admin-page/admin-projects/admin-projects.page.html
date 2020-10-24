@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}"></ion-back-button>
     </ion-button>
     <ion-title>{{ projectsNoun }}</ion-title>
   </ion-toolbar>
@@ -23,7 +23,7 @@
       <ion-list>
         <ion-item color="background" *ngFor="let project of projects" [routerLink]="['./', project.id]">
           <ion-avatar [hidden]="project.image == null || project.image == ''" slot="start">
-            <ion-img *ngIf="project.image != '' && project.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + project.image'></ion-img>
+            <ion-img *ngIf="project.image != '' && project.image != null" src='{{ imageUrl }}{{ project.image }}'></ion-img>
           </ion-avatar>
           <ion-label color="text">
             <h2>{{ project.title }}</h2>

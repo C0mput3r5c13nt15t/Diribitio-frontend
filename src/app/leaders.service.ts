@@ -19,8 +19,10 @@ export class LeadersService {
               private router: Router) { }
 
   backendUrl = this.config.backend_config.url;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
-  signUpLeader(signUpData) {
+  signUpLeader(signUpData, form) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -29,11 +31,12 @@ export class LeadersService {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.auth.setLoggedIn(true);
-        this.router.navigate(['Projekttage/Anmeldung']);
+        this.router.navigate([this.eventName + '/Anmeldung']);
       }
       this.alert.alert('Dein Account wurde erfolgreich erstellt!');
       this.sendAuthentificationEmail();
       this.update.emit();
+      form.reset();
     }, error => {
       this.alert.error('Accounterstellung fehlgeschlagen!', error.error);
     });
@@ -78,7 +81,7 @@ export class LeadersService {
     return this.http.post<Response>(this.backendUrl + 'leaders/logout', null, options).subscribe(data => {
       this.alert.alert(data.message);
       this.auth.setLoggedIn(false);
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Logout fehlgeschlagen!', error.error);
     });
@@ -114,7 +117,7 @@ export class LeadersService {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
-      this.alert.error('Löschung des Projektleiters fehlgeschlagen!', error.error);
+      this.alert.error('Löschung des ' + this.projectNoun + 'leiters fehlgeschlagen!', error.error);
     });
   }
 }

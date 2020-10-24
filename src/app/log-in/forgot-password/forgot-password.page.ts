@@ -17,14 +17,13 @@ export class ForgotPasswordPage implements OnInit {
 
   text: string;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private config: ConfigService,
               private auth: AuthenticationService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('forgot-password');
   }
 

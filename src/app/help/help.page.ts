@@ -9,6 +9,8 @@ import { ConfigService } from '../config.service';
 export class HelpPage implements OnInit {
   instructions = [];
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private config: ConfigService) { }
 
   ngOnInit() {

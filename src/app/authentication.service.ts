@@ -19,6 +19,7 @@ export class AuthenticationService {
               private alert: AlertService) {}
 
   backendUrl = this.config.backend_config.url;
+  eventName = this.config.app_config.event_name;
 
   get jwt() {
     return this.JWT;
@@ -65,7 +66,7 @@ export class AuthenticationService {
     const options = { headers };
     return this.http.post<Response>(this.backendUrl + 'auth/password/email', forgotPasswordData, options).subscribe(data => {
       this.alert.alert(data.message);
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Die E-Mail konnte nicht versandt werden.', error.error);
     });

@@ -19,6 +19,8 @@ export class UserGenerationPage implements OnInit {
 
   text: string;
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private activatedRoute: ActivatedRoute,
               private alertCtrl: AlertController,
               private participantsService: ParticipantsService,

@@ -47,7 +47,8 @@ export class LogInPage implements OnInit {
   };
   currentDate: any;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private auth: AuthenticationService,
               private router: Router,
@@ -59,8 +60,6 @@ export class LogInPage implements OnInit {
               private config: ConfigService) {}
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
     this.scheduleService.getSchedule().subscribe(data => {
@@ -100,11 +99,11 @@ export class LogInPage implements OnInit {
         this.auth.setLoggedIn(true);
 
         if (userAuth === 'admins') {
-          this.router.navigate(['Projekttage/Admin/' + data.user_name]);
+          this.router.navigate([this.eventName + '/Admin/' + data.user_name]);
         } else if (userAuth === 'leaders') {
-          this.router.navigate(['Projekttage/Projektleiter/' + data.user_name]);
+          this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + data.user_name]);
         } else if (userAuth === 'students') {
-          this.router.navigate(['Projekttage/Benutzer/' + data.user_name]);
+          this.router.navigate([this.eventName + '/Schüler/' + data.user_name]);
         }
       }, (error) => {
         this.alert.error('Die Sitzung ist bereits abgelaufen!', error);
@@ -117,7 +116,7 @@ export class LogInPage implements OnInit {
     this.participantsService.logInParticipant(this.Student).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
-        this.router.navigate(['Projekttage/Benutzer/' + data.user_name]);
+        this.router.navigate([this.eventName + '/Schüler/' + data.user_name]);
         this.auth.setLoggedIn(true);
         form.reset();
       }
@@ -131,7 +130,7 @@ export class LogInPage implements OnInit {
     this.leadersService.logInLeader(this.Leader).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
-        this.router.navigate(['Projekttage/Projektleiter/' + data.user_name]);
+        this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + data.user_name]);
         this.auth.setLoggedIn(true);
         form.reset();
       }
@@ -145,7 +144,7 @@ export class LogInPage implements OnInit {
     this.adminsService.logInAdmin(this.Admin).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
-        this.router.navigate(['Projekttage/Admin/' + data.user_name]);
+        this.router.navigate([this.eventName + '/Admin/' + data.user_name]);
         this.auth.setLoggedIn(true);
         form.reset();
       }

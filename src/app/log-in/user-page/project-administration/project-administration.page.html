@@ -1,10 +1,10 @@
 <ion-header>
     <ion-toolbar color="menu">
       <ion-button color="buttons" slot="start">
-        <ion-back-button icon="arrow-back" defaultHref="Projekttage/Benutzer/{{ participantUrl }}"></ion-back-button>
+        <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ participantUrl }}"></ion-back-button>
       </ion-button>
       <ion-title>{{ projectNoun }}</ion-title>
-      <ion-button color="buttons" [routerLink]="['./Projekt bearbeiten']" slot="end">
+      <ion-button color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">
         <ion-icon name="create"></ion-icon>
       </ion-button>
     </ion-toolbar>
@@ -17,7 +17,7 @@
       </ion-card-content>
     </ion-card>
     <ion-card color="background" *ngIf="loadedUser.role === 2" class="content">
-      <ion-img *ngIf="leadedProject.image != '' && leadedProject.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + leadedProject.image'></ion-img>
+      <ion-img *ngIf="leadedProject.image != '' && leadedProject.image != null" src='{{ imageUrl }}{{ leadedProject.image }}'></ion-img>
       <ion-card-header>
         <ion-title>
           <h1>{{ leadedProject.title }}</h1>
@@ -104,8 +104,8 @@
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button color="buttons" *ngIf="!!+leadedProject.editable == false || currentDate <= this.schedule.control || currentDate > this.schedule.registration" [disabled]="leadedProject.leader_id != loadedUser.id || currentDate <= this.schedule.begin || currentDate > this.schedule.control" expand="block" class="ion-no-margin"  color="buttons" [routerLink]="['./Projekt bearbeiten']" slot="end">{{ projectNoun }} bearbeiten</ion-button>
-            <ion-button color="buttons" *ngIf="leadedProject.leader_id == loadedUser.id && currentDate > this.schedule.control && currentDate <= this.schedule.registration && !!+leadedProject.editable == true" expand="block" class="ion-no-margin"  color="buttons" [routerLink]="['./Projekt bearbeiten']" slot="end">{{ projectNoun }} nachbessern</ion-button>
+            <ion-button color="buttons" *ngIf="!!+leadedProject.editable == false || currentDate <= this.schedule.control || currentDate > this.schedule.registration" [disabled]="leadedProject.leader_id != loadedUser.id || currentDate <= this.schedule.begin || currentDate > this.schedule.control" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} bearbeiten</ion-button>
+            <ion-button color="buttons" *ngIf="leadedProject.leader_id == loadedUser.id && currentDate > this.schedule.control && currentDate <= this.schedule.registration && !!+leadedProject.editable == true" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} nachbessern</ion-button>
             <ion-text *ngIf="leadedProject.leader_id != loadedUser.id" color="text">{{ studentNoProjectEditByAssistants }}</ion-text>
             <ion-text *ngIf="currentDate <= this.schedule.begin && !!+leadedProject.editable == false || currentDate > this.schedule.control && !!+leadedProject.editable == false" color="text">{{ studentWrongTime }}</ion-text>
           </div>

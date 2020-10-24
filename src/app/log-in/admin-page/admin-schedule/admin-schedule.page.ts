@@ -30,8 +30,8 @@ export class AdminSchedulePage implements OnInit {
 
   text: string;
 
-  projectsNoun: string;
-  eventNoun: string;
+  projectsNoun = this.config.app_config.projects_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private adminsService: AdminsService,
@@ -41,9 +41,6 @@ export class AdminSchedulePage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectsNoun = this.config.app_config.projects_noun;
-    this.eventNoun = this.config.app_config.eventname;
-
     this.text = this.config.get_content('admin-schedule');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
@@ -67,7 +64,7 @@ export class AdminSchedulePage implements OnInit {
     this.scheduleService.putSchedule(this.schedule).subscribe(data => {
       this.alert.alert(data.message);
       this.scheduleService.update.emit();
-      this.router.navigate(['Projekttage/Admin/' + this.adminUrl]);
+      this.router.navigate([this.eventName + '/Admin/' + this.adminUrl]);
     }, error => {
       this.alert.error('Aktualisierung des Zeitplans fehlgeschlagen!', error.error);
     });

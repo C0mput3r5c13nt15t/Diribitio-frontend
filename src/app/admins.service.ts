@@ -19,10 +19,11 @@ export class AdminsService {
               private router: Router) { }
 
   backendUrl = this.config.backend_config.url;
+  eventName = this.config.app_config.event_name;
 
   // Request having to do with the Admin itself
 
-  signUpAdmin(signUpData) {
+  signUpAdmin(signUpData, form) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
     });
@@ -31,11 +32,12 @@ export class AdminsService {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.auth.setLoggedIn(true);
-        this.router.navigate(['Projekttage/Anmeldung']);
+        this.router.navigate([this.eventName + '/Anmeldung']);
       }
       this.alert.alert('Dein Account wurde erfolgreich erstellt!');
       this.sendAuthentificationEmail();
       this.update.emit();
+      form.reset();
     }, error => {
       this.alert.error('Accounterstellung fehlgeschlagen!', error.error);
     });
@@ -80,7 +82,7 @@ export class AdminsService {
     return this.http.post<Response>(this.backendUrl + 'admins/logout', null, options).subscribe(data => {
       this.alert.alert(data.message);
       this.auth.setLoggedIn(false);
-      this.router.navigate(['Projekttage/Anmeldung']);
+      this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
       this.alert.error('Logout fehlgeschlagen!', error.error);
     });

@@ -72,7 +72,8 @@ export class ProjectEditPage implements OnInit {
 
   image: any;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -81,8 +82,6 @@ export class ProjectEditPage implements OnInit {
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {

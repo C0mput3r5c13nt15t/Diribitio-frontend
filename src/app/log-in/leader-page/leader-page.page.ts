@@ -40,7 +40,7 @@ export class LeaderPagePage implements OnInit {
 
   buttonPressed = true;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -51,8 +51,6 @@ export class LeaderPagePage implements OnInit {
               private alert: AlertService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('leader-page');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');

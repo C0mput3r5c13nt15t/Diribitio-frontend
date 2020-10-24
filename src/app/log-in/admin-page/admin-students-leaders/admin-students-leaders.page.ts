@@ -85,7 +85,9 @@ export class AdminStudentsLeadersPage implements OnInit {
   page = 1;
   lastPage = 1;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  projectsNoun = this.config.app_config.projects_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private participantsService: ParticipantsService,
               private scheduleService: ScheduleService,
@@ -98,8 +100,6 @@ export class AdminStudentsLeadersPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text1 = this.config.get_content_by_index('admin-students-leaders', 0);
     this.text2 = this.config.get_content_by_index('admin-students-leaders', 1);
     this.text3 = this.config.get_content_by_index('admin-students-leaders', 2);

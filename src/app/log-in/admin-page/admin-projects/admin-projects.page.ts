@@ -16,15 +16,15 @@ export class AdminProjectsPage implements OnInit {
 
   text: string;
 
-  projectsNoun: string;
+  imageUrl = this.config.backend_config.imageUrl;
+  projectsNoun = this.config.app_config.projects_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private projectsService: ProjectsService,
               private activatedRoute: ActivatedRoute,
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectsNoun = this.config.app_config.projects_noun;
-
     this.text = this.config.get_content('admin-projects');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {

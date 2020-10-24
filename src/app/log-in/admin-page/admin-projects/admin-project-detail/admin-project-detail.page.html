@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}/Projekte"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}/{{ projectsNoun }}"></ion-back-button>
     </ion-button>
     <ion-title>{{ projectNoun }}</ion-title>
     <ion-button color="danger" slot="end" (click)="deleteProject()">
@@ -12,7 +12,7 @@
 
 <ion-content color="background">
   <ion-card color="background"class="content">
-    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + loadedProject.image'></ion-img>
+    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" src='{{ imageUrl }}{{ loadedProject.image }}'></ion-img>
     <ion-card-header>
       <ion-title>
         <h1>{{ loadedProject.title }}</h1>

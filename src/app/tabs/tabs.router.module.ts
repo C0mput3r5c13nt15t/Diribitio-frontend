@@ -2,10 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthenticationGuard } from '../authentication.guard';
+import app from 'src/assets/config/app.config.json';
+
+const projectNoun = app.project_noun;
+const projectsNoun = app.projects_noun;
+const eventName = app.event_name;
 
 const routes: Routes = [
   {
-    path: 'Projekttage',
+    path: eventName,
     component: TabsPage,
     children: [
       {
@@ -49,7 +54,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projekte',
+        path: projectsNoun,
         children: [
           {
             path: '',
@@ -59,7 +64,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projekte/:ProjectID',
+        path: projectsNoun + '/:ProjectID',
         children: [
           {
             path: '',
@@ -109,7 +114,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Anmeldung/Projektleiter Registration',
+        path: 'Anmeldung/' + projectNoun + 'leiter Registration',
         children: [
           {
             path: '',
@@ -139,7 +144,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projektleiter/:LeaderName',
+        path: projectNoun + 'leiter/:LeaderName',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -150,7 +155,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projektleiter/:LeaderName/Projekt erstellen',
+        path: projectNoun + 'leiter/:LeaderName/' + projectNoun + ' erstellen',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -161,7 +166,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projektleiter/:LeaderName/Projekt verwalten',
+        path: projectNoun + 'leiter/:LeaderName/' + projectNoun + ' verwalten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -173,7 +178,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projektleiter/:LeaderName/Projekt verwalten/Projekt bearbeiten',
+        path: projectNoun + 'leiter/:LeaderName/' + projectNoun +  ' verwalten/' + projectNoun +  ' bearbeiten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -185,7 +190,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Projektleiter/:LeaderName/Nachricht senden',
+        path: projectNoun + 'leiter/:LeaderName/Nachricht senden',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -197,7 +202,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName',
+        path: 'Schüler/:ParticipantName',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -208,7 +213,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Anmeldung',
+        path: 'Schüler/:ParticipantName/Anmeldung',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -219,7 +224,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Tauschanfrage senden',
+        path: 'Schüler/:ParticipantName/Tauschanfrage senden',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -230,7 +235,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Tauschanfrage bestätigen',
+        path: 'Schüler/:ParticipantName/Tauschanfrage bestätigen',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -241,7 +246,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Projekt',
+        path: 'Schüler/:ParticipantName/' + projectNoun,
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -252,7 +257,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Projekt erstellen',
+        path: 'Schüler/:ParticipantName/' + projectNoun + ' erstellen',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -263,7 +268,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Assistenten verwalten',
+        path: 'Schüler/:ParticipantName/Assistenten verwalten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -274,7 +279,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Projekt verwalten',
+        path: 'Schüler/:ParticipantName/' + projectNoun + ' verwalten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -286,7 +291,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Projekt verwalten/Projekt bearbeiten',
+        path: 'Schüler/:ParticipantName/' + projectNoun + ' verwalten/' + projectNoun + ' bearbeiten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -298,7 +303,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Benutzer/:ParticipantName/Nachricht senden',
+        path: 'Schüler/:ParticipantName/Nachricht senden',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -321,7 +326,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Admin/:AdminName/Projekte',
+        path: 'Admin/:AdminName/' + projectsNoun,
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -343,7 +348,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Admin/:AdminName/Projekte/:ProjectID',
+        path: 'Admin/:AdminName/' + projectsNoun +  '/:ProjectID',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -378,7 +383,7 @@ const routes: Routes = [
         ]
       },
       {
-        path: 'Admin/:AdminName/Schüler und Projektleiter verwalten',
+        path: 'Admin/:AdminName/Schüler und ' + projectNoun +  'leiter verwalten',
         canActivate: [AuthenticationGuard],
         children: [
           {
@@ -412,14 +417,14 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/Projekttage/Home',
+        redirectTo: '/' + eventName + '/Home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/Projekttage/Home',
+    redirectTo: '/' + eventName + '/Home',
     pathMatch: 'full'
   }
 ];
@@ -428,4 +433,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class TabsPageRoutingModule {}
+export class TabsPageRoutingModule { }

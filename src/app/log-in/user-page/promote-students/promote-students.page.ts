@@ -85,6 +85,8 @@ export class PromoteStudentsPage implements OnInit {
 
   studentNoAssistantsEditByAssistants = '';
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private projectsService: ProjectsService,
@@ -149,7 +151,7 @@ export class PromoteStudentsPage implements OnInit {
   quitAssistent() {
     this.participantsService.quitAssistant().subscribe(data => {
       this.alert.alert(data.message);
-      this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+      this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
       this.participantsService.update.emit();
     }, error => {
       this.alert.error('Kündigung als Assistent fehlgeschlagen!', error.error);

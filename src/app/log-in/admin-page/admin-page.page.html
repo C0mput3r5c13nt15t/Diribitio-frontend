@@ -30,10 +30,10 @@
     </ion-card-content>
     <ion-card-content>
       <ion-list>
-        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Projekte']">
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" routerLink='./{{ projectsNoun }}'>
           <ion-icon color="text" slot="start" name="apps"></ion-icon>{{ projectsNoun }} verwalten
         </ion-item>
-        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Schüler und Projektleiter verwalten']">
+        <ion-item [disabled]="loadedAdmin.email_verified_at == null" color="items" routerLink='./Schüler und {{projectNoun}}leiter verwalten'>
           <ion-icon color="text" slot="start" name="people"></ion-icon>Schüler und {{ projectNoun }}leiter verwalten
         </ion-item>
         <ion-item *ngIf="currentDate > schedule.exchange && currentDate <= schedule.projects" [disabled]="loadedAdmin.email_verified_at == null" color="items" [routerLink]="['./Tauschanfragen']">

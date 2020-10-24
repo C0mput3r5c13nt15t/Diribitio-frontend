@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
       <ion-button color="buttons" slot="start">
-        <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}/Tauschanfragen"></ion-back-button>
+        <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}/Tauschanfragen"></ion-back-button>
       </ion-button>
     <ion-title>Tauschanfrage</ion-title>
     <ion-button color="buttons" color="danger" slot="end" (click)="deleteExchange()">
@@ -28,7 +28,7 @@
             {{ projectNoun }}: {{ firstProjectName }} ({{ firstMinGrade }}.Klasse bis {{ firstMaxGrade }}.Klasse)
           </ion-item>
           <ion-item color="items" lines="none">
-            <ion-label *ngIf="loadedExchange.receiver.grade > firstMaxGrade || loadedExchange.receiver.grade < firstMinGrade" color="danger">{{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }} erfüllt NICHT die Projektbedingungen!</ion-label>
+            <ion-label *ngIf="loadedExchange.receiver.grade > firstMaxGrade || loadedExchange.receiver.grade < firstMinGrade" color="danger">{{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }} erfüllt NICHT die {{ projectNoun }}bedingungen!</ion-label>
           </ion-item>
           <ion-item-divider color="background">
             <ion-label color="text">{{ loadedExchange.receiver.first_name }} {{ loadedExchange.receiver.last_name }} (Empfänger/in)</ion-label>
@@ -40,7 +40,7 @@
             {{ projectNoun }}: {{ secondProjectName }} ({{ secondMinGrade }}.Klasse bis {{ secondMaxGrade }}.Klasse)
           </ion-item>
           <ion-item color="items" lines="none">
-            <ion-label *ngIf="loadedExchange.sender.grade > secondMaxGrade || loadedExchange.sender.grade < secondMinGrade" color="danger">{{ loadedExchange.sender.first_name }} {{ loadedExchange.sender.last_name }} erfüllt NICHT die Projektbedingungen!</ion-label>
+            <ion-label *ngIf="loadedExchange.sender.grade > secondMaxGrade || loadedExchange.sender.grade < secondMinGrade" color="danger">{{ loadedExchange.sender.first_name }} {{ loadedExchange.sender.last_name }} erfüllt NICHT die {{ projectNoun }}bedingungen!</ion-label>
           </ion-item>
         </ion-item-group>
         <div class="ion-padding">

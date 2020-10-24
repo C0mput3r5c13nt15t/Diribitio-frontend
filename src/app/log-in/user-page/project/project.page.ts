@@ -73,7 +73,9 @@ export class ProjectPage implements OnInit {
   studentLoadingProject: string;
   studentProjectNotAllowed: string;
 
-  projectNoun: string;
+  imageUrl = this.config.backend_config.imageUrl;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -81,8 +83,6 @@ export class ProjectPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.studentLoadingProject = this.config.get_error('student_loading_project');
     this.studentProjectNotAllowed = this.config.get_error('student_project_not_allowed');
 

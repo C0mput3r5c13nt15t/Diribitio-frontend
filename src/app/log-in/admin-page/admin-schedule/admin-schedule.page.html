@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="Projekttage/Admin/{{ adminUrl }}"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}"></ion-back-button>
     </ion-button>
     <ion-title>Zeitplan verwalten</ion-title>
   </ion-toolbar>
@@ -82,11 +82,11 @@
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.projects && currentDate <= schedule.end">
             <ion-icon slot="start" name="flag"></ion-icon>
-            <ion-label>{{ eventNoun }}</ion-label>
+            <ion-label>{{ eventName }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none" *ngIf="currentDate <= schedule.projects || currentDate > schedule.end">
             <ion-icon color="text" slot="start" name="flag"></ion-icon>
-            <ion-label color="text">{{ eventNoun }}</ion-label>
+            <ion-label color="text">{{ eventName }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
             bis<ion-datetime placeholder="Bitte ein Datum wählen" required name="Ende" [(ngModel)]="schedule.end" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc"></ion-datetime>

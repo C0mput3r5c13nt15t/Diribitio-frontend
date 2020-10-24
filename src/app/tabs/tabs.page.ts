@@ -15,7 +15,8 @@ export class TabsPage {
   errors = [];
   alerts = [];
 
-  projectsNoun = 'Projekte';
+  projectsNoun = this.config.app_config.projects_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private screensizeService: ScreensizeService,
               public auth: AuthenticationService,
@@ -28,7 +29,6 @@ export class TabsPage {
       }
       this.isDesktop = isDesktop;
     });
-    this.projectsNoun = this.config.app_config.projects_noun;
     this.alert.update.subscribe(() => this.getAlertsAndErrors());
   }
 

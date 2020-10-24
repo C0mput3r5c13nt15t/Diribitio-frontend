@@ -23,22 +23,16 @@ export class HomePage implements OnInit {
 
   currentDate: any;
 
-  welcome: any;
-  articles = [];
+  welcome = this.config.home.welcome;
+  articles = this.config.home.articles;
 
-  projectsNoun = 'Projekte';
-  eventNoun = 'Projekttage';
+  projectsNoun = this.config.app_config.projects_noun;
+  eventNoun = this.config.app_config.event_name;
 
   constructor(private config: ConfigService,
               private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    this.projectsNoun = this.config.app_config.projects_noun;
-    this.eventNoun = this.config.app_config.eventname;
-
-    this.welcome = this.config.home.welcome;
-    this.articles = this.config.home.articles;
-
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
     this.scheduleService.getSchedule().subscribe(data => {

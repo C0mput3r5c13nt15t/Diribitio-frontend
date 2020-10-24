@@ -31,7 +31,8 @@ export class AdminExchangeDetailPage implements OnInit {
   secondMinGrade = 0;
   secondMaxGrade = 0;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
@@ -41,8 +42,6 @@ export class AdminExchangeDetailPage implements OnInit {
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.projects_noun;
-
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ExchangeID')) {
         this.router.navigate(['']);
@@ -77,7 +76,7 @@ export class AdminExchangeDetailPage implements OnInit {
         text: 'Löschen',
         handler: () => {
           this.exchangesService.deleteExchange(this.loadedExchange.id);
-          this.router.navigate(['Projekttage/Admin/' + this.adminUrl + '/Tauschanfragen']);
+          this.router.navigate([this.eventName + '/Admin/' + this.adminUrl + '/Tauschanfragen']);
         }
       }]
     }).then(alertEl => {
@@ -87,7 +86,7 @@ export class AdminExchangeDetailPage implements OnInit {
 
   carryOutExchange() {
     this.exchangesService.carryOutExchange(this.loadedExchange.id);
-    this.router.navigate(['Projekttage/Admin/' + this.adminUrl + '/Tauschanfragen']);
+    this.router.navigate([this.eventName + '/Admin/' + this.adminUrl + '/Tauschanfragen']);
   }
 
 }

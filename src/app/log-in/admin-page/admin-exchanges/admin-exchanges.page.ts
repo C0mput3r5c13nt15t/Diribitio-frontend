@@ -20,6 +20,8 @@ export class AdminExchangesPage implements OnInit {
   text3: string;
   text4: string;
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private exchangesService: ExchangesService,
               private activatedRoute: ActivatedRoute,
               private config: ConfigService) { }

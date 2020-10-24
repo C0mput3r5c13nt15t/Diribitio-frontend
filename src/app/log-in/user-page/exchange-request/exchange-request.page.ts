@@ -46,6 +46,8 @@ export class ExchangeRequestPage implements OnInit {
 
   studentAlreadyExchangeError: string;
 
+  eventName = this.config.app_config.event_name;
+
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private participantsService: ParticipantsService,
@@ -81,7 +83,7 @@ export class ExchangeRequestPage implements OnInit {
       if (data.id != 0 && this.loadedUser.exchange_id == 0) {
         this.exchangesService.createExchange(data.id).subscribe(response => {
           this.alert.alert(response.message);
-          this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
           this.exchangesService.update.emit();
         }, error => {
           this.alert.error('Erstellung des Tausches fehlgeschlagen!', error.error);
@@ -113,7 +115,7 @@ export class ExchangeRequestPage implements OnInit {
         handler: () => {
           this.exchangesService.deleteSelfExchange().subscribe(data => {
             this.alert.alert(data.message);
-            this.router.navigate(['Projekttage/Benutzer/' + this.participantUrl]);
+            this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
             this.exchangesService.update.emit();
           }, error => {
             this.alert.error('Löschung der Tauschanfrage fehlgeschlagen!', error.error);

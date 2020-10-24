@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar color="menu">
-    <ion-title>Benutzer</ion-title>
+    <ion-title>Schüler</ion-title>
     <ion-button color="buttons" slot="end" (click)="logout()">
       <ion-icon name="log-out"></ion-icon>
     </ion-button>
@@ -40,13 +40,13 @@
           <ion-icon color="text" slot="start" name="swap-horizontal"></ion-icon>Tauschanfrage bestätigen
           <ion-badge color="buttons" slot="end">{{ loadedUser.exchange_requests.length }}</ion-badge>
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 1 && loadedUser.project_id != 0" [routerLink]="['./Projekt']">
+        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 1 && loadedUser.project_id != 0" routerLink='./{{ projectNoun }}'>
           <ion-icon color="text" slot="start" name="people"></ion-icon>{{ projectNoun }} einsehen
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedUser.project_id == 0 && loadedUser.role === 1 && studentsCanCreateProjects" [routerLink]="['./Projekt erstellen']">
+        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedUser.project_id == 0 && loadedUser.role === 1 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} erstellen'>
           <ion-icon color="text" slot="start" name="create"></ion-icon>{{ projectNoun }} erstellen
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Projekt verwalten']">
+        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} verwalten'>
           <ion-icon color="text" slot="start" name="construct"></ion-icon>{{ projectNoun }} verwalten
         </ion-item>
         <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Assistenten verwalten']">

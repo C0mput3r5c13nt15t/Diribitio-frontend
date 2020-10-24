@@ -18,22 +18,20 @@ export class LeaderGenerationPage implements OnInit {
 
   text: string;
 
-  projectNoun: string;
+  projectNoun = this.config.app_config.project_noun;
+  eventName = this.config.app_config.event_name;
 
   constructor(private alertCtrl: AlertController,
               private leadersService: LeadersService,
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.projectNoun = this.config.app_config.project_noun;
-
     this.text = this.config.get_content('leader-generation');
   }
 
   SignUpAsLeader(form) {
     if (this.signUpData.password === this.signUpData.password_confirmation) {
-      this.leadersService.signUpLeader(this.signUpData);
-      form.reset();
+      this.leadersService.signUpLeader(this.signUpData, form);
     } else {
       this.alertCtrl.create({
         header: 'Fehler',
