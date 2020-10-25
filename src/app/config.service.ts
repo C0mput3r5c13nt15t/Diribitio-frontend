@@ -29,12 +29,12 @@ export class ConfigService {
   private definiteArticlesCapital: { [gender: string]: string } = {
     m: 'Der',
     f: 'Die',
-    d: 'Das',
+    n: 'Das',
   };
   private indefiniteArticlesCapital: { [gender: string]: string } = {
     m: 'Ein',
     f: 'Eine',
-    d: 'Ein',
+    n: 'Ein',
   };
 
   constructor() {}

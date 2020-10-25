@@ -1,7 +1,7 @@
 {
-    "noun_gender": "f",
-    "project_noun":"Studienreise",
-    "projects_noun":"Studienreisen",
-    "event_name": "Studienreisen",
+    "noun_gender": "n",
+    "project_noun":"Projekt",
+    "projects_noun":"Projekte",
+    "event_name": "Projekttage",
     "students_can_create_projects":true
 }

@@ -41,7 +41,7 @@
               </ion-item>
             </ion-list>
             <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
-            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.registration" [routerLink]="['./Schüler Registration']" color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
+            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" [routerLink]="['./Schüler Registration']" color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
             <div class="ion-padding">
               <ion-button name="login" type="submit" [disabled]="studentLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
             </div>
@@ -64,7 +64,7 @@
               </ion-item>
             </ion-list>
             <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
-            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.registration" routerLink='./{{ projectNoun}}leiter Registration' color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
+            <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" routerLink='./{{ projectNoun}}leiter Registration' color="buttons"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
             <div class="ion-padding">
               <ion-button name="login" type="submit" [disabled]="leaderLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
             </div>
