@@ -38,10 +38,6 @@ const routes: Routes = [
     loadChildren: () => import('./log-in/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
   {
-    path: 'admin-tokens',
-    loadChildren: () => import('./log-in/admin-page/admin-tokens/admin-tokens.module').then( m => m.AdminTokensPageModule)
-  },
-  {
     path: 'admin-logs',
     loadChildren: () => import('./log-in/admin-page/admin-logs/admin-logs.module').then( m => m.AdminLogsPageModule)
   },

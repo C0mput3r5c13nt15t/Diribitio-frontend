@@ -8,7 +8,6 @@ import { AdminsService } from 'src/app/admins.service';
 import { AlertService } from 'src/app/alert.service';
 import { AlertController } from '@ionic/angular';
 
-
 @Component({
   selector: 'app-admin-logs',
   templateUrl: './admin-logs.page.html',
