@@ -85,7 +85,7 @@ export class ResetPasswordPage implements OnInit {
       form.reset();
       this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
-      this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
+      this.alert.error('Zurücksetzen des Passworts fehlgeschalgen!', error.error);
     });
   }
 
@@ -95,7 +95,7 @@ export class ResetPasswordPage implements OnInit {
       form.reset();
       this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
-      this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
+      this.alert.error('Zurücksetzen des Passworts fehlgeschalgen!', error.error);
     });
   }
 
@@ -105,7 +105,7 @@ export class ResetPasswordPage implements OnInit {
       form.reset();
       this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
-      this.alert.error('Das Passwort konnte nicht zurückgesetzt werden.', error.error);
+      this.alert.error('Zurücksetzen des Passworts fehlgeschalgen!', error.error);
     });
   }
 

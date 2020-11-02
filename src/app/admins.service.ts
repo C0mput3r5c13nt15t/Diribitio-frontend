@@ -39,7 +39,7 @@ export class AdminsService {
       this.update.emit();
       form.reset();
     }, error => {
-      this.alert.error('Accounterstellung fehlgeschlagen!', error.error);
+      this.alert.error('Erstellung des Accounts fehlgeschlagen!', error.error);
     });
   }
 
@@ -52,7 +52,7 @@ export class AdminsService {
     this.http.post<Response>(this.backendUrl + 'admins/email/resend', null, options).subscribe(data => {
       this.alert.alert(data.message);
     }, error => {
-      this.alert.error('Verifizierungs E-Mail konnte nicht versandt werden!', error.error);
+      this.alert.error('Versandt der Verifizierungs E-Mail fehlgeschlagen!', error.error);
     });
   }
 
@@ -168,7 +168,7 @@ export class AdminsService {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
-      this.alert.error('Entfernen der E-mail fehlgeschlagen!', error.error);
+      this.alert.error('Sperrung der E-mail fehlgeschlagen!', error.error);
     });
   }
 

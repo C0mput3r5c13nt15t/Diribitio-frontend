@@ -186,7 +186,7 @@ export class ProjectsService {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
-      this.alert.error('Löschen des Projektes fehlgeschlagen!', error.error);
+      this.alert.error('Löschung des Projektes fehlgeschlagen!', error.error);
     });
   }
 }

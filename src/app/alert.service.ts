@@ -98,7 +98,7 @@ export class AlertService {
     if (this.isDesktop) {
       this.desktop_error(text, output);
     } else {
-      if (output == null) {
+      if (output == null || typeof output !== 'string') {
         output = '';
       }
       this.alertCtrl.create({

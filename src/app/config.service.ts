@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
-import app from 'src/assets/config/app.config.json';
-import backend from 'src/assets/config/backend.config.json';
-import conditions from 'src/assets/config/conditions.json';
-import content from 'src/assets/config/content.json';
-import data_protection from 'src/assets/config/data-protection.json';
-import error from 'src/assets/config/error.json';
-import help from 'src/assets/config/help.json';
-import home from 'src/assets/config/home.json';
-import imprint from 'src/assets/config/imprint.json';
+import app from 'src/config/app.config.json';
+import backend from 'src/config/backend.config.json';
+import conditions from 'src/config/conditions.json';
+import content from 'src/config/content.json';
+import data_protection from 'src/config/data-protection.json';
+import error from 'src/config/error.json';
+import help from 'src/config/help.json';
+import home from 'src/config/home.json';
+import imprint from 'src/config/imprint.json';
 
 export interface ContentConfig {
   page: string;

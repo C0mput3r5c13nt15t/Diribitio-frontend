@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
 import { AuthenticationGuard } from '../authentication.guard';
-import app from 'src/assets/config/app.config.json';
+import app from 'src/config/app.config.json';
 
 const projectNoun = app.project_noun;
 const projectsNoun = app.projects_noun;

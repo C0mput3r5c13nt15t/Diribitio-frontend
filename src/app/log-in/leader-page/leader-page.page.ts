@@ -92,7 +92,7 @@ export class LeaderPagePage implements OnInit {
       this.alert.alert(data.message);
       this.buttonPressed = true;
     }, error => {
-      this.alert.error('Verifizierungs E-Mail konnte nicht versandt werden!', error.error);
+      this.alert.error('Versandt der Verifizierungs E-Mail fehlgeschlagen!', error.error);
     });
   }
 
