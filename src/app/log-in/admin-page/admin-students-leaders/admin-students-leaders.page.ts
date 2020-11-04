@@ -11,6 +11,7 @@ import { ConfigService } from 'src/app/config.service';
 import { Projekt } from 'src/assets/models/Projekt.model';
 import { ScheduleService } from 'src/app/schedule.service';
 import { Time } from '@angular/common';
+import { formatDate } from '@angular/common';
 
 export interface ModifiedSchüler {
   id: number;
@@ -100,6 +101,8 @@ export class AdminStudentsLeadersPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
+    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+
     this.text1 = this.config.get_content_by_index('admin-students-leaders', 0);
     this.text2 = this.config.get_content_by_index('admin-students-leaders', 1);
     this.text3 = this.config.get_content_by_index('admin-students-leaders', 2);

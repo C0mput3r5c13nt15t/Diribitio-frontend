@@ -134,7 +134,9 @@ export class AdminProjectDetailPage implements OnInit {
   }
 
   authorizedChanged() {
-    this.projectsService.toogleAuthorizedProject(this.loadedProject.id, this.loadedProject.authorized);
+    if (this.currentDate > this.schedule.control && this.currentDate <= this.schedule.registration) {
+      this.projectsService.toogleAuthorizedProject(this.loadedProject.id, this.loadedProject.authorized);
+    }
   }
 
   editableChanged() {

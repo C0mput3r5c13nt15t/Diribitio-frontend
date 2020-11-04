@@ -9,17 +9,14 @@
 
 <ion-content color="background">
   <ion-card color="background" *ngIf="!!+loadedProject.authorized === true" class="content">
-    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" [src]='"http://192.248.186.231:8000/storage/images/" + loadedProject.image'></ion-img>
+    <ion-img *ngIf="loadedProject.image != '' && loadedProject.image != null" src='{{ imageUrl }}{{ loadedProject.image }}'></ion-img>
     <ion-card-header>
-      <ion-title>
-        <h1>{{ loadedProject.title }}</h1>
-      </ion-title>
+      <ion-card-title text-wrap>{{ loadedProject.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item-group color="background">
-        <ion-item color="items" lines="none">
-          <ion-text color="text">{{ loadedProject.descr }}
-          </ion-text>
+        <ion-item color="items" lines="none" class="descr">
+          <ion-text color="text">{{ loadedProject.descr }}</ion-text>
         </ion-item>
         <ion-item-divider color="background">
           <ion-label color="text">Leiter</ion-label>

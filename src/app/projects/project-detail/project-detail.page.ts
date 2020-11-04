@@ -45,6 +45,7 @@ export class ProjectDetailPage implements OnInit {
     participants: [],
   };
 
+  imageUrl = this.config.backend_config.imageUrl;
   projectNoun = this.config.app_config.project_noun;
   eventName = this.config.app_config.event_name;
 

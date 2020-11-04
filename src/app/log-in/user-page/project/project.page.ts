@@ -83,8 +83,8 @@ export class ProjectPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.studentLoadingProject = this.config.get_error('student_loading_project');
-    this.studentProjectNotAllowed = this.config.get_error('student_project_not_allowed');
+    this.studentLoadingProject = this.config.get_error('student-loading_project');
+    this.studentProjectNotAllowed = this.config.get_error('student-project_not_allowed');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ParticipantName')) {

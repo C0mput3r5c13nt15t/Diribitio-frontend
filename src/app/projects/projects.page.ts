@@ -26,7 +26,8 @@ export class ProjectsPage implements OnInit {
   };
   currentDate: any;
 
-  projectsNoun = 'Projekte';
+  imageUrl = this.config.backend_config.imageUrl;
+  projectsNoun = this.config.app_config.projects_noun;
 
   text = '';
 
@@ -35,7 +36,6 @@ export class ProjectsPage implements OnInit {
               private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    this.projectsNoun = this.config.app_config.projects_noun;
 
     this.text = this.config.get_content('projects');
 

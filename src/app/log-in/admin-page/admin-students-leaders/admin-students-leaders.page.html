@@ -10,9 +10,7 @@
 <ion-content color="background">
   <ion-card color="background"class="content">
     <ion-card-header>
-      <ion-card-title>
-        Schüler
-      </ion-card-title>
+      <ion-card-title>Schüler</ion-card-title>
     </ion-card-header>
     <ion-card-content *ngIf="text1">
       <ion-label color="text">
@@ -145,15 +143,14 @@
       </ion-label>
     </ion-card-content>
     <ion-card-content>
-      <!-- [disabled]="!(currentDate > schedule.sort_students && currentDate <= schedule.exchange)" -->
       <div class="ion-padding" *ngIf="!sorted">
-        <ion-button color="buttons" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Sortiervorschlag erstellen</ion-button>
+        <ion-button color="buttons" [disabled]="!(currentDate > schedule.sort_students && currentDate <= schedule.exchange)" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Sortiervorschlag erstellen</ion-button>
       </div>
       <div class="ion-padding" *ngIf="sorted">
-        <ion-button color="buttons" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Neuen Sortiervorschlag erstellen</ion-button>
+        <ion-button color="buttons" [disabled]="!(currentDate > schedule.sort_students && currentDate <= schedule.exchange)" (click)="createSortingProposal()" expand="block" class="ion-no-margin" >Neuen Sortiervorschlag erstellen</ion-button>
       </div>
       <div class="ion-padding">
-        <ion-button color="buttons" (click)="requestSortingProposal()" expand="block" class="ion-no-margin" >aktuellen Sortiervorschlag ansehen</ion-button>
+        <ion-button color="buttons" [disabled]="!(currentDate > schedule.sort_students && currentDate <= schedule.exchange)" (click)="requestSortingProposal()" expand="block" class="ion-no-margin" >aktuellen Sortiervorschlag ansehen</ion-button>
       </div>
     </ion-card-content>
   </ion-card>
@@ -203,7 +200,7 @@
       </ion-card>
     </ion-card-content>
     <div class="ion-padding">
-      <ion-button color="buttons" (click)="editSortingProposal()" expand="block" class="ion-no-margin" >Vorschlag ändern</ion-button>
+      <ion-button color="buttons" (click)="editSortingProposal()" expand="block" class="ion-no-margin" >Änderungen speichern</ion-button>
     </div>
     <div class="ion-padding">
       <ion-button color="buttons" [disabled]="!sorted" (click)="applySortingProposal()" expand="block" class="ion-no-margin" >Vorschlag anwenden</ion-button>

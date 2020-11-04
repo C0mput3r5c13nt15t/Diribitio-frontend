@@ -11,7 +11,7 @@
 <ion-content color="background">
   <ion-card color="background" *ngIf="loadedUser.exchange_id == 0" class="content">
     <ion-card-header color="background">
-      <ion-title>Tauschanfragen senden</ion-title>
+      <ion-card-title>Tauschanfragen senden</ion-card-title>
     </ion-card-header>
     <ion-card-content *ngIf="text">
       <ion-label color="text">
@@ -22,7 +22,7 @@
       <form #form="ngForm" name="ExchangeForm" (ngSubmit)="submit()">
         <ion-list>
           <ion-item-divider color="background">
-            <ion-title>Du</ion-title>
+            <ion-card-title>Du</ion-card-title>
           </ion-item-divider>
           <ion-item color="items" lines="none">
             <ion-input color="text" readonly [(ngModel)]="loadedUser.first_name" name="ExchangeFirstFirstName"></ion-input>

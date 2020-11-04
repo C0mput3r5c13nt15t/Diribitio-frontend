@@ -16,13 +16,11 @@
   <ion-card color="background" *ngIf="!!+chosenProject.authorized === true" class="content">
     <ion-img *ngIf="chosenProject.image != '' && chosenProject.image != null" src='{{ imageUrl }}{{ chosenProject.image }}'></ion-img>
     <ion-card-header>
-      <ion-title>
-        <h1>{{ chosenProject.title }}</h1>
-      </ion-title>
+      <ion-card-title text-wrap>{{ chosenProject.title }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-item-group>
-        <ion-item color="items" lines="none">
+        <ion-item color="items" lines="none" class="descr">
           <ion-text color="text">{{ chosenProject.descr }}</ion-text>
         </ion-item>
         <ion-item-divider color="background">

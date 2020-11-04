@@ -11,7 +11,7 @@
   <form #signUpLeaderForm="ngForm" name="LeaderForm" (ngSubmit)="SignUpAsLeader(signUpLeaderForm)" class="content">
     <ion-card color="background">
       <ion-card-header color="background">
-        <ion-title>{{ projectNoun }}leiter-Account erstellen</ion-title>
+        <ion-card-title text-wrap>{{ projectNoun }}leiter-Account erstellen</ion-card-title>
       </ion-card-header>
       <ion-card-content *ngIf="text" color="background">
         <ion-label color="text">
