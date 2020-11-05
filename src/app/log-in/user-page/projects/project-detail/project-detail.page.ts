@@ -11,6 +11,7 @@ import { Projekt } from 'src/assets/models/Projekt.model';
 })
 
 export class ProjectDetailPage implements OnInit {
+  participantUrl;
   loadedProject: Projekt = {
     id: 0,
     authorized: 1,
@@ -56,7 +57,7 @@ export class ProjectDetailPage implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
-      if (!paramMap.has('ProjectID')) {
+      if (!paramMap.has('ProjectID') || !paramMap.has('ParticipantName')) {
         this.router.navigate(['']);
         return;
       }
@@ -64,6 +65,7 @@ export class ProjectDetailPage implements OnInit {
       this.projectsService.getProject(ProjectID).subscribe(data => {
         this.loadedProject = data.data;
       });
+      this.participantUrl = paramMap.get('ParticipantName');
     });
   }
 

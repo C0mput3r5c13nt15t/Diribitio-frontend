@@ -23,11 +23,6 @@
       <ion-label>Home</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button routerLink="/{{ eventName }}/{{ projectsNoun }}" routerDirection="root">
-      <ion-icon name="apps"></ion-icon>
-      <ion-label>{{ projectsNoun }}</ion-label>
-    </ion-tab-button>
-
     <ion-tab-button *ngIf="!auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">
       <ion-icon name="log-in"></ion-icon>
       <ion-label>Anmeldung</ion-label>
@@ -55,10 +50,6 @@
               class="link">
               Home
             </ion-button>
-            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/{{ projectsNoun }}" routerDirection="root" routerLinkActive="active-link"
-              class="link">
-              {{ projectsNoun }}
-            </ion-button>
             <ion-button color="buttons" *ngIf="!auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"
               class="link">
               Anmeldung
@@ -73,7 +64,7 @@
             </ion-button>
             <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Einstellungen" routerDirection="root" routerLinkActive="active-link"
               class="link">
-              <ion-icon name="settings"></ion-icon>
+              Einstellungen
             </ion-button>
           </div>
         </ion-col>

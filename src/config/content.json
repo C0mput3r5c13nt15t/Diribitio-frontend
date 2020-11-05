@@ -135,7 +135,7 @@
                 {
                     "code": "400",
                     "title": "E-Mail wurde bereits verifiziert." ,
-                    "descr": "Es scheint als hätten sie ihre E-mail bereits verifiziert. Sie können somit schon auf ihren Account zugreifen. Falls dies nicht der Fall ist laden sie die Seite neu. Sollte der Fehler immernoch bestehen, kontaktieren sie einen Systemadministrator."
+                    "descr": "Es scheint als hätten sie ihre E-Mail bereits verifiziert. Sie können somit schon auf ihren Account zugreifen. Falls dies nicht der Fall ist laden sie die Seite neu. Sollte der Fehler immernoch bestehen, kontaktieren sie einen Systemadministrator."
                 }
             ]
         }

@@ -57,6 +57,7 @@ export class UserPagePage implements OnInit {
   buttonPressed = true;
 
   projectNoun = this.config.app_config.project_noun;
+  projectsNoun = this.config.app_config.projects_noun;
 
   studentsCanCreateProjects = this.config.app_config.students_can_create_projects;
 

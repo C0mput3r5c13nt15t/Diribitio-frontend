@@ -75,7 +75,7 @@ export class AdminLogsPage implements OnInit {
       this.alert.alert(data.message);
       this.adminsService.update.emit();
     }, error => {
-      this.alert.error('Freigeben der E-mail fehlgeschlagen!', error.error);
+      this.alert.error('Freigeben der E-Mail fehlgeschlagen!', error.error);
     });
   }
 
@@ -95,7 +95,7 @@ export class AdminLogsPage implements OnInit {
             });
             this.adminsService.deleteSignUpEmail(emailID);
           } else {
-            this.alert.error('Die angegebenen E-mails stimmen nicht überein.');
+            this.alert.error('Die angegebenen E-Mails stimmen nicht überein.');
           }
         }
       }]

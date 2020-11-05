@@ -54,26 +54,6 @@ const routes: Routes = [
         ]
       },
       {
-        path: projectsNoun,
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../projects/projects.module').then(m => m.ProjectsPageModule)
-          }
-        ]
-      },
-      {
-        path: projectsNoun + '/:ProjectID',
-        children: [
-          {
-            path: '',
-            loadChildren: () =>
-              import('../projects/project-detail/project-detail.module').then(m => m.ProjectDetailPageModule)
-          }
-        ]
-      },
-      {
         path: 'Anmeldung',
         children: [
           {
@@ -209,6 +189,27 @@ const routes: Routes = [
             path: '',
             loadChildren: () =>
               import('../log-in/user-page/user-page.module').then(m => m.UserPagePageModule)
+          }
+        ]
+      },
+      {
+        path: 'Schüler/:ParticipantName/' + projectsNoun,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../log-in/user-page/projects/projects.module').then(m => m.ProjectsPageModule)
+          }
+        ]
+      },
+      {
+        path: 'Schüler/:ParticipantName/' + projectsNoun + '/:ProjectID',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../log-in/user-page/projects/project-detail/project-detail.module').then(m => m.ProjectDetailPageModule)
           }
         ]
       },

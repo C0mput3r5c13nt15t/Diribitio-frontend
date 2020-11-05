@@ -168,7 +168,7 @@ export class AdminsService {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
-      this.alert.error('Sperrung der E-mail fehlgeschlagen!', error.error);
+      this.alert.error('Sperrung der E-Mail fehlgeschlagen!', error.error);
     });
   }
 
