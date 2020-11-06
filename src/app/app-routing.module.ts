@@ -7,9 +7,7 @@ const routes: Routes = [
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
   },
   { path: 'leader-page', loadChildren: './log-in/leader-page/leader-page.module#LeaderPagePageModule' },
-  // tslint:disable-next-line: max-line-length
   { path: 'project-administration', loadChildren: './log-in/leader-page/project-administration/project-administration.module#ProjectAdministrationPageModule' },
-  // tslint:disable-next-line: max-line-length
   { path: 'project-generation', loadChildren: './log-in/leader-page/project-generation/project-generation.module#ProjectGenerationPageModule' },
   { path: 'messages', loadChildren: './log-in/leader-page/messages/messages.module#MessagesPageModule' },
   // tslint:disable-next-line: max-line-length

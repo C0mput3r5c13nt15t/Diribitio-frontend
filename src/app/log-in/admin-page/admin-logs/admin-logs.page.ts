@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AdminsService } from 'src/app/admins.service';
@@ -23,7 +23,7 @@ export class AdminLogsPage implements OnInit {
     email_confirmation: ''
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

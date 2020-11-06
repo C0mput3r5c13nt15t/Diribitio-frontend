@@ -16,6 +16,10 @@ export class ScheduleService {
 
   backendUrl = this.config.backend_config.url;
 
+  /**
+   * @description Gets the current schedule
+   * @returns RequestObservable
+   */
   getSchedule() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -24,6 +28,11 @@ export class ScheduleService {
     return this.http.get<Response>(this.backendUrl + 'schedule/1', options);
   }
 
+  /**
+   * @description Updates the current schedule
+   * @param schedule Contains the new schedule
+   * @returns RequestObservable
+   */
   putSchedule(schedule) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

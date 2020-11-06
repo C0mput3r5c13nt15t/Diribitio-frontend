@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { MessagesService } from 'src/app/messages.service';
-import { Projektleiter } from 'src/assets/models/Projektleiter';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Projectleader } from 'src/assets/models/Projectleader';
+import { Project } from 'src/assets/models/Project.model';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
 
@@ -15,7 +15,7 @@ import { ConfigService } from 'src/app/config.service';
 export class MessagesPage implements OnInit {
   leaderUrl: string;
 
-  loadedLeader: Projektleiter = {
+  loadedLeader: Projectleader = {
     id: 0,
     user_name: '',
     email: '',
@@ -23,7 +23,7 @@ export class MessagesPage implements OnInit {
     project_id: 0,
   };
 
-  leadedProject: Projekt = {
+  leadedProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,

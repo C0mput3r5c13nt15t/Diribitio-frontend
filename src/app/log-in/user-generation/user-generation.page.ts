@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -23,7 +23,7 @@ export class UserGenerationPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private alertCtrl: AlertController,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private config: ConfigService) { }
 
   ngOnInit() {
@@ -38,7 +38,7 @@ export class UserGenerationPage implements OnInit {
 
   signUpAsStudent(form) {
     if (this.signUpData.password === this.signUpData.password_confirmation) {
-      this.participantsService.signUpParticipant(this.signUpData, form);
+      this.studentsService.signUpStudent(this.signUpData, form);
     } else {
       this.alertCtrl.create({
         header: 'Fehler',

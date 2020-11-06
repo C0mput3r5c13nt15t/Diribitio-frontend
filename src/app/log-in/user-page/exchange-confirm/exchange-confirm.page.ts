@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 import { AlertService } from 'src/app/alert.service';
 import { formatDate } from '@angular/common';
@@ -14,9 +14,9 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./exchange-confirm.page.scss'],
 })
 export class ExchangeConfirmPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -65,7 +65,7 @@ export class ExchangeConfirmPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
 
     this.getExchanges();
@@ -73,8 +73,8 @@ export class ExchangeConfirmPage implements OnInit {
 
   getExchanges() {
     this.exchangesService.getAllExchangesForParticipant().subscribe(data => {
-      this.loadedUser.exchange_requests = data.data;
-      this.loadedUser.exchange_requests.forEach(request => {
+      this.loadedStudent.exchange_requests = data.data;
+      this.loadedStudent.exchange_requests.forEach(request => {
         this.projectsService.getLittleProject(request.sender.project_id).subscribe(response => {
           request.sender.project_title = response.data.title;
         });
@@ -94,7 +94,7 @@ export class ExchangeConfirmPage implements OnInit {
         handler: async () => {
           this.exchangesService.confirmExchange(exchangeID).subscribe(data => {
             this.alert.alert(data.message);
-            this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+            this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
             this.exchangesService.update.emit();
           }, error => {
             this.alert.error('Bestätigung des Tausches fehlgeschlagen!', error.error);

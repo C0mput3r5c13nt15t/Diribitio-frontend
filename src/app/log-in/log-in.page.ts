@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
-import { ParticipantsService } from '../participants.service';
+import { StudentsService } from '../students.service';
 import { LeadersService } from '../leaders.service';
 import { AdminsService } from '../admins.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { AlertService } from '../alert.service';
 import { ConfigService } from '../config.service';
@@ -18,24 +18,24 @@ import { ScheduleService } from '../schedule.service';
 export class LogInPage implements OnInit {
   formType = 'student';
 
-  Student = {
+  StudentCredentials = {
     email: '',
     password: '',
   };
 
-  Leader = {
+  LeaderCredentials = {
     email: '',
     password: '',
   };
 
-  Admin = {
+  AdminCredentials = {
     email: '',
     password: '',
   };
 
   tries = 0;
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -52,7 +52,7 @@ export class LogInPage implements OnInit {
 
   constructor(private auth: AuthenticationService,
               private router: Router,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private scheduleService: ScheduleService,
               private leadersService: LeadersService,
               private adminsService: AdminsService,
@@ -113,7 +113,7 @@ export class LogInPage implements OnInit {
   }
 
   LogInStudent(form) {
-    this.participantsService.logInParticipant(this.Student).subscribe(data => {
+    this.studentsService.logInStudent(this.StudentCredentials).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.router.navigate([this.eventName + '/Schüler/' + data.user_name]);
@@ -127,7 +127,7 @@ export class LogInPage implements OnInit {
   }
 
   LogInLeader(form) {
-    this.leadersService.logInLeader(this.Leader).subscribe(data => {
+    this.leadersService.logInLeader(this.LeaderCredentials).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.router.navigate([this.eventName + '/' + this.projectNoun + 'leiter/' + data.user_name]);
@@ -141,7 +141,7 @@ export class LogInPage implements OnInit {
   }
 
   LogInAdmin(form) {
-    this.adminsService.logInAdmin(this.Admin).subscribe(data => {
+    this.adminsService.logInAdmin(this.AdminCredentials).subscribe(data => {
       if (data.token) {
         this.auth.set_jwt(data.token);
         this.router.navigate([this.eventName + '/Admin/' + data.user_name]);

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { MessagesService } from 'src/app/messages.service';
-import { Schüler } from 'src/assets/models/Schüler.model';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Student } from 'src/assets/models/Student.model';
+import { Project } from 'src/assets/models/Project.model';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
 
@@ -13,9 +13,9 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  leadedProject: Projekt = {
+  leadedProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -49,7 +49,7 @@ export class MessagesPage implements OnInit {
     participants: []
   };
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -90,7 +90,7 @@ export class MessagesPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
 
     this.getProject();

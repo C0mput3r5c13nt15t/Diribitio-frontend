@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, Directive, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Schüler } from 'src/assets/models/Schüler.model';
-import { Nachricht } from 'src/assets/models/Nachricht.model';
+import { Student } from 'src/assets/models/Student.model';
+import { Message } from 'src/assets/models/Message.model';
 import { AlertService } from 'src/app/alert.service';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -13,13 +13,13 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./project-generation.page.scss'],
 })
 export class ProjectGenerationPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler;
+  loadedStudentent: Student;
 
-  messages: Nachricht[] = [];
+  messages: Message[] = [];
 
-  newProject: Projekt = {
+  newProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -74,7 +74,7 @@ export class ProjectGenerationPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
   }
 
@@ -89,7 +89,7 @@ export class ProjectGenerationPage implements OnInit {
   create() {
     this.projectsService.createProject('students', this.newProject, this.image).subscribe(data => {
       this.alert.alert(data.message);
-      this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+      this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
       this.projectsService.update.emit();
     }, error => {
       this.alert.error('Erstellung des Projektes fehlgeschlagen!', error.error);

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LeadersService } from 'src/app/leaders.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
-import { Projektleiter } from 'src/assets/models/Projektleiter';
+import { Projectleader } from 'src/assets/models/Projectleader';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';
@@ -15,7 +15,7 @@ import { ProjectsService } from 'src/app/projects.service';
   styleUrls: ['./leader-page.page.scss'],
 })
 export class LeaderPagePage implements OnInit {
-  loadedLeader: Projektleiter = {
+  loadedLeader: Projectleader = {
     id: 0,
     user_name: '',
     email: '',
@@ -23,7 +23,7 @@ export class LeaderPagePage implements OnInit {
     project_id: 0
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ParticipantsService } from 'src/app/participants.service';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { StudentsService } from 'src/app/students.service';
+import { Student } from 'src/assets/models/Student.model';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/alert.service';
@@ -13,9 +13,9 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./exchange-request.page.scss'],
 })
 export class ExchangeRequestPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -50,7 +50,7 @@ export class ExchangeRequestPage implements OnInit {
 
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private exchangesService: ExchangesService,
               private alertCtrl: AlertController,
               private alert: AlertService,
@@ -66,24 +66,24 @@ export class ExchangeRequestPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
     this.getStudent();
   }
 
   getStudent() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
     });
   }
 
   submit() {
-    this.participantsService.getParticipantID(this.exchangePartner).subscribe(data => {
+    this.studentsService.getStudentID(this.exchangePartner).subscribe(data => {
       // tslint:disable-next-line:disable-next-line: triple-equals
-      if (data.id != 0 && this.loadedUser.exchange_id == 0) {
+      if (data.id != 0 && this.loadedStudent.exchange_id == 0) {
         this.exchangesService.createExchange(data.id).subscribe(response => {
           this.alert.alert(response.message);
-          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
           this.exchangesService.update.emit();
         }, error => {
           this.alert.error('Erstellung des Tausches fehlgeschlagen!', error.error);
@@ -115,7 +115,7 @@ export class ExchangeRequestPage implements OnInit {
         handler: () => {
           this.exchangesService.deleteSelfExchange().subscribe(data => {
             this.alert.alert(data.message);
-            this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+            this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
             this.exchangesService.update.emit();
           }, error => {
             this.alert.error('Löschung der Tauschanfrage fehlgeschlagen!', error.error);

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { ProjectsService } from 'src/app/projects.service';
-import { Projekt } from 'src/assets/models/Projekt.model';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { Project } from 'src/assets/models/Project.model';
+import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { ScheduleService } from 'src/app/schedule.service';
 import { formatDate } from '@angular/common';
 
@@ -15,9 +15,9 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./project-administration.page.scss'],
 })
 export class ProjectAdministrationPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -38,7 +38,7 @@ export class ProjectAdministrationPage implements OnInit {
     role: 2
   };
 
-  leadedProject: Projekt = {
+  leadedProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -74,7 +74,7 @@ export class ProjectAdministrationPage implements OnInit {
     assistant_student_leaders: []
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -98,7 +98,7 @@ export class ProjectAdministrationPage implements OnInit {
               private router: Router,
               private projectsService: ProjectsService,
               private scheduleService: ScheduleService,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private config: ConfigService) { }
 
   ngOnInit() {
@@ -115,7 +115,7 @@ export class ProjectAdministrationPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
 
     this.scheduleService.getSchedule().subscribe(data => {
@@ -133,8 +133,8 @@ export class ProjectAdministrationPage implements OnInit {
   }
 
   getStudent() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
     });
   }
 

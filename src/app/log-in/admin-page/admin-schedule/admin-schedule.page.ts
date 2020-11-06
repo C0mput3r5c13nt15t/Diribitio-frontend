@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { AdminsService } from 'src/app/admins.service';
 import { ConfigService } from 'src/app/config.service';
 import { formatDate } from '@angular/common';
@@ -15,7 +15,7 @@ import { AlertService } from 'src/app/alert.service';
 export class AdminSchedulePage implements OnInit {
   adminUrl: string;
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

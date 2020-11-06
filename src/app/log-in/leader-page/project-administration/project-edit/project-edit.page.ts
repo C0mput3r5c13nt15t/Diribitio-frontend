@@ -1,12 +1,12 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Projektleiter } from 'src/assets/models/Projektleiter';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Projectleader } from 'src/assets/models/Projectleader';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 
 @Component({
   selector: 'app-project-edit',
@@ -16,7 +16,7 @@ import { Zeitplan } from 'src/assets/models/Zeitplan';
 export class ProjectEditPage implements OnInit {
   leaderUrl: string;
 
-  loadedLeader: Projektleiter = {
+  loadedLeader: Projectleader = {
     id: 0,
     user_name: '',
     email: '',
@@ -24,7 +24,7 @@ export class ProjectEditPage implements OnInit {
     project_id: 0,
   };
 
-  editProject: Projekt = {
+  editProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -58,7 +58,7 @@ export class ProjectEditPage implements OnInit {
     participants: []
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/projects.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { AlertController } from '@ionic/angular';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -15,8 +15,8 @@ export class RegistrationPage implements OnInit {
   loadedProjects = [];
   possibleProjects = [];
   students;
-  participantUrl;
-  loadedUser: Schüler = {
+  studentUrl: string;
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -56,7 +56,7 @@ export class RegistrationPage implements OnInit {
   eventName = this.config.app_config.event_name;
 
   constructor(private projectsService: ProjectsService,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private activatedRoute: ActivatedRoute,
               private router: Router,
               private alertCtrl: AlertController,
@@ -70,12 +70,12 @@ export class RegistrationPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
     this.getProjects();
     this.projectsService.update.subscribe(() => this.getProjects());
     this.getUser();
-    this.participantsService.update.subscribe(() => this.getUser());
+    this.studentsService.update.subscribe(() => this.getUser());
   }
 
   ionViewWillEnter() {
@@ -83,14 +83,14 @@ export class RegistrationPage implements OnInit {
   }
 
   getUser() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
       this.lowestGrade = +data.data.grade;
       this.highestGrade = +data.data.grade;
 
       this.friendsList = [];
 
-      this.participantsService.getFriends().subscribe(friendData => {
+      this.studentsService.getFriends().subscribe(friendData => {
         this.friendsList = friendData.data;
 
         this.friendsList.forEach((friend) => {
@@ -108,8 +108,8 @@ export class RegistrationPage implements OnInit {
   }
 
   userChanges() {
-    this.lowestGrade = +this.loadedUser.grade;
-    this.highestGrade = +this.loadedUser.grade;
+    this.lowestGrade = +this.loadedStudent.grade;
+    this.highestGrade = +this.loadedStudent.grade;
 
     this.friendsList.forEach((friend) => {
       if (+friend.grade <= this.lowestGrade) {
@@ -130,10 +130,9 @@ export class RegistrationPage implements OnInit {
   }
 
   validateProject(project) {
-    // tslint:disable-next-line: max-line-length
     if (this.lowestGrade >= +project.min_grade) {
       if (+project.max_grade >= this.highestGrade) {
-        if (project.id !== this.loadedUser.project_id) {
+        if (project.id !== this.loadedStudent.project_id) {
           if (project.authorized) {
             return true;
           } else {
@@ -162,7 +161,7 @@ export class RegistrationPage implements OnInit {
   }
 
   appendFriendFunction() {
-    this.participantsService.getParticipantID(this.appendFriend).subscribe(data => {
+    this.studentsService.getStudentID(this.appendFriend).subscribe(data => {
       // tslint:disable-next-line: triple-equals
       if (data.id != 0) {
         this.appendFriend.id = data.id;
@@ -199,8 +198,8 @@ export class RegistrationPage implements OnInit {
   removeFriendFunction(friend) {
     this.friendsList.splice(this.friendsList.indexOf(friend), 1);
 
-    this.lowestGrade = +this.loadedUser.grade;
-    this.highestGrade = +this.loadedUser.grade;
+    this.lowestGrade = +this.loadedStudent.grade;
+    this.highestGrade = +this.loadedStudent.grade;
 
     this.friendsList.forEach(stillfriend => {
       if (+stillfriend.grade < this.lowestGrade) {
@@ -217,33 +216,33 @@ export class RegistrationPage implements OnInit {
 
   registrate() {
     // tslint:disable-next-line: max-line-length tslint:disable-next-line: triple-equals
-    if (this.loadedUser.first_wish != this.loadedUser.project_id && this.loadedUser.second_wish != this.loadedUser.project_id && this.loadedUser.third_wish != this.loadedUser.project_id) {
+    if (this.loadedStudent.first_wish != this.loadedStudent.project_id && this.loadedStudent.second_wish != this.loadedStudent.project_id && this.loadedStudent.third_wish != this.loadedStudent.project_id) {
       // tslint:disable-next-line: max-line-length
-      if (this.loadedUser.first_wish !== this.loadedUser.second_wish && this.loadedUser.first_wish !== this.loadedUser.third_wish && this.loadedUser.second_wish !== this.loadedUser.third_wish) {
+      if (this.loadedStudent.first_wish !== this.loadedStudent.second_wish && this.loadedStudent.first_wish !== this.loadedStudent.third_wish && this.loadedStudent.second_wish !== this.loadedStudent.third_wish) {
         if (this.friendsList.length === 3) {
-          this.loadedUser.first_friend = this.friendsList[0].id;
-          this.loadedUser.second_friend = this.friendsList[1].id;
-          this.loadedUser.third_friend = this.friendsList[2].id;
-          this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+          this.loadedStudent.first_friend = this.friendsList[0].id;
+          this.loadedStudent.second_friend = this.friendsList[1].id;
+          this.loadedStudent.third_friend = this.friendsList[2].id;
+          this.studentsService.putSelfStudent(this.loadedStudent);
+          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
         } else if (this.friendsList.length === 2) {
-          this.loadedUser.first_friend = this.friendsList[0].id;
-          this.loadedUser.second_friend = this.friendsList[1].id;
-          this.loadedUser.third_friend = 0;
-          this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+          this.loadedStudent.first_friend = this.friendsList[0].id;
+          this.loadedStudent.second_friend = this.friendsList[1].id;
+          this.loadedStudent.third_friend = 0;
+          this.studentsService.putSelfStudent(this.loadedStudent);
+          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
         } else if (this.friendsList.length === 1) {
-          this.loadedUser.first_friend = this.friendsList[0].id;
-          this.loadedUser.second_friend = 0;
-          this.loadedUser.third_friend = 0;
-          this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+          this.loadedStudent.first_friend = this.friendsList[0].id;
+          this.loadedStudent.second_friend = 0;
+          this.loadedStudent.third_friend = 0;
+          this.studentsService.putSelfStudent(this.loadedStudent);
+          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
         } else {
-          this.loadedUser.first_friend = 0;
-          this.loadedUser.second_friend = 0;
-          this.loadedUser.third_friend = 0;
-          this.participantsService.putSelfParticipant(this.loadedUser);
-          this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
+          this.loadedStudent.first_friend = 0;
+          this.loadedStudent.second_friend = 0;
+          this.loadedStudent.third_friend = 0;
+          this.studentsService.putSelfStudent(this.loadedStudent);
+          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
         }
       } else {
         this.alertCtrl.create({

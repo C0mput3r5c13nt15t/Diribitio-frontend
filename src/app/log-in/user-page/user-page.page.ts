@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { DatePipe } from '@angular/common';
 import {formatDate} from '@angular/common';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { Schedule } from 'src/assets/models/Schedule.model';
+import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { ProjectsService } from 'src/app/projects.service';
@@ -18,7 +18,7 @@ import { AlertService } from 'src/app/alert.service';
   providers: [DatePipe]
 })
 export class UserPagePage implements OnInit {
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -39,7 +39,7 @@ export class UserPagePage implements OnInit {
     role: 1
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -64,7 +64,7 @@ export class UserPagePage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private exchangesService: ExchangesService,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private projectsService: ProjectsService,
               private scheduleService: ScheduleService,
               private config: ConfigService,
@@ -87,20 +87,20 @@ export class UserPagePage implements OnInit {
     });
 
     this.getStudent();
-    this.participantsService.update.subscribe(() => this.getStudent());
+    this.studentsService.update.subscribe(() => this.getStudent());
     this.projectsService.update.subscribe(() => this.getStudent());
   }
 
   getStudent() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
-      this.loadedUser.exchange_requests = [];
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
+      this.loadedStudent.exchange_requests = [];
       if (this.currentDate > this.schedule.exchange && this.currentDate <= this.schedule.projects) {
         this.exchangesService.getAllExchangesForParticipant().subscribe(requestData => {
-          this.loadedUser.exchange_requests = requestData.data;
+          this.loadedStudent.exchange_requests = requestData.data;
         });
       }
-      if (this.loadedUser.email_verified_at == null) {
+      if (this.loadedStudent.email_verified_at == null) {
         this.buttonPressed = false;
       }
     });
@@ -114,11 +114,11 @@ export class UserPagePage implements OnInit {
   }
 
   logout() {
-    this.participantsService.logOutParticipant();
+    this.studentsService.logOutStudent();
   }
 
   sendVerificationEmail() {
-    this.participantsService.sendAuthentificationEmailSubscribe().subscribe(data => {
+    this.studentsService.sendAuthentificationEmailSubscribe().subscribe(data => {
       this.alert.alert(data.message);
       this.buttonPressed = true;
     }, error => {

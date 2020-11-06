@@ -1,11 +1,11 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { ParticipantsService } from 'src/app/participants.service';
-import { Schüler } from 'src/assets/models/Schüler.model';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { StudentsService } from 'src/app/students.service';
+import { Student } from 'src/assets/models/Student.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 
@@ -15,9 +15,9 @@ import { ScheduleService } from 'src/app/schedule.service';
   styleUrls: ['./project-edit.page.scss'],
 })
 export class ProjectEditPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -38,7 +38,7 @@ export class ProjectEditPage implements OnInit {
     role: 2
   };
 
-  editProject: Projekt = {
+  editProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -72,7 +72,7 @@ export class ProjectEditPage implements OnInit {
     participants: []
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -93,7 +93,7 @@ export class ProjectEditPage implements OnInit {
               private router: Router,
               private projectsService: ProjectsService,
               private scheduleService: ScheduleService,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private config: ConfigService ) { }
 
   ngOnInit() {
@@ -104,7 +104,7 @@ export class ProjectEditPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
 
     this.scheduleService.getSchedule().subscribe(data => {
@@ -122,8 +122,8 @@ export class ProjectEditPage implements OnInit {
   }
 
   getStudent() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
     });
   }
 
@@ -137,9 +137,9 @@ export class ProjectEditPage implements OnInit {
 
   submit() {
     if (this.currentDate > this.schedule.control && this.currentDate <= this.schedule.registration) {
-      this.projectsService.touchUpProject('students', this.editProject, this.participantUrl);
+      this.projectsService.touchUpProject('students', this.editProject, this.studentUrl);
     } else {
-      this.projectsService.putProject('students', this.editProject, this.participantUrl);
+      this.projectsService.putProject('students', this.editProject, this.studentUrl);
     }
   }
 

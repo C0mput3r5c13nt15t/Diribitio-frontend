@@ -21,8 +21,11 @@ export class AdminsService {
   backendUrl = this.config.backend_config.url;
   eventName = this.config.app_config.event_name;
 
-  // Request having to do with the Admin itself
-
+  /**
+   * @description Creates a new admin account
+   * @param signUpData Contains the credentials for the account creation
+   * @param form Contains the form to be resetted after the creation
+   */
   signUpAdmin(signUpData, form) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -43,6 +46,9 @@ export class AdminsService {
     });
   }
 
+  /**
+   * @description Sends the authentification email to the admin associated with the provided token
+   */
   sendAuthentificationEmail() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -56,6 +62,10 @@ export class AdminsService {
     });
   }
 
+  /**
+   * @description Sends the authentification email to the admin associated with the provided token (same as before)
+   * @returns RequestObservable
+   */
   sendAuthentificationEmailSubscribe() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -65,6 +75,11 @@ export class AdminsService {
     return this.http.post<Response>(this.backendUrl + 'admins/email/resend', null, options);
   }
 
+  /**
+   * @description Logs in as admin with the given credentials
+   * @param loginData Contains the credentials to be used (email and password)
+   * @returns RequestObservable
+   */
   logInAdmin(loginData) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -73,13 +88,16 @@ export class AdminsService {
     return this.http.post<Response>(this.backendUrl + 'admins/login', loginData, options);
   }
 
+  /**
+   * @description Logs out the admin associated with the provided token
+   */
   logOutAdmin() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt
     });
     const options = { headers };
-    return this.http.post<Response>(this.backendUrl + 'admins/logout', null, options).subscribe(data => {
+    this.http.post<Response>(this.backendUrl + 'admins/logout', null, options).subscribe(data => {
       this.alert.alert(data.message);
       this.auth.setLoggedIn(false);
       this.router.navigate([this.eventName + '/Anmeldung']);
@@ -88,6 +106,10 @@ export class AdminsService {
     });
   }
 
+  /**
+   * @description Gets the admin associated with the provided token
+   * @returns RequestObservable
+   */
   getSelfAdmin() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -97,49 +119,10 @@ export class AdminsService {
     return this.http.get<Response>(this.backendUrl + 'admins/self', options);
   }
 
-  getAdmin(adminID) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + this.auth.jwt,
-    });
-    const options = { headers };
-    return this.http.get<Response>(this.backendUrl + 'admins/' + adminID, options);
-  }
-
-  // Request having to do with the signUp Tokens for Students
-
-  getAllTokens() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + this.auth.jwt,
-    });
-    const options = { headers };
-    return this.http.get<Response>(this.backendUrl + 'sign_up_tokens', options);
-  }
-
-  createTokens(count) {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + this.auth.jwt,
-    });
-    const options = { headers };
-    const sendData = {
-      count
-    };
-    return this.http.post<Response>(this.backendUrl + 'sign_up_tokens', sendData, options);
-  }
-
-  deleteAllTokens() {
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Bearer ' + this.auth.jwt,
-    });
-    const options = { headers };
-    return this.http.delete<Response>(this.backendUrl + 'sign_up_tokens', options);
-  }
-
-  // Request having to do with the SignUpEmails
-
+  /**
+   * @description Gets all emails that are allowed for the creation of admin accounts
+   * @returns RequestObservable
+   */
   getAllSignUpEmails() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -149,6 +132,11 @@ export class AdminsService {
     return this.http.get<Response>(this.backendUrl + 'sign_up_emails', options);
   }
 
+  /**
+   * @description Authorizes a new email to be used for the creation of an admin account
+   * @param emailData Contains the email to be authorized
+   * @returns RequestObservable
+   */
   createSignUpEmail(emailData) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -158,13 +146,17 @@ export class AdminsService {
     return this.http.post<Response>(this.backendUrl + 'sign_up_emails', emailData, options);
   }
 
+  /**
+   * @description Forbids the furter use of an email that was previously allowed for the creation of an admin account
+   * @param emailID Contains the id of the email to be forbidden
+   */
   deleteSignUpEmail(emailID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
-    return this.http.delete<Response>(this.backendUrl + 'sign_up_emails/' + emailID, options).subscribe(data => {
+    this.http.delete<Response>(this.backendUrl + 'sign_up_emails/' + emailID, options).subscribe(data => {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
@@ -172,8 +164,10 @@ export class AdminsService {
     });
   }
 
-  // Request having to do with the Sorting of the Studnets
-
+  /**
+   * @description Creates a sorting proposal
+   * @returns RequestObservable
+   */
   createSortingProposal() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -184,6 +178,10 @@ export class AdminsService {
     return this.http.post<Response>(this.backendUrl + 'admins/create_sorting_proposal', null, options);
   }
 
+  /**
+   * @description Gets the current sorting proposal
+   * @returns RequestObservable
+   */
   requestSortingProposal() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -194,6 +192,10 @@ export class AdminsService {
     return this.http.get<Response>(this.backendUrl + 'admins/request_sorting_proposal', options);
   }
 
+  /**
+   * @description Updates the current sorting proposal
+   * @returns RequestObservable
+   */
   editSortingProposal(sortingProposal) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -208,6 +210,10 @@ export class AdminsService {
     });
   }
 
+  /**
+   * @description Applies the current sorting proposal to the actual database
+   * @returns MessageString
+   */
   applySortingProposal() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

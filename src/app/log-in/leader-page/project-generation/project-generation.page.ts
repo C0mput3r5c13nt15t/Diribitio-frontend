@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, Directive, ElementRef } from '@angular/co
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertService } from 'src/app/alert.service';
-import { Projektleiter } from 'src/assets/models/Projektleiter';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Projectleader } from 'src/assets/models/Projectleader';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { ConfigService } from 'src/app/config.service';
 export class ProjectGenerationPage implements OnInit {
   leaderUrl: string;
 
-  loadedLeader: Projektleiter = {
+  loadedLeader: Projectleader = {
     id: 0,
     user_name: '',
     email: '',
@@ -22,7 +22,7 @@ export class ProjectGenerationPage implements OnInit {
     project_id: 0,
   };
 
-  newProject: Projekt = {
+  newProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,

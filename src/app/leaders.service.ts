@@ -22,6 +22,11 @@ export class LeadersService {
   projectNoun = this.config.app_config.project_noun;
   eventName = this.config.app_config.event_name;
 
+  /**
+   * @description Creates a new leader account
+   * @param signUpData Contains the credentials for the account creation
+   * @param form Contains the form to be resetted after the creation
+   */
   signUpLeader(signUpData, form) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -42,6 +47,9 @@ export class LeadersService {
     });
   }
 
+  /**
+   * @description Sends the authentification email to the leader associated with the provided token
+   */
   sendAuthentificationEmail() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -55,6 +63,10 @@ export class LeadersService {
     });
   }
 
+  /**
+   * @description Sends the authentification email to the leader associated with the provided token (same as before)
+   * @returns RequestObservable
+   */
   sendAuthentificationEmailSubscribe() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -64,6 +76,11 @@ export class LeadersService {
     return this.http.post<Response>(this.backendUrl + 'leaders/email/resend', null, options);
   }
 
+  /**
+   * @description Logs in as leader with the given credentials
+   * @param loginData Contains the credentials to be used (email and password)
+   * @returns RequestObservable
+   */
   logInLeader(loginData) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -72,6 +89,9 @@ export class LeadersService {
     return this.http.post<Response>(this.backendUrl + 'leaders/login', loginData, options);
   }
 
+  /**
+   * @description Logs out the leader associated with the provided token
+   */
   logOutLeader() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -87,16 +107,23 @@ export class LeadersService {
     });
   }
 
+  /**
+   * @description Gets the leader associated with the provided token
+   * @returns RequestObservable
+   */
   getSelfLeader() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
-    // tslint:disable-next-line: max-line-length
     return this.http.get<Response>(this.backendUrl + 'leaders/self', options);
   }
 
+  /**
+   * @description Gets all leaders
+   * @returns RequestObservable
+   */
   getAllLeaders() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -106,14 +133,17 @@ export class LeadersService {
     return this.http.get<Response>(this.backendUrl + 'admins/index_leaders', options);
   }
 
-  deleteLeader(LeaderID) {
+  /**
+   * @description Deletes the leader with the given id
+   * @param leaderID Contains the id of the leader to be deleted
+   */
+  deleteLeader(leaderID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
-    // tslint:disable-next-line: max-line-length
-    this.http.delete<Response>(this.backendUrl + 'admins/destroy_leader/' + LeaderID, options).subscribe(data => {
+    this.http.delete<Response>(this.backendUrl + 'admins/destroy_leader/' + leaderID, options).subscribe(data => {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {

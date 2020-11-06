@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
-import { Tausch } from 'src/assets/models/Tausch.model';
+import { Exchange } from 'src/assets/models/Exchange.model';
 
 @Component({
   selector: 'app-admin-exchanges',
@@ -13,7 +13,7 @@ export class AdminExchangesPage implements OnInit {
   adminUrl: string;
 
   exchanges = [];
-  loadedExchanges: Tausch[];
+  loadedExchanges: Exchange[];
 
   text1: string;
   text2: string;

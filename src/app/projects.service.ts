@@ -23,6 +23,10 @@ export class ProjectsService {
   projectNoun = this.config.app_config.project_noun;
   eventName = this.config.app_config.event_name;
 
+  /**
+   * @description Gets all projects
+   * @returns RequestObservable
+   */
   getAllProjects() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -31,6 +35,11 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + 'projects', options);
   }
 
+  /**
+   * @description Gets the project with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
   getProject(projectID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -39,6 +48,11 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + 'projects/' + projectID, options);
   }
 
+  /**
+   * @description Gets some of the project data with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
   getLittleProject(projectID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -47,6 +61,11 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + 'projects/show_little/' + projectID, options);
   }
 
+  /**
+   * @description Gets the project data available to an admin with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
   getProjectAdmin(projectID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -56,6 +75,10 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + 'admins/project/' + projectID, options);
   }
 
+  /**
+   * @description Gets the project of the student associated with the provided token
+   * @returns RequestObservable
+   */
   getSelfProject() {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -65,6 +88,11 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + 'students/project', options);
   }
 
+  /**
+   * @description Gets the leaded project of the student or leader associated with the provided token
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @returns RequestObservable
+   */
   getSelfLeadedProject(baseUrl= 'students') {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -74,6 +102,13 @@ export class ProjectsService {
     return this.http.get<Response>(this.backendUrl + baseUrl + '/leaded_project', options);
   }
 
+  /**
+   * @description Creates a new project
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project
+   * @param image Contains the image of the new project
+   * @returns RequestObservable
+   */
   createProject(baseUrl= 'students', projectData, image= null) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.auth.jwt,
@@ -98,6 +133,11 @@ export class ProjectsService {
     return this.http.post<Response>(this.backendUrl + baseUrl + '/store_project', formData, options);
   }
 
+  /**
+   * @description Updates the authorization of the project with the given id
+   * @param projectID Contains the id of the project to be un-/auhorized
+   * @param authorized Contains the new value for authorized
+   */
   toogleAuthorizedProject(projectID, authorized) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -117,6 +157,11 @@ export class ProjectsService {
     });
   }
 
+  /**
+   * @description Updates the editability of the project with the given id
+   * @param projectID Contains the id of the project to be un-/editable
+   * @param editable Contains the new value for editable
+   */
   toogleEditableProject(projectID, editable) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
@@ -126,7 +171,7 @@ export class ProjectsService {
     const sendData = {
       editable
     };
-    return this.http.put<Response>(this.backendUrl + 'admins/toogle_editable/' + projectID, sendData, options).subscribe(data => {
+    this.http.put<Response>(this.backendUrl + 'admins/toogle_editable/' + projectID, sendData, options).subscribe(data => {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {
@@ -134,6 +179,12 @@ export class ProjectsService {
     });
   }
 
+  /**
+   * @description Updates the project of the student/leader associated with the provided token
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project data
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
+   */
   putProject(baseUrl= 'students', projectData, backUrl) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.auth.jwt,
@@ -155,6 +206,13 @@ export class ProjectsService {
     });
   }
 
+  /**
+   * @description Updates the project of the student/leader associated with the provided token even after the actual
+   *              deadline if ediatble allows it
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project data
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
+   */
   touchUpProject(baseUrl= 'students', projectData, backUrl) {
     const headers = new HttpHeaders({
       Authorization: 'Bearer ' + this.auth.jwt,
@@ -176,6 +234,10 @@ export class ProjectsService {
     });
   }
 
+  /**
+   * @description Deletes the project with the given id
+   * @param projectID Contains the id of the project to be deleted
+   */
   deleteProject(projectID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',

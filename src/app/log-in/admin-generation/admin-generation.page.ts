@@ -10,8 +10,6 @@ import { AdminsService } from 'src/app/admins.service';
   styleUrls: ['./admin-generation.page.scss'],
 })
 export class AdminGenerationPage implements OnInit {
-  ionicForm;
-
   signUpData: any = {
     user_name: '',
     email: '',

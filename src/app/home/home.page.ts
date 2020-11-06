@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from '../config.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from '../schedule.service';
 
@@ -10,7 +10,7 @@ import { ScheduleService } from '../schedule.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

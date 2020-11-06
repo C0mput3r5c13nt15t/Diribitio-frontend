@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from '../../../projects.service';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from '../../../config.service';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from '../../../schedule.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,10 +13,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./projects.page.scss'],
 })
 export class ProjectsPage implements OnInit {
-  participantUrl;
-  projects: Projekt[];
+  studentUrl: string;
+  projects: Project[];
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -32,7 +32,7 @@ export class ProjectsPage implements OnInit {
   projectsNoun = this.config.app_config.projects_noun;
   eventName = this.config.app_config.event_name;
 
-  text = '';
+  text: string;
 
   constructor(private projectsService: ProjectsService,
               private config: ConfigService,
@@ -50,7 +50,7 @@ export class ProjectsPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
 
     this.scheduleService.getSchedule().subscribe(data => {

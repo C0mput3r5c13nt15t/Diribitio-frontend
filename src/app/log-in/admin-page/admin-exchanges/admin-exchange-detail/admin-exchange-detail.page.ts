@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Tausch } from 'src/assets/models/Tausch.model';
+import { Exchange } from 'src/assets/models/Exchange.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -14,7 +14,7 @@ import { ConfigService } from 'src/app/config.service';
 export class AdminExchangeDetailPage implements OnInit {
   adminUrl: string;
 
-  loadedExchange: Tausch = {
+  loadedExchange: Exchange = {
     id: 0,
     sender_id: 0,
     receiver_id: 0,

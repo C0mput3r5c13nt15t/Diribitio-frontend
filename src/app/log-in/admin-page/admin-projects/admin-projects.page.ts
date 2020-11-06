@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectsService } from 'src/app/projects.service';
 import { ActivatedRoute } from '@angular/router';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { ConfigService } from 'src/app/config.service';
 export class AdminProjectsPage implements OnInit {
   adminUrl: string;
 
-  projects: Projekt[];
+  projects: Project[];
 
   text: string;
 

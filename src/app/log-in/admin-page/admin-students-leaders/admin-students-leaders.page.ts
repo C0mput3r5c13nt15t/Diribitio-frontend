@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { LeadersService } from 'src/app/leaders.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { AdminsService } from 'src/app/admins.service';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ScheduleService } from 'src/app/schedule.service';
 import { Time } from '@angular/common';
 import { formatDate } from '@angular/common';
@@ -54,17 +54,17 @@ export interface ModifiedProjektleiter {
 export class AdminStudentsLeadersPage implements OnInit {
   adminUrl: string;
 
-  loadedProjects: Projekt[] = [];
+  loadedProjects: Project[] = [];
   loadedParticipantsNames: any[] = [];
 
-  sortedProjects: Projekt[] = [];
+  sortedProjects: Project[] = [];
   searchStudents: ModifiedSchüler[];
   loadedStudents: ModifiedSchüler[] = [];
   loadedLeaders: ModifiedProjektleiter[] = [];
 
   sorted = false;
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,
@@ -90,7 +90,7 @@ export class AdminStudentsLeadersPage implements OnInit {
   projectsNoun = this.config.app_config.projects_noun;
   eventName = this.config.app_config.event_name;
 
-  constructor(private participantsService: ParticipantsService,
+  constructor(private studentsService: StudentsService,
               private scheduleService: ScheduleService,
               private leadersService: LeadersService,
               private projectsService: ProjectsService,
@@ -118,13 +118,13 @@ export class AdminStudentsLeadersPage implements OnInit {
     });
 
     this.getProjects();
-    this.getParticipantsNames();
+    this.getAllStudentNames();
 
     if (this.currentDate > this.schedule.sort_students && this.currentDate <= this.schedule.exchange) {
       this.requestSortingProposal();
     }
 
-    this.participantsService.update.subscribe(() => this.getStudents());
+    this.studentsService.update.subscribe(() => this.getStudents());
     this.leadersService.update.subscribe(() => this.getLeaders());
     this.projectsService.update.subscribe(() => this.getProjects());
   }
@@ -145,7 +145,7 @@ export class AdminStudentsLeadersPage implements OnInit {
       this.searchStudents = null;
       return;
     }
-    this.participantsService.getAllSearchedStudents(this.searchValue).subscribe(data => {
+    this.studentsService.getAllSearchedStudents(this.searchValue).subscribe(data => {
       this.searchStudents = [];
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
@@ -202,7 +202,7 @@ export class AdminStudentsLeadersPage implements OnInit {
   refresh() {
     this.page = 1;
     this.getProjects();
-    this.getParticipantsNames();
+    this.getAllStudentNames();
     this.getStudents();
     this.getLeaders();
   }
@@ -215,15 +215,15 @@ export class AdminStudentsLeadersPage implements OnInit {
     });
   }
 
-  getParticipantsNames() {
-    this.participantsService.getAllParticipantNames().subscribe(data => {
+  getAllStudentNames() {
+    this.studentsService.getAllStudentNames().subscribe(data => {
       this.loadedParticipantsNames = data.data;
     });
   }
 
   getStudents() {
     this.loadedStudents = [];
-    this.participantsService.getAllStudents(this.page).subscribe(data => {
+    this.studentsService.getAllStudents(this.page).subscribe(data => {
       this.lastPage = data.meta.last_page;
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
@@ -284,7 +284,7 @@ export class AdminStudentsLeadersPage implements OnInit {
   getMoreStudents() {
     this.alert.loading(2000);
     this.page += 1;
-    this.participantsService.getAllStudents(this.page).subscribe(data => {
+    this.studentsService.getAllStudents(this.page).subscribe(data => {
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
           id: 0,

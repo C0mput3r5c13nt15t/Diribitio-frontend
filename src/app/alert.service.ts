@@ -32,6 +32,10 @@ export class AlertService {
   alerts = [];
   id = 1;
 
+  /**
+   * @description Creates an alert for the desktop layout
+   * @param text Contains the text to be displayed by the alert
+   */
   desktop_alert(text) {
     if (!text) {
       text = 'Die Aktion wurde Erfolgreich durchgeführt.';
@@ -46,6 +50,11 @@ export class AlertService {
     this.update.emit();
   }
 
+  /**
+   * @description Creates an error alert for the desktop layout
+   * @param text Contains the text to be displayed by the error alert
+   * @param output Contains the output of the request
+   */
   desktop_error(text, output= '') {
     if (output == null) {
       output = '';
@@ -60,6 +69,10 @@ export class AlertService {
     this.update.emit();
   }
 
+  /**
+   * @description Delets the alert with the given id for the desktop layout
+   * @param alertID Contains the id of the alert to be deleted
+   */
   delete_alert(alertID) {
     this.alerts = this.alerts.filter(alert => {
       return alert.id !== alertID;
@@ -67,6 +80,10 @@ export class AlertService {
     this.update.emit();
   }
 
+  /**
+   * @description Delets the error alert with the given id for the desktop layout
+   * @param alertID Contains the id of the error alert to be deleted
+   */
   delete_error(errorID) {
     this.errors = this.errors.filter(error => {
       return error.id !== errorID;
@@ -74,6 +91,10 @@ export class AlertService {
     this.update.emit();
   }
 
+  /**
+   * @description Creates an alert for either the desktop or the mobile layout
+   * @param text Contains the text to be displayed by the alert
+   */
   alert(text) {
     if (this.isDesktop) {
       this.desktop_alert(text);
@@ -94,6 +115,11 @@ export class AlertService {
     }
   }
 
+  /**
+   * @description Creates an error alert for either the desktop or the mobile layout
+   * @param text Contains the text to be displayed by the error alert
+   * @param output Contains the output of the request
+   */
   error(text, output= '') {
     if (this.isDesktop) {
       this.desktop_error(text, output);
@@ -114,6 +140,10 @@ export class AlertService {
     }
   }
 
+  /**
+   * @description Creates an loading screen for a given amount of time
+   * @param time Contains the time the loading screen should appear
+   */
   async loading(time) {
     const loading = await this.loadingController.create({
       message: 'Bitte gedulden sie sich einen Augenblick...',
@@ -122,6 +152,11 @@ export class AlertService {
     await loading.present();
   }
 
+  /**
+   * @description Creates an waiting screen after a number of wrong login tries to prevent brute force attacks
+   * @param time Contains the time the waiting screen should appear
+   * @param tries Contains the number of times the user provided incorrect login credentials
+   */
   async wrongPassword(time, tries= 5) {
     const loading = await this.loadingController.create({
       message: 'Sie haben ' + tries.toString() + 'mal ein falsches Passwort oder einen falschen Benutzernamen angegeben!',
@@ -130,6 +165,9 @@ export class AlertService {
     await loading.present();
   }
 
+  /**
+   * @description Creates an alert that displays all the Terms of Use
+   */
   agreements() {
     this.alertCtrl.create({
       header: 'AGBs und Cookienutzung',

@@ -11,6 +11,10 @@ export class ScreensizeService {
 
   constructor() { }
 
+  /**
+   * @description Changes the page layout based on resize events
+   * @param size Contains the new size of the page
+   */
   onResize(size) {
     if (size < 570) {
       this.isDesktop.next(false);
@@ -19,6 +23,10 @@ export class ScreensizeService {
     }
   }
 
+  /**
+   * @description Gives back an observable that describes if the page should use the desktop or the moblie layout
+   * @returns Observable<boolean>
+   */
   isDesktopView(): Observable<boolean> {
     return this.isDesktop.asObservable().pipe(distinctUntilChanged());
   }

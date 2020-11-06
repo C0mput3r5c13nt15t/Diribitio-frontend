@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Schüler } from 'src/assets/models/Schüler.model';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Student } from 'src/assets/models/Student.model';
+import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -11,9 +11,9 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./project.page.scss'],
 })
 export class ProjectPage implements OnInit {
-  participantUrl: string;
+  studentUrl: string;
 
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -34,7 +34,7 @@ export class ProjectPage implements OnInit {
     role: 1
   };
 
-  chosenProject: Projekt = {
+  chosenProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,

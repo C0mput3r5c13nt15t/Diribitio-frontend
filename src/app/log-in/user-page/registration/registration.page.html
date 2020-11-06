@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ participantUrl }}"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ studentUrl }}"></ion-back-button>
     </ion-button>
     <ion-title>Anmeldung</ion-title>
   </ion-toolbar>
@@ -21,14 +21,14 @@
       <form #form="ngForm" name="ParticipantForm" (ngSubmit)="registrate()">
         <ion-list>
           <ion-item color="items">
-            <ion-input color="text" required [(ngModel)]="loadedUser.first_name" name="ParticipantFirstName" placeholder="Vorname" type="text"></ion-input>
+            <ion-input color="text" required [(ngModel)]="loadedStudent.first_name" name="ParticipantFirstName" placeholder="Vorname" type="text"></ion-input>
           </ion-item>
           <ion-item color="items">
-            <ion-input color="text" required [(ngModel)]="loadedUser.last_name" name="ParticipantLastName" placeholder="Nachname" type="text"></ion-input>
+            <ion-input color="text" required [(ngModel)]="loadedStudent.last_name" name="ParticipantLastName" placeholder="Nachname" type="text"></ion-input>
           </ion-item>
           <ion-item color="items">
             <ion-label color="text">Klassenstufe</ion-label>
-            <ion-select [selectedText]="loadedUser.grade" required name="ParticipantGrade" (ionChange)="userChanges()" [(ngModel)]="loadedUser.grade">
+            <ion-select [selectedText]="loadedStudent.grade" required name="ParticipantGrade" (ionChange)="userChanges()" [(ngModel)]="loadedStudent.grade">
               <ion-select-option value="5">5</ion-select-option>
               <ion-select-option value="6">6</ion-select-option>
               <ion-select-option value="7">7</ion-select-option>
@@ -39,7 +39,7 @@
             </ion-select>
           </ion-item>
           <ion-item color="items">
-            <ion-radio-group required name="ParticipantClass" [(ngModel)]="loadedUser.letter">
+            <ion-radio-group required name="ParticipantClass" [(ngModel)]="loadedStudent.letter">
               <ion-item color="items" lines="none">
                 <ion-label color="text">A </ion-label>
                 <ion-radio color="text" slot="start" value="a"></ion-radio>
@@ -60,7 +60,7 @@
           </ion-item>
         </ion-list>
 
-        <ion-card color="background" *ngIf="loadedUser.project_id == 0">
+        <ion-card color="background" *ngIf="loadedStudent.project_id == 0">
           <form #form="ngForm" name="ParticipantForm" (ngSubmit)="appendFriendFunction()">
             <ion-item color="items">
               <ion-input color="text" type="text" placeholder="Vorname" [(ngModel)]="appendFriend.first_name" name="ExchangeSecondFirstName"></ion-input>
@@ -108,7 +108,7 @@
 
         <ion-list>
           <ion-title color="background">Freunde</ion-title>
-          <ion-item color="items" *ngIf="loadedUser.project_id == 0 || loadedUser.project_id == null">
+          <ion-item color="items" *ngIf="loadedStudent.project_id == 0 || loadedStudent.project_id == null">
             <ion-list>
               <ion-item color="items" lines="none" *ngFor="let friend of friendsList">
                 {{ friend.first_name }} {{ friend.last_name }} {{ friend.grade }}{{ friend.letter }}
@@ -116,31 +116,31 @@
               </ion-item>
             </ion-list>
           </ion-item>
-          <ion-item color="items" *ngIf="loadedUser.project_id == 0 && loadedUser.role === 1 || loadedUser.project_id == null && loadedUser.role === 1">
+          <ion-item color="items" *ngIf="loadedStudent.project_id == 0 && loadedStudent.role === 1 || loadedStudent.project_id == null && loadedStudent.role === 1">
             <ion-label color="text">
               {{ definiteArticle }} {{ projectNoun }} muss die Klassenstufen {{ lowestGrade }} bis {{ highestGrade }} erlauben.
             </ion-label>
           </ion-item>
-          <ion-item color="background" *ngIf="loadedUser.project_id != 0 && loadedUser.project_id != null || loadedUser.role === 2">
+          <ion-item color="background" *ngIf="loadedStudent.project_id != 0 && loadedStudent.project_id != null || loadedStudent.role === 2">
             <ion-label color="danger">
               Du kanst leider keine Freunde auswählen, da du selbst {{ indefiniteArticle }} {{ projectNoun }} erstellt hast.
             </ion-label>
           </ion-item>
           <ion-item color="items">
             <ion-label color="text">1. Wunsch</ion-label>
-            <ion-select required placeholder="1. Wunsch" name="ParticipantFirstWish" [(ngModel)]="loadedUser.first_wish" okText="Auswählen" cancelText="Abbrechen" type="number"> 
+            <ion-select required placeholder="1. Wunsch" name="ParticipantFirstWish" [(ngModel)]="loadedStudent.first_wish" okText="Auswählen" cancelText="Abbrechen" type="number"> 
               <ion-select-option *ngFor="let project of possibleProjects" [value]="project.id">{{ project.title }} ({{ project.min_grade }}. - {{ project.max_grade }}.Klasse)</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item color="items">
             <ion-label color="text">2. Wunsch</ion-label>
-            <ion-select required placeholder="2. Wunsch" name="ParticipantSecondWish" [(ngModel)]="loadedUser.second_wish" okText="Auswählen" cancelText="Abbrechen" type="number">
+            <ion-select required placeholder="2. Wunsch" name="ParticipantSecondWish" [(ngModel)]="loadedStudent.second_wish" okText="Auswählen" cancelText="Abbrechen" type="number">
               <ion-select-option *ngFor="let project of possibleProjects" [value]="project.id">{{ project.title }} ({{ project.min_grade }}. - {{ project.max_grade }}.Klasse)</ion-select-option>
             </ion-select>
           </ion-item>
           <ion-item color="items">
             <ion-label color="text">3. Wunsch</ion-label>
-            <ion-select required placeholder="3. Wunsch" name="ParticipantThirdWish" [(ngModel)]="loadedUser.third_wish" okText="Auswählen" cancelText="Abbrechen">
+            <ion-select required placeholder="3. Wunsch" name="ParticipantThirdWish" [(ngModel)]="loadedStudent.third_wish" okText="Auswählen" cancelText="Abbrechen">
               <ion-select-option *ngFor="let project of possibleProjects" [value]="project.id">{{ project.title }} ({{ project.min_grade }}. - {{ project.max_grade }}.Klasse)</ion-select-option>
             </ion-select>
           </ion-item>

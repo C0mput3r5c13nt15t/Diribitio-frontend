@@ -2,9 +2,9 @@ import { Component, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Schüler } from 'src/assets/models/Schüler.model';
-import { Projekt } from 'src/assets/models/Projekt.model';
-import { Zeitplan } from 'src/assets/models/Zeitplan';
+import { Student } from 'src/assets/models/Student.model';
+import { Project } from 'src/assets/models/Project.model';
+import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 import { ConfigService } from 'src/app/config.service';
@@ -19,7 +19,7 @@ export class AdminProjectDetailPage implements OnInit {
 
   projectId;
 
-  loadedProject: Projekt = {
+  loadedProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -56,7 +56,7 @@ export class AdminProjectDetailPage implements OnInit {
     assistant_student_leaders: []
   };
 
-  loadedStudentLeader: Schüler = {
+  loadedStudentLeader: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -77,7 +77,7 @@ export class AdminProjectDetailPage implements OnInit {
     role: 2
   };
 
-  schedule: Zeitplan = {
+  schedule: Schedule = {
     id: 1,
     begin: null,
     control: null,

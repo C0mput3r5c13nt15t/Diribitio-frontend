@@ -1,7 +1,7 @@
 <ion-header>
     <ion-toolbar color="menu">
       <ion-button color="buttons" slot="start">
-        <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ participantUrl }}"></ion-back-button>
+        <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ studentUrl }}"></ion-back-button>
       </ion-button>
       <ion-title>{{ projectNoun }}</ion-title>
       <ion-button *ngIf=" !!+leadedProject.editable == false || currentDate <= this.schedule.control || currentDate > this.schedule.registration" [disabled]="currentDate <= this.schedule.begin || currentDate > this.schedule.control" color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">
@@ -19,7 +19,7 @@
         <ion-text color="danger">{{ studentLoadingProject }}</ion-text>
       </ion-card-content>
     </ion-card>
-    <ion-card color="background" *ngIf="loadedUser.role === 2" class="content">
+    <ion-card color="background" *ngIf="loadedStudent.role === 2" class="content">
       <ion-img *ngIf="leadedProject.image != '' && leadedProject.image != null" src='{{ imageUrl }}{{ leadedProject.image }}'></ion-img>
       <ion-card-header>
         <ion-card-title text-wrap>{{ leadedProject.title }}</ion-card-title>
@@ -77,11 +77,11 @@
           <ion-item-divider color="background">
             <ion-label color="text">Teilnehmer</ion-label>
           </ion-item-divider>
-          <div *ngIf="leadedProject.leader_type === 'App\\Student' && leadedProject.leader_id == loadedUser.id">
+          <div *ngIf="leadedProject.leader_type === 'App\\Student' && leadedProject.leader_id == loadedStudent.id">
             <ion-item color="items" lines="none">
               <ion-card color="background">
                 <ion-card-content>
-                  <ion-text color="text"><ion-icon name="star"></ion-icon> {{ loadedUser.first_name }} {{ loadedUser.last_name }} {{ loadedUser.grade }}{{ loadedUser.letter }} (eigener Account)</ion-text>
+                  <ion-text color="text"><ion-icon name="star"></ion-icon> {{ loadedStudent.first_name }} {{ loadedStudent.last_name }} {{ loadedStudent.grade }}{{ loadedStudent.letter }} (eigener Account)</ion-text>
                 </ion-card-content>
               </ion-card>
             </ion-item>
@@ -105,9 +105,9 @@
             </ion-item>
           </div>
           <div class="ion-padding">
-            <ion-button color="buttons" *ngIf="!!+leadedProject.editable == false || currentDate <= this.schedule.control || currentDate > this.schedule.registration" [disabled]="leadedProject.leader_id != loadedUser.id || currentDate <= this.schedule.begin || currentDate > this.schedule.control" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} bearbeiten</ion-button>
-            <ion-button color="buttons" *ngIf="leadedProject.leader_id == loadedUser.id && currentDate > this.schedule.control && currentDate <= this.schedule.registration && !!+leadedProject.editable == true" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} nachbessern</ion-button>
-            <ion-text *ngIf="leadedProject.leader_id != loadedUser.id" color="text">{{ studentNoProjectEditByAssistants }}</ion-text>
+            <ion-button color="buttons" *ngIf="!!+leadedProject.editable == false || currentDate <= this.schedule.control || currentDate > this.schedule.registration" [disabled]="leadedProject.leader_id != loadedStudent.id || currentDate <= this.schedule.begin || currentDate > this.schedule.control" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} bearbeiten</ion-button>
+            <ion-button color="buttons" *ngIf="leadedProject.leader_id == loadedStudent.id && currentDate > this.schedule.control && currentDate <= this.schedule.registration && !!+leadedProject.editable == true" expand="block" class="ion-no-margin"  color="buttons" routerLink='./{{ projectNoun }} bearbeiten' slot="end">{{ projectNoun }} nachbessern</ion-button>
+            <ion-text *ngIf="leadedProject.leader_id != loadedStudent.id" color="text">{{ studentNoProjectEditByAssistants }}</ion-text>
             <ion-text *ngIf="currentDate <= this.schedule.begin && !!+leadedProject.editable == false || currentDate > this.schedule.control && !!+leadedProject.editable == false" color="text">{{ studentWrongTime }}</ion-text>
           </div>
         </ion-item-group>

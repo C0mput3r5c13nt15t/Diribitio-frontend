@@ -11,7 +11,7 @@
   <ion-card color="background"class="content">
     <ion-card-header>
       <ion-item color="items" lines="none">
-        <ion-card-title><ion-label color="buttons">Wilkommen {{ loadedUser.user_name }}</ion-label></ion-card-title>
+        <ion-card-title><ion-label color="buttons">Wilkommen {{ loadedStudent.user_name }}</ion-label></ion-card-title>
         <ion-button (click)="refresh()" slot="end" color="buttons"><ion-icon name="refresh"></ion-icon></ion-button>
       </ion-item>
     </ion-card-header>
@@ -20,7 +20,7 @@
         {{ text }}
       </ion-label>
     </ion-card-content>
-    <ion-card-content *ngIf="loadedUser.email_verified_at == null && !buttonPressed">
+    <ion-card-content *ngIf="loadedStudent.email_verified_at == null && !buttonPressed">
       <ion-label color="text">
         Sie heaben ihre E-Mail noch nicht verifiziert. Bitte holen sie dies nach bevor sie fortfahren.
       </ion-label>
@@ -30,32 +30,32 @@
     </ion-card-content>
     <ion-card-content>
       <ion-list>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students" [routerLink]="['./Anmeldung']">
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students" [routerLink]="['./Anmeldung']">
           <ion-icon color="text" slot="start" name="log-in"></ion-icon>Anmeldedaten eingeben
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration" routerLink='./{{ projectsNoun }}'>
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration" routerLink='./{{ projectsNoun }}'>
           <ion-icon color="text" slot="start" name="apps"></ion-icon>Alle {{ projectsNoun }}
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 1 && loadedUser.project_id != 0 && currentDate > schedule.exchange && currentDate <= schedule.projects" [routerLink]="['./Tauschanfrage senden']">
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 1 && loadedStudent.project_id != 0 && currentDate > schedule.exchange && currentDate <= schedule.projects" [routerLink]="['./Tauschanfrage senden']">
           <ion-icon color="text" slot="start" name="send"></ion-icon>Tauschanfragen senden
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 1 && loadedUser.exchange_requests.length > 0 && loadedUser.project_id != 0 && loadedUser.exchange_id == 0 && currentDate > schedule.exchange && currentDate <= schedule.projects" [routerLink]="['./Tauschanfrage bestätigen']">
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 1 && loadedStudent.exchange_requests.length > 0 && loadedStudent.project_id != 0 && loadedStudent.exchange_id == 0 && currentDate > schedule.exchange && currentDate <= schedule.projects" [routerLink]="['./Tauschanfrage bestätigen']">
           <ion-icon color="text" slot="start" name="swap-horizontal"></ion-icon>Tauschanfrage bestätigen
-          <ion-badge color="buttons" slot="end">{{ loadedUser.exchange_requests.length }}</ion-badge>
+          <ion-badge color="buttons" slot="end">{{ loadedStudent.exchange_requests.length }}</ion-badge>
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 1 && loadedUser.project_id != 0" routerLink='./{{ projectNoun }}'>
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 1 && loadedStudent.project_id != 0" routerLink='./{{ projectNoun }}'>
           <ion-icon color="text" slot="start" name="people"></ion-icon>{{ projectNoun }} einsehen
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedUser.project_id == 0 && loadedUser.role === 1 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} erstellen'>
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedStudent.project_id == 0 && loadedStudent.role === 1 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} erstellen'>
           <ion-icon color="text" slot="start" name="create"></ion-icon>{{ projectNoun }} erstellen
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} verwalten'>
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 2 && loadedStudent.project_id != 0 && studentsCanCreateProjects" routerLink='./{{ projectNoun }} verwalten'>
           <ion-icon color="text" slot="start" name="construct"></ion-icon>{{ projectNoun }} verwalten
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Assistenten verwalten']">
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control && loadedStudent.role === 2 && loadedStudent.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Assistenten verwalten']">
           <ion-icon color="text" slot="start" name="construct"></ion-icon>Assistenten verwalten
         </ion-item>
-        <ion-item [disabled]="loadedUser.email_verified_at == null" color="items" *ngIf="loadedUser.role === 2 && loadedUser.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Nachricht senden']">
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 2 && loadedStudent.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Nachricht senden']">
           <ion-icon color="text" slot="start" name="send"></ion-icon>Nachricht senden
         </ion-item>
       </ion-list>

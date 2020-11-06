@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Projekt } from 'src/assets/models/Projekt.model';
-import { Schüler } from 'src/assets/models/Schüler.model';
+import { Project } from 'src/assets/models/Project.model';
+import { Student } from 'src/assets/models/Student.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { ParticipantsService } from 'src/app/participants.service';
+import { StudentsService } from 'src/app/students.service';
 import { ConfigService } from 'src/app/config.service';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/alert.service';
@@ -14,7 +14,7 @@ import { AlertService } from 'src/app/alert.service';
   styleUrls: ['./promote-students.page.scss'],
 })
 export class PromoteStudentsPage implements OnInit {
-  loadedUser: Schüler = {
+  loadedStudent: Student = {
     id: 0,
     user_name: '',
     email: '',
@@ -35,7 +35,7 @@ export class PromoteStudentsPage implements OnInit {
     role: 2
   };
 
-  leadedProject: Projekt = {
+  leadedProject: Project = {
     id: 0,
     authorized: 0,
     editable: 0,
@@ -79,7 +79,7 @@ export class PromoteStudentsPage implements OnInit {
     letter: '',
   };
 
-  participantUrl: string;
+  studentUrl: string;
 
   text: string;
 
@@ -90,7 +90,7 @@ export class PromoteStudentsPage implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
               private router: Router,
               private projectsService: ProjectsService,
-              private participantsService: ParticipantsService,
+              private studentsService: StudentsService,
               private config: ConfigService,
               private alertCtrl: AlertController,
               private alert: AlertService ) { }
@@ -105,12 +105,12 @@ export class PromoteStudentsPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
     this.getProject();
     this.getStudent();
 
-    this.participantsService.update.subscribe(() => this.getProject());
+    this.studentsService.update.subscribe(() => this.getProject());
   }
 
   getProject() {
@@ -120,15 +120,15 @@ export class PromoteStudentsPage implements OnInit {
   }
 
   getStudent() {
-    this.participantsService.getSelfParticipant().subscribe(data => {
-      this.loadedUser = data.data;
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
     });
   }
 
   promoteStudent() {
-    this.participantsService.getParticipantID(this.declaredAssistant).subscribe(data => {
+    this.studentsService.getStudentID(this.declaredAssistant).subscribe(data => {
       if (data.id !== 0) {
-        this.participantsService.promoteStudent(data.id);
+        this.studentsService.promoteStudent(data.id);
       } else {
         this.alertCtrl.create({
           header: 'Fehler',
@@ -145,14 +145,14 @@ export class PromoteStudentsPage implements OnInit {
   }
 
   suspendStudent(assistentID) {
-    this.participantsService.suspendStudent(assistentID);
+    this.studentsService.suspendStudent(assistentID);
   }
 
   quitAssistent() {
-    this.participantsService.quitAssistant().subscribe(data => {
+    this.studentsService.quitAssistant().subscribe(data => {
       this.alert.alert(data.message);
-      this.router.navigate([this.eventName + '/Schüler/' + this.participantUrl]);
-      this.participantsService.update.emit();
+      this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
+      this.studentsService.update.emit();
     }, error => {
       this.alert.error('Kündigung als Assistent fehlgeschlagen!', error.error);
     });

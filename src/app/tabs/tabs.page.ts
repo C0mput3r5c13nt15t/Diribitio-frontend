@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { ScreensizeService } from '../screensize.service';
 import { AlertService } from '../alert.service';
@@ -24,7 +24,6 @@ export class TabsPage {
               private config: ConfigService) {
     this.screensizeService.isDesktopView().subscribe(isDesktop => {
       if (this.isDesktop && !isDesktop) {
-        // Reload because our routing is out of place
         window.location.reload();
       }
       this.isDesktop = isDesktop;

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
 import { ProjectsService } from 'src/app/projects.service';
-import { Projekt } from 'src/assets/models/Projekt.model';
+import { Project } from 'src/assets/models/Project.model';
 
 @Component({
   selector: 'app-project-detail',
@@ -11,8 +11,8 @@ import { Projekt } from 'src/assets/models/Projekt.model';
 })
 
 export class ProjectDetailPage implements OnInit {
-  participantUrl;
-  loadedProject: Projekt = {
+  studentUrl: string;
+  loadedProject: Project = {
     id: 0,
     authorized: 1,
     editable: 0,
@@ -65,7 +65,7 @@ export class ProjectDetailPage implements OnInit {
       this.projectsService.getProject(ProjectID).subscribe(data => {
         this.loadedProject = data.data;
       });
-      this.participantUrl = paramMap.get('ParticipantName');
+      this.studentUrl = paramMap.get('ParticipantName');
     });
   }
 

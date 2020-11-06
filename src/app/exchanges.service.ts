@@ -68,14 +68,14 @@ export class ExchangesService {
     });
   }
 
-  createExchange(receiverId) {
+  createExchange(receiverID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
     const sendData = {
-      receiver_id: receiverId
+      receiver_id: receiverID
     };
     return this.http.post<Response>(this.backendUrl + 'students/store_exchange', sendData, options);
   }
@@ -89,13 +89,13 @@ export class ExchangesService {
     return this.http.delete<Response>(this.backendUrl + 'students/destroy_exchange', options);
   }
 
-  deleteExchange(ExchangeID) {
+  deleteExchange(exchangeID) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
-    this.http.delete<Response>(this.backendUrl + 'admins/destroy_exchange/' + ExchangeID, options).subscribe(data => {
+    this.http.delete<Response>(this.backendUrl + 'admins/destroy_exchange/' + exchangeID, options).subscribe(data => {
       this.alert.alert(data.message);
       this.update.emit();
     }, error => {

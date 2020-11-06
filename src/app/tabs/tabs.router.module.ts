@@ -164,7 +164,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              // tslint:disable-next-line: max-line-length
               import('../log-in/leader-page/project-administration/project-edit/project-edit.module').then(m => m.ProjectEditPageModule)
           }
         ]
@@ -176,7 +175,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              // tslint:disable-next-line: max-line-length
               import('../log-in/leader-page/messages/messages.module').then(m => m.MessagesPageModule)
           }
         ]
@@ -298,7 +296,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              // tslint:disable-next-line: max-line-length
               import('../log-in/user-page/project-administration/project-edit/project-edit.module').then(m => m.ProjectEditPageModule)
           }
         ]
@@ -310,7 +307,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () =>
-              // tslint:disable-next-line: max-line-length
               import('../log-in/user-page/messages/messages.module').then(m => m.MessagesPageModule)
           }
         ]

@@ -1,15 +1,15 @@
 <ion-header>
   <ion-toolbar color="menu">
     <ion-button color="buttons" slot="start">
-      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ participantUrl }}"></ion-back-button>
+      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ studentUrl }}"></ion-back-button>
     </ion-button>
     <ion-title>Tausch anfragen</ion-title>
-    <ion-button color="buttons" [disabled]="loadedUser.exchange_id == 0" slot="end" (click)="delete()"  color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+    <ion-button color="buttons" [disabled]="loadedStudent.exchange_id == 0" slot="end" (click)="delete()"  color="danger"><ion-icon name="trash"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content color="background">
-  <ion-card color="background" *ngIf="loadedUser.exchange_id == 0" class="content">
+  <ion-card color="background" *ngIf="loadedStudent.exchange_id == 0" class="content">
     <ion-card-header color="background">
       <ion-card-title>Tauschanfragen senden</ion-card-title>
     </ion-card-header>
@@ -25,13 +25,13 @@
             <ion-card-title>Du</ion-card-title>
           </ion-item-divider>
           <ion-item color="items" lines="none">
-            <ion-input color="text" readonly [(ngModel)]="loadedUser.first_name" name="ExchangeFirstFirstName"></ion-input>
+            <ion-input color="text" readonly [(ngModel)]="loadedStudent.first_name" name="ExchangeFirstFirstName"></ion-input>
           </ion-item>
           <ion-item color="items" lines="none">
-            <ion-input color="text" readonly [(ngModel)]="loadedUser.last_name" name="ExchangeFirstLastName"></ion-input>
+            <ion-input color="text" readonly [(ngModel)]="loadedStudent.last_name" name="ExchangeFirstLastName"></ion-input>
           </ion-item>
           <ion-item color="items" lines="none">
-            <ion-input color="text" readonly name="ExchangeFirstGradeAndClass">{{ loadedUser.grade }}{{ loadedUser.letter }}</ion-input>
+            <ion-input color="text" readonly name="ExchangeFirstGradeAndClass">{{ loadedStudent.grade }}{{ loadedStudent.letter }}</ion-input>
           </ion-item>
           <ion-item-divider color="background">
             <ion-title *ngIf="exchangePartner.id === 0">Dein Freund </ion-title>
@@ -84,7 +84,7 @@
       </form>
     </ion-card-content>
   </ion-card>
-  <ion-card color="background" *ngIf="loadedUser.exchange_id != 0" class="content">
+  <ion-card color="background" *ngIf="loadedStudent.exchange_id != 0" class="content">
     <ion-card-content>
       <ion-text color="danger">{{ studentAlreadyExchangeError }}</ion-text>
     </ion-card-content>
