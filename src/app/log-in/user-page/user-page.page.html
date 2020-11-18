@@ -30,11 +30,11 @@
     </ion-card-content>
     <ion-card-content>
       <ion-list>
-        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students" [routerLink]="['./Anmeldung']">
-          <ion-icon color="text" slot="start" name="log-in"></ion-icon>Anmeldedaten eingeben
-        </ion-item>
         <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration" routerLink='./{{ projectsNoun }}'>
           <ion-icon color="text" slot="start" name="apps"></ion-icon>Alle {{ projectsNoun }}
+        </ion-item>
+        <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students" [routerLink]="['./Anmeldung']">
+          <ion-icon color="text" slot="start" name="log-in"></ion-icon>Anmeldedaten eingeben
         </ion-item>
         <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 1 && loadedStudent.project_id != 0 && currentDate > schedule.exchange && currentDate <= schedule.projects" [routerLink]="['./Tauschanfrage senden']">
           <ion-icon color="text" slot="start" name="send"></ion-icon>Tauschanfragen senden

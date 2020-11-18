@@ -58,7 +58,7 @@
         </ion-item-divider>
         <ion-item color="items" lines="none">
           <ion-label color="text">von</ion-label>
-          <ion-select required name="ProjectMinClass" [(ngModel)]="editProject.min_grade">
+          <ion-select required name="ProjectMinClass" [(ngModel)]="editProject.min_grade" cancelText="Abbrechen" doneText="Ok">
             <ion-select-option value="5">5</ion-select-option>
             <ion-select-option value="6">6</ion-select-option>
             <ion-select-option value="7">7</ion-select-option>
@@ -70,7 +70,7 @@
         </ion-item>
         <ion-item color="items" lines="none">
           <ion-label color="text">bis</ion-label>
-          <ion-select required name="ProjectMaxClass" [(ngModel)]="editProject.max_grade">
+          <ion-select required name="ProjectMaxClass" [(ngModel)]="editProject.max_grade" cancelText="Abbrechen" doneText="Ok">
             <ion-select-option selected value="5">5</ion-select-option>
             <ion-select-option value="6">6</ion-select-option>
             <ion-select-option value="7">7</ion-select-option>

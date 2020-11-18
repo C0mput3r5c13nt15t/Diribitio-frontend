@@ -28,7 +28,7 @@
           </ion-item>
           <ion-item color="items">
             <ion-label color="text">Klassenstufe</ion-label>
-            <ion-select [selectedText]="loadedStudent.grade" required name="ParticipantGrade" (ionChange)="userChanges()" [(ngModel)]="loadedStudent.grade">
+            <ion-select [selectedText]="loadedStudent.grade" required name="ParticipantGrade" (ionChange)="userChanges()" [(ngModel)]="loadedStudent.grade" cancelText="Abbrechen" doneText="Ok">
               <ion-select-option value="5">5</ion-select-option>
               <ion-select-option value="6">6</ion-select-option>
               <ion-select-option value="7">7</ion-select-option>
@@ -70,7 +70,7 @@
             </ion-item>
             <ion-item color="items">
               <ion-label color="text">Klassenstufe</ion-label>
-              <ion-select [selectedText]="appendFriend.grade" name="ParticipantGrade" [(ngModel)]="appendFriend.grade">
+              <ion-select [selectedText]="appendFriend.grade" name="ParticipantGrade" [(ngModel)]="appendFriend.grade" cancelText="Abbrechen" doneText="Ok">
                 <ion-select-option value="5">5</ion-select-option>
                 <ion-select-option value="6">6</ion-select-option>
                 <ion-select-option value="7">7</ion-select-option>

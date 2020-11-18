@@ -69,10 +69,11 @@ export class AdminLogsPage implements OnInit {
     });
   }
 
-  postSignUpEmail() {
+  postSignUpEmail(form) {
     this.adminsService.createSignUpEmail(this.SignUpEmail).subscribe(data => {
       this.SignUpEmails.push(data.data);
       this.alert.alert(data.message);
+      form.reset();
       this.adminsService.update.emit();
     }, error => {
       this.alert.error('Freigeben der E-Mail fehlgeschlagen!', error.error);
@@ -87,7 +88,7 @@ export class AdminLogsPage implements OnInit {
         text: 'Abbrechen',
         role: 'cancel',
       }, {
-        text: 'Löschen',
+        text: 'Sperren',
         handler: () => {
           if (this.SignUpEmail.email === this.SignUpEmail.email_confirmation) {
             this.SignUpEmails = this.SignUpEmails.filter(filterEmail => {

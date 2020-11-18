@@ -224,7 +224,7 @@ export class AdminsService {
     this.http.post<Response>(this.backendUrl + 'admins/apply_sorting_proposal', null, options).subscribe(data => {
       this.alert.alert(data.message);
     }, error => {
-      this.alert.error('Erstellung eines Backups fehlgeschlagen!', error.error);
+      this.alert.error('Anwendung des Sortiervorschlags fehlgeschlagen!', error.error);
     });
   }
 

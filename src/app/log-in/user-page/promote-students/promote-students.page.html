@@ -27,7 +27,7 @@
         </ion-item>
         <ion-item color="items">
           <ion-label color="text">Klassenstufe</ion-label>
-          <ion-select required [selectedText]="declaredAssistant.grade" name="ParticipantGrade" [(ngModel)]="declaredAssistant.grade">
+          <ion-select required [selectedText]="declaredAssistant.grade" name="ParticipantGrade" [(ngModel)]="declaredAssistant.grade" cancelText="Abbrechen" doneText="Ok">
             <ion-select-option value="5">5</ion-select-option>
             <ion-select-option value="6">6</ion-select-option>
             <ion-select-option value="7">7</ion-select-option>
