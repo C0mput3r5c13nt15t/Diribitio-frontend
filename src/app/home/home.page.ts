@@ -3,6 +3,7 @@ import { ConfigService } from '../config.service';
 import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from '../schedule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +11,8 @@ import { ScheduleService } from '../schedule.service';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -20,7 +23,6 @@ export class HomePage implements OnInit {
     projects: null,
     end: null
   };
-
   currentDate: any;
 
   welcome = this.config.home.welcome;
@@ -35,6 +37,18 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
+    this.getSchedule();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });

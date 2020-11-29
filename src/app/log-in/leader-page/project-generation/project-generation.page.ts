@@ -5,6 +5,7 @@ import { AlertService } from 'src/app/alert.service';
 import { Projectleader } from 'src/assets/models/Projectleader';
 import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-generation',
@@ -12,6 +13,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./project-generation.page.scss'],
 })
 export class ProjectGenerationPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   leaderUrl: string;
 
   loadedLeader: Projectleader = {
@@ -79,6 +82,10 @@ export class ProjectGenerationPage implements OnInit {
       }
       this.leaderUrl = paramMap.get('LeaderName');
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   changeFile(event) {

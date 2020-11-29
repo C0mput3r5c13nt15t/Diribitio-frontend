@@ -12,6 +12,7 @@ import { Project } from 'src/assets/models/Project.model';
 import { ScheduleService } from 'src/app/schedule.service';
 import { Time } from '@angular/common';
 import { formatDate } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 export interface ModifiedSchüler {
   id: number;
@@ -52,6 +53,8 @@ export interface ModifiedProjektleiter {
   styleUrls: ['./admin-students-leaders.page.scss'],
 })
 export class AdminStudentsLeadersPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
   loadedProjects: Project[] = [];
@@ -78,10 +81,10 @@ export class AdminStudentsLeadersPage implements OnInit {
   currentDate: any;
 
   searchValue: string;
-  text1: string;
-  text2: string;
-  text3: string;
-  text4: string;
+  text1 = this.config.get_content_by_index('admin-students-leaders', 0);
+  text2 = this.config.get_content_by_index('admin-students-leaders', 1);
+  text3 = this.config.get_content_by_index('admin-students-leaders', 2);
+  text4 = this.config.get_content_by_index('admin-students-leaders', 3);
 
   page = 1;
   lastPage = 1;
@@ -103,15 +106,27 @@ export class AdminStudentsLeadersPage implements OnInit {
   ngOnInit() {
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
-    this.text1 = this.config.get_content_by_index('admin-students-leaders', 0);
-    this.text2 = this.config.get_content_by_index('admin-students-leaders', 1);
-    this.text3 = this.config.get_content_by_index('admin-students-leaders', 2);
-    this.text4 = this.config.get_content_by_index('admin-students-leaders', 3);
-    this.alert.loading(2000);
-
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.adminUrl = paramMap.get('AdminName');
     });
+
+    this.load();
+
+    this.subscriptions.push(
+      this.studentsService.update.subscribe(() => this.load()),
+      this.leadersService.update.subscribe(() => this.load()),
+      this.projectsService.update.subscribe(() => this.load())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  load() {
+    this.alert.loading(2000);
+
+    this.page = 1;
 
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
@@ -123,14 +138,6 @@ export class AdminStudentsLeadersPage implements OnInit {
     if (this.currentDate > this.schedule.sort_students && this.currentDate <= this.schedule.exchange) {
       this.requestSortingProposal();
     }
-
-    this.studentsService.update.subscribe(() => this.getStudents());
-    this.leadersService.update.subscribe(() => this.getLeaders());
-    this.projectsService.update.subscribe(() => this.getProjects());
-  }
-
-  ionViewWillEnter() {
-    this.alert.loading(2000);
   }
 
   eventHandler(keyCode) {
@@ -203,8 +210,6 @@ export class AdminStudentsLeadersPage implements OnInit {
     this.page = 1;
     this.getProjects();
     this.getAllStudentNames();
-    this.getStudents();
-    this.getLeaders();
   }
 
   getProjects() {
@@ -481,6 +486,7 @@ export class AdminStudentsLeadersPage implements OnInit {
           handler: () => {
             this.adminsService.applySortingProposal();
             this.sorted = false;
+            this.refresh();
           }
         }]
       }).then(alertEl => {

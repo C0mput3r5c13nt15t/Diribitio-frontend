@@ -5,6 +5,7 @@ import { StudentsService } from 'src/app/students.service';
 import { AlertController } from '@ionic/angular';
 import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-registration',
@@ -12,6 +13,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./registration.page.scss'],
 })
 export class RegistrationPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   loadedProjects = [];
   possibleProjects = [];
   students;
@@ -72,17 +75,21 @@ export class RegistrationPage implements OnInit {
       }
       this.studentUrl = paramMap.get('ParticipantName');
     });
+
     this.getProjects();
-    this.projectsService.update.subscribe(() => this.getProjects());
-    this.getUser();
-    this.studentsService.update.subscribe(() => this.getUser());
+    this.getStudent();
+
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() => this.getProjects()),
+      this.studentsService.update.subscribe(() => this.getStudent())
+    );
   }
 
-  ionViewWillEnter() {
-    this.getUser();
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
-  getUser() {
+  getStudent() {
     this.studentsService.getSelfStudent().subscribe(data => {
       this.loadedStudent = data.data;
       this.lowestGrade = +data.data.grade;

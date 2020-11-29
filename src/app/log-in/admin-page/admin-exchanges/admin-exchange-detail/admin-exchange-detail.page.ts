@@ -5,6 +5,7 @@ import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
 import { Exchange } from 'src/assets/models/Exchange.model';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-exchange-detail',
@@ -12,7 +13,10 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./admin-exchange-detail.page.scss'],
 })
 export class AdminExchangeDetailPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
+  exchangeId: string;
 
   loadedExchange: Exchange = {
     id: 0,
@@ -48,21 +52,34 @@ export class AdminExchangeDetailPage implements OnInit {
         return;
       }
       this.adminUrl = paramMap.get('AdminName');
-      const ExchangeID = paramMap.get('ExchangeID');
-      this.exchangesService.getExchange(ExchangeID).subscribe(data => {
-        this.loadedExchange = data.data;
-        this.projectService.getProject(this.loadedExchange.sender.project_id).subscribe(projectData => {
-          this.firstProjectName = projectData.data.title;
-          this.firstMinGrade = projectData.data.min_grade;
-          this.firstMaxGrade = projectData.data.max_grade;
-        });
-        this.projectService.getProject(this.loadedExchange.receiver.project_id).subscribe(projectData => {
-          this.secondProjectName = projectData.data.title;
-          this.secondMinGrade = projectData.data.min_grade;
-          this.secondMaxGrade = projectData.data.max_grade;
-          });
-        });
+      this.exchangeId = paramMap.get('ExchangeID');
+    });
+
+    this.getExchange();
+
+    this.subscriptions.push(
+      this.exchangesService.update.subscribe(() => this.getExchange()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getExchange() {
+    this.exchangesService.getExchange(this.exchangeId).subscribe(data => {
+      this.loadedExchange = data.data;
+      this.projectService.getProject(this.loadedExchange.sender.project_id).subscribe(projectData => {
+        this.firstProjectName = projectData.data.title;
+        this.firstMinGrade = projectData.data.min_grade;
+        this.firstMaxGrade = projectData.data.max_grade;
       });
+      this.projectService.getProject(this.loadedExchange.receiver.project_id).subscribe(projectData => {
+        this.secondProjectName = projectData.data.title;
+        this.secondMinGrade = projectData.data.min_grade;
+        this.secondMaxGrade = projectData.data.max_grade;
+      });
+    });
   }
 
   deleteExchange() {

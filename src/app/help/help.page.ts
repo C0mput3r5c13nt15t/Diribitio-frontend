@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -7,14 +8,18 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./help.page.scss'],
 })
 export class HelpPage implements OnInit {
-  instructions = [];
+  private subscriptions: Subscription[] = [];
 
   eventName = this.config.app_config.event_name;
+  instructions = this.config.help.instructions;
 
   constructor(private config: ConfigService) { }
 
   ngOnInit() {
-    this.instructions = this.config.help.instructions;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

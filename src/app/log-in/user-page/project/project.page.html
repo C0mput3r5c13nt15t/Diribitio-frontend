@@ -61,8 +61,9 @@
         </ion-item-divider>
         <div *ngIf="chosenProject.messages.length">
           <ion-item color="items" lines="none" *ngFor="let message of chosenProject.messages">
-            <ion-card color="background">
+            <ion-card class="message" color="background">
               <ion-card-content>
+                <ion-text color="buttons">{{ message.sender_name }}</ion-text><br>
                 <ion-text color="text">{{ message.message }}</ion-text>
               </ion-card-content>
             </ion-card>

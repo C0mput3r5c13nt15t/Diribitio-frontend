@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfigService } from 'src/app/config.service';
 import { AuthenticationService } from 'src/app/authentication.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-forgot-password',
@@ -8,6 +9,8 @@ import { AuthenticationService } from 'src/app/authentication.service';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   formType = 'students';
 
   forgotPasswordData = {
@@ -25,6 +28,10 @@ export class ForgotPasswordPage implements OnInit {
 
   ngOnInit() {
     this.text = this.config.get_content('forgot-password');
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   sendPasswordEmail() {

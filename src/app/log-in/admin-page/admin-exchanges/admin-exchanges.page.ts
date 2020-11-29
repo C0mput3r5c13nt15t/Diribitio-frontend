@@ -3,6 +3,7 @@ import { ExchangesService } from 'src/app/exchanges.service';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
 import { Exchange } from 'src/assets/models/Exchange.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-exchanges',
@@ -10,6 +11,8 @@ import { Exchange } from 'src/assets/models/Exchange.model';
   styleUrls: ['./admin-exchanges.page.scss'],
 })
 export class AdminExchangesPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
   exchanges = [];
@@ -36,8 +39,13 @@ export class AdminExchangesPage implements OnInit {
       this.adminUrl = paramMap.get('AdminName');
     });
 
-    this.getAllExchanges();
-    this.exchangesService.update.subscribe(() => this.getAllExchanges());
+    this.subscriptions.push(
+      this.exchangesService.update.subscribe(() => this.getAllExchanges())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getAllExchanges() {

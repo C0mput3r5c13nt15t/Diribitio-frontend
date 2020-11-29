@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { Router } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
 import { AdminsService } from 'src/app/admins.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-generation',
@@ -10,14 +10,16 @@ import { AdminsService } from 'src/app/admins.service';
   styleUrls: ['./admin-generation.page.scss'],
 })
 export class AdminGenerationPage implements OnInit {
-  signUpData: any = {
+  private subscriptions: Subscription[] = [];
+
+  signUpData = {
     user_name: '',
     email: '',
     password: '',
     password_confirmation: ''
   };
 
-  explanation = '';
+  explanation = this.config.get_content('admin-generation');
 
   eventName = this.config.app_config.event_name;
 
@@ -26,7 +28,10 @@ export class AdminGenerationPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.explanation = this.config.get_content('admin-generation');
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   signUpAsAdmin(form) {

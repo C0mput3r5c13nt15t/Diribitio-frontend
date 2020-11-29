@@ -6,6 +6,8 @@ import { Student } from 'src/assets/models/Student.model';
 import { Project } from 'src/assets/models/Project.model';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
+import { StudentsService } from 'src/app/students.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -13,6 +15,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
 
   leadedProject: Project = {
@@ -81,6 +85,7 @@ export class MessagesPage implements OnInit {
               private router: Router,
               private alert: AlertService,
               private projectsService: ProjectsService,
+              private studentsService: StudentsService,
               private messagesService: MessagesService,
               private config: ConfigService) {}
 
@@ -94,6 +99,22 @@ export class MessagesPage implements OnInit {
     });
 
     this.getProject();
+    this.getStudent();
+
+    this.subscriptions.push(
+      this.messagesService.update.subscribe(() => this.getProject()),
+      this.messagesService.update.subscribe(() => this.getStudent())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getStudent() {
+    this.studentsService.getSelfStudent().subscribe(data => {
+      this.loadedStudent = data.data;
+    });
   }
 
   getProject() {

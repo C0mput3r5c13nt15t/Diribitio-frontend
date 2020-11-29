@@ -7,6 +7,7 @@ import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-administration',
@@ -14,6 +15,8 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./project-administration.page.scss'],
 })
 export class ProjectAdministrationPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   leaderUrl: string;
 
   loadedLeader: Projectleader = {
@@ -101,6 +104,14 @@ export class ProjectAdministrationPage implements OnInit {
     });
 
     this.getProject();
+
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() => this.getProject()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getProject() {

@@ -6,6 +6,7 @@ import { Projectleader } from 'src/assets/models/Projectleader';
 import { Project } from 'src/assets/models/Project.model';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-messages',
@@ -13,6 +14,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./messages.page.scss'],
 })
 export class MessagesPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   leaderUrl: string;
 
   loadedLeader: Projectleader = {
@@ -79,8 +82,16 @@ export class MessagesPage implements OnInit {
       }
       this.leaderUrl = paramMap.get('LeaderName');
     });
+
     this.getProject();
-    this.messagesService.update.subscribe(() => this.getProject());
+
+    this.subscriptions.push(
+      this.messagesService.update.subscribe(() => this.getProject())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getProject() {

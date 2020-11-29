@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../settings.service';
 import { ConfigService } from '../config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-settings',
@@ -8,6 +9,8 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   background = 'dark';
   color = 'blue';
   text1: string;
@@ -25,6 +28,10 @@ export class SettingsPage implements OnInit {
     const colorandbackground = theme.split('-', 2);
     this.background = colorandbackground[0];
     this.color = colorandbackground[1];
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   change() {

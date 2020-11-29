@@ -9,6 +9,7 @@ import { formatDate } from '@angular/common';
 import { AlertService } from '../alert.service';
 import { ConfigService } from '../config.service';
 import { ScheduleService } from '../schedule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-log-in',
@@ -16,6 +17,8 @@ import { ScheduleService } from '../schedule.service';
   styleUrls: ['./log-in.page.scss'],
 })
 export class LogInPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   formType = 'student';
 
   StudentCredentials = {
@@ -62,16 +65,28 @@ export class LogInPage implements OnInit {
   ngOnInit() {
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
-    this.scheduleService.getSchedule().subscribe(data => {
-      this.schedule = data.data;
-    });
+    this.getSchedule();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule())
+    );
   }
 
   ionViewWillEnter() {
     this.log_in_from_storage();
   }
 
-  eventHandler(keyCode, type= 'students', form) {
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
+    this.scheduleService.getSchedule().subscribe(data => {
+      this.schedule = data.data;
+    });
+  }
+
+  keyPressEventHandler(keyCode, type= 'students', form) {
     if (keyCode === 13) {
       if (type === 'students') {
         this.LogInStudent(form);

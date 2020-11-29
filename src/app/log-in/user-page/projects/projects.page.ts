@@ -6,6 +6,7 @@ import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from '../../../schedule.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -13,6 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./projects.page.scss'],
 })
 export class ProjectsPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
   projects: Project[];
 
@@ -53,13 +56,23 @@ export class ProjectsPage implements OnInit {
       this.studentUrl = paramMap.get('ParticipantName');
     });
 
+    this.getSchedule();
+    this.getProjects();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.projectsService.update.subscribe(() => this.getProjects())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getProjects();
-
-    this.projectsService.update.subscribe(() => {this.getProjects(); });
   }
 
   getProjects() {

@@ -6,6 +6,7 @@ import { ConfigService } from 'src/app/config.service';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-schedule',
@@ -13,6 +14,8 @@ import { AlertService } from 'src/app/alert.service';
   styleUrls: ['./admin-schedule.page.scss'],
 })
 export class AdminSchedulePage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
   schedule: Schedule = {
@@ -34,7 +37,6 @@ export class AdminSchedulePage implements OnInit {
   eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private adminsService: AdminsService,
               private scheduleService: ScheduleService,
               private router: Router,
               private alert: AlertService,
@@ -51,7 +53,13 @@ export class AdminSchedulePage implements OnInit {
 
     this.getSchedule();
 
-    this.adminsService.update.subscribe(() => this.getSchedule());
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getSchedule() {

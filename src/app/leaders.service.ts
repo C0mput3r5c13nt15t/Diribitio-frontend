@@ -150,4 +150,22 @@ export class LeadersService {
       this.alert.error('Löschung des ' + this.projectNoun + 'leiters fehlgeschlagen!', error.error);
     });
   }
+
+  /**
+   * @description Deletes the leader associated with the provided token
+   */
+  destroySelfLeader() {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + this.auth.jwt,
+    });
+    const options = { headers };
+    this.http.delete<Response>(this.backendUrl + 'leaders/self_destroy', options).subscribe(data => {
+      this.alert.alert(data.message);
+      this.auth.setLoggedIn(false);
+      this.router.navigate([this.eventName + '/Anmeldung']);
+    }, error => {
+      this.alert.error('Löschung ihres Accounts fehlgeschlagen!', error.error);
+    });
+  }
 }

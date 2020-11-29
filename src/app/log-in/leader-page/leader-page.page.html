@@ -40,6 +40,9 @@
           <ion-icon color="text" slot="start" name="send"></ion-icon>Nachricht senden
         </ion-item>
       </ion-list>
+      <div class="ion-padding" *ngIf="currentDate > schedule.control && currentDate <= schedule.end &&loadedLeader.project_id == 0">
+        <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="deleteAccount()">Account löschen</ion-button>
+      </div>
       <div class="ion-padding">
         <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="logout()">Abmelden</ion-button>
       </div>

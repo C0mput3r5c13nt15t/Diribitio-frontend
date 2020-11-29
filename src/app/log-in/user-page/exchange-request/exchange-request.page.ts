@@ -6,6 +6,7 @@ import { ExchangesService } from 'src/app/exchanges.service';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-exchange-request',
@@ -13,6 +14,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./exchange-request.page.scss'],
 })
 export class ExchangeRequestPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
 
   loadedStudent: Student = {
@@ -68,7 +71,16 @@ export class ExchangeRequestPage implements OnInit {
       }
       this.studentUrl = paramMap.get('ParticipantName');
     });
+
     this.getStudent();
+
+    this.subscriptions.push(
+      this.studentsService.update.subscribe(() => this.getStudent()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getStudent() {

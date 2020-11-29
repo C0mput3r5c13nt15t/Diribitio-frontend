@@ -4,6 +4,7 @@ import { ProjectsService } from 'src/app/projects.service';
 import { Student } from 'src/assets/models/Student.model';
 import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project',
@@ -11,6 +12,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./project.page.scss'],
 })
 export class ProjectPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
 
   loadedStudent: Student = {
@@ -94,6 +97,14 @@ export class ProjectPage implements OnInit {
     });
 
     this.getProject();
+
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() => this.getProject()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getProject() {

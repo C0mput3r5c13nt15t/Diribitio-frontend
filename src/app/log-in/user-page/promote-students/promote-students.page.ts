@@ -7,6 +7,7 @@ import { StudentsService } from 'src/app/students.service';
 import { ConfigService } from 'src/app/config.service';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-promote-students',
@@ -14,6 +15,8 @@ import { AlertService } from 'src/app/alert.service';
   styleUrls: ['./promote-students.page.scss'],
 })
 export class PromoteStudentsPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   loadedStudent: Student = {
     id: 0,
     user_name: '',
@@ -107,10 +110,18 @@ export class PromoteStudentsPage implements OnInit {
       }
       this.studentUrl = paramMap.get('ParticipantName');
     });
+
     this.getProject();
     this.getStudent();
 
-    this.studentsService.update.subscribe(() => this.getProject());
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() => {this.getProject(); this.getStudent(); }),
+      this.studentsService.update.subscribe(() => {this.getProject(); this.getStudent(); })
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getProject() {
@@ -125,10 +136,11 @@ export class PromoteStudentsPage implements OnInit {
     });
   }
 
-  promoteStudent() {
+  promoteStudent(form) {
     this.studentsService.getStudentID(this.declaredAssistant).subscribe(data => {
       if (data.id !== 0) {
         this.studentsService.promoteStudent(data.id);
+        form.reset();
       } else {
         this.alertCtrl.create({
           header: 'Fehler',

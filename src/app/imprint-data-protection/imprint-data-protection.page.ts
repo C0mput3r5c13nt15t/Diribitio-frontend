@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ConfigService } from '../config.service';
 
 @Component({
@@ -7,17 +8,19 @@ import { ConfigService } from '../config.service';
   styleUrls: ['./imprint-data-protection.page.scss'],
 })
 export class ImprintDataProtectionPage implements OnInit {
-  contacts = [];
-  conditions = '';
-  dataProtection = '';
-  contents = [];
+  private subscriptions: Subscription[] = [];
+
+  contacts = this.config.imprint.contacts;
+  conditions = this.config.conditions.full_conditions;
+  dataProtection = this.config.data_protection.data_protection;
 
   constructor(private config: ConfigService) { }
 
   ngOnInit() {
-    this.contacts = this.config.imprint.contacts;
-    this.conditions = this.config.conditions.full_conditions;
-    this.dataProtection = this.config.data_protection.data_protection;
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

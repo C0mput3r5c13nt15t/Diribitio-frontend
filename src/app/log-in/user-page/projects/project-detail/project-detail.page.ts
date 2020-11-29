@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/config.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { Project } from 'src/assets/models/Project.model';
@@ -11,7 +12,10 @@ import { Project } from 'src/assets/models/Project.model';
 })
 
 export class ProjectDetailPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
+
   loadedProject: Project = {
     id: 0,
     authorized: 1,
@@ -61,12 +65,16 @@ export class ProjectDetailPage implements OnInit {
         this.router.navigate(['']);
         return;
       }
-      const ProjectID = paramMap.get('ProjectID');
-      this.projectsService.getProject(ProjectID).subscribe(data => {
+      const projectId = paramMap.get('ProjectID');
+      this.projectsService.getProject(projectId).subscribe(data => {
         this.loadedProject = data.data;
       });
       this.studentUrl = paramMap.get('ParticipantName');
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

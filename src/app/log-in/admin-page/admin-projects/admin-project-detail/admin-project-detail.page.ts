@@ -8,6 +8,7 @@ import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-project-detail',
@@ -15,9 +16,11 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./admin-project-detail.page.scss'],
 })
 export class AdminProjectDetailPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
-  projectId;
+  projectId: string;
 
   loadedProject: Project = {
     id: 0,
@@ -118,18 +121,32 @@ export class AdminProjectDetailPage implements OnInit {
       this.projectId = paramMap.get('ProjectID');
     });
 
+    this.getSchedule();
+    this.getProject();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.projectsService.update.subscribe(() => this.getProject())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getProject(this.projectId);
-
-    this.projectsService.update.subscribe(() => this.getProject(this.projectId));
   }
 
-  getProject(ProjectID) {
-    this.projectsService.getProjectAdmin(ProjectID).subscribe(data => {
-      this.loadedProject = data.data;
+  getProject() {
+    this.projectsService.getProjectAdmin(this.projectId).subscribe(data => {
+      if (!data.data) {
+        this.router.navigate([this.eventName + '/Admin/' + this.adminUrl]);
+      } else {
+        this.loadedProject = data.data;
+      }
     });
   }
 

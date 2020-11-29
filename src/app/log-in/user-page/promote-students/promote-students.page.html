@@ -18,7 +18,7 @@
       </ion-label>
     </ion-card-content>
     <ion-card color="background" *ngIf="loadedStudent.project_id != 0 && leadedProject.leader_id == loadedStudent.id">
-      <form #form="ngForm" name="ParticipantForm" (ngSubmit)="promoteStudent()">
+      <form #promoteStudentForm="ngForm" name="ParticipantForm" (ngSubmit)="promoteStudent(promoteStudentForm)">
         <ion-item color="items">
           <ion-input required color="text" type="text" placeholder="Vorname" [(ngModel)]="declaredAssistant.first_name" name="ExchangeSecondFirstName"></ion-input>
         </ion-item>
@@ -58,7 +58,7 @@
           </ion-radio-group>
         </ion-item>
         <div class="ion-padding">
-          <ion-button color="buttons" [disabled]="form.invalid || leadedProject.leader_id != loadedStudent.id" expand="block" type="submit" class="ion-no-margin">Als Assistent auszeichnen</ion-button>
+          <ion-button color="buttons" [disabled]="promoteStudentForm.invalid || leadedProject.leader_id != loadedStudent.id" expand="block" type="submit" class="ion-no-margin">Als Assistent auszeichnen</ion-button>
         </div>
       </form>
     </ion-card>

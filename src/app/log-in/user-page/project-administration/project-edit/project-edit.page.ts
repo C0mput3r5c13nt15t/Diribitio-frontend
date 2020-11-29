@@ -8,6 +8,7 @@ import { ConfigService } from 'src/app/config.service';
 import { Schedule } from 'src/assets/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-edit',
@@ -15,6 +16,8 @@ import { ScheduleService } from 'src/app/schedule.service';
   styleUrls: ['./project-edit.page.scss'],
 })
 export class ProjectEditPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
 
   loadedStudent: Student = {
@@ -107,12 +110,25 @@ export class ProjectEditPage implements OnInit {
       this.studentUrl = paramMap.get('ParticipantName');
     });
 
+    this.getSchedule();
+    this.getProject();
+    this.getStudent();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.projectsService.update.subscribe(() => this.getProject()),
+      this.studentsService.update.subscribe(() => this.getStudent())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getProject();
-    this.getStudent();
   }
 
   getProject() {

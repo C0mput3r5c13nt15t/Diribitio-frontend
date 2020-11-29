@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { ConfigService } from 'src/app/config.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./verify-email.page.scss'],
 })
 export class VerifyEmailPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   status = 200;
 
   mailStatusNotfound: string;
@@ -39,6 +42,10 @@ export class VerifyEmailPage implements OnInit {
         }
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
 }

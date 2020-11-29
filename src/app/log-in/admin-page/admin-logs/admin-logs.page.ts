@@ -7,6 +7,7 @@ import { ScheduleService } from 'src/app/schedule.service';
 import { AdminsService } from 'src/app/admins.service';
 import { AlertService } from 'src/app/alert.service';
 import { AlertController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-logs',
@@ -14,6 +15,8 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./admin-logs.page.scss'],
 })
 export class AdminLogsPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
   SignUpEmails: any[] = [];
@@ -52,15 +55,27 @@ export class AdminLogsPage implements OnInit {
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
-    this.scheduleService.getSchedule().subscribe(data => {
-      this.schedule = data.data;
-    });
-
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.adminUrl = paramMap.get('AdminName');
     });
 
+    this.getSchedule();
     this.getSignUpemails();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.adminsService.update.subscribe(() => this.getSignUpemails()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
+    this.scheduleService.getSchedule().subscribe(data => {
+      this.schedule = data.data;
+    });
   }
 
   getSignUpemails() {

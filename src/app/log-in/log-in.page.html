@@ -35,7 +35,7 @@
                 <ion-input name="email" [(ngModel)]="StudentCredentials.email" required type="email" (keypress)="nextInput($event.keyCode, nextStudentField)" placeholder="E-Mail" color="text"></ion-input>
               </ion-item>
               <ion-item color="items">
-                <ion-input #nextStudentField name="password" [(ngModel)]="StudentCredentials.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'students', studentLoginForm)" placeholder="Passwort" color="text"></ion-input>
+                <ion-input #nextStudentField name="password" [(ngModel)]="StudentCredentials.password" required minlength="8" type="password" (keypress)="keyPressEventHandler($event.keyCode, 'students', studentLoginForm)" placeholder="Passwort" color="text"></ion-input>
               </ion-item>
             </ion-list>
             <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
@@ -58,7 +58,7 @@
                 <ion-input name="email" [(ngModel)]="LeaderCredentials.email" required type="email" (keypress)="nextInput($event.keyCode, nextLeaderField)" placeholder="E-Mail" color="text"></ion-input>
               </ion-item>
               <ion-item color="items">
-                <ion-input #nextLeaderField name="password" [(ngModel)]="LeaderCredentials.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'leaders', leaderLoginForm)" placeholder="Passwort" color="text"></ion-input>
+                <ion-input #nextLeaderField name="password" [(ngModel)]="LeaderCredentials.password" required minlength="8" type="password" (keypress)="keyPressEventHandler($event.keyCode, 'leaders', leaderLoginForm)" placeholder="Passwort" color="text"></ion-input>
               </ion-item>
             </ion-list>
             <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>
@@ -81,7 +81,7 @@
                   <ion-input name="email" [(ngModel)]="AdminCredentials.email" required type="email" (keypress)="nextInput($event.keyCode, nextAdminField)" placeholder="E-Mail" color="text"></ion-input>
                 </ion-item>
                 <ion-item color="items">
-                  <ion-input #nextAdminField name="password" [(ngModel)]="AdminCredentials.password" required minlength="8" type="password" (keypress)="eventHandler($event.keyCode, 'admins', adminLoginForm)" placeholder="Passwort" color="text"></ion-input>
+                  <ion-input #nextAdminField name="password" [(ngModel)]="AdminCredentials.password" required minlength="8" type="password" (keypress)="keyPressEventHandler($event.keyCode, 'admins', adminLoginForm)" placeholder="Passwort" color="text"></ion-input>
                 </ion-item>
               </ion-list>
               <a [routerLink]="['./Passwort vergessen']">Passwort vergessen?</a><br>

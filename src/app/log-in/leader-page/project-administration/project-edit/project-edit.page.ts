@@ -7,6 +7,7 @@ import { ConfigService } from 'src/app/config.service';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/schedule.service';
 import { Schedule } from 'src/assets/models/Schedule.model';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-project-edit',
@@ -14,6 +15,8 @@ import { Schedule } from 'src/assets/models/Schedule.model';
   styleUrls: ['./project-edit.page.scss'],
 })
 export class ProjectEditPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   leaderUrl: string;
 
   loadedLeader: Projectleader = {
@@ -92,11 +95,23 @@ export class ProjectEditPage implements OnInit {
       this.leaderUrl = paramMap.get('LeaderName');
     });
 
+    this.getSchedule();
+    this.getProject();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.projectsService.update.subscribe(() => this.getProject()),
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getProject();
   }
 
   getProject() {

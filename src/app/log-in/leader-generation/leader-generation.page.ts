@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { LeadersService } from 'src/app/leaders.service';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-leader-generation',
@@ -9,6 +10,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./leader-generation.page.scss'],
 })
 export class LeaderGenerationPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   signUpData: any = {
     user_name: '',
     email: '',
@@ -27,6 +30,10 @@ export class LeaderGenerationPage implements OnInit {
 
   ngOnInit() {
     this.text = this.config.get_content('leader-generation');
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   SignUpAsLeader(form) {

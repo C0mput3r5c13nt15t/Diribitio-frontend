@@ -3,6 +3,7 @@ import { AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { StudentsService } from 'src/app/students.service';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-generation',
@@ -10,6 +11,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./user-generation.page.scss'],
 })
 export class UserGenerationPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   signUpData: any = {
     user_name: '',
     email: '',
@@ -17,7 +20,7 @@ export class UserGenerationPage implements OnInit {
     password_confirmation: '',
   };
 
-  text: string;
+  text = this.config.get_content('user-generation');
 
   eventName = this.config.app_config.event_name;
 
@@ -27,13 +30,15 @@ export class UserGenerationPage implements OnInit {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.text = this.config.get_content('user-generation');
-
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (paramMap.has('SignUpToken')) {
         this.signUpData.sign_up_token = this.activatedRoute.snapshot.paramMap.get('SignUpToken');
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   signUpAsStudent(form) {

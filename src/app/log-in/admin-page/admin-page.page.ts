@@ -7,6 +7,7 @@ import { Admin } from 'src/assets/models/Admin.model';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-page',
@@ -14,6 +15,8 @@ import { AlertService } from 'src/app/alert.service';
   styleUrls: ['./admin-page.page.scss'],
 })
 export class AdminPagePage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   loadedAdmin: Admin = {
     id: 0,
     user_name: '',
@@ -31,7 +34,6 @@ export class AdminPagePage implements OnInit {
     projects: null,
     end: null
   };
-
   currentDate: any;
 
   text: string;
@@ -63,12 +65,23 @@ export class AdminPagePage implements OnInit {
       }
     });
 
+    this.getSchedule();
+    this.getAdmin();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.adminsService.update.subscribe(() => this.getAdmin())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getAdmin();
-    this.adminsService.update.subscribe(() => this.getAdmin());
   }
 
   getAdmin() {
@@ -83,9 +96,7 @@ export class AdminPagePage implements OnInit {
 
   refresh() {
     this.getAdmin();
-    this.scheduleService.getSchedule().subscribe(data => {
-      this.schedule = data.data;
-    });
+    this.getSchedule();
   }
 
   sendVerificationEmail() {

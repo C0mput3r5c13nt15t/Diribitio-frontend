@@ -7,6 +7,7 @@ import { Student } from 'src/assets/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 import { AlertService } from 'src/app/alert.service';
 import { formatDate } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-exchange-confirm',
@@ -14,6 +15,8 @@ import { formatDate } from '@angular/common';
   styleUrls: ['./exchange-confirm.page.scss'],
 })
 export class ExchangeConfirmPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   studentUrl: string;
 
   loadedStudent: Student = {
@@ -69,6 +72,10 @@ export class ExchangeConfirmPage implements OnInit {
     });
 
     this.getExchanges();
+
+    this.subscriptions.push(
+      this.exchangesService.update.subscribe(() => this.getExchanges()),
+    );
   }
 
   getExchanges() {

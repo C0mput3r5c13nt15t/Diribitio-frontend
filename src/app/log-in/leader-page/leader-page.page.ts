@@ -8,6 +8,7 @@ import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';
 import { ProjectsService } from 'src/app/projects.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-leader-page',
@@ -15,6 +16,8 @@ import { ProjectsService } from 'src/app/projects.service';
   styleUrls: ['./leader-page.page.scss'],
 })
 export class LeaderPagePage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   loadedLeader: Projectleader = {
     id: 0,
     user_name: '',
@@ -61,13 +64,25 @@ export class LeaderPagePage implements OnInit {
         return;
       }
     });
+
+    this.getSchedule();
+    this.getLeader();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.leadersService.update.subscribe(() => this.getLeader()),
+      this.projectsService.update.subscribe(() => this.getLeader())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getLeader();
-    this.leadersService.update.subscribe(() => this.getLeader());
-    this.projectsService.update.subscribe(() => this.getLeader());
   }
 
   getLeader() {
@@ -98,6 +113,10 @@ export class LeaderPagePage implements OnInit {
 
   logout() {
     this.leadersService.logOutLeader();
+  }
+
+  deleteAccount() {
+    this.leadersService.destroySelfLeader();
   }
 
 }

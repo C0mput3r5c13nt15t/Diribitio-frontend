@@ -10,6 +10,7 @@ import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertService } from 'src/app/alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-user-page',
@@ -18,6 +19,8 @@ import { AlertService } from 'src/app/alert.service';
   providers: [DatePipe]
 })
 export class UserPagePage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   loadedStudent: Student = {
     id: 0,
     user_name: '',
@@ -82,13 +85,24 @@ export class UserPagePage implements OnInit {
       }
     });
 
+    this.getSchedule();
+    this.getStudent();
+
+    this.subscriptions.push(
+      this.scheduleService.update.subscribe(() => this.getSchedule()),
+      this.studentsService.update.subscribe(() => this.getStudent()),
+      this.projectsService.update.subscribe(() => this.getStudent())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
     });
-
-    this.getStudent();
-    this.studentsService.update.subscribe(() => this.getStudent());
-    this.projectsService.update.subscribe(() => this.getStudent());
   }
 
   getStudent() {

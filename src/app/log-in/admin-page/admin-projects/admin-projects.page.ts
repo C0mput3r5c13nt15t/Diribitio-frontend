@@ -3,6 +3,7 @@ import { ProjectsService } from 'src/app/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from 'src/assets/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-admin-projects',
@@ -10,6 +11,8 @@ import { ConfigService } from 'src/app/config.service';
   styleUrls: ['./admin-projects.page.scss'],
 })
 export class AdminProjectsPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   adminUrl: string;
 
   projects: Project[];
@@ -33,7 +36,13 @@ export class AdminProjectsPage implements OnInit {
 
     this.getProjects();
 
-    this.projectsService.update.subscribe(() => this.getProjects());
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() => this.getProjects())
+    );
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   getProjects() {

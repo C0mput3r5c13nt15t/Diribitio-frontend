@@ -3,6 +3,7 @@ import { ConfigService } from 'src/app/config.service';
 import { AuthenticationService } from 'src/app/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AlertService } from 'src/app/alert.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password',
@@ -10,6 +11,8 @@ import { AlertService } from 'src/app/alert.service';
   styleUrls: ['./reset-password.page.scss'],
 })
 export class ResetPasswordPage implements OnInit {
+  private subscriptions: Subscription[] = [];
+
   formType = 'student';
 
   resetPasswordStudent = {
@@ -59,6 +62,10 @@ export class ResetPasswordPage implements OnInit {
         this.router.navigate([this.eventName + '/Anmeldung']);
       }
     });
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
   eventHandler(keyCode, type= 'students', form) {
