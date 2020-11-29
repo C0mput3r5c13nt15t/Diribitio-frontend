@@ -39,6 +39,11 @@
     white-space: pre-wrap;
 }
 
+.message {
+    width: 90%;
+    max-width: 250px;
+}
+
 .desktop-wrapper {
     ion-header {
         display: none !important;
