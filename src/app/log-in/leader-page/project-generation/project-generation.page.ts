@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild, Directive, ElementRef } from '@angular/co
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertService } from 'src/app/alert.service';
-import { Projectleader } from 'src/assets/models/Projectleader';
-import { Project } from 'src/assets/models/Project.model';
+import { Projectleader } from 'src/models/Projectleader';
+import { Project } from 'src/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
 

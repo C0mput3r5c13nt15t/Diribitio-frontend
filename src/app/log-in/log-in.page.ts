@@ -4,7 +4,7 @@ import { AuthenticationService } from '../authentication.service';
 import { StudentsService } from '../students.service';
 import { LeadersService } from '../leaders.service';
 import { AdminsService } from '../admins.service';
-import { Schedule } from 'src/assets/models/Schedule.model';
+import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { AlertService } from '../alert.service';
 import { ConfigService } from '../config.service';

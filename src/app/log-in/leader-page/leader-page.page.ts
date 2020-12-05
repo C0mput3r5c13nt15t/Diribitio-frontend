@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LeadersService } from 'src/app/leaders.service';
-import { Schedule } from 'src/assets/models/Schedule.model';
+import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
-import { Projectleader } from 'src/assets/models/Projectleader';
+import { Projectleader } from 'src/models/Projectleader';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';

@@ -1,10 +1,10 @@
 import { Component, OnInit, ViewChild, Directive, ElementRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Student } from 'src/assets/models/Student.model';
-import { Message } from 'src/assets/models/Message.model';
+import { Student } from 'src/models/Student.model';
+import { Message } from 'src/models/Message.model';
 import { AlertService } from 'src/app/alert.service';
-import { Project } from 'src/assets/models/Project.model';
+import { Project } from 'src/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
 

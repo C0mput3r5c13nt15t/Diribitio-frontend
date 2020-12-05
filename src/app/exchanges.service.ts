@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { AlertService } from './alert.service';
 import { ConfigService } from './config.service';
-import { Response } from 'src/assets/models/Response.model';
+import { Response } from 'src/models/Response.model';
 
 @Injectable({
   providedIn: 'root'

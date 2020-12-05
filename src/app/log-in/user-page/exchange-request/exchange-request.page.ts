@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from 'src/app/students.service';
-import { Student } from 'src/assets/models/Student.model';
+import { Student } from 'src/models/Student.model';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { AlertController } from '@ionic/angular';
 import { AlertService } from 'src/app/alert.service';

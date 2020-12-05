@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
 import { MessagesService } from 'src/app/messages.service';
-import { Projectleader } from 'src/assets/models/Projectleader';
-import { Project } from 'src/assets/models/Project.model';
+import { Projectleader } from 'src/models/Projectleader';
+import { Project } from 'src/models/Project.model';
 import { AlertService } from 'src/app/alert.service';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
+import { LeadersService } from 'src/app/leaders.service';
 
 @Component({
   selector: 'app-messages',
@@ -71,6 +72,7 @@ export class MessagesPage implements OnInit {
               private router: Router,
               private alert: AlertService,
               private projectsService: ProjectsService,
+              private leadersService: LeadersService,
               private messagesService: MessagesService,
               private config: ConfigService) {}
 
@@ -84,14 +86,22 @@ export class MessagesPage implements OnInit {
     });
 
     this.getProject();
+    this.getLeader();
 
     this.subscriptions.push(
-      this.messagesService.update.subscribe(() => this.getProject())
+      this.messagesService.update.subscribe(() => this.getProject()),
+      this.messagesService.update.subscribe(() => this.getLeader())
     );
   }
 
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  getLeader() {
+    this.leadersService.getSelfLeader().subscribe(data => {
+      this.loadedLeader = data.data;
+    });
   }
 
   getProject() {

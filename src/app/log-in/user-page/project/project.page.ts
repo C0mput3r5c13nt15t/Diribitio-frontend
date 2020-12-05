@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Student } from 'src/assets/models/Student.model';
-import { Project } from 'src/assets/models/Project.model';
+import { Student } from 'src/models/Student.model';
+import { Project } from 'src/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
 

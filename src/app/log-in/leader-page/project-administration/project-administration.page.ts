@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/projects.service';
-import { Projectleader } from 'src/assets/models/Projectleader';
-import { Project } from 'src/assets/models/Project.model';
+import { Projectleader } from 'src/models/Projectleader';
+import { Project } from 'src/models/Project.model';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
-import { Schedule } from 'src/assets/models/Schedule.model';
+import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { Subscription } from 'rxjs';
 

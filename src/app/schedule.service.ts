@@ -2,7 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthenticationService } from './authentication.service';
 import { ConfigService } from './config.service';
-import { Response } from 'src/assets/models/Response.model';
+import { Response } from 'src/models/Response.model';
 
 @Injectable({
   providedIn: 'root'

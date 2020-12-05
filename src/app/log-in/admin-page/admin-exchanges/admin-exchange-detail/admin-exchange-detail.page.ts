@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Exchange } from 'src/assets/models/Exchange.model';
+import { Exchange } from 'src/models/Exchange.model';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
 

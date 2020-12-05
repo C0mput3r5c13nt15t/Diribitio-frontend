@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AdminsService } from 'src/app/admins.service';
-import { Schedule } from 'src/assets/models/Schedule.model';
+import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
-import { Admin } from 'src/assets/models/Admin.model';
+import { Admin } from 'src/models/Admin.model';
 import { ConfigService } from 'src/app/config.service';
 import { ScheduleService } from 'src/app/schedule.service';
 import { AlertService } from 'src/app/alert.service';

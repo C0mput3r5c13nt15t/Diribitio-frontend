@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Schedule } from 'src/assets/models/Schedule.model';
+import { Schedule } from 'src/models/Schedule.model';
 import { AdminsService } from 'src/app/admins.service';
 import { ConfigService } from 'src/app/config.service';
 import { formatDate } from '@angular/common';

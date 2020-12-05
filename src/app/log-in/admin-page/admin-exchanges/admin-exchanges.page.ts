@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ActivatedRoute } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
-import { Exchange } from 'src/assets/models/Exchange.model';
+import { Exchange } from 'src/models/Exchange.model';
 import { Subscription } from 'rxjs';
 
 @Component({

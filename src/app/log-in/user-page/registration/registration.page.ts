@@ -3,7 +3,7 @@ import { ProjectsService } from 'src/app/projects.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { StudentsService } from 'src/app/students.service';
 import { AlertController } from '@ionic/angular';
-import { Student } from 'src/assets/models/Student.model';
+import { Student } from 'src/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 import { Subscription } from 'rxjs';
 

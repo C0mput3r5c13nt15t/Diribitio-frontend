@@ -10,13 +10,20 @@
 <ion-content color="background">
   <ion-list class="content" *ngIf="leadedProject.messages.length">
     <ion-item color="items" lines="none" *ngFor="let message of leadedProject.messages">
-      <ion-card class="message" color="background">
+      <ion-buttons slot="end" (click)="delete(message)" *ngIf="message.sender_name == loadedLeader.user_name"><ion-icon color="danger" name="close"></ion-icon></ion-buttons>
+      <ion-card class="message sended_message" slot="end" color="background" *ngIf="message.sender_name == loadedLeader.user_name">
         <ion-card-content>
           <ion-text color="buttons">{{ message.sender_name }}</ion-text><br>
           <ion-text color="text">{{ message.message }}</ion-text>
         </ion-card-content>
       </ion-card>
-      <ion-buttons (click)="delete(message)"><ion-icon color="danger" name="close"></ion-icon></ion-buttons>
+      <ion-card class="message" slot="start" color="background" *ngIf="message.sender_name != loadedLeader.user_name">
+        <ion-card-content>
+          <ion-text color="buttons">{{ message.sender_name }}</ion-text><br>
+          <ion-text color="text">{{ message.message }}</ion-text>
+        </ion-card-content>
+      </ion-card>
+      <ion-buttons slot="start" (click)="delete(message)" *ngIf="message.sender_name != loadedLeader.user_name"><ion-icon color="danger" name="close"></ion-icon></ion-buttons>
     </ion-item>
   </ion-list>
   <ion-card color="background"name="MessageBox" class="content">
@@ -25,7 +32,7 @@
         <ion-input color="text" required name="MessageText" [(ngModel)]="newMessage.message" type="text"></ion-input>
       </ion-item>
       <div class="ion-padding">
-        <ion-button color="buttons" [disabled]="form.invalid" type="submit" expand="block" class="ion-no-margin"><ion-label><ion-icon name="send"></ion-icon>Nachricht senden</ion-label></ion-button>
+        <ion-button color="buttons" [disabled]="form.invalid" type="submit" expand="block" class="ion-no-margin"><ion-label><ion-icon name="send"></ion-icon> Nachricht senden</ion-label></ion-button>
       </div>
     </form>
   </ion-card>

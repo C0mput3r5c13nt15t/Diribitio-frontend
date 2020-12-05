@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service';
-import { Response } from 'src/assets/models/Response.model';
+import { Response } from 'src/models/Response.model';
 import { AlertService } from './alert.service';
 import { Router } from '@angular/router';
 

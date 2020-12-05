@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ExchangesService } from 'src/app/exchanges.service';
 import { ProjectsService } from 'src/app/projects.service';
 import { AlertController } from '@ionic/angular';
-import { Student } from 'src/assets/models/Student.model';
+import { Student } from 'src/models/Student.model';
 import { ConfigService } from 'src/app/config.service';
 import { AlertService } from 'src/app/alert.service';
 import { formatDate } from '@angular/common';
