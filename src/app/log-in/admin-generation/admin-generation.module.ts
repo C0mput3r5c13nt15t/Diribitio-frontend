@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminGenerationPageRoutingModule } from './admin-generation-routing.module';
-
 import { AdminGenerationPage } from './admin-generation.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminGenerationPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminGenerationPageRoutingModule
+    RouterModule.forChild(routes)
   ],
   declarations: [AdminGenerationPage]
 })

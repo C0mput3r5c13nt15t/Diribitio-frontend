@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import { LeadersService } from 'src/app/leaders.service';
-import { ConfigService } from 'src/app/config.service';
+import { LeadersService } from 'src/app/services/leaders.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './leader-generation.page.html',
   styleUrls: ['./leader-generation.page.scss'],
 })
-export class LeaderGenerationPage implements OnInit {
+export class LeaderGenerationPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   signUpData: any = {
@@ -22,6 +22,9 @@ export class LeaderGenerationPage implements OnInit {
   text: string;
 
   projectNoun = this.config.app_config.project_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private alertCtrl: AlertController,
@@ -32,6 +35,9 @@ export class LeaderGenerationPage implements OnInit {
     this.text = this.config.get_content('leader-generation');
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

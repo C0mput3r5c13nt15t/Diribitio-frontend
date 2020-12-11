@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ConfigService } from 'src/app/config.service';
-import { AuthenticationService } from 'src/app/authentication.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ConfigService } from 'src/app/services/config.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertService } from 'src/app/alert.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './reset-password.page.html',
   styleUrls: ['./reset-password.page.scss'],
 })
-export class ResetPasswordPage implements OnInit {
+export class ResetPasswordPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   formType = 'student';
@@ -42,6 +42,9 @@ export class ResetPasswordPage implements OnInit {
   text: string;
 
   projectNoun = this.config.app_config.project_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -64,6 +67,9 @@ export class ResetPasswordPage implements OnInit {
     });
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
@@ -80,6 +86,11 @@ export class ResetPasswordPage implements OnInit {
     }
   }
 
+  /**
+   * Sets the focus on the given element if ENTER is pressed
+   * @param keyCode Contains the code of the pressed key
+   * @param nextInput Contains the next element to be focused
+   */
   nextInput(keyCode, nextInput) {
     if (keyCode === 13) {
       nextInput.setFocus();

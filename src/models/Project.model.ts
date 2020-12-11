@@ -1,6 +1,9 @@
 import { Time } from '@angular/common';
 import { Message } from './Message.model';
 
+/**
+ * The basic project interface
+ */
 export interface Project {
     id: number;
     authorized: number;

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AdminsService } from 'src/app/admins.service';
+import { AdminsService } from 'src/app/services/admins.service';
 import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { Admin } from 'src/models/Admin.model';
-import { ConfigService } from 'src/app/config.service';
-import { ScheduleService } from 'src/app/schedule.service';
-import { AlertService } from 'src/app/alert.service';
+import { ConfigService } from 'src/app/services/config.service';
+import { ScheduleService } from 'src/app/services/schedule.service';
+import { AlertService } from 'src/app/services/alert.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin-page.page.html',
   styleUrls: ['./admin-page.page.scss'],
 })
-export class AdminPagePage implements OnInit {
+export class AdminPagePage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   loadedAdmin: Admin = {
@@ -24,6 +24,9 @@ export class AdminPagePage implements OnInit {
     password: ''
   };
 
+  /**
+   * Contains the time schedule of the application
+   */
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -34,6 +37,9 @@ export class AdminPagePage implements OnInit {
     projects: null,
     end: null
   };
+  /**
+   * Contains the current date in yyyy-MM-dd format
+   */
   currentDate: any;
 
   text: string;
@@ -74,10 +80,16 @@ export class AdminPagePage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  /**
+   * Gets the current time schedule for the application and sets the schedule value
+   */
   getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;

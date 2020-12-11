@@ -1,6 +1,9 @@
 import { Time } from '@angular/common';
 import { Student } from './Student.model';
 
+/**
+ * The basic exchange interface
+ */
 export interface Exchange {
     id: number;
     sender_id: number;

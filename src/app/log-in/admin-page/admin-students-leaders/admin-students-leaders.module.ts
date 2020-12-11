@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminStudentsLeadersPageRoutingModule } from './admin-students-leaders-routing.module';
-
 import { AdminStudentsLeadersPage } from './admin-students-leaders.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminStudentsLeadersPage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminStudentsLeadersPageRoutingModule
+    RouterModule.forChild(routes)
   ],
   declarations: [AdminStudentsLeadersPage]
 })

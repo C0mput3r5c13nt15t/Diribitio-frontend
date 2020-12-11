@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ExchangesService } from 'src/app/exchanges.service';
-import { ProjectsService } from 'src/app/projects.service';
+import { ExchangesService } from 'src/app/services/exchanges.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { AlertController } from '@ionic/angular';
 import { Exchange } from 'src/models/Exchange.model';
-import { ConfigService } from 'src/app/config.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,11 +12,11 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin-exchange-detail.page.html',
   styleUrls: ['./admin-exchange-detail.page.scss'],
 })
-export class AdminExchangeDetailPage implements OnInit {
+export class AdminExchangeDetailPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   adminUrl: string;
-  exchangeId: string;
+  exchangeId: number;
 
   loadedExchange: Exchange = {
     id: 0,
@@ -36,6 +36,9 @@ export class AdminExchangeDetailPage implements OnInit {
   secondMaxGrade = 0;
 
   projectNoun = this.config.app_config.project_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -52,7 +55,7 @@ export class AdminExchangeDetailPage implements OnInit {
         return;
       }
       this.adminUrl = paramMap.get('AdminName');
-      this.exchangeId = paramMap.get('ExchangeID');
+      this.exchangeId = Number(paramMap.get('ExchangeID'));
     });
 
     this.getExchange();
@@ -62,6 +65,9 @@ export class AdminExchangeDetailPage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

@@ -1,3 +1,7 @@
+
+/**
+ * The basic response interface
+ */
 export interface Response {
     projects: any[];
     id?: number;

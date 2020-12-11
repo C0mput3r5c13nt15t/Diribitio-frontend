@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ConfigService } from 'src/app/config.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-verify-email',
   templateUrl: './verify-email.page.html',
   styleUrls: ['./verify-email.page.scss'],
 })
-export class VerifyEmailPage implements OnInit {
+export class VerifyEmailPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   status = 200;
@@ -32,8 +32,7 @@ export class VerifyEmailPage implements OnInit {
         return;
       } else {
         try {
-          // tslint:disable-next-line: max-line-length
-          this.contents = this.config.get_mail_status_descr('email-verification', this.activatedRoute.snapshot.paramMap.get('Status').toString());
+          this.contents = this.config.get_mail_status_descr('email-verification', Number(this.activatedRoute.snapshot.paramMap.get('Status')));
           this.title = this.contents.title;
           this.descr = this.contents.descr;
         } catch {
@@ -44,6 +43,9 @@ export class VerifyEmailPage implements OnInit {
     });
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

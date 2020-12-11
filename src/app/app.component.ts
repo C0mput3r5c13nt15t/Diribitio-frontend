@@ -3,10 +3,13 @@ import { Component, HostListener } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SettingsService } from './settings.service';
-import { ScreensizeService } from './screensize.service';
-import { AlertService } from './alert.service';
+import { SettingsService } from './services/settings.service';
+import { ScreensizeService } from './services/screensize.service';
+import { AlertService } from './services/alert.service';
 
+/**
+ * @ignore
+ */
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

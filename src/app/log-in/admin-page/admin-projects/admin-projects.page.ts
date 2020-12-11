@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { ProjectsService } from 'src/app/projects.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { ActivatedRoute } from '@angular/router';
 import { Project } from 'src/models/Project.model';
-import { ConfigService } from 'src/app/config.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin-projects.page.html',
   styleUrls: ['./admin-projects.page.scss'],
 })
-export class AdminProjectsPage implements OnInit {
+export class AdminProjectsPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   adminUrl: string;
@@ -21,6 +21,9 @@ export class AdminProjectsPage implements OnInit {
 
   imageUrl = this.config.backend_config.imageUrl;
   projectsNoun = this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private projectsService: ProjectsService,
@@ -41,6 +44,9 @@ export class AdminProjectsPage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

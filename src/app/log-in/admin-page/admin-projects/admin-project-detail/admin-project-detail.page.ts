@@ -1,13 +1,13 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProjectsService } from 'src/app/projects.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { AlertController } from '@ionic/angular';
 import { Student } from 'src/models/Student.model';
 import { Project } from 'src/models/Project.model';
 import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
-import { ScheduleService } from 'src/app/schedule.service';
-import { ConfigService } from 'src/app/config.service';
+import { ScheduleService } from 'src/app/services/schedule.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,12 +15,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin-project-detail.page.html',
   styleUrls: ['./admin-project-detail.page.scss'],
 })
-export class AdminProjectDetailPage implements OnInit {
+export class AdminProjectDetailPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   adminUrl: string;
 
-  projectId: string;
+  projectId: number;
 
   loadedProject: Project = {
     id: 0,
@@ -80,6 +80,9 @@ export class AdminProjectDetailPage implements OnInit {
     role: 2
   };
 
+  /**
+   * Contains the time schedule of the application
+   */
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -91,6 +94,9 @@ export class AdminProjectDetailPage implements OnInit {
     end: null
   };
 
+  /**
+   * Contains the current date in yyyy-MM-dd format
+   */
   currentDate: any;
 
   adminWrongTime: string;
@@ -98,6 +104,9 @@ export class AdminProjectDetailPage implements OnInit {
   imageUrl = this.config.backend_config.imageUrl;
   projectNoun = this.config.app_config.project_noun;
   projectsNoun = this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private activatedRoute: ActivatedRoute,
@@ -118,7 +127,7 @@ export class AdminProjectDetailPage implements OnInit {
         return;
       }
       this.adminUrl = paramMap.get('AdminName');
-      this.projectId = paramMap.get('ProjectID');
+      this.projectId = Number(paramMap.get('ProjectID'));
     });
 
     this.getSchedule();
@@ -130,10 +139,16 @@ export class AdminProjectDetailPage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  /**
+   * Gets the current time schedule for the application and sets the schedule value
+   */
   getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
@@ -152,12 +167,12 @@ export class AdminProjectDetailPage implements OnInit {
 
   authorizedChanged() {
     if (this.currentDate > this.schedule.control && this.currentDate <= this.schedule.registration) {
-      this.projectsService.toogleAuthorizedProject(this.loadedProject.id, this.loadedProject.authorized);
+      this.projectsService.toogleAuthorizedProject(this.loadedProject.id, Boolean(this.loadedProject.authorized));
     }
   }
 
   editableChanged() {
-    this.projectsService.toogleEditableProject(this.loadedProject.id, this.loadedProject.editable);
+    this.projectsService.toogleEditableProject(this.loadedProject.id, Boolean(this.loadedProject.editable));
   }
 
   deleteProject() {

@@ -59,6 +59,48 @@
     background-color: transparent;
 }
 
+.desktop {
+    ion-router-outlet {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+   
+    .logo {
+      max-height: 40px;
+    }
+   
+    ion-toolbar {
+      --background: var(--color-background);
+    }
+   
+    .link {
+      --color: var(--ion-color-light);
+    }
+   
+    .active-link {
+      --color: var(--ion-color-primary);
+    }
+}
+  
+.error {
+    display: none;
+}
+
+.footer {
+    width: 100%;
+    color: var(--color-text);
+    background: var(--color-background);
+    height: 56px;
+    line-height: 56px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+}
+
+#navbar {
+    display: block !important;
+}
+
 .dark-yellow {
     $color-background: var(--ion-color-dark);
     $color-buttons: var(--ion-color-warning);

@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../authentication.service';
-import { StudentsService } from '../students.service';
-import { LeadersService } from '../leaders.service';
-import { AdminsService } from '../admins.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { StudentsService } from 'src/app/services/students.service';
+import { LeadersService } from 'src/app/services/leaders.service';
+import { AdminsService } from 'src/app/services/admins.service';
 import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
-import { AlertService } from '../alert.service';
-import { ConfigService } from '../config.service';
-import { ScheduleService } from '../schedule.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { ConfigService } from 'src/app/services/config.service';
+import { ScheduleService } from 'src/app/services/schedule.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -16,9 +16,12 @@ import { Subscription } from 'rxjs';
   templateUrl: './log-in.page.html',
   styleUrls: ['./log-in.page.scss'],
 })
-export class LogInPage implements OnInit {
+export class LogInPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
+  /**
+   * Conatins the which form should be shown on the log-in page
+   */
   formType = 'student';
 
   StudentCredentials = {
@@ -36,8 +39,14 @@ export class LogInPage implements OnInit {
     password: '',
   };
 
+  /**
+   * Conatins the number of times a log-in has been tried
+   */
   tries = 0;
 
+  /**
+   * Contains the time schedule of the application
+   */
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -48,9 +57,15 @@ export class LogInPage implements OnInit {
     projects: null,
     end: null
   };
+  /**
+   * Contains the current date in yyyy-MM-dd format
+   */
   currentDate: any;
 
   projectNoun = this.config.app_config.project_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private auth: AuthenticationService,
@@ -76,10 +91,16 @@ export class LogInPage implements OnInit {
     this.log_in_from_storage();
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  /**
+   * Gets the current time schedule for the application and sets the schedule value
+   */
   getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;
@@ -98,6 +119,11 @@ export class LogInPage implements OnInit {
     }
   }
 
+  /**
+   * Sets the focus on the given element if ENTER is pressed
+   * @param keyCode Contains the code of the pressed key
+   * @param nextInput Contains the next element to be focused
+   */
   nextInput(keyCode, nextInput) {
     if (keyCode === 13) {
       nextInput.setFocus();

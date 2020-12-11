@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from '../authentication.service';
-import { ScreensizeService } from '../screensize.service';
-import { AlertService } from '../alert.service';
-import { ConfigService } from '../config.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { ScreensizeService } from 'src/app/services/screensize.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { ConfigService } from 'src/app/services/config.service';
 
 @Component({
   selector: 'app-tabs',
@@ -12,10 +12,19 @@ import { ConfigService } from '../config.service';
 export class TabsPage {
   isDesktop: boolean;
 
+  /**
+   * Contains all active error messages
+   */
   errors = [];
+  /**
+   * Contains all active alert messages
+   */
   alerts = [];
 
   projectsNoun = this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private screensizeService: ScreensizeService,
@@ -36,11 +45,21 @@ export class TabsPage {
     this.errors = this.alert.errors;
   }
 
-  fadeOutAlert(errorID) {
-    const element = document.getElementById(errorID.toString());
+  fadeOutAlert(alertID) {
+    const element = document.getElementById(alertID.toString());
+    this.alerts.forEach(alert => {
+      if (alert.id > alertID) {
+        const alertElement = document.getElementById(alert.id.toString());
+        alertElement.classList.add('slideOutUpEdited');
+        alertElement.onanimationend = () => {
+          alertElement.classList.remove('animate__fadeInDown');
+          alertElement.classList.remove('slideOutUpEdited');
+        };
+      }
+    });
     element.classList.add('animate__fadeOutLeft');
     element.onanimationend = () => {
-      this.delete_alert(errorID);
+      this.delete_alert(alertID);
     };
   }
 
@@ -50,6 +69,24 @@ export class TabsPage {
 
   fadeOutError(errorID) {
     const element = document.getElementById(errorID.toString());
+    this.errors.forEach(error => {
+      if (error.id > errorID) {
+        const errorElement = document.getElementById(error.id.toString());
+        errorElement.classList.add('slideOutUpEdited');
+        errorElement.onanimationend = () => {
+          errorElement.classList.remove('animate__fadeInDown');
+          errorElement.classList.remove('slideOutUpEdited');
+        };
+      }
+    });
+    this.alerts.forEach(alert => {
+      const alertElement = document.getElementById(alert.id.toString());
+      alertElement.classList.add('slideOutUpEdited');
+      alertElement.onanimationend = () => {
+        alertElement.classList.remove('animate__fadeInDown');
+        alertElement.classList.remove('slideOutUpEdited');
+      };
+    });
     element.classList.add('animate__fadeOutLeft');
     element.onanimationend = () => {
       this.delete_error(errorID);

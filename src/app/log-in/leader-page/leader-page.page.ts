@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LeadersService } from 'src/app/leaders.service';
+import { LeadersService } from 'src/app/services/leaders.service';
 import { Schedule } from 'src/models/Schedule.model';
 import { formatDate } from '@angular/common';
 import { Projectleader } from 'src/models/Projectleader';
-import { ConfigService } from 'src/app/config.service';
-import { ScheduleService } from 'src/app/schedule.service';
-import { AlertService } from 'src/app/alert.service';
-import { ProjectsService } from 'src/app/projects.service';
+import { ConfigService } from 'src/app/services/config.service';
+import { ScheduleService } from 'src/app/services/schedule.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './leader-page.page.html',
   styleUrls: ['./leader-page.page.scss'],
 })
-export class LeaderPagePage implements OnInit {
+export class LeaderPagePage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   loadedLeader: Projectleader = {
@@ -26,6 +26,9 @@ export class LeaderPagePage implements OnInit {
     project_id: 0
   };
 
+  /**
+   * Contains the time schedule of the application
+   */
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -37,6 +40,9 @@ export class LeaderPagePage implements OnInit {
     end: null
   };
 
+  /**
+   * Contains the current date in yyyy-MM-dd format
+   */
   currentDate: any;
 
   text: string;
@@ -75,10 +81,16 @@ export class LeaderPagePage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }
 
+  /**
+   * Gets the current time schedule for the application and sets the schedule value
+   */
   getSchedule() {
     this.scheduleService.getSchedule().subscribe(data => {
       this.schedule = data.data;

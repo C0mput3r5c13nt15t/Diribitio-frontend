@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { StudentsService } from 'src/app/students.service';
-import { LeadersService } from 'src/app/leaders.service';
-import { ProjectsService } from 'src/app/projects.service';
+import { StudentsService } from 'src/app/services/students.service';
+import { LeadersService } from 'src/app/services/leaders.service';
+import { ProjectsService } from 'src/app/services/projects.service';
 import { AlertController } from '@ionic/angular';
 import { Schedule } from 'src/models/Schedule.model';
-import { AdminsService } from 'src/app/admins.service';
-import { AlertService } from 'src/app/alert.service';
-import { ConfigService } from 'src/app/config.service';
+import { AdminsService } from 'src/app/services/admins.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Project } from 'src/models/Project.model';
-import { ScheduleService } from 'src/app/schedule.service';
+import { ScheduleService } from 'src/app/services/schedule.service';
 import { Time } from '@angular/common';
 import { formatDate } from '@angular/common';
 import { Subscription } from 'rxjs';
@@ -52,7 +52,7 @@ export interface ModifiedProjektleiter {
   templateUrl: './admin-students-leaders.page.html',
   styleUrls: ['./admin-students-leaders.page.scss'],
 })
-export class AdminStudentsLeadersPage implements OnInit {
+export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   adminUrl: string;
@@ -67,6 +67,9 @@ export class AdminStudentsLeadersPage implements OnInit {
 
   sorted = false;
 
+  /**
+   * Contains the time schedule of the application
+   */
   schedule: Schedule = {
     id: 1,
     begin: null,
@@ -78,6 +81,9 @@ export class AdminStudentsLeadersPage implements OnInit {
     end: null
   };
 
+  /**
+   * Contains the current date in yyyy-MM-dd format
+   */
   currentDate: any;
 
   searchValue: string;
@@ -91,6 +97,9 @@ export class AdminStudentsLeadersPage implements OnInit {
 
   projectNoun = this.config.app_config.project_noun;
   projectsNoun = this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private studentsService: StudentsService,
@@ -119,6 +128,9 @@ export class AdminStudentsLeadersPage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

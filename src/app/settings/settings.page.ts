@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { SettingsService } from '../settings.service';
-import { ConfigService } from '../config.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SettingsService } from 'src/app/services/settings.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
 })
-export class SettingsPage implements OnInit {
+export class SettingsPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   background = 'dark';
@@ -30,6 +30,9 @@ export class SettingsPage implements OnInit {
     this.color = colorandbackground[1];
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

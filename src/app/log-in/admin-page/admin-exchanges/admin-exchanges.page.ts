@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ExchangesService } from 'src/app/exchanges.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ExchangesService } from 'src/app/services/exchanges.service';
 import { ActivatedRoute } from '@angular/router';
-import { ConfigService } from 'src/app/config.service';
+import { ConfigService } from 'src/app/services/config.service';
 import { Exchange } from 'src/models/Exchange.model';
 import { Subscription } from 'rxjs';
 
@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './admin-exchanges.page.html',
   styleUrls: ['./admin-exchanges.page.scss'],
 })
-export class AdminExchangesPage implements OnInit {
+export class AdminExchangesPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
   adminUrl: string;
@@ -23,6 +23,9 @@ export class AdminExchangesPage implements OnInit {
   text3: string;
   text4: string;
 
+  /**
+   * Conatins the name of the event that the application is used for
+   */
   eventName = this.config.app_config.event_name;
 
   constructor(private exchangesService: ExchangesService,
@@ -44,6 +47,9 @@ export class AdminExchangesPage implements OnInit {
     );
   }
 
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
   ngOnDestroy() {
     this.subscriptions.forEach(sub => sub.unsubscribe());
   }

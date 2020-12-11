@@ -1,3 +1,7 @@
+
+/**
+ * The basic response interface
+ */
 export interface Schedule {
     id: number;
     begin: Date;

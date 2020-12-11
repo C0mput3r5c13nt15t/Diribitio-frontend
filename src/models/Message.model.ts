@@ -1,3 +1,7 @@
+
+/**
+ * The basic message interface
+ */
 export interface Message {
     id: number;
     project_id: number;

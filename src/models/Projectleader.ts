@@ -1,5 +1,8 @@
 import { Time } from '@angular/common';
 
+/**
+ * The basic projectleader interface
+ */
 export interface Projectleader {
     id: number;
     user_name: string;

@@ -1,5 +1,8 @@
 import { Time } from '@angular/common';
 
+/**
+ * The basic student interface
+ */
 export interface Student {
     id: number;
     user_name: string;

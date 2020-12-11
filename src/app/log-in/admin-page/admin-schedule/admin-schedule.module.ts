@@ -1,19 +1,25 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AdminSchedulePageRoutingModule } from './admin-schedule-routing.module';
-
 import { AdminSchedulePage } from './admin-schedule.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: AdminSchedulePage
+  }
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    AdminSchedulePageRoutingModule
+    RouterModule.forChild(routes)
   ],
   declarations: [AdminSchedulePage]
 })

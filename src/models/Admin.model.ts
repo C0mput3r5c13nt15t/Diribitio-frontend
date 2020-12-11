@@ -1,5 +1,8 @@
 import { Time } from '@angular/common';
 
+/**
+ * The basic admin interface
+ */
 export interface Admin {
     id: number;
     user_name: string;
