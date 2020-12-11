@@ -235,26 +235,22 @@ export class RegistrationPage implements OnInit, OnDestroy {
           this.loadedStudent.first_friend = this.friendsList[0].id;
           this.loadedStudent.second_friend = this.friendsList[1].id;
           this.loadedStudent.third_friend = this.friendsList[2].id;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else if (this.friendsList.length === 2) {
           this.loadedStudent.first_friend = this.friendsList[0].id;
           this.loadedStudent.second_friend = this.friendsList[1].id;
           this.loadedStudent.third_friend = 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else if (this.friendsList.length === 1) {
           this.loadedStudent.first_friend = this.friendsList[0].id;
           this.loadedStudent.second_friend = 0;
           this.loadedStudent.third_friend = 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else {
           this.loadedStudent.first_friend = 0;
           this.loadedStudent.second_friend = 0;
           this.loadedStudent.third_friend = 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + '/Schüler/' + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         }
       } else {
         this.alertCtrl.create({

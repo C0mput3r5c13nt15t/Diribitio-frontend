@@ -262,8 +262,9 @@ export class StudentsService {
   /**
    * Updates the student associated with the provided token
    * @param studentData Contains the updated student
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
    */
-  putSelfStudent(studentData) {
+  putSelfStudent(studentData, backUrl: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
@@ -272,6 +273,7 @@ export class StudentsService {
     const options = { headers };
     this.http.put<Response>(this.backendUrl + 'students/self_update', studentData, options).subscribe(() => {
       this.alert.alert('Der Account wurde erfolgreich aktualisiert!');
+      this.router.navigate([this.eventName + '/Schüler/' + backUrl]);
       this.update.emit();
     }, error => {
       this.alert.error('Aktualisierung des Accounts fehlgeschlagen!', error.error);
