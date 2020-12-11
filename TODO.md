@@ -7,8 +7,9 @@ There's of course still some fuctionality to be implemented and some other thing
 the app should make another request to the backend to get the actual result of the sorting.
 2. The app still needs some new instructions on the help page  
 sice the current ones are outdated.
-3. Multi-language-support
-4. More ...
+3. Fix success and error messages
+4. Multi-language-support
+5. More ...
 
 ## Documentationwise
 

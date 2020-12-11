@@ -47,16 +47,6 @@ export class TabsPage {
 
   fadeOutAlert(alertID) {
     const element = document.getElementById(alertID.toString());
-    this.alerts.forEach(alert => {
-      if (alert.id > alertID) {
-        const alertElement = document.getElementById(alert.id.toString());
-        alertElement.classList.add('slideOutUpEdited');
-        alertElement.onanimationend = () => {
-          alertElement.classList.remove('animate__fadeInDown');
-          alertElement.classList.remove('slideOutUpEdited');
-        };
-      }
-    });
     element.classList.add('animate__fadeOutLeft');
     element.onanimationend = () => {
       this.delete_alert(alertID);
@@ -69,24 +59,6 @@ export class TabsPage {
 
   fadeOutError(errorID) {
     const element = document.getElementById(errorID.toString());
-    this.errors.forEach(error => {
-      if (error.id > errorID) {
-        const errorElement = document.getElementById(error.id.toString());
-        errorElement.classList.add('slideOutUpEdited');
-        errorElement.onanimationend = () => {
-          errorElement.classList.remove('animate__fadeInDown');
-          errorElement.classList.remove('slideOutUpEdited');
-        };
-      }
-    });
-    this.alerts.forEach(alert => {
-      const alertElement = document.getElementById(alert.id.toString());
-      alertElement.classList.add('slideOutUpEdited');
-      alertElement.onanimationend = () => {
-        alertElement.classList.remove('animate__fadeInDown');
-        alertElement.classList.remove('slideOutUpEdited');
-      };
-    });
     element.classList.add('animate__fadeOutLeft');
     element.onanimationend = () => {
       this.delete_error(errorID);
