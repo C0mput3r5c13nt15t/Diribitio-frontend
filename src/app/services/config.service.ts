@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import app from 'src/config/app.config.json';
-import backend from 'src/config/backend.dev.config.json';
+import backend from 'src/config/backend.config.json';
 import conditions from 'src/config/conditions.json';
 import content from 'src/config/content.json';
 import data_protection from 'src/config/data-protection.json';
