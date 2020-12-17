@@ -1,0 +1,1384 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diribit.io documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">diribit.io documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>AdminsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/admins.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles all request to the backend having to do with the admins</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backendUrl">backendUrl</a>
+                            </li>
+                            <li>
+                                <a href="#eventName">eventName</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#applySortingProposal">applySortingProposal</a>
+                            </li>
+                            <li>
+                                <a href="#createSignUpEmail">createSignUpEmail</a>
+                            </li>
+                            <li>
+                                <a href="#createSortingProposal">createSortingProposal</a>
+                            </li>
+                            <li>
+                                <a href="#deleteSignUpEmail">deleteSignUpEmail</a>
+                            </li>
+                            <li>
+                                <a href="#editSortingProposal">editSortingProposal</a>
+                            </li>
+                            <li>
+                                <a href="#getAllSignUpEmails">getAllSignUpEmails</a>
+                            </li>
+                            <li>
+                                <a href="#getSelfAdmin">getSelfAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#logInAdmin">logInAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#logOutAdmin">logOutAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#requestSortingProposal">requestSortingProposal</a>
+                            </li>
+                            <li>
+                                <a href="#sendAuthentificationEmail">sendAuthentificationEmail</a>
+                            </li>
+                            <li>
+                                <a href="#sendAuthentificationEmailSubscribe">sendAuthentificationEmailSubscribe</a>
+                            </li>
+                            <li>
+                                <a href="#signUpAdmin">signUpAdmin</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, alert: <a href="../injectables/AlertService.html">AlertService</a>, config: <a href="../injectables/ConfigService.html">ConfigService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/services/admins.service.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alert</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="applySortingProposal"></a>
+                    <span class="name">
+                        <b>
+                            applySortingProposal
+                        </b>
+                        <a href="#applySortingProposal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>applySortingProposal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="229"
+                            class="link-to-prism">src/app/services/admins.service.ts:229</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Applies the current sorting proposal to the actual database</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>MessageString</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createSignUpEmail"></a>
+                    <span class="name">
+                        <b>
+                            createSignUpEmail
+                        </b>
+                        <a href="#createSignUpEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createSignUpEmail(emailData)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="152"
+                            class="link-to-prism">src/app/services/admins.service.ts:152</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Authorizes a new email to be used for the creation of an admin account</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>emailData</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the email to be authorized</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createSortingProposal"></a>
+                    <span class="name">
+                        <b>
+                            createSortingProposal
+                        </b>
+                        <a href="#createSortingProposal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createSortingProposal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="183"
+                            class="link-to-prism">src/app/services/admins.service.ts:183</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a sorting proposal</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteSignUpEmail"></a>
+                    <span class="name">
+                        <b>
+                            deleteSignUpEmail
+                        </b>
+                        <a href="#deleteSignUpEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteSignUpEmail(emailID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="165"
+                            class="link-to-prism">src/app/services/admins.service.ts:165</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Forbids the furter use of an email that was previously allowed for the creation of an admin account</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>emailID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the email to be forbidden</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editSortingProposal"></a>
+                    <span class="name">
+                        <b>
+                            editSortingProposal
+                        </b>
+                        <a href="#editSortingProposal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editSortingProposal(sortingProposal)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="211"
+                            class="link-to-prism">src/app/services/admins.service.ts:211</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the current sorting proposal</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sortingProposal</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllSignUpEmails"></a>
+                    <span class="name">
+                        <b>
+                            getAllSignUpEmails
+                        </b>
+                        <a href="#getAllSignUpEmails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllSignUpEmails()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="138"
+                            class="link-to-prism">src/app/services/admins.service.ts:138</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all emails that are allowed for the creation of admin accounts</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelfAdmin"></a>
+                    <span class="name">
+                        <b>
+                            getSelfAdmin
+                        </b>
+                        <a href="#getSelfAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelfAdmin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/app/services/admins.service.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the admin associated with the provided token</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logInAdmin"></a>
+                    <span class="name">
+                        <b>
+                            logInAdmin
+                        </b>
+                        <a href="#logInAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logInAdmin(loginData)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="95"
+                            class="link-to-prism">src/app/services/admins.service.ts:95</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Logs in as admin with the given credentials</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>loginData</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the credentials to be used (email and password)</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="logOutAdmin"></a>
+                    <span class="name">
+                        <b>
+                            logOutAdmin
+                        </b>
+                        <a href="#logOutAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>logOutAdmin()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="106"
+                            class="link-to-prism">src/app/services/admins.service.ts:106</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Logs out the admin associated with the provided token</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="requestSortingProposal"></a>
+                    <span class="name">
+                        <b>
+                            requestSortingProposal
+                        </b>
+                        <a href="#requestSortingProposal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>requestSortingProposal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="197"
+                            class="link-to-prism">src/app/services/admins.service.ts:197</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the current sorting proposal</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendAuthentificationEmail"></a>
+                    <span class="name">
+                        <b>
+                            sendAuthentificationEmail
+                        </b>
+                        <a href="#sendAuthentificationEmail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendAuthentificationEmail()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/services/admins.service.ts:64</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sends the authentification email to the admin associated with the provided token</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendAuthentificationEmailSubscribe"></a>
+                    <span class="name">
+                        <b>
+                            sendAuthentificationEmailSubscribe
+                        </b>
+                        <a href="#sendAuthentificationEmailSubscribe"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sendAuthentificationEmailSubscribe()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/services/admins.service.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sends the authentification email to the admin associated with the provided token (same as before)</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signUpAdmin"></a>
+                    <span class="name">
+                        <b>
+                            signUpAdmin
+                        </b>
+                        <a href="#signUpAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>signUpAdmin(signUpData, form)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/services/admins.service.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new admin account</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>signUpData</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the credentials for the account creation</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>form</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the form to be resetted after the creation</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="backendUrl"></a>
+                        <span class="name">
+                            <b>
+                            backendUrl</b>
+                            <a href="#backendUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.backend_config.url</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/services/admins.service.ts:30</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The url to the backend</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventName"></a>
+                        <span class="name">
+                            <b>
+                            eventName</b>
+                            <a href="#eventName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.event_name</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/services/admins.service.ts:34</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Conatins the name of the event that the application is used for</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, Output, EventEmitter } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { AuthenticationService } from &#x27;./authentication.service&#x27;;
+import { AlertService } from &#x27;./alert.service&#x27;;
+import { ConfigService } from &#x27;./config.service&#x27;;
+import { Response } from &#x27;src/models/Response.model&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+/**
+ * This service handles all request to the backend having to do with the admins
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class AdminsService {
+  /**
+   * The update event is emitted after every major successful request
+   */
+  @Output() update &#x3D; new EventEmitter();
+
+  constructor(private http: HttpClient,
+              private auth: AuthenticationService,
+              private alert: AlertService,
+              private config: ConfigService,
+              private router: Router) { }
+
+  /**
+   * The url to the backend
+   */
+  backendUrl &#x3D; this.config.backend_config.url;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
+  eventName &#x3D; this.config.app_config.event_name;
+
+  /**
+   * Creates a new admin account
+   * @param signUpData Contains the credentials for the account creation
+   * @param form Contains the form to be resetted after the creation
+   */
+  signUpAdmin(signUpData, form) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    });
+    const options &#x3D; { headers };
+    this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/register&#x27;, signUpData, options).subscribe(data &#x3D;&gt; {
+      if (data.token) {
+        this.auth.set_jwt(data.token);
+        this.auth.setLoggedIn(true);
+        this.router.navigate([this.eventName + &#x27;/Anmeldung&#x27;]);
+      }
+      this.alert.alert(&#x27;Dein Account wurde erfolgreich erstellt!&#x27;);
+      this.sendAuthentificationEmail();
+      this.update.emit();
+      form.reset();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Erstellung des Accounts fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Sends the authentification email to the admin associated with the provided token
+   */
+  sendAuthentificationEmail() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt
+    });
+    const options &#x3D; { headers };
+    this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/email/resend&#x27;, null, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Versandt der Verifizierungs E-Mail fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Sends the authentification email to the admin associated with the provided token (same as before)
+   * @returns RequestObservable
+   */
+  sendAuthentificationEmailSubscribe() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt
+    });
+    const options &#x3D; { headers };
+    return this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/email/resend&#x27;, null, options);
+  }
+
+  /**
+   * Logs in as admin with the given credentials
+   * @param loginData Contains the credentials to be used (email and password)
+   * @returns RequestObservable
+   */
+  logInAdmin(loginData) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    });
+    const options &#x3D; { headers };
+    return this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/login&#x27;, loginData, options);
+  }
+
+  /**
+   * Logs out the admin associated with the provided token
+   */
+  logOutAdmin() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt
+    });
+    const options &#x3D; { headers };
+    this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/logout&#x27;, null, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+      this.auth.setLoggedIn(false);
+      this.router.navigate([this.eventName + &#x27;/Anmeldung&#x27;]);
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Logout fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Gets the admin associated with the provided token
+   * @returns RequestObservable
+   */
+  getSelfAdmin() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;admins/self&#x27;, options);
+  }
+
+  /**
+   * Gets all emails that are allowed for the creation of admin accounts
+   * @returns RequestObservable
+   */
+  getAllSignUpEmails() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;sign_up_emails&#x27;, options);
+  }
+
+  /**
+   * Authorizes a new email to be used for the creation of an admin account
+   * @param emailData Contains the email to be authorized
+   * @returns RequestObservable
+   */
+  createSignUpEmail(emailData) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    return this.http.post&lt;Response&gt;(this.backendUrl + &#x27;sign_up_emails&#x27;, emailData, options);
+  }
+
+  /**
+   * Forbids the furter use of an email that was previously allowed for the creation of an admin account
+   * @param emailID Contains the id of the email to be forbidden
+   */
+  deleteSignUpEmail(emailID: number) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    this.http.delete&lt;Response&gt;(this.backendUrl + &#x27;sign_up_emails/&#x27; + emailID, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Sperrung der E-Mail fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Creates a sorting proposal
+   * @returns RequestObservable
+   */
+  createSortingProposal() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+
+    const options &#x3D; { headers };
+    return this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/create_sorting_proposal&#x27;, null, options);
+  }
+
+  /**
+   * Gets the current sorting proposal
+   * @returns RequestObservable
+   */
+  requestSortingProposal() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;admins/request_sorting_proposal&#x27;, options);
+  }
+
+  /**
+   * Updates the current sorting proposal
+   * @returns RequestObservable
+   */
+  editSortingProposal(sortingProposal) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+
+    const options &#x3D; { headers };
+    this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/edit_sorting_proposal&#x27;, sortingProposal, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Erstellung eines Backups fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Applies the current sorting proposal to the actual database
+   * @returns MessageString
+   */
+  applySortingProposal() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+
+    const options &#x3D; { headers };
+    this.http.post&lt;Response&gt;(this.backendUrl + &#x27;admins/apply_sorting_proposal&#x27;, null, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Anwendung des Sortiervorschlags fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

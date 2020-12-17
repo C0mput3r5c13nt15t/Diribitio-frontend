@@ -1,0 +1,1736 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diribit.io documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">diribit.io documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Injectables</li>
+  <li>ProjectsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/services/projects.service.ts</code>
+        </p>
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>This service handles all request to the backend having to do with the projects</p>
+
+            </p>
+
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#backendUrl">backendUrl</a>
+                            </li>
+                            <li>
+                                <a href="#Data">Data</a>
+                            </li>
+                            <li>
+                                <a href="#eventName">eventName</a>
+                            </li>
+                            <li>
+                                <a href="#projectNoun">projectNoun</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createProject">createProject</a>
+                            </li>
+                            <li>
+                                <a href="#deleteProject">deleteProject</a>
+                            </li>
+                            <li>
+                                <a href="#getAllProjects">getAllProjects</a>
+                            </li>
+                            <li>
+                                <a href="#getLittleProject">getLittleProject</a>
+                            </li>
+                            <li>
+                                <a href="#getProject">getProject</a>
+                            </li>
+                            <li>
+                                <a href="#getProjectAdmin">getProjectAdmin</a>
+                            </li>
+                            <li>
+                                <a href="#getSelfLeadedProject">getSelfLeadedProject</a>
+                            </li>
+                            <li>
+                                <a href="#getSelfProject">getSelfProject</a>
+                            </li>
+                            <li>
+                                <a href="#putProject">putProject</a>
+                            </li>
+                            <li>
+                                <a href="#toogleAuthorizedProject">toogleAuthorizedProject</a>
+                            </li>
+                            <li>
+                                <a href="#toogleEditableProject">toogleEditableProject</a>
+                            </li>
+                            <li>
+                                <a href="#touchUpProject">touchUpProject</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, alert: <a href="../injectables/AlertService.html">AlertService</a>, config: <a href="../injectables/ConfigService.html">ConfigService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/projects.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alert</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createProject"></a>
+                    <span class="name">
+                        <b>
+                            createProject
+                        </b>
+                        <a href="#createProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createProject(baseUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, projectData, image: null)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="124"
+                            class="link-to-prism">src/app/services/projects.service.ts:124</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Creates a new project</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>baseUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;students&#x27;</code>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains for which type of user accout this request is (students or leaders)</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>projectData</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the new project</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>image</td>
+                                    <td>
+                                            <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>null</code>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the image of the new project</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteProject"></a>
+                    <span class="name">
+                        <b>
+                            deleteProject
+                        </b>
+                        <a href="#deleteProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteProject(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="253"
+                            class="link-to-prism">src/app/services/projects.service.ts:253</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Deletes the project with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project to be deleted</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllProjects"></a>
+                    <span class="name">
+                        <b>
+                            getAllProjects
+                        </b>
+                        <a href="#getAllProjects"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllProjects()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/services/projects.service.ts:42</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets all projects</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getLittleProject"></a>
+                    <span class="name">
+                        <b>
+                            getLittleProject
+                        </b>
+                        <a href="#getLittleProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getLittleProject(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/services/projects.service.ts:68</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets some of the project data with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProject"></a>
+                    <span class="name">
+                        <b>
+                            getProject
+                        </b>
+                        <a href="#getProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProject(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="55"
+                            class="link-to-prism">src/app/services/projects.service.ts:55</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the project with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProjectAdmin"></a>
+                    <span class="name">
+                        <b>
+                            getProjectAdmin
+                        </b>
+                        <a href="#getProjectAdmin"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProjectAdmin(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/services/projects.service.ts:81</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the project data available to an admin with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelfLeadedProject"></a>
+                    <span class="name">
+                        <b>
+                            getSelfLeadedProject
+                        </b>
+                        <a href="#getSelfLeadedProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelfLeadedProject(baseUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="108"
+                            class="link-to-prism">src/app/services/projects.service.ts:108</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the leaded project of the student or leader associated with the provided token</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>baseUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;students&#x27;</code>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains for which type of user accout this request is (students or leaders)</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getSelfProject"></a>
+                    <span class="name">
+                        <b>
+                            getSelfProject
+                        </b>
+                        <a href="#getSelfProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getSelfProject()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="94"
+                            class="link-to-prism">src/app/services/projects.service.ts:94</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Gets the project of the student associated with the provided token</p>
+</div>
+
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        <p>RequestObservable</p>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="putProject"></a>
+                    <span class="name">
+                        <b>
+                            putProject
+                        </b>
+                        <a href="#putProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>putProject(baseUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, projectData, backUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="200"
+                            class="link-to-prism">src/app/services/projects.service.ts:200</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the project of the student/leader associated with the provided token</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>baseUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;students&#x27;</code>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains for which type of user accout this request is (students or leaders)</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>projectData</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the new project data</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>backUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the url that the user should be navigated to after a successful update</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toogleAuthorizedProject"></a>
+                    <span class="name">
+                        <b>
+                            toogleAuthorizedProject
+                        </b>
+                        <a href="#toogleAuthorizedProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toogleAuthorizedProject(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, authorized: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/app/services/projects.service.ts:153</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the authorization of the project with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project to be un-/auhorized</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>authorized</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the new value for authorized</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toogleEditableProject"></a>
+                    <span class="name">
+                        <b>
+                            toogleEditableProject
+                        </b>
+                        <a href="#toogleEditableProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toogleEditableProject(projectID: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, editable: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="177"
+                            class="link-to-prism">src/app/services/projects.service.ts:177</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the editability of the project with the given id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>projectID</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the id of the project to be un-/editable</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>editable</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the new value for editable</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="touchUpProject"></a>
+                    <span class="name">
+                        <b>
+                            touchUpProject
+                        </b>
+                        <a href="#touchUpProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>touchUpProject(baseUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, projectData, backUrl)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="228"
+                            class="link-to-prism">src/app/services/projects.service.ts:228</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Updates the project of the student/leader associated with the provided token even after the actual
+              deadline if ediatble allows it</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Default value</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>baseUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                        <code>&#x27;students&#x27;</code>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains for which type of user accout this request is (students or leaders)</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>projectData</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the new project data</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>backUrl</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        <p>Contains the url that the user should be navigated to after a successful update</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="backendUrl"></a>
+                        <span class="name">
+                            <b>
+                            backendUrl</b>
+                            <a href="#backendUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.backend_config.url</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/services/projects.service.ts:31</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>The url to the backend</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Data"></a>
+                        <span class="name">
+                            <b>
+                            Data</b>
+                            <a href="#Data"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/services/projects.service.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventName"></a>
+                        <span class="name">
+                            <b>
+                            eventName</b>
+                            <a href="#eventName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.event_name</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/services/projects.service.ts:36</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Conatins the name of the event that the application is used for</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="projectNoun"></a>
+                        <span class="name">
+                            <b>
+                            projectNoun</b>
+                            <a href="#projectNoun"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.project_noun</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/services/projects.service.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, EventEmitter, Output } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { AuthenticationService } from &#x27;./authentication.service&#x27;;
+import { AlertService } from &#x27;./alert.service&#x27;;
+import { ConfigService } from &#x27;./config.service&#x27;;
+import { Response } from &#x27;src/models/Response.model&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+/**
+ * This service handles all request to the backend having to do with the projects
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class ProjectsService {
+  /**
+   * The update event is emitted after every major successful request
+   */
+  @Output() update &#x3D; new EventEmitter();
+  Data;
+
+  constructor(private http: HttpClient,
+              private auth: AuthenticationService,
+              private alert: AlertService,
+              private config: ConfigService,
+              private router: Router) { }
+
+  /**
+   * The url to the backend
+   */
+  backendUrl &#x3D; this.config.backend_config.url;
+  projectNoun &#x3D; this.config.app_config.project_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
+  eventName &#x3D; this.config.app_config.event_name;
+
+  /**
+   * Gets all projects
+   * @returns RequestObservable
+   */
+  getAllProjects() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;projects&#x27;, options);
+  }
+
+  /**
+   * Gets the project with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
+  getProject(projectID: number) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;projects/&#x27; + projectID, options);
+  }
+
+  /**
+   * Gets some of the project data with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
+  getLittleProject(projectID: number) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;projects/show_little/&#x27; + projectID, options);
+  }
+
+  /**
+   * Gets the project data available to an admin with the given id
+   * @param projectID Contains the id of the project
+   * @returns RequestObservable
+   */
+  getProjectAdmin(projectID: number) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;admins/project/&#x27; + projectID, options);
+  }
+
+  /**
+   * Gets the project of the student associated with the provided token
+   * @returns RequestObservable
+   */
+  getSelfProject() {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + &#x27;students/project&#x27;, options);
+  }
+
+  /**
+   * Gets the leaded project of the student or leader associated with the provided token
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @returns RequestObservable
+   */
+  getSelfLeadedProject(baseUrl&#x3D; &#x27;students&#x27;) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    return this.http.get&lt;Response&gt;(this.backendUrl + baseUrl + &#x27;/leaded_project&#x27;, options);
+  }
+
+  /**
+   * Creates a new project
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project
+   * @param image Contains the image of the new project
+   * @returns RequestObservable
+   */
+  createProject(baseUrl&#x3D; &#x27;students&#x27;, projectData, image&#x3D; null) {
+    const headers &#x3D; new HttpHeaders({
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+
+    const formData &#x3D; new FormData();
+    formData.append(&#x27;title&#x27;, projectData.title);
+    formData.append(&#x27;image&#x27;, image);
+    formData.append(&#x27;descr&#x27;, projectData.descr);
+    formData.append(&#x27;leader_name&#x27;, projectData.leader_name);
+    formData.append(&#x27;cost&#x27;, projectData.cost);
+    formData.append(&#x27;first_day_begin&#x27;, projectData.first_day_begin);
+    formData.append(&#x27;first_day_end&#x27;, projectData.first_day_end);
+    formData.append(&#x27;second_day_begin&#x27;, projectData.second_day_begin);
+    formData.append(&#x27;second_day_end&#x27;, projectData.second_day_end);
+    formData.append(&#x27;min_grade&#x27;, projectData.min_grade);
+    formData.append(&#x27;max_grade&#x27;, projectData.max_grade);
+    formData.append(&#x27;min_participants&#x27;, projectData.min_participants);
+    formData.append(&#x27;max_participants&#x27;, projectData.max_participants);
+
+    return this.http.post&lt;Response&gt;(this.backendUrl + baseUrl + &#x27;/store_project&#x27;, formData, options);
+  }
+
+  /**
+   * Updates the authorization of the project with the given id
+   * @param projectID Contains the id of the project to be un-/auhorized
+   * @param authorized Contains the new value for authorized
+   */
+  toogleAuthorizedProject(projectID: number, authorized: boolean) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    const sendData &#x3D; {
+      authorized
+    };
+    this.http.put&lt;Response&gt;(this.backendUrl + &#x27;admins/toogle_authorized/&#x27; + projectID, sendData, options).subscribe(data &#x3D;&gt; {
+      if (data) {
+        this.alert.alert(data.message);
+      }
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Aktualisierung des Projektes fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Updates the editability of the project with the given id
+   * @param projectID Contains the id of the project to be un-/editable
+   * @param editable Contains the new value for editable
+   */
+  toogleEditableProject(projectID: number, editable: boolean) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    const sendData &#x3D; {
+      editable
+    };
+    this.http.put&lt;Response&gt;(this.backendUrl + &#x27;admins/toogle_editable/&#x27; + projectID, sendData, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Aktualisierung des Projektes fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Updates the project of the student/leader associated with the provided token
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project data
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
+   */
+  putProject(baseUrl&#x3D; &#x27;students&#x27;, projectData, backUrl: string) {
+    const headers &#x3D; new HttpHeaders({
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+
+    this.http.put&lt;Response&gt;(this.backendUrl + baseUrl + &#x27;/update_project&#x27;, projectData, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+
+      if (baseUrl &#x3D;&#x3D;&#x3D; &#x27;students&#x27;) {
+        this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + backUrl]);
+      } else {
+        this.router.navigate([this.eventName + &#x27;/&#x27; + this.projectNoun + &#x27;leiter/&#x27; + backUrl]);
+      }
+
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Aktualisierung des Projektes fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Updates the project of the student/leader associated with the provided token even after the actual
+   *              deadline if ediatble allows it
+   * @param baseUrl Contains for which type of user accout this request is (students or leaders)
+   * @param projectData Contains the new project data
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
+   */
+  touchUpProject(baseUrl&#x3D; &#x27;students&#x27;, projectData, backUrl) {
+    const headers &#x3D; new HttpHeaders({
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+
+    this.http.put&lt;Response&gt;(this.backendUrl + baseUrl + &#x27;/touch_up_project&#x27;, projectData, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+
+      if (baseUrl &#x3D;&#x3D;&#x3D; &#x27;students&#x27;) {
+        this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + backUrl]);
+      } else {
+        this.router.navigate([this.eventName + &#x27;/&#x27; + this.projectNoun + &#x27;leiter/&#x27; + backUrl]);
+      }
+
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Aktualisierung des Projektes fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+
+  /**
+   * Deletes the project with the given id
+   * @param projectID Contains the id of the project to be deleted
+   */
+  deleteProject(projectID: number) {
+    const headers &#x3D; new HttpHeaders({
+      &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
+      Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
+    });
+    const options &#x3D; { headers };
+    this.http.delete&lt;Response&gt;(this.backendUrl + &#x27;admins/destroy_project/&#x27; + projectID, options).subscribe(data &#x3D;&gt; {
+      this.alert.alert(data.message);
+      this.update.emit();
+    }, error &#x3D;&gt; {
+      this.alert.error(&#x27;Löschung des Projektes fehlgeschlagen!&#x27;, error.error);
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'ProjectsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,1096 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diribit.io documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">diribit.io documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>TabsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/tabs/tabs.page.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-tabs</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>tabs.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>tabs.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alerts">alerts</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#auth">auth</a>
+                            </li>
+                            <li>
+                                <a href="#errors">errors</a>
+                            </li>
+                            <li>
+                                <a href="#eventName">eventName</a>
+                            </li>
+                            <li>
+                                <a href="#isDesktop">isDesktop</a>
+                            </li>
+                            <li>
+                                <a href="#projectsNoun">projectsNoun</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#delete_alert">delete_alert</a>
+                            </li>
+                            <li>
+                                <a href="#delete_error">delete_error</a>
+                            </li>
+                            <li>
+                                <a href="#fadeOutAlert">fadeOutAlert</a>
+                            </li>
+                            <li>
+                                <a href="#fadeOutError">fadeOutError</a>
+                            </li>
+                            <li>
+                                <a href="#getAlertsAndErrors">getAlertsAndErrors</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(screensizeService: <a href="../injectables/ScreensizeService.html">ScreensizeService</a>, auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, alert: <a href="../injectables/AlertService.html">AlertService</a>, config: <a href="../injectables/ConfigService.html">ConfigService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/tabs/tabs.page.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>screensizeService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ScreensizeService.html" target="_self" >ScreensizeService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>alert</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AlertService.html" target="_self" >AlertService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete_alert"></a>
+                    <span class="name">
+                        <b>
+                            delete_alert
+                        </b>
+                        <a href="#delete_alert"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete_alert(alertID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:66</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>alertID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="delete_error"></a>
+                    <span class="name">
+                        <b>
+                            delete_error
+                        </b>
+                        <a href="#delete_error"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>delete_error(errorID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="96"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:96</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>errorID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fadeOutAlert"></a>
+                    <span class="name">
+                        <b>
+                            fadeOutAlert
+                        </b>
+                        <a href="#fadeOutAlert"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fadeOutAlert(alertID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:48</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>alertID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fadeOutError"></a>
+                    <span class="name">
+                        <b>
+                            fadeOutError
+                        </b>
+                        <a href="#fadeOutError"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fadeOutError(errorID)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="70"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:70</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>errorID</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAlertsAndErrors"></a>
+                    <span class="name">
+                        <b>
+                            getAlertsAndErrors
+                        </b>
+                        <a href="#getAlertsAndErrors"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAlertsAndErrors()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:43</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="alerts"></a>
+                        <span class="name">
+                            <b>
+                            alerts</b>
+                            <a href="#alerts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/tabs/tabs.page.ts:22</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Contains all active alert messages</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="auth"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            auth</b>
+                            <a href="#auth"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/tabs/tabs.page.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="errors"></a>
+                        <span class="name">
+                            <b>
+                            errors</b>
+                            <a href="#errors"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/tabs/tabs.page.ts:18</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Contains all active error messages</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventName"></a>
+                        <span class="name">
+                            <b>
+                            eventName</b>
+                            <a href="#eventName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.event_name</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/tabs/tabs.page.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Conatins the name of the event that the application is used for</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isDesktop"></a>
+                        <span class="name">
+                            <b>
+                            isDesktop</b>
+                            <a href="#isDesktop"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/tabs/tabs.page.ts:13</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="projectsNoun"></a>
+                        <span class="name">
+                            <b>
+                            projectsNoun</b>
+                            <a href="#projectsNoun"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.projects_noun</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/tabs/tabs.page.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { AuthenticationService } from &#x27;src/app/services/authentication.service&#x27;;
+import { ScreensizeService } from &#x27;src/app/services/screensize.service&#x27;;
+import { AlertService } from &#x27;src/app/services/alert.service&#x27;;
+import { ConfigService } from &#x27;src/app/services/config.service&#x27;;
+
+@Component({
+  selector: &#x27;app-tabs&#x27;,
+  templateUrl: &#x27;tabs.page.html&#x27;,
+  styleUrls: [&#x27;tabs.page.scss&#x27;]
+})
+export class TabsPage {
+  isDesktop: boolean;
+
+  /**
+   * Contains all active error messages
+   */
+  errors &#x3D; [];
+  /**
+   * Contains all active alert messages
+   */
+  alerts &#x3D; [];
+
+  projectsNoun &#x3D; this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
+  eventName &#x3D; this.config.app_config.event_name;
+
+  constructor(private screensizeService: ScreensizeService,
+              public auth: AuthenticationService,
+              private alert: AlertService,
+              private config: ConfigService) {
+    this.screensizeService.isDesktopView().subscribe(isDesktop &#x3D;&gt; {
+      if (this.isDesktop &amp;&amp; !isDesktop) {
+        window.location.reload();
+      }
+      this.isDesktop &#x3D; isDesktop;
+    });
+    this.alert.update.subscribe(() &#x3D;&gt; this.getAlertsAndErrors());
+  }
+
+  getAlertsAndErrors() {
+    this.alerts &#x3D; this.alert.alerts;
+    this.errors &#x3D; this.alert.errors;
+  }
+
+  fadeOutAlert(alertID) {
+    const element &#x3D; document.getElementById(alertID.toString());
+    this.alerts.forEach(alert &#x3D;&gt; {
+      if (alert.id &gt; alertID) {
+        const alertElement &#x3D; document.getElementById(alert.id.toString());
+        alertElement.classList.add(&#x27;slideOutUpEdited&#x27;);
+        alertElement.onanimationend &#x3D; () &#x3D;&gt; {
+          alertElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
+          alertElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
+        };
+      }
+    });
+    element.classList.add(&#x27;animate__fadeOutLeft&#x27;);
+    element.onanimationend &#x3D; () &#x3D;&gt; {
+      this.delete_alert(alertID);
+    };
+  }
+
+  delete_alert(alertID) {
+    this.alert.delete_alert(alertID);
+  }
+
+  fadeOutError(errorID) {
+    const element &#x3D; document.getElementById(errorID.toString());
+    this.errors.forEach(error &#x3D;&gt; {
+      if (error.id &gt; errorID) {
+        const errorElement &#x3D; document.getElementById(error.id.toString());
+        errorElement.classList.add(&#x27;slideOutUpEdited&#x27;);
+        errorElement.onanimationend &#x3D; () &#x3D;&gt; {
+          errorElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
+          errorElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
+        };
+      }
+    });
+    this.alerts.forEach(alert &#x3D;&gt; {
+      const alertElement &#x3D; document.getElementById(alert.id.toString());
+      alertElement.classList.add(&#x27;slideOutUpEdited&#x27;);
+      alertElement.onanimationend &#x3D; () &#x3D;&gt; {
+        alertElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
+        alertElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
+      };
+    });
+    element.classList.add(&#x27;animate__fadeOutLeft&#x27;);
+    element.onanimationend &#x3D; () &#x3D;&gt; {
+      this.delete_error(errorID);
+    };
+  }
+
+  delete_error(errorID) {
+    this.alert.delete_error(errorID);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;head&gt;
+  &lt;link
+    rel&#x3D;&quot;stylesheet&quot;
+    href&#x3D;&quot;https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css&quot;
+  /&gt;
+&lt;/head&gt;
+&lt;ion-tabs *ngIf&#x3D;&quot;!isDesktop&quot;&gt;
+
+  &lt;ion-tab-bar color&#x3D;&quot;menu&quot; slot&#x3D;&quot;bottom&quot;&gt;
+
+    &lt;ion-tab-button routerLink&#x3D;&quot;/{{ eventName }}/Einstellungen&quot; routerDirection&#x3D;&quot;root&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;settings&quot;&gt;&lt;/ion-icon&gt;
+      &lt;ion-label&gt;Einstellungen&lt;/ion-label&gt;
+    &lt;/ion-tab-button&gt;
+
+    &lt;ion-tab-button routerLink&#x3D;&quot;/{{ eventName }}/Impressum und Datenschutzerklärung&quot; routerDirection&#x3D;&quot;root&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;document&quot;&gt;&lt;/ion-icon&gt;
+      &lt;ion-label&gt;Impressum&lt;/ion-label&gt;
+    &lt;/ion-tab-button&gt;
+
+    &lt;ion-tab-button routerLink&#x3D;&quot;/{{ eventName }}/Home&quot; routerDirection&#x3D;&quot;root&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;Home&quot;&gt;&lt;/ion-icon&gt;
+      &lt;ion-label&gt;Home&lt;/ion-label&gt;
+    &lt;/ion-tab-button&gt;
+
+    &lt;ion-tab-button *ngIf&#x3D;&quot;!auth.isLoggedIn&quot; routerLink&#x3D;&quot;/{{ eventName }}/Anmeldung&quot; routerDirection&#x3D;&quot;root&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;log-in&quot;&gt;&lt;/ion-icon&gt;
+      &lt;ion-label&gt;Anmeldung&lt;/ion-label&gt;
+    &lt;/ion-tab-button&gt;
+
+    &lt;ion-tab-button *ngIf&#x3D;&quot;auth.isLoggedIn&quot; routerLink&#x3D;&quot;/{{ eventName }}/Anmeldung&quot; routerDirection&#x3D;&quot;root&quot;&gt;
+      &lt;ion-icon name&#x3D;&quot;person&quot;&gt;&lt;/ion-icon&gt;
+      &lt;ion-label&gt;Account&lt;/ion-label&gt;
+    &lt;/ion-tab-button&gt;
+
+  &lt;/ion-tab-bar&gt;
+
+&lt;/ion-tabs&gt;
+
+&lt;div *ngIf&#x3D;&quot;isDesktop&quot; class&#x3D;&quot;desktop&quot;&gt;
+  &lt;ion-header id&#x3D;&quot;navbar&quot;&gt;
+    &lt;ion-toolbar color&#x3D;&quot;menu&quot;&gt;
+      &lt;ion-row class&#x3D;&quot;ion-align-items-center&quot;&gt;
+        &lt;ion-col size&#x3D;&quot;2&quot;&gt;
+          &lt;img class&#x3D;&quot;logo ion-text-left&quot; routerLink&#x3D;&quot;/{{ eventName }}/Home&quot; src&#x3D;&quot;../../assets/logo/Logo_light.svg&quot;&gt;
+        &lt;/ion-col&gt;
+        &lt;ion-col&gt;
+          &lt;div class&#x3D;&quot;navbar&quot; class&#x3D;&quot;ion-text-right&quot;&gt;
+            &lt;ion-button color&#x3D;&quot;buttons&quot; fill&#x3D;&quot;clear&quot; routerLink&#x3D;&quot;/{{ eventName }}/Home&quot; routerDirection&#x3D;&quot;root&quot; routerLinkActive&#x3D;&quot;active-link&quot;
+              class&#x3D;&quot;link&quot;&gt;
+              Home
+            &lt;/ion-button&gt;
+            &lt;ion-button color&#x3D;&quot;buttons&quot; *ngIf&#x3D;&quot;!auth.isLoggedIn&quot; fill&#x3D;&quot;clear&quot; routerLink&#x3D;&quot;/{{ eventName }}/Anmeldung&quot; routerDirection&#x3D;&quot;root&quot; routerLinkActive&#x3D;&quot;active-link&quot;
+              class&#x3D;&quot;link&quot;&gt;
+              Anmeldung
+            &lt;/ion-button&gt;
+            &lt;ion-button color&#x3D;&quot;buttons&quot; *ngIf&#x3D;&quot;auth.isLoggedIn&quot; fill&#x3D;&quot;clear&quot; routerLink&#x3D;&quot;/{{ eventName }}/Anmeldung&quot; routerDirection&#x3D;&quot;root&quot; routerLinkActive&#x3D;&quot;active-link&quot;
+              class&#x3D;&quot;link&quot;&gt;
+              Account
+            &lt;/ion-button&gt;
+            &lt;ion-button color&#x3D;&quot;buttons&quot; fill&#x3D;&quot;clear&quot; routerLink&#x3D;&quot;/{{ eventName }}/Help&quot; routerDirection&#x3D;&quot;root&quot; routerLinkActive&#x3D;&quot;active-link&quot;
+              class&#x3D;&quot;link&quot;&gt;
+              Hilfe
+            &lt;/ion-button&gt;
+            &lt;ion-button color&#x3D;&quot;buttons&quot; fill&#x3D;&quot;clear&quot; routerLink&#x3D;&quot;/{{ eventName }}/Einstellungen&quot; routerDirection&#x3D;&quot;root&quot; routerLinkActive&#x3D;&quot;active-link&quot;
+              class&#x3D;&quot;link&quot;&gt;
+              Einstellungen
+            &lt;/ion-button&gt;
+          &lt;/div&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;ion-router-outlet class&#x3D;&quot;desktop-wrapper&quot;&gt;&lt;/ion-router-outlet&gt;
+
+  &lt;ion-item [id]&#x3D;&quot;error.id&quot; class&#x3D;&quot;animate__animated animate__fadeInDown&quot; *ngFor&#x3D;&quot;let error of errors&quot; (click)&#x3D;&quot;fadeOutError(error.id)&quot; button&#x3D;&quot;true&quot; color&#x3D;&quot;danger&quot;&gt;
+    &lt;ion-label class&#x3D;&quot;ion-text-center&quot; color&#x3D;&quot;light&quot;&gt;
+      {{ error.desrc }}
+    &lt;/ion-label&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-item [id]&#x3D;&quot;alert.id&quot; class&#x3D;&quot;animate__animated animate__fadeInDown&quot; *ngFor&#x3D;&quot;let alert of alerts&quot; (click)&#x3D;&quot;fadeOutAlert(alert.id)&quot; button&#x3D;&quot;true&quot; color&#x3D;&quot;success&quot;&gt;
+    &lt;ion-label class&#x3D;&quot;ion-text-center&quot; color&#x3D;&quot;light&quot;&gt;
+      {{ alert.desrc }}
+    &lt;/ion-label&gt;
+  &lt;/ion-item&gt;
+
+  &lt;ion-footer color&#x3D;&quot;menu&quot; class&#x3D;&quot;footer&quot;&gt;
+    &lt;span&gt;© Paul Maier | &lt;a routerLink&#x3D;&quot;/{{ eventName }}/Impressum und Datenschutzerklärung&quot;&gt;Impressum und Datenschutz&lt;/a&gt;&lt;br&gt;&lt;/span&gt;
+  &lt;/ion-footer&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>tabs.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@keyframes slideOutUp {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+  
+    to {
+        transform: translate3d(0, -100%, 0);
+    }
+}
+  
+.slideOutUpEdited {
+    animation-name: slideOutUp;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><head>  <link    rel="stylesheet"    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"  /></head><ion-tabs *ngIf="!isDesktop">  <ion-tab-bar color="menu" slot="bottom">    <ion-tab-button routerLink="/{{ eventName }}/Einstellungen" routerDirection="root">      <ion-icon name="settings"></ion-icon>      <ion-label>Einstellungen</ion-label>    </ion-tab-button>    <ion-tab-button routerLink="/{{ eventName }}/Impressum und Datenschutzerklärung" routerDirection="root">      <ion-icon name="document"></ion-icon>      <ion-label>Impressum</ion-label>    </ion-tab-button>    <ion-tab-button routerLink="/{{ eventName }}/Home" routerDirection="root">      <ion-icon name="Home"></ion-icon>      <ion-label>Home</ion-label>    </ion-tab-button>    <ion-tab-button *ngIf="!auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">      <ion-icon name="log-in"></ion-icon>      <ion-label>Anmeldung</ion-label>    </ion-tab-button>    <ion-tab-button *ngIf="auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">      <ion-icon name="person"></ion-icon>      <ion-label>Account</ion-label>    </ion-tab-button>  </ion-tab-bar></ion-tabs><div *ngIf="isDesktop" class="desktop">  <ion-header id="navbar">    <ion-toolbar color="menu">      <ion-row class="ion-align-items-center">        <ion-col size="2">          <img class="logo ion-text-left" routerLink="/{{ eventName }}/Home" src="../../assets/logo/Logo_light.svg">        </ion-col>        <ion-col>          <div class="navbar" class="ion-text-right">            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Home" routerDirection="root" routerLinkActive="active-link"              class="link">              Home            </ion-button>            <ion-button color="buttons" *ngIf="!auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"              class="link">              Anmeldung            </ion-button>            <ion-button color="buttons" *ngIf="auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"              class="link">              Account            </ion-button>            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Help" routerDirection="root" routerLinkActive="active-link"              class="link">              Hilfe            </ion-button>            <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Einstellungen" routerDirection="root" routerLinkActive="active-link"              class="link">              Einstellungen            </ion-button>          </div>        </ion-col>      </ion-row>    </ion-toolbar>  </ion-header>  <ion-router-outlet class="desktop-wrapper"></ion-router-outlet>  <ion-item [id]="error.id" class="animate__animated animate__fadeInDown" *ngFor="let error of errors" (click)="fadeOutError(error.id)" button="true" color="danger">    <ion-label class="ion-text-center" color="light">      {{ error.desrc }}    </ion-label>  </ion-item>  <ion-item [id]="alert.id" class="animate__animated animate__fadeInDown" *ngFor="let alert of alerts" (click)="fadeOutAlert(alert.id)" button="true" color="success">    <ion-label class="ion-text-center" color="light">      {{ alert.desrc }}    </ion-label>  </ion-item>  <ion-footer color="menu" class="footer">    <span>© Paul Maier | <a routerLink="/{{ eventName }}/Impressum und Datenschutzerklärung">Impressum und Datenschutz</a><br></span>  </ion-footer></div></div>'
+    var COMPONENTS = [{'name': 'AdminExchangeDetailPage', 'selector': 'app-admin-exchange-detail'},{'name': 'AdminExchangesPage', 'selector': 'app-admin-exchanges'},{'name': 'AdminGenerationPage', 'selector': 'app-admin-generation'},{'name': 'AdminLogsPage', 'selector': 'app-admin-logs'},{'name': 'AdminPagePage', 'selector': 'app-admin-page'},{'name': 'AdminProjectDetailPage', 'selector': 'app-admin-project-detail'},{'name': 'AdminProjectsPage', 'selector': 'app-admin-projects'},{'name': 'AdminSchedulePage', 'selector': 'app-admin-schedule'},{'name': 'AdminStudentsLeadersPage', 'selector': 'app-admin-students-leaders'},{'name': 'ExchangeConfirmPage', 'selector': 'app-exchange-confirm'},{'name': 'ExchangeRequestPage', 'selector': 'app-exchange-request'},{'name': 'ForgotPasswordPage', 'selector': 'app-forgot-password'},{'name': 'HelpPage', 'selector': 'app-help'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'ImprintDataProtectionPage', 'selector': 'app-imprint-data-protection'},{'name': 'LeaderGenerationPage', 'selector': 'app-leader-generation'},{'name': 'LeaderMessagesPage', 'selector': 'app-messages'},{'name': 'LeaderPagePage', 'selector': 'app-leader-page'},{'name': 'LeaderProjectAdministrationPage', 'selector': 'app-project-administration'},{'name': 'LeaderProjectEditPage', 'selector': 'app-project-edit'},{'name': 'LeaderProjectGenerationPage', 'selector': 'app-project-generation'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'ProjectDetailPage', 'selector': 'app-project-detail'},{'name': 'ProjectPage', 'selector': 'app-project'},{'name': 'ProjectsPage', 'selector': 'app-projects'},{'name': 'PromoteStudentsPage', 'selector': 'app-promote-students'},{'name': 'RegistrationPage', 'selector': 'app-registration'},{'name': 'ResetPasswordPage', 'selector': 'app-reset-password'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'StudentGenerationPage', 'selector': 'app-user-generation'},{'name': 'StudentMessagesPage', 'selector': 'app-messages'},{'name': 'StudentPagePage', 'selector': 'app-student-page'},{'name': 'StudentProjectAdministrationPage', 'selector': 'app-project-administration'},{'name': 'StudentProjectEditPage', 'selector': 'app-project-edit'},{'name': 'StudentProjectGenerationPage', 'selector': 'app-project-generation'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'VerifyEmailPage', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TabsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TabsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

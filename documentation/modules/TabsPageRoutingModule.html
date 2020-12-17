@@ -1,0 +1,561 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diribit.io documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">diribit.io documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content module">
+                   <div class="content-data">
+
+
+
+<ol class="breadcrumb">
+    <li>Modules</li>
+    <li>TabsPageRoutingModule</li>
+</ol>
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li  class="active" >
+        <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+    </li>
+    <li >
+        <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+    </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/tabs/tabs.router.static.module.ts</code>
+        </p>
+
+
+
+
+        <div class="container-fluid module">
+            <div class="row">
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule } from &#x27;@angular/core&#x27;;
+import { RouterModule, Routes } from &#x27;@angular/router&#x27;;
+import { TabsPage } from &#x27;./tabs.page&#x27;;
+import { AuthenticationGuard } from &#x27;../authentication.guard&#x27;;
+
+/**
+ * Contains all Routes for the application
+ */
+const routes: Routes &#x3D; [
+  {
+    path: &#x27;Projekttage&#x27;,
+    component: TabsPage,
+    children: [
+      {
+        path: &#x27;Help&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../help/help.module&#x27;).then(m &#x3D;&gt; m.HelpPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Einstellungen&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../settings/settings.module&#x27;).then(m &#x3D;&gt; m.SettingsPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Impressum und Datenschutzerklärung&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../imprint-data-protection/imprint-data-protection.module&#x27;).then(m &#x3D;&gt; m.ImprintDataProtectionPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Home&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../home/home.module&#x27;).then(m &#x3D;&gt; m.HomePageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/log-in.module&#x27;).then(m &#x3D;&gt; m.LogInPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung/Passwort vergessen&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/forgot-password/forgot-password.module&#x27;).then(m &#x3D;&gt; m.ForgotPasswordPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung/Passwort zurücksetzen/:ResetToken&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/reset-password/reset-password.module&#x27;).then(m &#x3D;&gt; m.ResetPasswordPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung/Admin Registration&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-generation/admin-generation.module&#x27;).then(m &#x3D;&gt; m.AdminGenerationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung/Projektleiter Registration&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-generation/leader-generation.module&#x27;).then(m &#x3D;&gt; m.LeaderGenerationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Anmeldung/Schüler Registration&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-generation/student-generation.module&#x27;).then(m &#x3D;&gt; m.StudentGenerationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Projektleiter/:LeaderName&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-page/leader-page.module&#x27;).then(m &#x3D;&gt; m.LeaderPagePageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Projektleiter/:LeaderName/Projekt erstellen&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-page/leader-project-generation/leader-project-generation.module&#x27;).then(m &#x3D;&gt; m.LeaderProjectGenerationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Projektleiter/:LeaderName/Projekt verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-page/leader-project-administration/leader-project-administration.module&#x27;).then(m &#x3D;&gt; m.LeaderProjectAdministrationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Projektleiter/:LeaderName/Projekt verwalten/Projekt bearbeiten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-page/leader-project-administration/leader-project-edit/leader-project-edit.module&#x27;).then(m &#x3D;&gt; m.LeaderProjectEditPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Projektleiter/:LeaderName/Nachricht senden&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/leader-page/leader-messages/leader-messages.module&#x27;).then(m &#x3D;&gt; m.LeaderMessagesPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/student-page.module&#x27;).then(m &#x3D;&gt; m.StudentPagePageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekte&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/projects/projects.module&#x27;).then(m &#x3D;&gt; m.ProjectsPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekte/:ProjectID&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/projects/project-detail/project-detail.module&#x27;).then(m &#x3D;&gt; m.ProjectDetailPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Anmeldung&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/registration/registration.module&#x27;).then(m &#x3D;&gt; m.RegistrationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Tauschanfrage senden&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/exchange-request/exchange-request.module&#x27;).then(m &#x3D;&gt; m.ExchangeRequestPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Tauschanfrage bestätigen&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/exchange-confirm/exchange-confirm.module&#x27;).then(m &#x3D;&gt; m.ExchangeConfirmPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekt&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/project/project.module&#x27;).then(m &#x3D;&gt; m.ProjectPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekt erstellen&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/student-project-generation/student-project-generation.module&#x27;).then(m &#x3D;&gt; m.StudentProjectGenerationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Assistenten verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/promote-students/promote-students.module&#x27;).then(m &#x3D;&gt; m.PromoteStudentsPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekt verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/student-project-administration/student-project-administration.module&#x27;).then(m &#x3D;&gt; m.StudentProjectAdministrationPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Projekt verwalten/Projekt bearbeiten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/student-project-administration/student-project-edit/student-project-edit.module&#x27;).then(m &#x3D;&gt; m.StudentProjectEditPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Schüler/:ParticipantName/Nachricht senden&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/student-page/student-messages/student-messages.module&#x27;).then(m &#x3D;&gt; m.StudentMessagesPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-page.module&#x27;).then(m &#x3D;&gt; m.AdminPagePageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Projekte&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-projects/admin-projects.module&#x27;).then(m &#x3D;&gt; m.AdminProjectsPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Tauschanfragen&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-exchanges/admin-exchanges.module&#x27;).then(m &#x3D;&gt; m.AdminExchangesPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Projekte/:ProjectID&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-projects/admin-project-detail/admin-project-detail.module&#x27;).then(m &#x3D;&gt; m.AdminProjectDetailPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Tauschanfragen/:ExchangeID&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-exchanges/admin-exchange-detail/admin-exchange-detail.module&#x27;).then(m &#x3D;&gt; m.AdminExchangeDetailPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Zeitplan verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-schedule/admin-schedule.module&#x27;).then(m &#x3D;&gt; m.AdminSchedulePageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/Schüler und Projektleiter verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-students-leaders/admin-students-leaders.module&#x27;).then(m &#x3D;&gt; m.AdminStudentsLeadersPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;Admin/:AdminName/App verwalten&#x27;,
+        canActivate: [AuthenticationGuard],
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/admin-page/admin-logs/admin-logs.module&#x27;).then(m &#x3D;&gt; m.AdminLogsPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;E-Mail verifizieren/:Status&#x27;,
+        children: [
+          {
+            path: &#x27;&#x27;,
+            loadChildren: () &#x3D;&gt;
+              &quot;import(&#x27;../log-in/verify-email/verify-email.module&#x27;).then(m &#x3D;&gt; m.VerifyEmailPageModule)&quot;
+          }
+        ]
+      },
+      {
+        path: &#x27;&#x27;,
+        redirectTo: &#x27;/Projekttage/Home&#x27;,
+        pathMatch: &#x27;full&#x27;
+      }
+    ]
+  },
+  {
+    path: &#x27;&#x27;,
+    redirectTo: &#x27;/Projekttage/Home&#x27;,
+    pathMatch: &#x27;full&#x27;
+  }
+];
+
+/**
+ * This module contains the default routes for the TabsPageModule
+ * Note that these are NOT actually used for routing and just represent the defaul routes
+ */
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class TabsPageRoutingModule { }
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'module';
+            var COMPODOC_CURRENT_PAGE_URL = 'TabsPageRoutingModule.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

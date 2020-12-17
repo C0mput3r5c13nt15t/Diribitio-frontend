@@ -1,0 +1,804 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>diribit.io documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/readthedocs.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">diribit.io documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AdminProjectsPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/log-in/admin-page/admin-projects/admin-projects.page.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                    <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-admin-projects</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./admin-projects.page.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./admin-projects.page.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#adminUrl">adminUrl</a>
+                            </li>
+                            <li>
+                                <a href="#eventName">eventName</a>
+                            </li>
+                            <li>
+                                <a href="#imageUrl">imageUrl</a>
+                            </li>
+                            <li>
+                                <a href="#projects">projects</a>
+                            </li>
+                            <li>
+                                <a href="#projectsNoun">projectsNoun</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#subscriptions">subscriptions</a>
+                            </li>
+                            <li>
+                                <a href="#text">text</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getProjects">getProjects</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy">ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(projectsService: <a href="../injectables/ProjectsService.html">ProjectsService</a>, activatedRoute: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, config: <a href="../injectables/ConfigService.html">ConfigService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>projectsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProjectsService.html" target="_self" >ProjectsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>activatedRoute</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>config</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getProjects"></a>
+                    <span class="name">
+                        <b>
+                            getProjects
+                        </b>
+                        <a href="#getProjects"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getProjects()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="54"
+                            class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:54</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <b>
+                            ngOnDestroy
+                        </b>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:50</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Unsubscribes from all events when the page is unloaded</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="33"
+                            class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:33</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="adminUrl"></a>
+                        <span class="name">
+                            <b>
+                            adminUrl</b>
+                            <a href="#adminUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="eventName"></a>
+                        <span class="name">
+                            <b>
+                            eventName</b>
+                            <a href="#eventName"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.event_name</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:27</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Conatins the name of the event that the application is used for</p>
+</div>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="imageUrl"></a>
+                        <span class="name">
+                            <b>
+                            imageUrl</b>
+                            <a href="#imageUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.backend_config.imageUrl</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="projects"></a>
+                        <span class="name">
+                            <b>
+                            projects</b>
+                            <a href="#projects"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../interfaces/Project.html" target="_self" >Project[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="projectsNoun"></a>
+                        <span class="name">
+                            <b>
+                            projectsNoun</b>
+                            <a href="#projectsNoun"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>this.config.app_config.projects_noun</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="subscriptions"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Private</span>
+                            subscriptions</b>
+                            <a href="#subscriptions"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>Subscription[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="text"></a>
+                        <span class="name">
+                            <b>
+                            text</b>
+                            <a href="#text"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/log-in/admin-page/admin-projects/admin-projects.page.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { ProjectsService } from &#x27;src/app/services/projects.service&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { Project } from &#x27;src/models/Project.model&#x27;;
+import { ConfigService } from &#x27;src/app/services/config.service&#x27;;
+import { Subscription } from &#x27;rxjs&#x27;;
+
+@Component({
+  selector: &#x27;app-admin-projects&#x27;,
+  templateUrl: &#x27;./admin-projects.page.html&#x27;,
+  styleUrls: [&#x27;./admin-projects.page.scss&#x27;],
+})
+export class AdminProjectsPage implements OnInit, OnDestroy {
+  private subscriptions: Subscription[] &#x3D; [];
+
+  adminUrl: string;
+
+  projects: Project[];
+
+  text: string;
+
+  imageUrl &#x3D; this.config.backend_config.imageUrl;
+  projectsNoun &#x3D; this.config.app_config.projects_noun;
+  /**
+   * Conatins the name of the event that the application is used for
+   */
+  eventName &#x3D; this.config.app_config.event_name;
+
+  constructor(private projectsService: ProjectsService,
+              private activatedRoute: ActivatedRoute,
+              private config: ConfigService) { }
+
+  ngOnInit() {
+    this.text &#x3D; this.config.get_content(&#x27;admin-projects&#x27;);
+
+    this.activatedRoute.paramMap.subscribe(paramMap &#x3D;&gt; {
+      this.adminUrl &#x3D; paramMap.get(&#x27;AdminName&#x27;);
+    });
+
+    this.getProjects();
+
+    this.subscriptions.push(
+      this.projectsService.update.subscribe(() &#x3D;&gt; this.getProjects())
+    );
+  }
+
+  /**
+   * Unsubscribes from all events when the page is unloaded
+   */
+  ngOnDestroy() {
+    this.subscriptions.forEach(sub &#x3D;&gt; sub.unsubscribe());
+  }
+
+  getProjects() {
+    this.projectsService.getAllProjects().subscribe(data &#x3D;&gt; {
+      this.projects &#x3D; data.data;
+    });
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header&gt;
+  &lt;ion-toolbar color&#x3D;&quot;menu&quot;&gt;
+    &lt;ion-button color&#x3D;&quot;buttons&quot; slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-back-button icon&#x3D;&quot;arrow-back&quot; defaultHref&#x3D;&quot;{{ eventName }}/Admin/{{ adminUrl }}&quot;&gt;&lt;/ion-back-button&gt;
+    &lt;/ion-button&gt;
+    &lt;ion-title&gt;{{ projectsNoun }}&lt;/ion-title&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content color&#x3D;&quot;background&quot;&gt;
+  &lt;ion-card color&#x3D;&quot;background&quot; class&#x3D;&quot;content&quot;&gt;
+    &lt;ion-card-header&gt;
+      &lt;ion-card-title&gt;{{ projectsNoun }}&lt;/ion-card-title&gt;
+    &lt;/ion-card-header&gt;
+    &lt;ion-card-content *ngIf&#x3D;&quot;text&quot;&gt;
+      &lt;ion-label color&#x3D;&quot;text&quot;&gt;
+        {{ text }}
+      &lt;/ion-label&gt;
+    &lt;/ion-card-content&gt;
+    &lt;ion-card-content&gt;
+      &lt;ion-list&gt;
+        &lt;ion-item color&#x3D;&quot;background&quot; *ngFor&#x3D;&quot;let project of projects&quot; [routerLink]&#x3D;&quot;[&#x27;./&#x27;, project.id]&quot;&gt;
+          &lt;ion-avatar [hidden]&#x3D;&quot;project.image &#x3D;&#x3D; null || project.image &#x3D;&#x3D; &#x27;&#x27;&quot; slot&#x3D;&quot;start&quot;&gt;
+            &lt;ion-img *ngIf&#x3D;&quot;project.image !&#x3D; &#x27;&#x27; &amp;&amp; project.image !&#x3D; null&quot; src&#x3D;&#x27;{{ imageUrl }}{{ project.image }}&#x27;&gt;&lt;/ion-img&gt;
+          &lt;/ion-avatar&gt;
+          &lt;ion-label color&#x3D;&quot;text&quot;&gt;
+            &lt;h2&gt;{{ project.title }}&lt;/h2&gt;
+            &lt;p *ngIf&#x3D;&quot;!!+project.authorized &#x3D;&#x3D;&#x3D; true&quot;&gt;{{ project.descr }}&lt;/p&gt;
+            &lt;ion-text *ngIf&#x3D;&quot;!!+project.authorized &#x3D;&#x3D;&#x3D; false&quot; color&#x3D;&quot;danger&quot;&gt; (Nicht zugelassen!)&lt;/ion-text&gt;
+          &lt;/ion-label&gt;
+        &lt;/ion-item&gt;
+      &lt;/ion-list&gt;
+    &lt;/ion-card-content&gt;
+  &lt;/ion-card&gt;
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./admin-projects.page.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header>  <ion-toolbar color="menu">    <ion-button color="buttons" slot="start">      <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Admin/{{ adminUrl }}"></ion-back-button>    </ion-button>    <ion-title>{{ projectsNoun }}</ion-title>  </ion-toolbar></ion-header><ion-content color="background">  <ion-card color="background" class="content">    <ion-card-header>      <ion-card-title>{{ projectsNoun }}</ion-card-title>    </ion-card-header>    <ion-card-content *ngIf="text">      <ion-label color="text">        {{ text }}      </ion-label>    </ion-card-content>    <ion-card-content>      <ion-list>        <ion-item color="background" *ngFor="let project of projects" [routerLink]="[\'./\', project.id]">          <ion-avatar [hidden]="project.image == null || project.image == \'\'" slot="start">            <ion-img *ngIf="project.image != \'\' && project.image != null" src=\'{{ imageUrl }}{{ project.image }}\'></ion-img>          </ion-avatar>          <ion-label color="text">            <h2>{{ project.title }}</h2>            <p *ngIf="!!+project.authorized === true">{{ project.descr }}</p>            <ion-text *ngIf="!!+project.authorized === false" color="danger"> (Nicht zugelassen!)</ion-text>          </ion-label>        </ion-item>      </ion-list>    </ion-card-content>  </ion-card></ion-content></div>'
+    var COMPONENTS = [{'name': 'AdminExchangeDetailPage', 'selector': 'app-admin-exchange-detail'},{'name': 'AdminExchangesPage', 'selector': 'app-admin-exchanges'},{'name': 'AdminGenerationPage', 'selector': 'app-admin-generation'},{'name': 'AdminLogsPage', 'selector': 'app-admin-logs'},{'name': 'AdminPagePage', 'selector': 'app-admin-page'},{'name': 'AdminProjectDetailPage', 'selector': 'app-admin-project-detail'},{'name': 'AdminProjectsPage', 'selector': 'app-admin-projects'},{'name': 'AdminSchedulePage', 'selector': 'app-admin-schedule'},{'name': 'AdminStudentsLeadersPage', 'selector': 'app-admin-students-leaders'},{'name': 'ExchangeConfirmPage', 'selector': 'app-exchange-confirm'},{'name': 'ExchangeRequestPage', 'selector': 'app-exchange-request'},{'name': 'ForgotPasswordPage', 'selector': 'app-forgot-password'},{'name': 'HelpPage', 'selector': 'app-help'},{'name': 'HomePage', 'selector': 'app-home'},{'name': 'ImprintDataProtectionPage', 'selector': 'app-imprint-data-protection'},{'name': 'LeaderGenerationPage', 'selector': 'app-leader-generation'},{'name': 'LeaderMessagesPage', 'selector': 'app-messages'},{'name': 'LeaderPagePage', 'selector': 'app-leader-page'},{'name': 'LeaderProjectAdministrationPage', 'selector': 'app-project-administration'},{'name': 'LeaderProjectEditPage', 'selector': 'app-project-edit'},{'name': 'LeaderProjectGenerationPage', 'selector': 'app-project-generation'},{'name': 'LogInPage', 'selector': 'app-log-in'},{'name': 'ProjectDetailPage', 'selector': 'app-project-detail'},{'name': 'ProjectPage', 'selector': 'app-project'},{'name': 'ProjectsPage', 'selector': 'app-projects'},{'name': 'PromoteStudentsPage', 'selector': 'app-promote-students'},{'name': 'RegistrationPage', 'selector': 'app-registration'},{'name': 'ResetPasswordPage', 'selector': 'app-reset-password'},{'name': 'SettingsPage', 'selector': 'app-settings'},{'name': 'StudentGenerationPage', 'selector': 'app-user-generation'},{'name': 'StudentMessagesPage', 'selector': 'app-messages'},{'name': 'StudentPagePage', 'selector': 'app-student-page'},{'name': 'StudentProjectAdministrationPage', 'selector': 'app-project-administration'},{'name': 'StudentProjectEditPage', 'selector': 'app-project-edit'},{'name': 'StudentProjectGenerationPage', 'selector': 'app-project-generation'},{'name': 'TabsPage', 'selector': 'app-tabs'},{'name': 'VerifyEmailPage', 'selector': 'app-verify-email'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AdminProjectsPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AdminProjectsPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
