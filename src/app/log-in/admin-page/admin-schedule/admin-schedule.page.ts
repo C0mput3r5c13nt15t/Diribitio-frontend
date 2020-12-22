@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Schedule } from 'src/models/Schedule.model';
-import { AdminsService } from 'src/app/services/admins.service';
 import { ConfigService } from 'src/app/services/config.service';
 import { formatDate } from '@angular/common';
 import { ScheduleService } from 'src/app/services/schedule.service';
@@ -23,13 +22,13 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
    */
   schedule: Schedule = {
     id: 1,
-    begin: null,
-    control: null,
-    registration: null,
-    sort_students: null,
-    exchange: null,
-    projects: null,
-    end: null
+    begin: new Date(),
+    control: new Date(),
+    registration: new Date(),
+    sort_students: new Date(),
+    exchange: new Date(),
+    projects: new Date(),
+    end: new Date()
   };
 
   /**
@@ -83,7 +82,7 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
     });
   }
 
-  mangaeSchedule() {
+  manageSchedule() {
     this.scheduleService.putSchedule(this.schedule).subscribe(data => {
       this.alert.alert(data.message);
       this.scheduleService.update.emit();
