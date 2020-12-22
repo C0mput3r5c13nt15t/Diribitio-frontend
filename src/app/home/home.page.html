@@ -25,7 +25,7 @@
     <ion-card-content>
       <ion-list>
         <ion-item color="items" lines="none">
-          ab <ion-datetime displayFormat="DD.MM.YYYY" placeholder="Bitte ein Datum wählen" readonly name="Beginn" [(ngModel)]="schedule.begin" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="+1:00"></ion-datetime>
+          ab <ion-datetime displayFormat="DD.MM.YYYY" placeholder="Bitte ein Datum wählen" readonly name="Beginn" [(ngModel)]="schedule.begin" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez'></ion-datetime>
         </ion-item>
         <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control">
           <ion-icon slot="start" name="create"></ion-icon>
