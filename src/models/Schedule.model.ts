@@ -4,11 +4,11 @@
  */
 export interface Schedule {
     id: number;
-    begin: Date;
-    control: Date;
-    registration: Date;
-    sort_students: Date;
-    exchange: Date;
-    projects: Date;
-    end: Date;
+    begin: string;
+    control: string;
+    registration: string;
+    sort_students: string;
+    exchange: string;
+    projects: string;
+    end: string;
 }

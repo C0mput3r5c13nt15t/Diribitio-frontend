@@ -22,13 +22,13 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
    */
   schedule: Schedule = {
     id: 1,
-    begin: new Date(),
-    control: new Date(),
-    registration: new Date(),
-    sort_students: new Date(),
-    exchange: new Date(),
-    projects: new Date(),
-    end: new Date()
+    begin: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    control: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    registration: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    sort_students: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    exchange: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    projects: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    end: formatDate(new Date(), 'yyyy-MM-dd', 'en')
   };
 
   /**
