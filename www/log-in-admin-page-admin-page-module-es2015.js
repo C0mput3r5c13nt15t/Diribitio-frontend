@@ -50,13 +50,13 @@ let AdminPagePage = class AdminPagePage {
          */
         this.schedule = {
             id: 1,
-            begin: null,
-            control: null,
-            registration: null,
-            sort_students: null,
-            exchange: null,
-            projects: null,
-            end: null
+            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
         };
         this.buttonPressed = true;
         this.projectsNoun = this.config.app_config.projects_noun;
@@ -66,7 +66,7 @@ let AdminPagePage = class AdminPagePage {
         this.projectsNoun = this.config.app_config.projects_noun;
         this.projectNoun = this.config.app_config.project_noun;
         this.text = this.config.get_content('admin-page');
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
         this.activatedRoute.paramMap.subscribe(paramMap => {
             if (!paramMap.has('AdminName')) {
                 this.router.navigate(['']);

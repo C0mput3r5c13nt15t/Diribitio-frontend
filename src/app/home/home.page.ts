@@ -18,14 +18,15 @@ export class HomePage implements OnInit, OnDestroy {
    */
   schedule: Schedule = {
     id: 1,
-    begin: null,
-    control: null,
-    registration: null,
-    sort_students: null,
-    exchange: null,
-    projects: null,
-    end: null
+    begin: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    control: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    registration: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    sort_students: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    exchange: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    projects: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+    end: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
   };
+
   /**
    * Contains the current date in yyyy-MM-dd format
    */
@@ -41,7 +42,7 @@ export class HomePage implements OnInit, OnDestroy {
               private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+    this.currentDate = formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
 
     this.getSchedule();
 

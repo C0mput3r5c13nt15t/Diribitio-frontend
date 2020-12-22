@@ -67,7 +67,7 @@ export class ExchangeConfirmPage implements OnInit, OnDestroy {
 
     this.studentAlreadyExchangeError = this.config.get_error('student-already_exchange');
 
-    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
+    this.currentDate = formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ParticipantName')) {

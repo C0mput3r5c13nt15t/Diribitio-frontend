@@ -74,13 +74,13 @@ let AdminStudentsLeadersPage = class AdminStudentsLeadersPage {
          */
         this.schedule = {
             id: 1,
-            begin: null,
-            control: null,
-            registration: null,
-            sort_students: null,
-            exchange: null,
-            projects: null,
-            end: null
+            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
         };
         this.text1 = this.config.get_content_by_index('admin-students-leaders', 0);
         this.text2 = this.config.get_content_by_index('admin-students-leaders', 1);
@@ -96,7 +96,7 @@ let AdminStudentsLeadersPage = class AdminStudentsLeadersPage {
         this.eventName = this.config.app_config.event_name;
     }
     ngOnInit() {
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_13__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
         this.activatedRoute.paramMap.subscribe(paramMap => {
             this.adminUrl = paramMap.get('AdminName');
         });

@@ -72,13 +72,13 @@ let LogInPage = class LogInPage {
          */
         this.schedule = {
             id: 1,
-            begin: null,
-            control: null,
-            registration: null,
-            sort_students: null,
-            exchange: null,
-            projects: null,
-            end: null
+            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
+            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
         };
         this.projectNoun = this.config.app_config.project_noun;
         /**
@@ -87,7 +87,7 @@ let LogInPage = class LogInPage {
         this.eventName = this.config.app_config.event_name;
     }
     ngOnInit() {
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_9__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
         this.getSchedule();
         this.subscriptions.push(this.scheduleService.update.subscribe(() => this.getSchedule()));
     }
