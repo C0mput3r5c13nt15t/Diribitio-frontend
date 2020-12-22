@@ -1,4 +1,5 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 /**
  * This service handles the color settings of the application
@@ -24,15 +25,15 @@ export class SettingsService {
   /**
    * @ignore
    */
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   /**
    * Gives back the current theme
    * @returns The current theme from the local storage or a pre-set standard
    */
   get theme() {
-    if (localStorage.getItem('theme')) {
-      return localStorage.getItem('theme');
+    if (this.cookieService.get('Diribitio-Theme')) {
+      return this.cookieService.get('Diribitio-Theme');
     } else {
       return this.background + '-' + this.color;
     }
@@ -46,7 +47,7 @@ export class SettingsService {
   change_theme(background: string, color: string) {
     this.background = background;
     this.color = color;
-    localStorage.setItem('theme', background + '-' + color);
+    this.cookieService.set('Diribitio-Theme', background + '-' + color);
 
     this.update.emit();
   }

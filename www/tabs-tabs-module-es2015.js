@@ -212,6 +212,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config.service */ "r4Kj");
 /* harmony import */ var _alert_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./alert.service */ "3LUQ");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+
 
 
 
@@ -222,11 +224,12 @@ __webpack_require__.r(__webpack_exports__);
  * This service handles all everything having to do with the authentification especially the management of the jwt
  */
 let AuthenticationService = class AuthenticationService {
-    constructor(http, router, config, alert) {
+    constructor(http, router, config, alert, cookieService) {
         this.http = http;
         this.router = router;
         this.config = config;
         this.alert = alert;
+        this.cookieService = cookieService;
         /**
          * Contains the logged in state
          */
@@ -257,7 +260,7 @@ let AuthenticationService = class AuthenticationService {
      */
     set_jwt(jwt) {
         this.JWT = jwt;
-        localStorage.setItem('jwt', this.jwt);
+        this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
     }
     /**
      * Asynchronously sets the current jwtand saves it to locale storage
@@ -266,7 +269,7 @@ let AuthenticationService = class AuthenticationService {
     async_set_jwt(jwt) {
         return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
             this.JWT = jwt;
-            localStorage.setItem('jwt', this.jwt);
+            this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
         });
     }
     /**
@@ -283,7 +286,7 @@ let AuthenticationService = class AuthenticationService {
     setLoggedIn(newState) {
         this.loggedIn = newState;
         if (newState === false) {
-            localStorage.removeItem('jwt');
+            this.cookieService.delete('Diribitio-Session');
         }
     }
     /**
@@ -333,7 +336,8 @@ AuthenticationService.ctorParameters = () => [
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
     { type: _config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"] },
-    { type: _alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] }
+    { type: _alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"] },
+    { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__["CookieService"] }
 ];
 AuthenticationService = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({

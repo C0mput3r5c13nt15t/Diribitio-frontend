@@ -174,13 +174,13 @@ let AdminProjectDetailPage = class AdminProjectDetailPage {
          */
         this.schedule = {
             id: 1,
-            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
+            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en')
         };
         this.imageUrl = this.config.backend_config.imageUrl;
         this.projectNoun = this.config.app_config.project_noun;
@@ -192,7 +192,7 @@ let AdminProjectDetailPage = class AdminProjectDetailPage {
     }
     ngOnInit() {
         this.adminWrongTime = this.config.get_error('admin-wrong_time');
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_7__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
         this.activatedRoute.paramMap.subscribe(paramMap => {
             if (!paramMap.has('ProjectID')) {
                 this.router.navigate(['']);

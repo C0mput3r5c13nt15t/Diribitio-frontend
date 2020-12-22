@@ -395,19 +395,26 @@
       var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! @angular/router */
       "tyNb");
+      /* harmony import */
+
+
+      var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! ngx-cookie-service */
+      "b6Qw");
       /**
        * This service handles all everything having to do with the authentification especially the management of the jwt
        */
 
 
       var AuthenticationService = /*#__PURE__*/function () {
-        function AuthenticationService(http, router, config, alert) {
+        function AuthenticationService(http, router, config, alert, cookieService) {
           _classCallCheck(this, AuthenticationService);
 
           this.http = http;
           this.router = router;
           this.config = config;
           this.alert = alert;
+          this.cookieService = cookieService;
           /**
            * Contains the logged in state
            */
@@ -444,7 +451,7 @@
            */
           value: function set_jwt(jwt) {
             this.JWT = jwt;
-            localStorage.setItem('jwt', this.jwt);
+            this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
           }
           /**
            * Asynchronously sets the current jwtand saves it to locale storage
@@ -460,7 +467,7 @@
                   switch (_context.prev = _context.next) {
                     case 0:
                       this.JWT = jwt;
-                      localStorage.setItem('jwt', this.jwt);
+                      this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
 
                     case 2:
                     case "end":
@@ -486,7 +493,7 @@
             this.loggedIn = newState;
 
             if (newState === false) {
-              localStorage.removeItem('jwt');
+              this.cookieService["delete"]('Diribitio-Session');
             }
           }
           /**
@@ -573,6 +580,8 @@
           type: _config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"]
         }, {
           type: _alert_service__WEBPACK_IMPORTED_MODULE_4__["AlertService"]
+        }, {
+          type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_6__["CookieService"]
         }];
       };
 

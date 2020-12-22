@@ -22,19 +22,23 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
    */
   schedule: Schedule = {
     id: 1,
-    begin: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    control: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    registration: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    sort_students: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    exchange: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    projects: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    end: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
+    begin: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    control: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    registration: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    sort_students: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    exchange: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    projects: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    end: formatDate(new Date(), 'yyyy-MM-dd', 'en')
   };
 
   /**
    * Contains the current date in yyyy-MM-dd format
    */
   currentDate: any;
+  /**
+   * Contains the max date to be inputted in yyyy-MM-dd format (1 year from today)
+   */
+  maxDate: any = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString();
 
   text: string;
 
@@ -53,7 +57,7 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
   ngOnInit() {
     this.text = this.config.get_content('admin-schedule');
 
-    this.currentDate = formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
+    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       this.adminUrl = paramMap.get('AdminName');

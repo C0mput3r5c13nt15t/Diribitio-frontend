@@ -1,7 +1,9 @@
 import { Injectable, Output, EventEmitter } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
+import { CookieService } from 'ngx-cookie-service';
 import { ConfigService } from './config.service';
 import { ScreensizeService } from './screensize.service';
+import { formatDate } from '@angular/common';
 
 /**
  * This service handles the display of all error and alert messages
@@ -25,7 +27,8 @@ export class AlertService {
   constructor(private alertCtrl: AlertController,
               private loadingController: LoadingController,
               private screensizeService: ScreensizeService,
-              private config: ConfigService) {
+              private config: ConfigService,
+              private cookieService: CookieService ) {
                 this.screensizeService.isDesktopView().subscribe(isDesktop => {
                   if (this.isDesktop && !isDesktop) {
                     // Reload because our routing is out of place
@@ -192,6 +195,7 @@ export class AlertService {
       }]
     }).then(alertEl => {
       alertEl.present();
+      this.cookieService.set('Diribitio-AgreedOn', formatDate(new Date(), 'yyyy-MM-dd', 'en'));
     });
   }
 }

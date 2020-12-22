@@ -5,6 +5,7 @@ import { ConfigService } from './config.service';
 import { Response } from 'src/models/Response.model';
 import { AlertService } from './alert.service';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 /**
  * This service handles all everything having to do with the authentification especially the management of the jwt
@@ -25,7 +26,8 @@ export class AuthenticationService {
   constructor(private http: HttpClient,
               private router: Router,
               private config: ConfigService,
-              private alert: AlertService) {}
+              private alert: AlertService,
+              private cookieService: CookieService) {}
 
   /**
    * The url to the backend
@@ -50,7 +52,7 @@ export class AuthenticationService {
    */
   set_jwt(jwt: string) {
     this.JWT = jwt;
-    localStorage.setItem('jwt', this.jwt);
+    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
   }
 
   /**
@@ -59,7 +61,7 @@ export class AuthenticationService {
    */
   async async_set_jwt(jwt: string) {
     this.JWT = jwt;
-    localStorage.setItem('jwt', this.jwt);
+    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
   }
 
   /**
@@ -78,7 +80,7 @@ export class AuthenticationService {
     this.loggedIn = newState;
 
     if (newState === false) {
-      localStorage.removeItem('jwt');
+      this.cookieService.delete('Diribitio-Session');
     }
   }
 

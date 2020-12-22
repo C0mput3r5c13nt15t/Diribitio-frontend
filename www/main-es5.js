@@ -90,22 +90,34 @@
       /* harmony import */
 
 
-      var _config_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+      /*! ngx-cookie-service */
+      "b6Qw");
+      /* harmony import */
+
+
+      var _config_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
       /*! ./config.service */
       "r4Kj");
       /* harmony import */
 
 
-      var _screensize_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+      var _screensize_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
       /*! ./screensize.service */
       "uIHg");
+      /* harmony import */
+
+
+      var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+      /*! @angular/common */
+      "ofXK");
       /**
        * This service handles the display of all error and alert messages
        */
 
 
       var AlertService = /*#__PURE__*/function () {
-        function AlertService(alertCtrl, loadingController, screensizeService, config) {
+        function AlertService(alertCtrl, loadingController, screensizeService, config, cookieService) {
           var _this = this;
 
           _classCallCheck(this, AlertService);
@@ -114,6 +126,7 @@
           this.loadingController = loadingController;
           this.screensizeService = screensizeService;
           this.config = config;
+          this.cookieService = cookieService;
           /**
            * The update event is emitted after every major successful request
            */
@@ -344,6 +357,8 @@
         }, {
           key: "agreements",
           value: function agreements() {
+            var _this2 = this;
+
             this.alertCtrl.create({
               header: 'AGBs und Cookienutzung',
               message: this.conditions,
@@ -353,6 +368,8 @@
               }]
             }).then(function (alertEl) {
               alertEl.present();
+
+              _this2.cookieService.set('Diribitio-AgreedOn', Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'));
             });
           }
         }]);
@@ -366,9 +383,11 @@
         }, {
           type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"]
         }, {
-          type: _screensize_service__WEBPACK_IMPORTED_MODULE_4__["ScreensizeService"]
+          type: _screensize_service__WEBPACK_IMPORTED_MODULE_5__["ScreensizeService"]
         }, {
-          type: _config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"]
+          type: _config_service__WEBPACK_IMPORTED_MODULE_4__["ConfigService"]
+        }, {
+          type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"]
         }];
       };
 
@@ -414,6 +433,12 @@
       var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
       /*! @angular/core */
       "fXoL");
+      /* harmony import */
+
+
+      var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+      /*! ngx-cookie-service */
+      "b6Qw");
       /**
        * This service handles the color settings of the application
        */
@@ -423,12 +448,14 @@
         /**
          * @ignore
          */
-        function SettingsService() {
+        function SettingsService(cookieService) {
           _classCallCheck(this, SettingsService);
 
+          this.cookieService = cookieService;
           /**
            * The update event is emitted after every major successful request
            */
+
           this.update = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
           /**
            * The color of the background (light or dark)
@@ -458,14 +485,14 @@
           value: function change_theme(background, color) {
             this.background = background;
             this.color = color;
-            localStorage.setItem('theme', background + '-' + color);
+            this.cookieService.set('Diribitio-Theme', background + '-' + color);
             this.update.emit();
           }
         }, {
           key: "theme",
           get: function get() {
-            if (localStorage.getItem('theme')) {
-              return localStorage.getItem('theme');
+            if (this.cookieService.get('Diribitio-Theme')) {
+              return this.cookieService.get('Diribitio-Theme');
             } else {
               return this.background + '-' + this.color;
             }
@@ -476,7 +503,9 @@
       }();
 
       SettingsService.ctorParameters = function () {
-        return [];
+        return [{
+          type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__["CookieService"]
+        }];
       };
 
       SettingsService.propDecorators = {
@@ -639,13 +668,19 @@
       var _services_alert_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
       /*! ./services/alert.service */
       "3LUQ");
+      /* harmony import */
+
+
+      var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+      /*! ngx-cookie-service */
+      "b6Qw");
       /**
        * @ignore
        */
 
 
       var AppComponent = /*#__PURE__*/function () {
-        function AppComponent(platform, splashScreen, statusBar, settings, screensizeService, alert) {
+        function AppComponent(platform, splashScreen, statusBar, settings, screensizeService, alert, cookieService) {
           _classCallCheck(this, AppComponent);
 
           this.platform = platform;
@@ -654,6 +689,7 @@
           this.settings = settings;
           this.screensizeService = screensizeService;
           this.alert = alert;
+          this.cookieService = cookieService;
           this.theme = 'dark-blue';
           this.initializeApp();
         }
@@ -661,22 +697,25 @@
         _createClass(AppComponent, [{
           key: "initializeApp",
           value: function initializeApp() {
-            var _this2 = this;
+            var _this3 = this;
 
             this.platform.ready().then(function () {
-              _this2.statusBar.styleDefault();
+              _this3.statusBar.styleDefault();
 
-              _this2.splashScreen.hide();
+              _this3.splashScreen.hide();
 
-              _this2.screensizeService.onResize(_this2.platform.width());
+              _this3.screensizeService.onResize(_this3.platform.width());
 
-              _this2.theme = _this2.settings.theme + ' hydrated';
+              _this3.theme = _this3.settings.theme + ' hydrated';
 
-              _this2.settings.update.subscribe(function () {
-                _this2.changeColor();
+              _this3.settings.update.subscribe(function () {
+                _this3.changeColor();
               });
             });
-            this.alert.agreements();
+
+            if (!this.cookieService.get('Diribitio-AgreedOn')) {
+              this.alert.agreements();
+            }
           }
         }, {
           key: "changeColor",
@@ -706,6 +745,8 @@
           type: _services_screensize_service__WEBPACK_IMPORTED_MODULE_8__["ScreensizeService"]
         }, {
           type: _services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"]
+        }, {
+          type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_10__["CookieService"]
         }];
       };
 
@@ -842,6 +883,12 @@
       var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
       /*! @angular/common */
       "ofXK");
+      /* harmony import */
+
+
+      var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+      /*! ngx-cookie-service */
+      "b6Qw");
 
       var AppModule = function AppModule() {
         _classCallCheck(this, AppModule);
@@ -857,7 +904,7 @@
         }, {
           provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["LocationStrategy"],
           useClass: _angular_common__WEBPACK_IMPORTED_MODULE_10__["HashLocationStrategy"]
-        }],
+        }, ngx_cookie_service__WEBPACK_IMPORTED_MODULE_11__["CookieService"]],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
       })], AppModule);
       /***/

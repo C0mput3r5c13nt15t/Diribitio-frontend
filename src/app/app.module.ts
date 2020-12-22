@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,7 +24,8 @@ import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    {provide : LocationStrategy , useClass: HashLocationStrategy}
+    {provide : LocationStrategy , useClass: HashLocationStrategy},
+    CookieService
   ],
   bootstrap: [AppComponent]
 })

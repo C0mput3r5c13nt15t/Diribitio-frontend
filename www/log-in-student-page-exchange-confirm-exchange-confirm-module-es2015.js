@@ -83,7 +83,7 @@ let ExchangeConfirmPage = class ExchangeConfirmPage {
     ngOnInit() {
         this.content = this.config.get_content('user-exchange-confirm');
         this.studentAlreadyExchangeError = this.config.get_error('student-already_exchange');
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_10__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_10__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
         this.activatedRoute.paramMap.subscribe(paramMap => {
             if (!paramMap.has('ParticipantName')) {
                 this.router.navigate(['']);

@@ -100,13 +100,13 @@ let AdminLogsPage = class AdminLogsPage {
          */
         this.schedule = {
             id: 1,
-            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
+            begin: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            control: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            registration: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            sort_students: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            exchange: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            projects: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'),
+            end: Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en')
         };
         /**
          * Conatins the name of the event that the application is used for
@@ -115,7 +115,7 @@ let AdminLogsPage = class AdminLogsPage {
     }
     ngOnInit() {
         this.text = this.config.get_content('admin-logs');
-        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
+        this.currentDate = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en');
         this.activatedRoute.paramMap.subscribe(paramMap => {
             this.adminUrl = paramMap.get('AdminName');
         });

@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SettingsService } from './services/settings.service';
 import { ScreensizeService } from './services/screensize.service';
 import { AlertService } from './services/alert.service';
+import { CookieService } from 'ngx-cookie-service';
 
 /**
  * @ignore
@@ -24,7 +25,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private settings: SettingsService,
     private screensizeService: ScreensizeService,
-    private alert: AlertService
+    private alert: AlertService,
+    private cookieService: CookieService
   ) {
     this.initializeApp();
   }
@@ -39,7 +41,9 @@ export class AppComponent {
         this.changeColor();
       });
     });
-    this.alert.agreements();
+    if (!this.cookieService.get('Diribitio-AgreedOn')) {
+      this.alert.agreements();
+    }
   }
 
   changeColor() {

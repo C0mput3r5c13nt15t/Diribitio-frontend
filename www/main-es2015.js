@@ -47,8 +47,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "TEn/");
-/* harmony import */ var _config_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config.service */ "r4Kj");
-/* harmony import */ var _screensize_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./screensize.service */ "uIHg");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+/* harmony import */ var _config_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config.service */ "r4Kj");
+/* harmony import */ var _screensize_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./screensize.service */ "uIHg");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common */ "ofXK");
+
+
 
 
 
@@ -58,11 +62,12 @@ __webpack_require__.r(__webpack_exports__);
  * This service handles the display of all error and alert messages
  */
 let AlertService = class AlertService {
-    constructor(alertCtrl, loadingController, screensizeService, config) {
+    constructor(alertCtrl, loadingController, screensizeService, config, cookieService) {
         this.alertCtrl = alertCtrl;
         this.loadingController = loadingController;
         this.screensizeService = screensizeService;
         this.config = config;
+        this.cookieService = cookieService;
         /**
          * The update event is emitted after every major successful request
          */
@@ -229,14 +234,16 @@ let AlertService = class AlertService {
                 }]
         }).then(alertEl => {
             alertEl.present();
+            this.cookieService.set('Diribitio-AgreedOn', Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(new Date(), 'yyyy-MM-dd', 'en'));
         });
     }
 };
 AlertService.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["LoadingController"] },
-    { type: _screensize_service__WEBPACK_IMPORTED_MODULE_4__["ScreensizeService"] },
-    { type: _config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"] }
+    { type: _screensize_service__WEBPACK_IMPORTED_MODULE_5__["ScreensizeService"] },
+    { type: _config_service__WEBPACK_IMPORTED_MODULE_4__["ConfigService"] },
+    { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_3__["CookieService"] }
 ];
 AlertService.propDecorators = {
     update: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }]
@@ -263,6 +270,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsService", function() { return SettingsService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "mrSG");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+
 
 
 /**
@@ -272,7 +281,8 @@ let SettingsService = class SettingsService {
     /**
      * @ignore
      */
-    constructor() {
+    constructor(cookieService) {
+        this.cookieService = cookieService;
         /**
          * The update event is emitted after every major successful request
          */
@@ -291,8 +301,8 @@ let SettingsService = class SettingsService {
      * @returns The current theme from the local storage or a pre-set standard
      */
     get theme() {
-        if (localStorage.getItem('theme')) {
-            return localStorage.getItem('theme');
+        if (this.cookieService.get('Diribitio-Theme')) {
+            return this.cookieService.get('Diribitio-Theme');
         }
         else {
             return this.background + '-' + this.color;
@@ -306,11 +316,13 @@ let SettingsService = class SettingsService {
     change_theme(background, color) {
         this.background = background;
         this.color = color;
-        localStorage.setItem('theme', background + '-' + color);
+        this.cookieService.set('Diribitio-Theme', background + '-' + color);
         this.update.emit();
     }
 };
-SettingsService.ctorParameters = () => [];
+SettingsService.ctorParameters = () => [
+    { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_2__["CookieService"] }
+];
 SettingsService.propDecorators = {
     update: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"] }]
 };
@@ -397,6 +409,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_settings_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./services/settings.service */ "6nr9");
 /* harmony import */ var _services_screensize_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./services/screensize.service */ "uIHg");
 /* harmony import */ var _services_alert_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./services/alert.service */ "3LUQ");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+
 
 
 
@@ -411,13 +425,14 @@ __webpack_require__.r(__webpack_exports__);
  * @ignore
  */
 let AppComponent = class AppComponent {
-    constructor(platform, splashScreen, statusBar, settings, screensizeService, alert) {
+    constructor(platform, splashScreen, statusBar, settings, screensizeService, alert, cookieService) {
         this.platform = platform;
         this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.settings = settings;
         this.screensizeService = screensizeService;
         this.alert = alert;
+        this.cookieService = cookieService;
         this.theme = 'dark-blue';
         this.initializeApp();
     }
@@ -431,7 +446,9 @@ let AppComponent = class AppComponent {
                 this.changeColor();
             });
         });
-        this.alert.agreements();
+        if (!this.cookieService.get('Diribitio-AgreedOn')) {
+            this.alert.agreements();
+        }
     }
     changeColor() {
         this.theme = this.settings.theme + ' hydrated';
@@ -446,7 +463,8 @@ AppComponent.ctorParameters = () => [
     { type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"] },
     { type: _services_settings_service__WEBPACK_IMPORTED_MODULE_7__["SettingsService"] },
     { type: _services_screensize_service__WEBPACK_IMPORTED_MODULE_8__["ScreensizeService"] },
-    { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] }
+    { type: _services_alert_service__WEBPACK_IMPORTED_MODULE_9__["AlertService"] },
+    { type: ngx_cookie_service__WEBPACK_IMPORTED_MODULE_10__["CookieService"] }
 ];
 AppComponent.propDecorators = {
     onResize: [{ type: _angular_core__WEBPACK_IMPORTED_MODULE_3__["HostListener"], args: ['window:resize', ['$event'],] }]
@@ -508,6 +526,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app.component */ "Sy1n");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "tk/3");
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var ngx_cookie_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-cookie-service */ "b6Qw");
+
 
 
 
@@ -533,7 +553,8 @@ AppModule = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
-            { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_10__["HashLocationStrategy"] }
+            { provide: _angular_common__WEBPACK_IMPORTED_MODULE_10__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_10__["HashLocationStrategy"] },
+            ngx_cookie_service__WEBPACK_IMPORTED_MODULE_11__["CookieService"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_8__["AppComponent"]]
     })

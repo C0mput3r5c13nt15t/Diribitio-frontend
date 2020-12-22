@@ -27,12 +27,19 @@
     <ion-card-content color="background">
       <ion-grid *ngIf="searchStudents">
         <ion-row>
+          <ion-col><h2>Benutzername</h2></ion-col>
           <ion-col><h2>Schüler</h2></ion-col>
           <ion-col><h2>Wünsche</h2></ion-col>
           <ion-col><h2>Freunde</h2></ion-col>
           <ion-col><h2>Link zum {{ projectNoun }}</h2></ion-col>
         </ion-row>
         <ion-row color="background" *ngFor="let participant of searchStudents" id="participant.ID">
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.user_name }}
+            </ion-label>
+            <ion-label color="text" *ngIf="participant.role == 2">(Leiter)</ion-label>
+          </ion-col>
           <ion-col>
             <ion-label color="text">
               {{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}
@@ -62,12 +69,19 @@
       </ion-grid>
       <ion-grid *ngIf="!searchStudents">
         <ion-row>
+          <ion-col><h2>Benutzername</h2></ion-col>
           <ion-col><h2>Schüler</h2></ion-col>
           <ion-col><h2>Wünsche</h2></ion-col>
           <ion-col><h2>Freunde</h2></ion-col>
           <ion-col><h2>Link zum {{ projectNoun }}</h2></ion-col>
         </ion-row>
         <ion-row color="background" *ngFor="let participant of loadedStudents" id="participant.ID">
+          <ion-col>
+            <ion-label color="text">
+              {{ participant.user_name }}
+            </ion-label>
+            <ion-label color="text" *ngIf="participant.role == 2">(Leiter)</ion-label>
+          </ion-col>
           <ion-col>
             <ion-label color="text">
               {{ participant.first_name }} {{ participant.last_name }} {{ participant.grade }}{{ participant.letter }}

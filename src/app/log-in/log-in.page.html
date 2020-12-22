@@ -42,7 +42,7 @@
             <div class="ion-padding">
               <ion-button name="login" type="submit" [disabled]="studentLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
             </div>
-            <ion-label class="centerd_label" color="text">oder</ion-label>
+            <ion-label *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" class="centerd_label" color="text">oder</ion-label>
             <div class="ion-padding">
               <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" [routerLink]="['./Schüler Registration']" color="buttons" class="ion-no-margin" expand="block"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
             </div>
@@ -68,7 +68,7 @@
             <div class="ion-padding">
               <ion-button name="login" type="submit" [disabled]="leaderLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
             </div>
-            <ion-label class="centerd_label" color="text">oder</ion-label>
+            <ion-label *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" class="centerd_label" color="text">oder</ion-label>
             <div class="ion-padding">
               <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.control" routerLink='./{{ projectNoun}}leiter Registration' color="buttons" class="ion-no-margin" expand="block"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
             </div>
@@ -94,7 +94,7 @@
               <div class="ion-padding">
                 <ion-button name="login" type="submit" [disabled]="adminLoginForm.invalid" class="ion-no-margin" expand="block" color="buttons">Anmelden</ion-button>
               </div>
-              <ion-label class="centerd_label" color="text">oder</ion-label>
+              <ion-label *ngIf="currentDate > schedule.begin && currentDate <= schedule.sort_students" class="centerd_label" color="text">oder</ion-label>
               <div class="ion-padding">
                 <ion-button *ngIf="currentDate > schedule.begin && currentDate <= schedule.sort_students" [routerLink]="['./Admin Registration']" color="buttons" class="ion-no-margin" expand="block"><ion-icon name="add-circle-outline" slot="start"></ion-icon> Account erstellen</ion-button>
               </div>

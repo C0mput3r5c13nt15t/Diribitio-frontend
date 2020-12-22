@@ -66,13 +66,13 @@ export class LeaderProjectAdministrationPage implements OnInit, OnDestroy {
    */
   schedule: Schedule = {
     id: 1,
-    begin: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    control: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    registration: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    sort_students: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    exchange: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    projects: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en'),
-    end: formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en')
+    begin: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    control: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    registration: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    sort_students: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    exchange: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    projects: formatDate(new Date(), 'yyyy-MM-dd', 'en'),
+    end: formatDate(new Date(), 'yyyy-MM-dd', 'en')
   };
   /**
    * Contains the current date in yyyy-MM-dd format
@@ -99,7 +99,7 @@ export class LeaderProjectAdministrationPage implements OnInit, OnDestroy {
     this.leaderLoadingProject = this.config.get_error('leader-loading_project');
     this.leaderWrongTime = this.config.get_error('leader-wrong_time');
 
-    this.currentDate = formatDate(new Date(2005, 8, 27), 'yyyy-MM-dd', 'en');
+    this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('LeaderName')) {
