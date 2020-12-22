@@ -21,7 +21,7 @@
       <ion-card-content>
         <ion-list>
           <ion-item color="items" lines="none">
-            ab <ion-datetime placeholder="Bitte ein Datum wählen" required name="Beginn" [(ngModel)]="schedule.begin" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            ab <ion-datetime placeholder="Bitte ein Datum wählen" required name="Beginn" [(ngModel)]="schedule.begin" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.begin && currentDate <= schedule.control">
             <ion-icon slot="start" name="create"></ion-icon>
@@ -32,7 +32,7 @@
             <ion-label color="text">Registrierung und Erstellung der {{ projectsNoun }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis <ion-datetime placeholder="Bitte ein Datum wählen" name="Kontrolle" [(ngModel)]="schedule.control" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis <ion-datetime placeholder="Bitte ein Datum wählen" name="Kontrolle" [(ngModel)]="schedule.control" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.control && currentDate <= schedule.registration">
             <ion-icon slot="start" name="shield-checkmark"></ion-icon>
@@ -43,7 +43,7 @@
             <ion-label color="text">Kontrolle und Freigabe der {{ projectsNoun }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Anmeldung" [(ngModel)]="schedule.registration" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Anmeldung" [(ngModel)]="schedule.registration" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.registration && currentDate <= schedule.sort_students">
             <ion-icon slot="start" name="log-in"></ion-icon>
@@ -54,7 +54,7 @@
             <ion-label color="text">Anmeldung für die {{ projectsNoun }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Sortierung" [(ngModel)]="schedule.sort_students" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Sortierung" [(ngModel)]="schedule.sort_students" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.sort_students && currentDate <= schedule.exchange">
             <ion-icon slot="start" name="funnel"></ion-icon>
@@ -65,7 +65,7 @@
             <ion-label color="text">Sortierung durch den Algorithmus</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Tausch" [(ngModel)]="schedule.exchange" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Tausch" [(ngModel)]="schedule.exchange" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.exchange && currentDate <= schedule.projects">
             <ion-icon slot="start" name="swap-horizontal"></ion-icon>
@@ -76,7 +76,7 @@
             <ion-label color="text">Tauschphase</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Projekte" [(ngModel)]="schedule.projects" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis <ion-datetime placeholder="Bitte ein Datum wählen" required name="Projekte" [(ngModel)]="schedule.projects" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
           <ion-item color="buttons" lines="none" *ngIf="currentDate > schedule.projects && currentDate <= schedule.end">
             <ion-icon slot="start" name="flag"></ion-icon>
@@ -87,7 +87,7 @@
             <ion-label color="text">{{ eventName }}</ion-label>
           </ion-item>
           <ion-item color="items" lines="none">
-            bis<ion-datetime placeholder="Bitte ein Datum wählen" required name="Ende" [(ngModel)]="schedule.end" picker-format="yyyy-mm-dd" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
+            bis<ion-datetime placeholder="Bitte ein Datum wählen" required name="Ende" [(ngModel)]="schedule.end" picker-format="YYYY-MM-DD" monthShortNames='Jan, Feb, März, Apr, Mai, Jun, Jul, Aug, Sept, Okt, Nov, Dez' display-timezone="utc" cancelText="Abbrechen" doneText="Ok"></ion-datetime>
           </ion-item>
         </ion-list>
         <div class="ion-padding">
