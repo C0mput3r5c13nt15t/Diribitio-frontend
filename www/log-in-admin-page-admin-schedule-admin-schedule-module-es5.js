@@ -176,6 +176,13 @@
           value: function manageSchedule() {
             var _this3 = this;
 
+            this.schedule.begin = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.begin, 'yyyy-MM-dd', 'en');
+            this.schedule.control = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.control, 'yyyy-MM-dd', 'en');
+            this.schedule.registration = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.registration, 'yyyy-MM-dd', 'en');
+            this.schedule.sort_students = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.sort_students, 'yyyy-MM-dd', 'en');
+            this.schedule.exchange = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.exchange, 'yyyy-MM-dd', 'en');
+            this.schedule.projects = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.projects, 'yyyy-MM-dd', 'en');
+            this.schedule.end = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(this.schedule.end, 'yyyy-MM-dd', 'en');
             this.alert.alert(JSON.stringify(this.schedule));
             this.scheduleService.putSchedule(this.schedule).subscribe(function (data) {
               _this3.alert.alert(data.message);

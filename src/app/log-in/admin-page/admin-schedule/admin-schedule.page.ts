@@ -83,6 +83,14 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
   }
 
   manageSchedule() {
+    this.schedule.begin = formatDate(this.schedule.begin, 'yyyy-MM-dd', 'en');
+    this.schedule.control = formatDate(this.schedule.control, 'yyyy-MM-dd', 'en');
+    this.schedule.registration = formatDate(this.schedule.registration, 'yyyy-MM-dd', 'en');
+    this.schedule.sort_students = formatDate(this.schedule.sort_students, 'yyyy-MM-dd', 'en');
+    this.schedule.exchange = formatDate(this.schedule.exchange, 'yyyy-MM-dd', 'en');
+    this.schedule.projects = formatDate(this.schedule.projects, 'yyyy-MM-dd', 'en');
+    this.schedule.end = formatDate(this.schedule.end, 'yyyy-MM-dd', 'en');
+
     this.alert.alert(JSON.stringify(this.schedule));
     this.scheduleService.putSchedule(this.schedule).subscribe(data => {
       this.alert.alert(data.message);
