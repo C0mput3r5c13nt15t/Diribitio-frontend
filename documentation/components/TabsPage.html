@@ -298,8 +298,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="66"
-                            class="link-to-prism">src/app/tabs/tabs.page.ts:66</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:56</a></div>
                 </td>
             </tr>
 
@@ -364,8 +364,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="96"
-                            class="link-to-prism">src/app/tabs/tabs.page.ts:96</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:68</a></div>
                 </td>
             </tr>
 
@@ -496,8 +496,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="70"
-                            class="link-to-prism">src/app/tabs/tabs.page.ts:70</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/tabs/tabs.page.ts:60</a></div>
                 </td>
             </tr>
 
@@ -829,16 +829,6 @@ export class TabsPage {
 
   fadeOutAlert(alertID) {
     const element &#x3D; document.getElementById(alertID.toString());
-    this.alerts.forEach(alert &#x3D;&gt; {
-      if (alert.id &gt; alertID) {
-        const alertElement &#x3D; document.getElementById(alert.id.toString());
-        alertElement.classList.add(&#x27;slideOutUpEdited&#x27;);
-        alertElement.onanimationend &#x3D; () &#x3D;&gt; {
-          alertElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
-          alertElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
-        };
-      }
-    });
     element.classList.add(&#x27;animate__fadeOutLeft&#x27;);
     element.onanimationend &#x3D; () &#x3D;&gt; {
       this.delete_alert(alertID);
@@ -851,24 +841,6 @@ export class TabsPage {
 
   fadeOutError(errorID) {
     const element &#x3D; document.getElementById(errorID.toString());
-    this.errors.forEach(error &#x3D;&gt; {
-      if (error.id &gt; errorID) {
-        const errorElement &#x3D; document.getElementById(error.id.toString());
-        errorElement.classList.add(&#x27;slideOutUpEdited&#x27;);
-        errorElement.onanimationend &#x3D; () &#x3D;&gt; {
-          errorElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
-          errorElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
-        };
-      }
-    });
-    this.alerts.forEach(alert &#x3D;&gt; {
-      const alertElement &#x3D; document.getElementById(alert.id.toString());
-      alertElement.classList.add(&#x27;slideOutUpEdited&#x27;);
-      alertElement.onanimationend &#x3D; () &#x3D;&gt; {
-        alertElement.classList.remove(&#x27;animate__fadeInDown&#x27;);
-        alertElement.classList.remove(&#x27;slideOutUpEdited&#x27;);
-      };
-    });
     element.classList.add(&#x27;animate__fadeOutLeft&#x27;);
     element.onanimationend &#x3D; () &#x3D;&gt; {
       this.delete_error(errorID);
@@ -983,19 +955,7 @@ export class TabsPage {
                 <p class="comment">
                     <code>tabs.page.scss</code>
                 </p>
-                <pre class="line-numbers"><code class="language-scss">@keyframes slideOutUp {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-  
-    to {
-        transform: translate3d(0, -100%, 0);
-    }
-}
-  
-.slideOutUpEdited {
-    animation-name: slideOutUp;
-}</code></pre>
+                <pre class="line-numbers"><code class="language-scss"></code></pre>
     </div>
 
     <div class="tab-pane fade " id="c-tree">

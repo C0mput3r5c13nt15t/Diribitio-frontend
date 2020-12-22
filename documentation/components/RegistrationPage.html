@@ -1530,26 +1530,22 @@ export class RegistrationPage implements OnInit, OnDestroy {
           this.loadedStudent.first_friend &#x3D; this.friendsList[0].id;
           this.loadedStudent.second_friend &#x3D; this.friendsList[1].id;
           this.loadedStudent.third_friend &#x3D; this.friendsList[2].id;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else if (this.friendsList.length &#x3D;&#x3D;&#x3D; 2) {
           this.loadedStudent.first_friend &#x3D; this.friendsList[0].id;
           this.loadedStudent.second_friend &#x3D; this.friendsList[1].id;
           this.loadedStudent.third_friend &#x3D; 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else if (this.friendsList.length &#x3D;&#x3D;&#x3D; 1) {
           this.loadedStudent.first_friend &#x3D; this.friendsList[0].id;
           this.loadedStudent.second_friend &#x3D; 0;
           this.loadedStudent.third_friend &#x3D; 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         } else {
           this.loadedStudent.first_friend &#x3D; 0;
           this.loadedStudent.second_friend &#x3D; 0;
           this.loadedStudent.third_friend &#x3D; 0;
-          this.studentsService.putSelfStudent(this.loadedStudent);
-          this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + this.studentUrl]);
+          this.studentsService.putSelfStudent(this.loadedStudent, this.studentUrl);
         }
       } else {
         this.alertCtrl.create({

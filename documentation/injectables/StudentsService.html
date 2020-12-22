@@ -834,15 +834,15 @@
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>putSelfStudent(studentData)</code>
+<code>putSelfStudent(studentData, backUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="266"
-                            class="link-to-prism">src/app/services/students.service.ts:266</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="267"
+                            class="link-to-prism">src/app/services/students.service.ts:267</a></div>
                 </td>
             </tr>
 
@@ -858,6 +858,7 @@
                             <thead>
                                 <tr>
                                     <td>Name</td>
+                                    <td>Type</td>
                                     <td>Optional</td>
                                     <td>Description</td>
                                 </tr>
@@ -865,6 +866,8 @@
                             <tbody>
                                 <tr>
                                     <td>studentData</td>
+                                    <td>
+                                    </td>
 
                                     <td>
                                         No
@@ -873,6 +876,22 @@
 
                                     <td>
                                         <p>Contains the updated student</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>backUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Contains the url that the user should be navigated to after a successful update</p>
 
                                     </td>
                                 </tr>
@@ -1531,8 +1550,9 @@ export class StudentsService {
   /**
    * Updates the student associated with the provided token
    * @param studentData Contains the updated student
+   * @param backUrl Contains the url that the user should be navigated to after a successful update
    */
-  putSelfStudent(studentData) {
+  putSelfStudent(studentData, backUrl: string) {
     const headers &#x3D; new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
       Authorization: &#x27;Bearer &#x27; + this.auth.jwt,
@@ -1541,6 +1561,7 @@ export class StudentsService {
     const options &#x3D; { headers };
     this.http.put&lt;Response&gt;(this.backendUrl + &#x27;students/self_update&#x27;, studentData, options).subscribe(() &#x3D;&gt; {
       this.alert.alert(&#x27;Der Account wurde erfolgreich aktualisiert!&#x27;);
+      this.router.navigate([this.eventName + &#x27;/Schüler/&#x27; + backUrl]);
       this.update.emit();
     }, error &#x3D;&gt; {
       this.alert.error(&#x27;Aktualisierung des Accounts fehlgeschlagen!&#x27;, error.error);

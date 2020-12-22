@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="background">
-  <form #signUpStudentForm="ngForm" name="LeaderForm" (submit)="signUpAsStudent(signUpStudentForm)" class="content">
+  <form #signUpStudentForm="ngForm" name="LeaderForm" (ngSubmit)="signUpAsStudent(signUpStudentForm)" class="content">
     <ion-card color="background">
       <ion-card-header>
         <ion-card-title text-wrap >Schüler-Account erstellen</ion-card-title>
