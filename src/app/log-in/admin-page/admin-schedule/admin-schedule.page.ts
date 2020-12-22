@@ -83,6 +83,7 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
   }
 
   manageSchedule() {
+    this.alert.alert(JSON.stringify(this.schedule));
     this.scheduleService.putSchedule(this.schedule).subscribe(data => {
       this.alert.alert(data.message);
       this.scheduleService.update.emit();
