@@ -135,6 +135,7 @@ export class LogInPage implements OnInit, OnDestroy {
 
   log_in_from_storage() {
     if (this.cookieService.get('Diribitio-Session')) {
+      console.log('Session');
       const jwt = this.cookieService.get('Diribitio-Session');
       this.auth.check_jwt(jwt).subscribe(data => {
         const userAuth = data.auth;

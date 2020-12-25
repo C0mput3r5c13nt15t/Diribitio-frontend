@@ -52,7 +52,7 @@ export class AuthenticationService {
    */
   set_jwt(jwt: string) {
     this.JWT = jwt;
-    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
+    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, false, 'Strict');
   }
 
   /**
@@ -61,7 +61,7 @@ export class AuthenticationService {
    */
   async async_set_jwt(jwt: string) {
     this.JWT = jwt;
-    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, true, 'Strict');
+    this.cookieService.set('Diribitio-Session', this.jwt, 2, '/', null, false, 'Strict');
   }
 
   /**
