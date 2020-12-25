@@ -16,9 +16,9 @@ import { Subscription } from 'rxjs';
 
 export interface ModifiedSchüler {
   id: number;
-  user_name: string;
   first_name: string;
   last_name: string;
+  email: string;
   grade: number;
   letter: string;
   exchange_requests?: any[];
@@ -170,7 +170,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
           id: 0,
-          user_name: '',
+          email: '',
           first_name: '',
           last_name: '',
           grade: 1,
@@ -193,7 +193,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
         };
 
         stu.id = student.id;
-        stu.user_name = student.user_name;
+        stu.email = student.email;
         stu.first_name = student.first_name;
         stu.last_name = student.last_name;
         stu.grade = student.grade;
@@ -248,7 +248,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
           id: 0,
-          user_name: '',
+          email: '',
           first_name: '',
           last_name: '',
           grade: 1,
@@ -271,7 +271,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
         };
 
         stu.id = student.id;
-        stu.user_name = student.user_name;
+        stu.email = student.email;
         stu.first_name = student.first_name;
         stu.last_name = student.last_name;
         stu.grade = student.grade;
@@ -310,7 +310,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {
           id: 0,
-          user_name: '',
+          email: '',
           first_name: '',
           last_name: '',
           grade: 1,
@@ -333,7 +333,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
         };
 
         stu.id = student.id;
-        stu.user_name = student.user_name;
+        stu.email = student.email;
         stu.first_name = student.first_name;
         stu.last_name = student.last_name;
         stu.grade = student.grade;
