@@ -1,4 +1,4 @@
-# Diribit.io
+# diribitio - The frontend
 
 ## Hello!
 Welcome to my web project. Just take a look around!  
