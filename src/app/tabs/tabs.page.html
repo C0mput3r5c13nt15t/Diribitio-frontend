@@ -30,7 +30,7 @@
 
     <ion-tab-button *ngIf="auth.isLoggedIn" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root">
       <ion-icon name="person"></ion-icon>
-      <ion-label>Account</ion-label>
+      <ion-label>Dashboard</ion-label>
     </ion-tab-button>
 
   </ion-tab-bar>
@@ -56,7 +56,7 @@
             </ion-button>
             <ion-button color="buttons" *ngIf="auth.isLoggedIn" fill="clear" routerLink="/{{ eventName }}/Anmeldung" routerDirection="root" routerLinkActive="active-link"
               class="link">
-              Account
+              Dashboard
             </ion-button>
             <ion-button color="buttons" fill="clear" routerLink="/{{ eventName }}/Help" routerDirection="root" routerLinkActive="active-link"
               class="link">

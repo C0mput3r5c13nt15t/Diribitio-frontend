@@ -20,7 +20,7 @@
       <ion-card-content>
         <form #form="ngForm" name="ProjectForm" (ngSubmit)="create()">
           <ion-item-divider color="background">
-            <ion-label color="text">{{ projectNoun }}leiter</ion-label>
+            <ion-label color="text">Sie sind {{ projectNoun }}leiter. Welcher Namen soll angezeigt werden?</ion-label>
           </ion-item-divider>
           <ion-item color="items">
             <ion-input color="text" required name="ProjectLeader" [(ngModel)]="newProject.leader_name" type="text"></ion-input>
@@ -68,7 +68,7 @@
             <ion-label color="text">bis</ion-label><ion-input display-format="hh:mm" color="text" required name="ProjectSecondTimeEnd" [(ngModel)]="newProject.second_day_end" type="time"></ion-input>
           </ion-item>
           <ion-item-divider color="background">
-            <ion-label color="text">Klassenstufe</ion-label>
+            <ion-label color="text">Klassenstufen</ion-label>
           </ion-item-divider>
           <ion-item color="items" lines="none">
             <ion-label color="text">von</ion-label>

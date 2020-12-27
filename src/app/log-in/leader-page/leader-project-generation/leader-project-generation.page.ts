@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Directive, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectsService } from 'src/app/services/projects.service';
 import { AlertService } from 'src/app/services/alert.service';

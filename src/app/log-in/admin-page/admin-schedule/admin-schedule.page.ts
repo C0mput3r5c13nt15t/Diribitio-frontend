@@ -95,7 +95,6 @@ export class AdminSchedulePage implements OnInit, OnDestroy {
     this.schedule.projects = formatDate(this.schedule.projects, 'yyyy-MM-dd', 'en');
     this.schedule.end = formatDate(this.schedule.end, 'yyyy-MM-dd', 'en');
 
-    this.alert.alert(JSON.stringify(this.schedule));
     this.scheduleService.putSchedule(this.schedule).subscribe(data => {
       this.alert.alert(data.message);
       this.scheduleService.update.emit();

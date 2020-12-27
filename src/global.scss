@@ -59,6 +59,13 @@
     background-color: transparent;
 }
 
+ion-item-divider {
+    font-size: 14pt;
+    ion-label {
+        margin-bottom: 0px;
+    }
+}
+
 .desktop {
     ion-router-outlet {
       margin-top: 56px;
