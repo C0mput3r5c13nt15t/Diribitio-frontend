@@ -87,7 +87,12 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
    */
   currentDate: any;
 
-  searchValue: string;
+  searchStudent = {
+    email: '',
+    first_name: '',
+    last_name: '',
+    class: ''
+  };
   text1 = this.config.get_content_by_index('admin-students-leaders', 0);
   text2 = this.config.get_content_by_index('admin-students-leaders', 1);
   text3 = this.config.get_content_by_index('admin-students-leaders', 2);
@@ -161,11 +166,11 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
 
   search() {
     // tslint:disable-next-line: triple-equals
-    if (this.searchValue == '') {
+    if (this.searchStudent.email == '' && this.searchStudent.first_name == '' && this.searchStudent.last_name == '' && this.searchStudent.class == '') {
       this.searchStudents = null;
       return;
     }
-    this.studentsService.getAllSearchedStudents(this.searchValue).subscribe(data => {
+    this.studentsService.getAllSearchedStudents(this.searchStudent).subscribe(data => {
       this.searchStudents = [];
       data.data.forEach(async student => {
         const stu: ModifiedSchüler = {

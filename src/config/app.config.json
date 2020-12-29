@@ -3,5 +3,6 @@
     "project_noun":"Projekt",
     "projects_noun":"Projekte",
     "event_name": "Projekttage",
-    "students_can_create_projects":true
+    "students_can_create_projects":true,
+    "alert_errors_max_lifetime": 15
 }

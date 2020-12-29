@@ -179,14 +179,17 @@ export class StudentsService {
    * @param searchValue Contains a string value of the search
    * @returns RequestObservable
    */
-  getAllSearchedStudents(searchValue) {
+  getAllSearchedStudents(searchStudent) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + this.auth.jwt,
     });
     const options = { headers };
     const sendData = {
-      search_value: searchValue
+      search_email: searchStudent.email,
+      search_first_name: searchStudent.first_name,
+      search_last_name: searchStudent.last_name,
+      search_class: searchStudent.class
     };
     return this.http.post<Response>(this.backendUrl + 'admins/search_index_students', sendData, options);
   }

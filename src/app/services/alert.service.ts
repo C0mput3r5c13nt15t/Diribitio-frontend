@@ -47,10 +47,17 @@ export class AlertService {
    * Contains all active alert messages
    */
   alerts = [];
+  /**
+   * Contains the maximum lifetime for alert and error messages
+   */
+  maxLifetime = this.config.app_config.alert_errors_max_lifetime * 1000;
+  /**
+   * Contains the id to be given to the next alert or error message
+   */
   id = 1;
 
   /**
-   * Creates an alert for the desktop layout
+   * Creates an alert message for the desktop layout
    * @param text Contains the text to be displayed by the alert
    */
   desktop_alert(text) {
@@ -60,15 +67,31 @@ export class AlertService {
     const alertData = {
       id: this.id,
       header: 'Erfolg',
-      desrc: text
+      desrc: text,
+      time: new Date().getTime()
     };
     this.id += 1;
     this.alerts.push(alertData);
+    this.delete_old_alerts(this.maxLifetime);
+    this.delete_old_errors(this.maxLifetime);
     this.update.emit();
   }
 
   /**
-   * Creates an error alert for the desktop layout
+   * Deletes all alert messages that are older than the maximum lifetime
+   * @param maxLifetime Contains the maximum lifetime
+   */
+  delete_old_alerts(maxLifetime: number) {
+    const now = new Date().getTime();
+    this.alerts.forEach((alert) => {
+      if (now - alert.time > maxLifetime) {
+        this.delete_alert(alert.id);
+      }
+    });
+  }
+
+  /**
+   * Creates an error message for the desktop layout
    * @param text Contains the text to be displayed by the error alert
    * @param output Contains the output of the request
    */
@@ -79,15 +102,31 @@ export class AlertService {
     const errorData = {
       id: this.id,
       header: 'Fehler',
-      desrc: text + ' ' + output
+      desrc: text + ' ' + output,
+      time: new Date().getTime()
     };
     this.id += 1;
     this.errors.push(errorData);
+    this.delete_old_errors(this.maxLifetime);
+    this.delete_old_alerts(this.maxLifetime);
     this.update.emit();
   }
 
   /**
-   * Delets the alert with the given id for the desktop layout
+   * Deletes all error messages that are older than the maximum lifetime
+   * @param maxLifetime Contains the maximum lifetime
+   */
+  delete_old_errors(maxLifetime: number) {
+    const now = new Date().getTime();
+    this.errors.forEach((error) => {
+        if (now - error.time > maxLifetime) {
+          this.delete_error(error.id);
+        }
+      });
+  }
+
+  /**
+   * Deletes the alert message with the given id for the desktop layout
    * @param alertID Contains the id of the alert to be deleted
    */
   delete_alert(alertID: number) {
@@ -98,7 +137,7 @@ export class AlertService {
   }
 
   /**
-   * Delets the error alert with the given id for the desktop layout
+   * Delets the error message with the given id for the desktop layout
    * @param alertID Contains the id of the error alert to be deleted
    */
   delete_error(errorID: number) {
@@ -109,16 +148,17 @@ export class AlertService {
   }
 
   /**
-   * Creates an alert for either the desktop or the mobile layout
+   * Creates an alert message for either the desktop or the mobile layout
    * @param text Contains the text to be displayed by the alert
    */
   alert(text: string) {
+    if (!text) {
+      text = 'Die Aktion wurde Erfolgreich durchgeführt.';
+    }
+
     if (this.isDesktop) {
       this.desktop_alert(text);
     } else {
-      if (!text) {
-        text = 'Die Aktion wurde Erfolgreich durchgeführt.';
-      }
       this.alertCtrl.create({
         header: 'Erfolg',
         message: text,
@@ -133,17 +173,17 @@ export class AlertService {
   }
 
   /**
-   * Creates an error alert for either the desktop or the mobile layout
+   * Creates an error message for either the desktop or the mobile layout
    * @param text Contains the text to be displayed by the error alert
    * @param output Contains the output of the request
    */
   error(text: string, output= '') {
+    if (output == null || typeof output !== 'string') {
+      output = '';
+    }
     if (this.isDesktop) {
       this.desktop_error(text, output);
     } else {
-      if (output == null || typeof output !== 'string') {
-        output = '';
-      }
       this.alertCtrl.create({
         header: 'Fehler',
         message: text + ' ' + output,
@@ -170,7 +210,7 @@ export class AlertService {
   }
 
   /**
-   * Creates an waiting screen after a number of wrong login tries to prevent brute force attacks
+   * Creates an waiting screen after a number of wrong login tries
    * @param time Contains the time the waiting screen should appear
    * @param tries Contains the number of times the user provided incorrect login credentials
    */
@@ -183,7 +223,7 @@ export class AlertService {
   }
 
   /**
-   * Creates an alert that displays all the Terms of Use
+   * Creates an alert message that displays all the Terms of Use
    */
   agreements() {
     this.alertCtrl.create({

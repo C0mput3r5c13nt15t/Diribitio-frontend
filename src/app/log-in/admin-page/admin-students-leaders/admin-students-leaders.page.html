@@ -17,13 +17,33 @@
         {{ text1 }}
       </ion-label>
     </ion-card-content>
-    <ion-card-content>
-      <ion-item color="items" lines="none">
-        <ion-button slot="start" color="buttons" (click)="refresh()"><ion-icon name="refresh"></ion-icon></ion-button>
-        <ion-button slot="start" color="buttons" (click)="search()"><ion-icon name="search"></ion-icon></ion-button>
-        <ion-input color="text" (keypress)="eventHandler($event.keyCode)" placeholder="Vorname Nachname Klasse" type="text" [(ngModel)]="searchValue" name="Serch"></ion-input>
-      </ion-item>
-    </ion-card-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          <ion-label color="buttons" text-wrap>Schüler suchen</ion-label>
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item color="items" lines="none">
+          <ion-input (keypress)="search()" color="text" placeholder="Email" type="email" [(ngModel)]="searchStudent.email" name="SerchEmail"></ion-input>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-input (keypress)="search()" color="text" placeholder="Vorname" type="text" [(ngModel)]="searchStudent.first_name" name="SerchFirstName"></ion-input>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-input (keypress)="search()" color="text" placeholder="Nachname" type="text" [(ngModel)]="searchStudent.last_name" name="SeatchLastName"></ion-input>
+        </ion-item>
+        <ion-item color="items" lines="none">
+          <ion-input (keypress)="search()" color="text" placeholder="Klasse" type="text" [(ngModel)]="searchStudent.class" name="SerchClass"></ion-input>
+        </ion-item>
+        <div class="ion-padding">
+          <ion-button expand="block" class="ion-no-margin" color="buttons" (click)="search()"><ion-icon name="search"></ion-icon></ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <div class="ion-padding">
+      <ion-button expand="block" class="ion-no-margin" color="buttons" (click)="refresh()"><ion-icon name="refresh"></ion-icon></ion-button>
+    </div>
     <ion-card-content color="background">
       <ion-grid *ngIf="searchStudents">
         <ion-row>
