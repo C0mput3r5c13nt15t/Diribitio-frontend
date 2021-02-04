@@ -1,0 +1,7 @@
+{
+    "default_background": "light",
+    "default_color": "blue",
+    "alert_errors_max_lifetime": 6,
+    "night_start_hour": 19,
+    "night_end_hour" : 6 
+}

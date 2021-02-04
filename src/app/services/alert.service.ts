@@ -40,17 +40,13 @@ export class AlertService {
               }
 
   /**
-   * Contains all active error messages
+   * Contains all active alert and error messages
    */
-  errors = [];
-  /**
-   * Contains all active alert messages
-   */
-  alerts = [];
+  alertsAndErrors = [];
   /**
    * Contains the maximum lifetime for alert and error messages
    */
-  maxLifetime = this.config.app_config.alert_errors_max_lifetime * 1000;
+  maxLifetime = this.config.ui.alert_errors_max_lifetime * 1000;
   /**
    * Contains the id to be given to the next alert or error message
    */
@@ -66,28 +62,14 @@ export class AlertService {
     }
     const alertData = {
       id: this.id,
+      type: 'alert',
       header: 'Erfolg',
       desrc: text,
       time: new Date().getTime()
     };
     this.id += 1;
-    this.alerts.push(alertData);
-    this.delete_old_alerts(this.maxLifetime);
-    this.delete_old_errors(this.maxLifetime);
+    this.alertsAndErrors.unshift(alertData);
     this.update.emit();
-  }
-
-  /**
-   * Deletes all alert messages that are older than the maximum lifetime
-   * @param maxLifetime Contains the maximum lifetime
-   */
-  delete_old_alerts(maxLifetime: number) {
-    const now = new Date().getTime();
-    this.alerts.forEach((alert) => {
-      if (now - alert.time > maxLifetime) {
-        this.delete_alert(alert.id);
-      }
-    });
   }
 
   /**
@@ -101,48 +83,23 @@ export class AlertService {
     }
     const errorData = {
       id: this.id,
+      type: 'error',
       header: 'Fehler',
       desrc: text + ' ' + output,
       time: new Date().getTime()
     };
     this.id += 1;
-    this.errors.push(errorData);
-    this.delete_old_errors(this.maxLifetime);
-    this.delete_old_alerts(this.maxLifetime);
+    this.alertsAndErrors.unshift(errorData);
     this.update.emit();
   }
 
   /**
-   * Deletes all error messages that are older than the maximum lifetime
-   * @param maxLifetime Contains the maximum lifetime
-   */
-  delete_old_errors(maxLifetime: number) {
-    const now = new Date().getTime();
-    this.errors.forEach((error) => {
-        if (now - error.time > maxLifetime) {
-          this.delete_error(error.id);
-        }
-      });
-  }
-
-  /**
-   * Deletes the alert message with the given id for the desktop layout
+   * Deletes the alert or error message with the given id for the desktop layout
    * @param alertID Contains the id of the alert to be deleted
    */
-  delete_alert(alertID: number) {
-    this.alerts = this.alerts.filter(alert => {
-      return alert.id !== alertID;
-    });
-    this.update.emit();
-  }
-
-  /**
-   * Delets the error message with the given id for the desktop layout
-   * @param alertID Contains the id of the error alert to be deleted
-   */
-  delete_error(errorID: number) {
-    this.errors = this.errors.filter(error => {
-      return error.id !== errorID;
+  delete_alert_error(alertOrErrorID: number) {
+    this.alertsAndErrors = this.alertsAndErrors.filter(alertOrError => {
+      return alertOrError.id !== alertOrErrorID;
     });
     this.update.emit();
   }
@@ -203,7 +160,7 @@ export class AlertService {
    */
   async loading(time: number) {
     const loading = await this.loadingController.create({
-      message: 'Bitte gedulden sie sich einen Augenblick...',
+      message: 'Bitte gedulden Sie sich einen Augenblick...',
       duration: time
     });
     await loading.present();
@@ -235,7 +192,7 @@ export class AlertService {
       }]
     }).then(alertEl => {
       alertEl.present();
-      this.cookieService.set('Diribitio-AgreedOn', formatDate(new Date(), 'yyyy-MM-dd', 'en'));
+      this.cookieService.set('Diribitio-AgreedOn', formatDate(new Date(), 'yyyy-MM-dd', 'en'), 10);
     });
   }
 }

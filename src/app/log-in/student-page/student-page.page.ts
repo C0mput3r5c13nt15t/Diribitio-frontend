@@ -80,7 +80,7 @@ export class StudentPagePage implements OnInit, OnDestroy {
               private alert: AlertService) {}
 
   ngOnInit() {
-    this.text = this.config.get_content('user-page');
+    this.text = this.config.get_content('student-page');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 

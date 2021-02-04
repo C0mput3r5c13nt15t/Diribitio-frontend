@@ -69,7 +69,7 @@ export class RegistrationPage implements OnInit, OnDestroy {
               private config: ConfigService ) { }
 
   ngOnInit() {
-    this.text = this.config.get_content('user-registration');
+    this.text = this.config.get_content('student-registration');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ParticipantName')) {

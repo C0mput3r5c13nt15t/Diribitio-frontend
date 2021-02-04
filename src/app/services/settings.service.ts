@@ -29,7 +29,7 @@ export class SettingsService {
 
   /**
    * Gives back the current theme
-   * @returns The current theme from the local storage or a pre-set standard
+   * @returns The current theme from the cookie or a pre-set standard
    */
   get theme() {
     if (this.cookieService.get('Diribitio-Theme')) {
@@ -40,7 +40,7 @@ export class SettingsService {
   }
 
   /**
-   * Changes the current theme and saves it to the local storage
+   * Changes the current theme and saves it to the cookie
    * @param background Contains the background color (light or dark)
    * @param color Contains the color of buttons, titles, etc (blue, pink, green or yellow)
    */

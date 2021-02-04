@@ -63,7 +63,7 @@ export class ExchangeConfirmPage implements OnInit, OnDestroy {
               private alert: AlertService ) { }
 
   ngOnInit() {
-    this.content = this.config.get_content('user-exchange-confirm');
+    this.content = this.config.get_content('student-exchange-confirm');
 
     this.studentAlreadyExchangeError = this.config.get_error('student-already_exchange');
 

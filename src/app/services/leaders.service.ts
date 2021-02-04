@@ -177,7 +177,7 @@ export class LeadersService {
       this.auth.setLoggedIn(false);
       this.router.navigate([this.eventName + '/Anmeldung']);
     }, error => {
-      this.alert.error('Löschung ihres Accounts fehlgeschlagen!', error.error);
+      this.alert.error('Löschung Ihres Accounts fehlgeschlagen!', error.error);
     });
   }
 }

@@ -74,15 +74,9 @@
 
   <ion-router-outlet class="desktop-wrapper"></ion-router-outlet>
 
-  <ion-item [id]="error.id" class="animate__animated animate__fadeInDown" *ngFor="let error of errors" (click)="fadeOutError(error.id)" button="true" color="danger">
+  <ion-item [id]="message.id" class="animate__animated animate__fadeInDown" *ngFor="let message of alertsAndErrors" (click)="fadeOutAlertOrError(message.id)" button="true" [color]="message.type == 'alert' ? 'success' : 'danger'">
     <ion-label class="ion-text-center" color="light">
-      {{ error.desrc }}
-    </ion-label>
-  </ion-item>
-
-  <ion-item [id]="alert.id" class="animate__animated animate__fadeInDown" *ngFor="let alert of alerts" (click)="fadeOutAlert(alert.id)" button="true" color="success">
-    <ion-label class="ion-text-center" color="light">
-      {{ alert.desrc }}
+      {{ message.desrc }}
     </ion-label>
   </ion-item>
 

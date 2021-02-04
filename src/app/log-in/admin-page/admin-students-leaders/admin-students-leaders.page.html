@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content color="background">
-  <ion-card color="background"class="content">
+  <ion-card color="background" class="content">
     <ion-card-header>
       <ion-card-title>Schüler</ion-card-title>
     </ion-card-header>
@@ -17,12 +17,17 @@
         {{ text1 }}
       </ion-label>
     </ion-card-content>
-    <ion-card>
+    <ion-card color="background">
       <ion-card-header>
         <ion-card-title>
           <ion-label color="buttons" text-wrap>Schüler suchen</ion-label>
         </ion-card-title>
       </ion-card-header>
+      <ion-card-content *ngIf="text2">
+        <ion-label color="text">
+          {{ text2 }}
+        </ion-label>
+      </ion-card-content>
       <ion-card-content>
         <ion-item color="items" lines="none">
           <ion-input (keypress)="search()" color="text" placeholder="Email" type="email" [(ngModel)]="searchStudent.email" name="SerchEmail"></ion-input>
@@ -141,9 +146,9 @@
         {{ projectNoun }}leiter
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content *ngIf="text2">
+    <ion-card-content *ngIf="text3">
       <ion-label color="text">
-        {{ text2 }}
+        {{ text3 }}
       </ion-label>
     </ion-card-content>
     <ion-card-content>
@@ -175,9 +180,9 @@
         Schüler sortieren
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content *ngIf="text3">
+    <ion-card-content *ngIf="text4">
       <ion-label color="text">
-        {{ text3 }}
+        {{ text4 }}
       </ion-label>
     </ion-card-content>
     <ion-card-content>
@@ -192,18 +197,18 @@
       </div>
     </ion-card-content>
   </ion-card>
-  <ion-card color="background"class="content" *ngIf="sortedProjects.length">
+  <ion-card color="background"class="content">
     <ion-card-header>
       <ion-card-title>
         Vorschlag für Einsortierung der Schüler
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content *ngIf="text4">
+    <ion-card-content *ngIf="text5">
       <ion-label color="text">
-        {{ text4 }}
+        {{ text5 }}
       </ion-label>
     </ion-card-content>
-    <ion-card-content>
+    <ion-card-content *ngIf="sortedProjects.length">
       <ion-card color="background" *ngFor="let project of sortedProjects">
         <ion-card-header>
           <ion-card-title>

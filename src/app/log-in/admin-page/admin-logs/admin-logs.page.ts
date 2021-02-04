@@ -112,8 +112,8 @@ export class AdminLogsPage implements OnInit, OnDestroy {
 
   deleteSignUpEmail(emailID) {
     this.alertCtrl.create({
-      header: 'Sind sie sicher?',
-      message: 'Wollen sie diese E-Mail wirklich sperren?',
+      header: 'Sind Sie sicher?',
+      message: 'Wollen Sie diese E-Mail wirklich sperren?',
       buttons: [{
         text: 'Abbrechen',
         role: 'cancel',

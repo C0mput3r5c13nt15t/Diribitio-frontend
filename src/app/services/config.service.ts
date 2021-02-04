@@ -8,6 +8,7 @@ import error from 'src/config/error.json';
 import help from 'src/config/help.json';
 import home from 'src/config/home.json';
 import imprint from 'src/config/imprint.json';
+import ui from 'src/config/ui.config.json';
 
 /**
  * This service handles all configuration files
@@ -130,6 +131,14 @@ export class ConfigService {
    */
   get imprint() {
     return imprint;
+  }
+
+  /**
+   * Returns the ui.config.json
+   * @returns Contains the json
+   */
+  get ui() {
+    return ui;
   }
 
   /**

@@ -3,7 +3,7 @@
     <ion-button color="buttons" slot="start">
       <ion-back-button icon="arrow-back" defaultHref="{{ eventName }}/Schüler/{{ studentUrl }}"></ion-back-button>
     </ion-button>
-    <ion-title>Nachrichten</ion-title>
+    <ion-title>Notizen</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -32,7 +32,7 @@
         <ion-input color="text" required name="MessageText" [(ngModel)]="newMessage.message" type="text"></ion-input>
       </ion-item>
       <div class="ion-padding">
-        <ion-button color="buttons" [disabled]="form.invalid" type="submit" expand="block" class="ion-no-margin"><ion-label><ion-icon name="send"></ion-icon> Nachricht senden</ion-label></ion-button>
+        <ion-button color="buttons" [disabled]="form.invalid" type="submit" expand="block" class="ion-no-margin"><ion-label><ion-icon name="duplicate"></ion-icon> Notiz an das Projekt anheften</ion-label></ion-button>
       </div>
     </form>
   </ion-card>

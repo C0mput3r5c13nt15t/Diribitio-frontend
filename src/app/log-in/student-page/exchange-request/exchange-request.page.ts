@@ -63,7 +63,7 @@ export class ExchangeRequestPage implements OnInit, OnDestroy {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.text = this.config.get_content('user-exchange-request');
+    this.text = this.config.get_content('student-exchange-request');
 
     this.studentAlreadyExchangeError = this.config.get_error('student-already_exchange');
 

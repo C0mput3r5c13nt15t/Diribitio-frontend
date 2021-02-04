@@ -14,8 +14,8 @@
         },
         {
             "title":"Passwort vergessen?",
-            "text1":"Für den Fall, das sie ihr Passwort vergessen haben, müssen sie einen Systemadministrator kontaktieren und sich von ihm ein Token übermitteln lassen. Dieses Token können sie dann verwenden um ihr Passwort zu ändern. Geben sie dazu auf der dafür ",
-            "text2":" ihren Benutzernamen und ihr Passwort ein und bestätigen sie das Passwort. Bitte achten sie arauf anzugeben welche Art von Account sie haben (Schüler oder Projektleiter). Geben sie schließlich noch das Token an und klicken sie auf \"Passwort ändern\". Nun können sie sich mit ihrem neuen Passwort anmelden. "
+            "text1":"Für den Fall, das Sie Ihr Passwort vergessen haben, müssen Sie einen Systemadministrator kontaktieren und sich von ihm ein Token übermitteln lassen. Dieses Token können Sie dann verwenden um Ihr Passwort zu ändern. Geben Sie dazu auf der dafür ",
+            "text2":" Ihren Benutzernamen und Ihr Passwort ein und bestätigen Sie das Passwort. Bitte achten Sie arauf anzugeben welche Art von Account Sie haben (Schüler oder Projektleiter). Geben Sie schließlich noch das Token an und klicken Sie auf \"Passwort ändern\". Nun können Sie sich mit ihrem neuen Passwort anmelden. "
         }
     ]
 }

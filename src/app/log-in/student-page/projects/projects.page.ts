@@ -54,7 +54,7 @@ export class ProjectsPage implements OnInit, OnDestroy {
               private scheduleService: ScheduleService) { }
 
   ngOnInit() {
-    this.text = this.config.get_content('projects');
+    this.text = this.config.get_content('student-projects');
 
     this.currentDate = formatDate(new Date(), 'yyyy-MM-dd', 'en');
 

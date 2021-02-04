@@ -3,6 +3,7 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
 import { ScreensizeService } from 'src/app/services/screensize.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { ConfigService } from 'src/app/services/config.service';
+import { interval, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tabs',
@@ -13,23 +14,29 @@ export class TabsPage {
   isDesktop: boolean;
 
   /**
-   * Contains all active error messages
+   * Contains all active alert and error messages
    */
-  errors = [];
+  alertsAndErrors = [];
   /**
-   * Contains all active alert messages
+   * Contains the maximum lifetime for alert and error messages
    */
-  alerts = [];
-
+  maxLifetime = this.config.ui.alert_errors_max_lifetime * 1000;
+  /**
+   * Conatins the noun to be used instead of projects
+   */
   projectsNoun = this.config.app_config.projects_noun;
   /**
    * Conatins the name of the event that the application is used for
    */
   eventName = this.config.app_config.event_name;
+  /**
+   * Conatins the subscription for a regular interval
+   */
+  private regularInterval: Subscription;
 
   constructor(private screensizeService: ScreensizeService,
               public auth: AuthenticationService,
-              private alert: AlertService,
+              private alertService: AlertService,
               private config: ConfigService) {
     this.screensizeService.isDesktopView().subscribe(isDesktop => {
       if (this.isDesktop && !isDesktop) {
@@ -37,36 +44,38 @@ export class TabsPage {
       }
       this.isDesktop = isDesktop;
     });
-    this.alert.update.subscribe(() => this.getAlertsAndErrors());
+    this.alertService.update.subscribe(() => this.getAlertsAndErrors());
+    const source = interval(this.maxLifetime / 2);
+    this.regularInterval = source.subscribe(() => this.deleteOldAlertsAndErrors(this.maxLifetime));
   }
 
   getAlertsAndErrors() {
-    this.alerts = this.alert.alerts;
-    this.errors = this.alert.errors;
+    this.alertsAndErrors = this.alertService.alertsAndErrors;
   }
 
-  fadeOutAlert(alertID) {
+  /**
+   * Deletes all alert and error messages that are older than the maximum lifetime
+   * @param maxLifetime Contains the maximum lifetime
+   */
+  deleteOldAlertsAndErrors(maxLifetime: number) {
+    const now = new Date().getTime();
+    this.alertsAndErrors.forEach((alert) => {
+      if (now - alert.time > maxLifetime) {
+        this.fadeOutAlertOrError(alert.id);
+      }
+    });
+  }
+
+  fadeOutAlertOrError(alertID) {
     const element = document.getElementById(alertID.toString());
     element.classList.add('animate__fadeOutLeft');
     element.onanimationend = () => {
-      this.delete_alert(alertID);
+      this.deleteAlertOrError(alertID);
     };
   }
 
-  delete_alert(alertID) {
-    this.alert.delete_alert(alertID);
-  }
-
-  fadeOutError(errorID) {
-    const element = document.getElementById(errorID.toString());
-    element.classList.add('animate__fadeOutLeft');
-    element.onanimationend = () => {
-      this.delete_error(errorID);
-    };
-  }
-
-  delete_error(errorID) {
-    this.alert.delete_error(errorID);
+  deleteAlertOrError(alertID) {
+    this.alertService.delete_alert_error(alertID);
   }
 
 }

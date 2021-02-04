@@ -11,11 +11,10 @@ import { Subscription } from 'rxjs';
 export class SettingsPage implements OnInit, OnDestroy {
   private subscriptions: Subscription[] = [];
 
-  background = 'dark';
-  color = 'blue';
+  background = this.config.ui.default_background;
+  color = this.config.ui.default_color;
   text1: string;
   text2: string;
-
 
   constructor(private settings: SettingsService,
               private config: ConfigService) { }
@@ -25,9 +24,9 @@ export class SettingsPage implements OnInit, OnDestroy {
     this.text2 = this.config.get_content_by_index('settings', 1);
 
     const theme = this.settings.theme;
-    const colorandbackground = theme.split('-', 2);
-    this.background = colorandbackground[0];
-    this.color = colorandbackground[1];
+    const colorAndBackground = theme.split('-', 2);
+    this.background = colorAndBackground[0];
+    this.color = colorAndBackground[1];
   }
 
   /**

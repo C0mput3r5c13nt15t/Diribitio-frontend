@@ -5,7 +5,7 @@ import { ConfigService } from 'src/app/services/config.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-user-generation',
+  selector: 'app-student-generation',
   templateUrl: './student-generation.page.html',
   styleUrls: ['./student-generation.page.scss'],
 })
@@ -19,7 +19,7 @@ export class StudentGenerationPage implements OnInit, OnDestroy {
     password_confirmation: '',
   };
 
-  text = this.config.get_content('user-generation');
+  text = this.config.get_content('student-generation');
 
   /**
    * Conatins the name of the event that the application is used for

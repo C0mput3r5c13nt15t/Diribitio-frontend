@@ -97,6 +97,7 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
   text2 = this.config.get_content_by_index('admin-students-leaders', 1);
   text3 = this.config.get_content_by_index('admin-students-leaders', 2);
   text4 = this.config.get_content_by_index('admin-students-leaders', 3);
+  text5 = this.config.get_content_by_index('admin-students-leaders', 4);
 
   page = 1;
   lastPage = 1;
@@ -420,8 +421,8 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
 
   deleteLeader(leaderID) {
     this.alertCtrl.create({
-      header: 'Sind sie sicher?',
-      message: 'Wollen sie diesen Projektleiter wirklich unwiederruflich löschen?',
+      header: 'Sind Sie sicher?',
+      message: 'Wollen Sie diesen Projektleiter wirklich unwiederruflich löschen?',
       buttons: [{
         text: 'Abbrechen',
         role: 'cancel',
@@ -500,8 +501,8 @@ export class AdminStudentsLeadersPage implements OnInit, OnDestroy {
   applySortingProposal() {
     if (this.sorted === true) {
       this.alertCtrl.create({
-        header: 'Sind sie sicher?',
-        message: 'Wollen sie die vorgeschlagene Konfiguration wirklich anwenden?',
+        header: 'Sind Sie sicher?',
+        message: 'Wollen Sie die vorgeschlagene Konfiguration wirklich anwenden?',
         buttons: [{
           text: 'Abbrechen',
           role: 'cancel'

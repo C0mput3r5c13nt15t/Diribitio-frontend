@@ -73,7 +73,7 @@ export class StudentProjectGenerationPage implements OnInit, OnDestroy {
               private config: ConfigService) { }
 
   ngOnInit() {
-    this.text = this.config.get_content('user-project-generation');
+    this.text = this.config.get_content('student-project-generation');
 
     this.activatedRoute.paramMap.subscribe(paramMap => {
       if (!paramMap.has('ParticipantName')) {

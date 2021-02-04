@@ -91,7 +91,7 @@ export class AdminExchangeDetailPage implements OnInit, OnDestroy {
   deleteExchange() {
     this.alertCtrl.create({
       header: 'Bist du sicher?',
-      message: 'Wollen sie diesen Tausch wirklich unwiederruflich löschen?',
+      message: 'Wollen Sie diesen Tausch wirklich unwiederruflich löschen?',
       buttons: [{
         text: 'Abbrechen',
         role: 'cancel',

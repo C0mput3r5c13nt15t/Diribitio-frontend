@@ -22,7 +22,7 @@
     </ion-card-content>
     <ion-card-content *ngIf="loadedStudent.email_verified_at == null && !buttonPressed">
       <ion-label color="text">
-        Sie heaben ihre E-Mail noch nicht verifiziert. Bitte holen sie dies nach bevor sie fortfahren.
+        Sie heaben Ihre E-Mail noch nicht verifiziert. Bitte holen Sie dies nach bevor Sie fortfahren.
       </ion-label>
       <div class="ion-padding">
         <ion-button color="buttons" expand="block" class="ion-no-margin" (click)="sendVerificationEmail()">E-Mail senden</ion-button>
@@ -56,7 +56,7 @@
           <ion-icon color="text" slot="start" name="construct"></ion-icon>Assistenten verwalten
         </ion-item>
         <ion-item [disabled]="loadedStudent.email_verified_at == null" color="items" *ngIf="loadedStudent.role === 2 && loadedStudent.project_id != 0 && studentsCanCreateProjects" [routerLink]="['./Nachricht senden']">
-          <ion-icon color="text" slot="start" name="send"></ion-icon>Nachricht senden
+          <ion-icon color="text" slot="start" name="send"></ion-icon>Notiz an das Projekt anfügen
         </ion-item>
       </ion-list>
       <div class="ion-padding">

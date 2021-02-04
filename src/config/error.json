@@ -6,7 +6,7 @@
         },
         {
             "error": "leader-loading_project",
-            "descr": "Es gab einen Fehler beim Laden ihres Projektes. Versuchen sie sich neu einzuloggen und melden sie diesen Fehler bitte dem Systemadministrator."
+            "descr": "Es gab einen Fehler beim Laden Ihres Projektes. Versuchen Sie sich neu einzuloggen und melden Sie diesen Fehler bitte dem Systemadministrator."
         },
         {
             "error": "leader-wrong_time",

@@ -177,8 +177,8 @@ export class AdminProjectDetailPage implements OnInit, OnDestroy {
 
   deleteProject() {
     this.alertCtrl.create({
-      header: 'Sind sie sicher?',
-      message: 'Wollen sie dieses Projekt wirklich unwiederruflich löschen?',
+      header: 'Sind Sie sicher?',
+      message: 'Wollen Sie dieses Projekt wirklich unwiederruflich löschen?',
       buttons: [{
         text: 'Abbrechen',
         role: 'cancel',
