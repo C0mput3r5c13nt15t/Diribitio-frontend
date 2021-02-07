@@ -1,4 +1,4 @@
 {
-    "url": "http://www.diribitio.de:8000/api/",
-    "imageUrl": "http://www.diribitio.de:8000/storage/images/"
+    "url": "localhost:8000/api/",
+    "imageUrl": "localhost:8000/storage/images/"
 }
