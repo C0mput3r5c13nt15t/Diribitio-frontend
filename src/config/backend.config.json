@@ -1,4 +1,4 @@
 {
-    "url": "localhost:8000/api/",
-    "imageUrl": "localhost:8000/storage/images/"
+    "url": "http://localhost:8000/api/",
+    "imageUrl": "http://localhost:8000/storage/images/"
 }
