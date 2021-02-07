@@ -1,4 +1,4 @@
 {
-    "url": "http://www.diribitio.de:8000/api/",
-    "imageUrl": "http://www.diribitio.de:8000/storage/images/"
+    "url": "https://www.diribitio.de:9443/api/",
+    "imageUrl": "https://www.diribitio.de:9443/storage/images/"
 }
