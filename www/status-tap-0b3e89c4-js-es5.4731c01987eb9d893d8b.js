@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[48],{"9r5H":function(n,t,o){"use strict";o.r(t),o.d(t,"startStatusTap",function(){return i});var e=o("sxy2"),i=function(){var n=window;n.addEventListener("statusTap",function(){Object(e.j)(function(){var t=document.elementFromPoint(n.innerWidth/2,n.innerHeight/2);if(t){var o=t.closest("ion-content");o&&o.componentOnReady().then(function(){Object(e.g)(function(){return o.scrollToTop(300)})})}})})}}}]);
+//# sourceMappingURL=status-tap-0b3e89c4-js-es5.4731c01987eb9d893d8b.js.map
