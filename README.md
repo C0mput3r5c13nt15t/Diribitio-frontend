@@ -1,4 +1,4 @@
-# diribitio - The frontend
+# Diribitio - frontend
 
 ## Hello!
 Welcome to my web project. Just take a look around!  
